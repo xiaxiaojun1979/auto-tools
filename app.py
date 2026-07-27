@@ -219,8 +219,10 @@ def download_code():
             cwd="/Users/tianmengpiaoxiang/auto_business")
     return send_file(zip_path, as_attachment=True, download_name="autotools_deploy.zip")
 
+# 初始化数据目录（gunicorn 导入时执行）
+init_data()
+
 if __name__ == "__main__":
-    init_data()
     port = int(os.environ.get("PORT", 8000))
     print(f"\n  AutoTools \u526f\u4e1a\u7cfb\u7edf\n  \U0001f310 \u7f51\u7ad9: http://localhost:{port}\n  \U0001f4cb \u540e\u53f0: http://localhost:{port}/admin\n  \u5bc6\u7801: {ADMIN_PASSWORD}\n")
     # In production, use: waitress-serve --port=$PORT app:app
