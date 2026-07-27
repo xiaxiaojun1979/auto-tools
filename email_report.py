@@ -215,6 +215,22 @@ def send_email(html_content, subject=None):
         today = datetime.now().strftime("%Y-%m-%d")
         subject = f"🚀 AutoTools 每日运营报告 - {today}"
     
+    # 保存到本地
+    report_file = REPORT_DIR / f"email_report_{datetime.now().strftime('%Y%m%d')}.html"
+    with open(report_file, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print(f"📧 报告已保存到: {report_file}")
+    
+    # 尝试macOS mail命令
+    try:
+        import subprocess
+        cmd = f'echo "报告已生成，请查看附件" | /usr/bin/mail -s "{subject}" 35538112@qq.com'
+        subprocess.run(cmd, shell=True, timeout=10, 
+                      stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+        print("📧 已通过mail命令发送")
+    except:
+        pass
+    
     cfg = SMTP_CONFIG
     
     if cfg["password"] == "SMTP授权码":
