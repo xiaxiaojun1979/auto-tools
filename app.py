@@ -44,7 +44,7 @@ PRODUCTS = [
      "price": 79, "price_old": 177, "is_bundle": True}
 ]
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder=str(BASE_DIR / "templates"), static_folder=str(BASE_DIR / "static"))
 app.secret_key = "auto-business-sk-2026"
 
 def init_data():
@@ -204,6 +204,20 @@ def get_stats():
 @app.route("/assets/<path:filename>")
 def serve_asset(filename):
     return send_from_directory(str(BASE_DIR / "website" / "assets"), filename)
+
+
+
+@app.route("/download")
+def download_code():
+    """下载完整项目代码"""
+    from flask import send_file
+    import subprocess
+    zip_path = "/tmp/autotools_deploy.zip"
+    if not os.path.exists(zip_path):
+        subprocess.run(["zip", "-r", zip_path, ".", 
+            "-x", ".git/*", "cloudflared", "ngrok", "__pycache__/*", "*.pyc", "daily_report/data/*", ".gitignore"],
+            cwd="/Users/tianmengpiaoxiang/auto_business")
+    return send_file(zip_path, as_attachment=True, download_name="autotools_deploy.zip")
 
 if __name__ == "__main__":
     init_data()
