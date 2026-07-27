@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - AutoTools</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+               background: #f5f7fa; color: #1a1a2e; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2);
+                  color: white; padding: 50px 20px; text-align: center; }
+        .header h1 { font-size: 2em; margin-bottom: 8px; }
+        .header p { font-size: 1.1em; opacity: 0.95; }
+        .header .emoji { font-size: 3.5em; margin-bottom: 10px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .card { background: white; border-radius: 16px; padding: 40px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 1.6em; margin-bottom: 12px; }
+        .card .desc { color: #666; font-size: 1.05em; line-height: 1.8; margin-bottom: 24px; }
+        .features { list-style: none; margin-bottom: 30px; }
+        .features li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #444; font-size: 1em; }
+        .features li:last-child { border-bottom: none; }
+        .features li::before { content: "✓ "; color: #667eea; font-weight: bold; }
+        .price-row { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .price { font-size: 2.2em; font-weight: bold; color: #e74c3c; }
+        .price-old { font-size: 1.1em; color: #999; text-decoration: line-through; }
+        .btn-buy { display: block; width: 100%; padding: 16px; border: none;
+                   border-radius: 12px; font-size: 1.2em; font-weight: 600;
+                   background: linear-gradient(135deg, #667eea, #764ba2);
+                   color: white; cursor: pointer; }
+        .site-url { text-align: center; margin-top: 24px; color: #999; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="emoji">{{ product.emoji or '&#x1F6E0;' }}</div>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.desc }}</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="price-row">
+                <span class="price">&#165;{{ product.price }}</span>
+                {% if product.price_old and product.price_old > product.price %}
+                <span class="price-old">&#165;{{ product.price_old }}</span>
+                {% endif %}
+            </div>
+            {% if product.features and product.features|length > 0 %}
+            <h3 style="margin-bottom:16px;color:#333;">功能列表</h3>
+            <ul class="features">
+                {% for f in product.features %}
+                <li>{{ f }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <button class="btn-buy" onclick="alert('请访问官网购买')">立即购买 - &#165;{{ product.price }}</button>
+            <div class="site-url">更多工具请访问: xiaxiaojun.zeabur.app</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -152,6 +152,15 @@ def index():
         site_url=SITE_URL)
 
 
+
+@app.route("/product/<pid>")
+def product_detail(pid):
+    p = get_product(pid)
+    if not p:
+        return "产品不存在", 404
+    return render_template("product.html", product=p)
+
+
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     error = None
