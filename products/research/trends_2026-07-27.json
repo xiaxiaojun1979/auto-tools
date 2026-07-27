@@ -1,39 +1,39 @@
 {
   "date": "2026-07-27",
   "total_categories": 7,
-  "existing_products": 52,
+  "existing_products": 60,
   "recommendations": [
     {
       "category": "AI工具",
       "trend_level": "🔥🔥🔥🔥🔥",
-      "tool_id": "ai_data_analyze",
-      "name": "AI数据分析师",
-      "desc": "上传数据自动分析生成报告",
-      "price": 49,
-      "reason": "AI工具趋势火爆(🔥🔥🔥🔥🔥)，AI数据分析师市场需求大"
+      "tool_id": "ai_writing_assist",
+      "name": "AI写作助手",
+      "desc": "文章润色、扩写、改写",
+      "price": 35,
+      "reason": "AI工具趋势火爆(🔥🔥🔥🔥🔥)，AI写作助手市场需求大"
     },
     {
       "category": "短视频/直播工具",
       "trend_level": "🔥🔥🔥🔥🔥",
-      "tool_id": "short_video_script",
-      "name": "短视频脚本生成",
-      "desc": "AI生成热门短视频脚本",
-      "price": 29,
-      "reason": "短视频/直播工具趋势火爆(🔥🔥🔥🔥🔥)，短视频脚本生成市场需求大"
+      "tool_id": "danmaku_collect",
+      "name": "弹幕采集工具",
+      "desc": "采集直播间弹幕数据",
+      "price": 35,
+      "reason": "短视频/直播工具趋势火爆(🔥🔥🔥🔥🔥)，弹幕采集工具市场需求大"
     }
   ],
   "all_categories": {
     "AI工具": {
       "trend": "🔥🔥🔥🔥🔥",
       "total_tools": 7,
-      "developed": 0,
-      "available": 7
+      "developed": 2,
+      "available": 5
     },
     "短视频/直播工具": {
       "trend": "🔥🔥🔥🔥🔥",
       "total_tools": 6,
-      "developed": 0,
-      "available": 6
+      "developed": 2,
+      "available": 4
     },
     "电商/购物工具": {
       "trend": "🔥🔥🔥🔥",

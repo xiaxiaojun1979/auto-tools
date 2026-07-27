@@ -901,5 +901,73 @@
     "category": "system",
     "is_loss_leader": true,
     "tag": "💥 引流价"
+  },
+  {
+    "id": "ai_code_review",
+    "emoji": "🤖",
+    "name": "AI代码审查工具",
+    "desc": "自动审查代码质量",
+    "features": [
+      "AI代码审查工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 59,
+    "price_old": 100,
+    "category": "ai",
+    "created": "2026-07-27"
+  },
+  {
+    "id": "live_stream_helper",
+    "emoji": "🎬",
+    "name": "直播辅助工具",
+    "desc": "直播互动管理、弹幕监控",
+    "features": [
+      "直播辅助工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 49,
+    "price_old": 83,
+    "category": "video",
+    "created": "2026-07-27"
+  },
+  {
+    "id": "ai_writing_assist",
+    "emoji": "🤖",
+    "name": "AI写作助手",
+    "desc": "文章润色、扩写、改写",
+    "features": [
+      "AI写作助手核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "ai",
+    "created": "2026-07-27"
+  },
+  {
+    "id": "danmaku_collect",
+    "emoji": "🎬",
+    "name": "弹幕采集工具",
+    "desc": "采集直播间弹幕数据",
+    "features": [
+      "弹幕采集工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "video",
+    "created": "2026-07-27"
   }
 ]
