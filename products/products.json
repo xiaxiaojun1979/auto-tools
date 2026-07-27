@@ -1,0 +1,799 @@
+[
+  {
+    "id": "file_tools",
+    "emoji": "📁",
+    "name": "文件批处理大师",
+    "desc": "批量重命名、格式转换、智能分类 — 一键处理成千上万文件",
+    "features": [
+      "批量重命名（支持正则/模板/序号）",
+      "智能文件分类",
+      "批量格式转换",
+      "重复文件查找",
+      "文件夹对比"
+    ],
+    "price": 49,
+    "price_old": 69,
+    "category": "system"
+  },
+  {
+    "id": "content_gen",
+    "emoji": "✍️",
+    "name": "内容自动生成器",
+    "desc": "AI驱动的内容创作工具，提升效率",
+    "features": [
+      "文章标题生成",
+      "SEO关键词优化",
+      "摘要提取",
+      "多平台适配",
+      "批量生产"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "ai"
+  },
+  {
+    "id": "data_tools",
+    "emoji": "🧹",
+    "name": "数据清洗工具包",
+    "desc": "Excel/CSV数据处理利器",
+    "features": [
+      "智能缺失值填充",
+      "重复数据去重",
+      "异常值检测",
+      "多表合并",
+      "可视化报告"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "data"
+  },
+  {
+    "id": "bundle",
+    "emoji": "🎉",
+    "name": "三件套超值捆绑包",
+    "desc": "一次性拥有全部三个基础工具，省¥98！",
+    "features": [
+      "文件批处理+内容生成+数据清洗",
+      "终身免费更新",
+      "VIP售后群"
+    ],
+    "price": 79,
+    "price_old": 177,
+    "is_bundle": true,
+    "category": "bundle"
+  },
+  {
+    "id": "excel_macro",
+    "emoji": "📊",
+    "name": "Excel宏工具包",
+    "desc": "50+个即用型Excel宏，一键完成数据报表",
+    "features": [
+      "数据透视表一键生成",
+      "批量图表生成",
+      "智能格式化",
+      "多表合并",
+      "自定义报表"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "office"
+  },
+  {
+    "id": "pdf_tools",
+    "emoji": "📄",
+    "name": "PDF全能工具箱",
+    "desc": "PDF合并/拆分/转换/加密一站式处理",
+    "features": [
+      "PDF批量合并拆分",
+      "PDF转Word/Excel",
+      "PDF加密解密",
+      "图片转PDF",
+      "水印添加"
+    ],
+    "price": 45,
+    "price_old": 68,
+    "category": "office"
+  },
+  {
+    "id": "vip_member",
+    "emoji": "👑",
+    "name": "VIP终身会员",
+    "desc": "解锁全部现有和未来所有工具，终身免费更新",
+    "features": [
+      "全部工具",
+      "未来工具免费",
+      "终生更新",
+      "VIP群",
+      "一对一支持"
+    ],
+    "price": 199,
+    "price_old": 499,
+    "is_vip": true,
+    "category": "vip"
+  },
+  {
+    "id": "download",
+    "emoji": "🎬",
+    "name": "短视频批量下载器",
+    "desc": "支持抖音/快手/小红书视频批量下载",
+    "features": [
+      "抖音视频下载",
+      "快手视频下载",
+      "小红书下载",
+      "批量下载",
+      "高清原画"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "video"
+  },
+  {
+    "id": "subtitle",
+    "emoji": "📝",
+    "name": "视频字幕提取工具",
+    "desc": "自动识别并导出视频字幕文本",
+    "features": [
+      "自动语音识别",
+      "字幕文本导出",
+      "多语言支持",
+      "SRT格式",
+      "TXT导出"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "video"
+  },
+  {
+    "id": "merge",
+    "emoji": "🎞️",
+    "name": "视频拼接合并工具",
+    "desc": "多段视频一键拼接合并",
+    "features": [
+      "多视频合并",
+      "顺序调整",
+      "过渡效果",
+      "音频同步",
+      "高清输出"
+    ],
+    "price": 35,
+    "price_old": 55,
+    "category": "video"
+  },
+  {
+    "id": "chat_client",
+    "emoji": "🤖",
+    "name": "AI对话客户端",
+    "desc": "聚合多模型AI对话客户端",
+    "features": [
+      "多模型支持",
+      "对话历史",
+      "提示词模板",
+      "导出对话",
+      "API接入"
+    ],
+    "price": 49,
+    "price_old": 79,
+    "category": "ai"
+  },
+  {
+    "id": "translate_batch",
+    "emoji": "🌐",
+    "name": "批量翻译工具",
+    "desc": "支持多语言的批量翻译",
+    "features": [
+      "多语言互译",
+      "批量文本翻译",
+      "文件翻译",
+      "术语库",
+      "导出结果"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "ai"
+  },
+  {
+    "id": "watermark_add",
+    "emoji": "💧",
+    "name": "图片批量加水印",
+    "desc": "给图片批量添加文字/图片水印",
+    "features": [
+      "文字水印",
+      "图片水印",
+      "批量处理",
+      "位置调整",
+      "透明度设置"
+    ],
+    "price": 35,
+    "price_old": 55,
+    "category": "image"
+  },
+  {
+    "id": "remove_bg",
+    "emoji": "✂️",
+    "name": "图片去背景工具",
+    "desc": "AI自动去除图片背景",
+    "features": [
+      "一键去背景",
+      "人像抠图",
+      "商品抠图",
+      "批量处理",
+      "透明背景"
+    ],
+    "price": 39,
+    "price_old": 69,
+    "category": "image"
+  },
+  {
+    "id": "price_monitor",
+    "emoji": "📈",
+    "name": "电商价格监控",
+    "desc": "自动监控商品价格变动",
+    "features": [
+      "多平台支持",
+      "价格追踪",
+      "降价提醒",
+      "历史记录",
+      "数据导出"
+    ],
+    "price": 49,
+    "price_old": 79,
+    "category": "web"
+  },
+  {
+    "id": "trending",
+    "emoji": "🔥",
+    "name": "热点追踪工具",
+    "desc": "实时追踪各平台热搜话题",
+    "features": [
+      "多平台热点",
+      "实时更新",
+      "趋势分析",
+      "关键词监控",
+      "数据导出"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "media"
+  },
+  {
+    "id": "folder_lock",
+    "emoji": "🔒",
+    "name": "文件夹加密锁",
+    "desc": "给文件夹加密码保护",
+    "features": [
+      "文件夹加密",
+      "密码保护",
+      "隐藏保护",
+      "批量加密",
+      "简单易用"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "security"
+  },
+  {
+    "id": "deploy_service",
+    "emoji": "📦",
+    "name": "代部署服务",
+    "desc": "远程安装调试一条龙服务",
+    "price": 99,
+    "price_old": 199,
+    "category": "service"
+  },
+  {
+    "id": "custom_dev",
+    "emoji": "🏭",
+    "name": "定制开发",
+    "desc": "按需求定制专属工具",
+    "price": 499,
+    "price_old": 999,
+    "category": "service"
+  },
+  {
+    "id": "enterprise_pkg",
+    "emoji": "🏢",
+    "name": "企业批量部署",
+    "desc": "团队批量部署+培训",
+    "price": 999,
+    "price_old": 1999,
+    "category": "service"
+  },
+  {
+    "id": "maintenance",
+    "emoji": "🔧",
+    "name": "年度维护套餐",
+    "desc": "全年技术支持+免费更新",
+    "price": 299,
+    "price_old": 599,
+    "category": "subscription"
+  },
+  {
+    "id": "vip_custom",
+    "emoji": "👑",
+    "name": "企业VIP定制",
+    "desc": "全套工具+定制+年度维护",
+    "price": 2999,
+    "price_old": 5999,
+    "category": "enterprise"
+  },
+  {
+    "id": "image_gen",
+    "emoji": "🎨",
+    "name": "AI图片生成工具",
+    "desc": "文字描述生成高质量图片，支持多种风格",
+    "features": [
+      "文生图",
+      "风格转换",
+      "批量生成",
+      "高清输出",
+      "多种模型"
+    ],
+    "price": 45,
+    "price_old": 79,
+    "category": "ai"
+  },
+  {
+    "id": "summary",
+    "emoji": "📝",
+    "name": "文章摘要生成器",
+    "desc": "自动提取文章核心要点，快速获取内容精华",
+    "features": [
+      "一键摘要",
+      "关键词提取",
+      "多语言支持",
+      "原文对比",
+      "批量处理"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "ai"
+  },
+  {
+    "id": "text_to_speech",
+    "emoji": "🔊",
+    "name": "文字转语音工具",
+    "desc": "文字自动转换为语音，支持多种声音",
+    "features": [
+      "多音色选择",
+      "语速调节",
+      "批量转换",
+      "MP3导出",
+      "中英文支持"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "ai"
+  },
+  {
+    "id": "compress",
+    "emoji": "📦",
+    "name": "图片压缩工具",
+    "desc": "批量压缩图片体积，保持清晰度",
+    "features": [
+      "智能压缩",
+      "批量处理",
+      "格式保持",
+      "自定义质量",
+      "原图备份"
+    ],
+    "price": 25,
+    "price_old": 45,
+    "category": "image"
+  },
+  {
+    "id": "format_convert",
+    "emoji": "🔄",
+    "name": "图片格式转换器",
+    "desc": "JPG/PNG/WebP等格式批量互转",
+    "features": [
+      "多格式互转",
+      "批量处理",
+      "保持质量",
+      "拖拽操作",
+      "预览功能"
+    ],
+    "price": 25,
+    "price_old": 39,
+    "category": "image"
+  },
+  {
+    "id": "resize",
+    "emoji": "📐",
+    "name": "图片批量改尺寸",
+    "desc": "一键调整图片尺寸和比例，支持批量",
+    "features": [
+      "自定义尺寸",
+      "比例锁定",
+      "批量处理",
+      "预设模板",
+      "高清输出"
+    ],
+    "price": 25,
+    "price_old": 39,
+    "category": "image"
+  },
+  {
+    "id": "batch_publish",
+    "emoji": "📤",
+    "name": "多平台发布器",
+    "desc": "一键同步内容到多个自媒体平台",
+    "features": [
+      "多平台支持",
+      "定时发布",
+      "内容管理",
+      "数据统计",
+      "批量同步"
+    ],
+    "price": 59,
+    "price_old": 99,
+    "category": "media"
+  },
+  {
+    "id": "calendar",
+    "emoji": "📅",
+    "name": "内容日历工具",
+    "desc": "规划自媒体发布计划，提升内容效率",
+    "features": [
+      "日历视图",
+      "内容规划",
+      "提醒功能",
+      "模板库",
+      "进度追踪"
+    ],
+    "price": 25,
+    "price_old": 45,
+    "category": "media"
+  },
+  {
+    "id": "keyword_analysis",
+    "emoji": "🔍",
+    "name": "关键词分析工具",
+    "desc": "分析热门关键词数据，优化SEO策略",
+    "features": [
+      "热搜分析",
+      "关键词挖掘",
+      "趋势追踪",
+      "竞争分析",
+      "数据导出"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "media"
+  },
+  {
+    "id": "file_encrypt",
+    "emoji": "🔐",
+    "name": "文件加密工具",
+    "desc": "给文件加密码保护，安全存储私密文件",
+    "features": [
+      "AES加密",
+      "批量加密",
+      "密码保护",
+      "解密还原",
+      "拖拽操作"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "security"
+  },
+  {
+    "id": "file_shredder",
+    "emoji": "🗑️",
+    "name": "文件粉碎工具",
+    "desc": "安全删除文件，彻底不可恢复",
+    "features": [
+      "多轮覆写",
+      "批量粉碎",
+      "目录粉碎",
+      "快速模式",
+      "安全标准"
+    ],
+    "price": 25,
+    "price_old": 39,
+    "category": "security"
+  },
+  {
+    "id": "hash_check",
+    "emoji": "✅",
+    "name": "文件校验工具",
+    "desc": "计算和验证文件哈希值，确保文件完整",
+    "features": [
+      "MD5/SHA1/SHA256",
+      "批量校验",
+      "文件对比",
+      "拖拽操作",
+      "校验报告"
+    ],
+    "price": 19,
+    "price_old": 29,
+    "category": "security"
+  },
+  {
+    "id": "password_gen",
+    "emoji": "🔑",
+    "name": "密码生成器",
+    "desc": "生成高强度随机密码，保障账号安全",
+    "features": [
+      "自定义长度",
+      "字符组合",
+      "批量生成",
+      "强度检测",
+      "一键复制"
+    ],
+    "price": 19,
+    "price_old": 29,
+    "category": "security"
+  },
+  {
+    "id": "compress_video",
+    "emoji": "🎥",
+    "name": "视频压缩工具",
+    "desc": "压缩视频体积，保持画质清晰",
+    "features": [
+      "智能压缩",
+      "批量处理",
+      "质量调节",
+      "格式保持",
+      "快速处理"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "video"
+  },
+  {
+    "id": "remove_watermark",
+    "emoji": "✨",
+    "name": "视频去水印工具",
+    "desc": "智能去除视频中的水印和Logo",
+    "features": [
+      "智能识别",
+      "去水印",
+      "无损画质",
+      "批量处理",
+      "简单易用"
+    ],
+    "price": 39,
+    "price_old": 69,
+    "category": "video"
+  },
+  {
+    "id": "article_collect",
+    "emoji": "📰",
+    "name": "文章采集工具",
+    "desc": "批量采集网页文章内容到本地",
+    "features": [
+      "URL采集",
+      "批量抓取",
+      "自动去重",
+      "导出格式",
+      "定时任务"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "web"
+  },
+  {
+    "id": "comment_export",
+    "emoji": "💬",
+    "name": "评论导出工具",
+    "desc": "导出网页评论数据到Excel",
+    "features": [
+      "多平台评论",
+      "Excel导出",
+      "数据清洗",
+      "用户分析",
+      "批量导出"
+    ],
+    "price": 35,
+    "price_old": 55,
+    "category": "web"
+  },
+  {
+    "id": "scraper",
+    "emoji": "🕷️",
+    "name": "通用爬虫工具",
+    "desc": "灵活配置的网络数据采集工具",
+    "features": [
+      "自定义规则",
+      "JS渲染",
+      "数据清洗",
+      "定时采集",
+      "多格式导出"
+    ],
+    "price": 49,
+    "price_old": 79,
+    "category": "web"
+  },
+  {
+    "id": "seo_checker",
+    "emoji": "📊",
+    "name": "SEO检测工具",
+    "desc": "检测网页SEO优化情况，提升搜索排名",
+    "features": [
+      "SEO评分",
+      "关键词检测",
+      "链接分析",
+      "移动适配",
+      "优化建议"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "web"
+  },
+  {
+    "id": "layout_helper",
+    "emoji": "🎯",
+    "name": "排版助手工具",
+    "desc": "快速排版公众号/小红书文章",
+    "features": [
+      "公众号排版",
+      "小红书排版",
+      "模板库",
+      "一键复制",
+      "多格式支持"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "media"
+  },
+  {
+    "id": "screen_recorder",
+    "emoji": "🖥️",
+    "name": "屏幕录制工具",
+    "desc": "高清屏幕录制，支持区域/窗口/全屏",
+    "features": [
+      "区域录制",
+      "窗口录制",
+      "全屏录制",
+      "音频录制",
+      "高清输出"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "video"
+  },
+  {
+    "id": "gif_maker",
+    "emoji": "🎞️",
+    "name": "GIF动图制作工具",
+    "desc": "视频转GIF，截图合成动图",
+    "features": [
+      "视频转GIF",
+      "截图合成",
+      "尺寸调整",
+      "帧率控制",
+      "压缩优化"
+    ],
+    "price": 25,
+    "price_old": 39,
+    "category": "video"
+  },
+  {
+    "id": "tiktok_analyzer",
+    "emoji": "📱",
+    "name": "抖音数据分析工具",
+    "desc": "分析抖音账号数据，优化内容策略",
+    "features": [
+      "粉丝分析",
+      "视频数据",
+      "话题追踪",
+      "竞品分析",
+      "报告导出"
+    ],
+    "price": 49,
+    "price_old": 79,
+    "category": "media"
+  },
+  {
+    "id": "clipboard_mgr",
+    "emoji": "📋",
+    "name": "剪贴板增强工具",
+    "desc": "增强剪贴板功能，保存历史记录",
+    "features": [
+      "历史记录",
+      "快速粘贴",
+      "收藏夹",
+      "搜索过滤",
+      "同步功能"
+    ],
+    "price": 19,
+    "price_old": 29,
+    "category": "system"
+  },
+  {
+    "id": "reminder",
+    "emoji": "⏰",
+    "name": "定时提醒工具",
+    "desc": "桌面定时提醒，提高工作效率",
+    "features": [
+      "自定义提醒",
+      "重复任务",
+      "弹窗提醒",
+      "声音提醒",
+      "任务列表"
+    ],
+    "price": 19,
+    "price_old": 29,
+    "category": "system"
+  },
+  {
+    "id": "batch_rename_adv",
+    "emoji": "🏷️",
+    "name": "高级批量重命名",
+    "desc": "正则/模板/序号等方式批量重命名",
+    "features": [
+      "正则表达式",
+      "序号重命名",
+      "模板重命名",
+      "预览功能",
+      "撤销操作"
+    ],
+    "price": 35,
+    "price_old": 55,
+    "category": "system"
+  },
+  {
+    "id": "qr_code_gen",
+    "emoji": "📱",
+    "name": "二维码生成工具",
+    "desc": "批量生成各种类型的二维码",
+    "features": [
+      "文本转码",
+      "URL转码",
+      "批量生成",
+      "自定义颜色",
+      "Logo嵌入"
+    ],
+    "price": 19,
+    "price_old": 29,
+    "category": "image"
+  },
+  {
+    "id": "file_sync",
+    "emoji": "🔄",
+    "name": "文件夹同步工具",
+    "desc": "两个文件夹之间实时同步文件",
+    "features": [
+      "双向同步",
+      "增量同步",
+      "定时同步",
+      "过滤规则",
+      "冲突处理"
+    ],
+    "price": 39,
+    "price_old": 59,
+    "category": "system"
+  },
+  {
+    "id": "duplicate_finder",
+    "emoji": "🔎",
+    "name": "重复文件查找器",
+    "desc": "快速查找并清理重复文件",
+    "features": [
+      "MD5比对",
+      "文件名比对",
+      "大小比对",
+      "批量删除",
+      "移动备份"
+    ],
+    "price": 29,
+    "price_old": 45,
+    "category": "system"
+  },
+  {
+    "id": "image_watermark_video",
+    "emoji": "💧",
+    "name": "视频批量加水印",
+    "desc": "给视频批量添加文字/图片水印",
+    "features": [
+      "文字水印",
+      "图片水印",
+      "批量处理",
+      "位置调整",
+      "透明度设置"
+    ],
+    "price": 39,
+    "price_old": 65,
+    "category": "video"
+  }
+]
