@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广文案 - AutoTools</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+               background: #f5f7fa; color: #1a1a2e; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2);
+                  color: white; padding: 20px; display: flex; align-items: center;
+                  justify-content: space-between; }
+        .header h1 { font-size: 1.4em; }
+        .header a { color: white; text-decoration: none; opacity: 0.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .platform { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px;
+                     box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .platform h2 { font-size: 1.2em; margin-bottom: 16px; color: #667eea; }
+        .post { background: #fafafa; border-radius: 8px; padding: 16px; margin-bottom: 12px;
+                border-left: 3px solid #667eea; white-space: pre-wrap; font-size: 0.9em;
+                line-height: 1.6; }
+        .post .title { font-weight: 600; color: #1a1a2e; margin-bottom: 8px; }
+        .copy-btn { float: right; padding: 4px 12px; border: 1px solid #667eea;
+                     border-radius: 6px; color: #667eea; cursor: pointer; font-size: 0.8em;
+                     background: white; }
+        .copy-btn:hover { background: #667eea; color: white; }
+        .back { display: block; margin-top: 20px; color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📢 推广文案</h1>
+        <a href="/admin">← 返回后台</a>
+    </div>
+    <div class="container">
+        {% if posts %}
+            {% for platform, products in posts.items() %}
+            <div class="platform">
+                <h2>📱 {{ platform|capitalize }}</h2>
+                {% for pid, text in products.items() %}
+                <div class="post">
+                    <button class="copy-btn" onclick="copyText(this)">复制</button>
+                    <div class="title">{{ pid }}</div>
+                    {{ text }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div style="text-align:center;padding:60px;color:#999;">
+                <div style="font-size:3em;margin-bottom:16px;">📝</div>
+                <p>暂无推广文案</p>
+                <p style="font-size:0.85em;margin-top:8px;">请先生成推广文案</p>
+            </div>
+        {% endif %}
+        <a href="/admin" class="back">← 返回管理后台</a>
+    </div>
+    <script>
+        function copyText(btn) {
+            var post = btn.parentElement;
+            var text = post.textContent.replace('复制', '').trim();
+            navigator.clipboard.writeText(text).then(function() {
+                btn.textContent = '已复制!';
+                setTimeout(function() { btn.textContent = '复制'; }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>

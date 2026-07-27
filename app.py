@@ -216,6 +216,40 @@ def serve_asset(filename):
 
 
 
+
+
+
+@app.route("/admin/marketing")
+@admin_required
+def view_marketing():
+    """查看推广文案"""
+    marketing_dir = BASE_DIR / "marketing" / "data"
+    posts = []
+    if marketing_dir.exists():
+        files = sorted(marketing_dir.glob("posts_*.json"), reverse=True)
+        if files:
+            import json
+            with open(files[0], 'r') as f:
+                posts = json.load(f)
+    
+    return render_template("marketing.html", posts=posts)
+
+@app.route("/admin/reports")
+@admin_required
+def view_reports():
+    """查看每日报告列表"""
+    report_dir = BASE_DIR / "daily_report" / "reports"
+    reports = sorted(report_dir.glob("report_*.html"), reverse=True)
+    return render_template("reports.html", reports=reports[:30])
+
+@app.route("/admin/report/<filename>")
+@admin_required
+def view_report(filename):
+    """查看具体报告"""
+    from flask import send_from_directory
+    report_dir = BASE_DIR / "daily_report" / "reports"
+    return send_from_directory(str(report_dir), filename)
+
 @app.route("/download")
 def download_code():
     """下载完整项目代码"""

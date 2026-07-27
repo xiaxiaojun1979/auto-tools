@@ -1,170 +1,135 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-自动营销引擎 - 自动生成内容 + 排期 + 发布跟踪
+AutoTools 推广内容生成器
+生成适用于各平台的推广文案
 """
 
 import json
-import csv
-import os
-from datetime import datetime, timedelta
 from pathlib import Path
-import sys
-import random
+from datetime import datetime
 
-# 加入上级目录
-sys.path.insert(0, str(Path(__file__).parent.parent / "products" / "content_gen"))
-from main import ContentGenerator
+BASE_DIR = Path(__file__).parent.parent
+DATA_DIR = BASE_DIR / "marketing" / "data"
 
+PRODUCT_INTROS = {
+    "file_tools": {
+        "name": "文件批处理大师",
+        "tagline": "一键批量处理成千上万文件，告别重复劳动",
+        "use_cases": ["设计稿批量重命名", "文档格式转换", "照片智能分类"],
+        "price": 49
+    },
+    "content_gen": {
+        "name": "内容自动生成器",
+        "tagline": "AI帮你写标题、摘要、文案，效率翻倍",
+        "use_cases": ["自媒体文章标题", "SEO关键词优化", "社交媒体文案"],
+        "price": 29
+    },
+    "data_tools": {
+        "name": "数据清洗工具包",
+        "tagline": "Excel/CSV数据一键清理，告别手动整理",
+        "use_cases": ["销售报表清洗", "客户数据去重", "异常值检测"],
+        "price": 39
+    },
+    "bundle": {
+        "name": "三件套捆绑包",
+        "tagline": "一次拥有全部工具，省98元！",
+        "use_cases": ["办公效率全套解决方案"],
+        "price": 79
+    }
+}
 
-class AutoMarketing:
-    """自动营销引擎"""
+PLATFORMS = {
+    "xianyu": {
+        "name": "闲鱼",
+        "emoji": "",
+        "max_len": 500,
+        "style": "简洁实用",
+        "tags": ["效率工具", "办公软件", "Python工具", "自动化"]
+    },
+    "wechat": {
+        "name": "朋友圈",
+        "emoji": "",
+        "max_len": 200,
+        "style": "亲切自然",
+        "tags": []
+    },
+    "xiaohongshu": {
+        "name": "小红书",
+        "emoji": "",
+        "max_len": 1000,
+        "style": "种草分享",
+        "tags": ["效率神器", "办公必备", "数码好物"]
+    }
+}
 
-    def __init__(self):
-        self.generator = ContentGenerator()
-        self.data_dir = Path(__file__).parent / "data"
-        self.data_dir.mkdir(exist_ok=True)
+def generate_post(platform, product_id):
+    product = PRODUCT_INTROS[product_id]
+    plat = PLATFORMS[platform]
+    
+    if platform == "xianyu":
+        post = """【{}】{}
+{}
+适用场景：
+{}
+价格：仅¥{}，一次购买永久使用
+搜索：{}""".format(
+            product["name"], product["tagline"],
+            "------------------------",
+            "\n".join("• " + u for u in product["use_cases"]),
+            product["price"],
+            " ".join(plat["tags"])
+        )
+    elif platform == "wechat":
+        post = """最近发现一个超好用的工具，{}，{}。只要¥{}，一次购买永久使用，太划算了！需要的小伙伴私信我～""".format(
+            product["name"], product["tagline"],
+            product["price"]
+        )
+    elif platform == "xiaohongshu":
+        post = """{} 我的天！{}竟然只要¥{}？！
 
-        # 发布平台配置（等你授权后填写）
-        self.platforms = {
-            "xiaohongshu": {"enabled": False, "api_key": ""},
-            "douyin": {"enabled": False, "api_key": ""},
-            "bilibili": {"enabled": False, "api_key": ""},
-            "twitter": {"enabled": False, "api_key": ""},
-        }
+一直为每天重复的文件处理发愁，直到发现这个神器！
+{}具体能做什么：
+{}
+一次购买终身使用，真的太良心了🔥
 
-    def generate_weekly_plan(self, days=7):
-        """生成一周内容计划"""
-        print(f"\n📋 正在生成 {days} 天内容计划...")
-        plan = self.generator.generate_content_plan(days=days, posts_per_day=2)
-        return plan
-
-    def save_plan(self, plan):
-        """保存计划"""
-        filepath = self.data_dir / f"plan_{datetime.now().strftime('%Y%m%d')}.json"
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(plan, f, ensure_ascii=False, indent=2)
-        print(f"[✓] 内容计划已保存: {filepath}")
-        return filepath
-
-    def show_pending_posts(self):
-        """显示待发布的帖子"""
-        plans = sorted(self.data_dir.glob("plan_*.json"), reverse=True)
-        if not plans:
-            print("[!] 没有待发布的内容计划")
-            return []
-
-        today = datetime.now().strftime("%Y-%m-%d")
-        pending = []
-
-        for plan_file in plans[:1]:
-            with open(plan_file, 'r', encoding='utf-8') as f:
-                plan = json.load(f)
-
-            for post in plan:
-                if post.get("scheduled_date") >= today:
-                    pending.append(post)
-
-        if pending:
-            print(f"\n📆 待发布内容 ({len(pending)} 条):\n")
-            print(f"{'日期':<14} {'时间':<8} {'分类':<12} {'标题':<30}")
-            print("-"*64)
-            for p in pending:
-                print(f"{p['scheduled_date']:<14} {p['scheduled_time']:<8} "
-                      f"{p['category']:<12} {p['title'][:28]:<30}")
-        else:
-            print("[!] 当天没有待发布内容")
-
-        return pending
-
-    def export_marketing_report(self, plan, filepath=None):
-        """导出营销报告"""
-        if filepath is None:
-            filepath = self.data_dir / f"report_{datetime.now().strftime('%Y%m%d')}.md"
-
-        cats = {}
-        for p in plan:
-            cat = p['category']
-            cats[cat] = cats.get(cat, 0) + 1
-
-        report = f"""# 自动营销周报
-
-生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M')}
-
-## 📊 本周内容概览
-
-| 分类 | 数量 |
-|------|------|
-"""
-        for cat, count in cats.items():
-            report += f"| {cat} | {count} |\n"
-
-        report += f"\n总计: {len(plan)} 条内容\n"
-
-        report += f"""
-## 📅 发布日历
-
-| 日期 | 时间 | 分类 | 标题 |
-|------|------|------|------|
-"""
-        for p in plan:
-            report += f"| {p['scheduled_date']} | {p['scheduled_time']} | {p['category']} | {p['title']} |\n"
-
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(report)
-
-        print(f"[✓] 营销报告已导出: {filepath}")
-        return filepath
-
-    def configure_platform(self, platform, api_key):
-        """配置发布平台（等你提供信息）"""
-        if platform in self.platforms:
-            self.platforms[platform]["api_key"] = api_key
-            self.platforms[platform]["enabled"] = True
-            # 保存配置
-            config_path = self.data_dir / "platforms.json"
-            with open(config_path, 'w', encoding='utf-8') as f:
-                json.dump(self.platforms, f, ensure_ascii=False, indent=2)
-            print(f"[✓] {platform} 配置完成")
-        else:
-            print(f"[X] 未知平台: {platform}")
-
-
-def main():
-    import argparse
-    parser = argparse.ArgumentParser(description="🚀 自动营销引擎")
-    subparsers = parser.add_subparsers(dest="command")
-
-    p_plan = subparsers.add_parser("plan", help="生成内容计划")
-    p_plan.add_argument("--days", type=int, default=7, help="计划天数")
-
-    subparsers.add_parser("pending", help="查看待发布内容")
-    subparsers.add_parser("report", help="导出营销报告")
-
-    args = parser.parse_args()
-
-    engine = AutoMarketing()
-
-    if args.command == "plan":
-        plan = engine.generate_weekly_plan(args.days)
-        engine.save_plan(plan)
-        engine.show_pending_posts()
-        engine.export_marketing_report(plan)
-
-    elif args.command == "pending":
-        engine.show_pending_posts()
-
-    elif args.command == "report":
-        plans = sorted(engine.data_dir.glob("plan_*.json"), reverse=True)
-        if plans:
-            with open(plans[0], 'r', encoding='utf-8') as f:
-                plan = json.load(f)
-            engine.export_marketing_report(plan)
-        else:
-            print("[!] 没有内容计划，请先生成: python3 auto_publisher.py plan")
-
+#{} #{} #效率工具""".format(
+            product["emoji"] if product.get("emoji","") else "✨",
+            product["name"], product["price"],
+            product["tagline"],
+            "\n".join("✅ " + u for u in product["use_cases"]),
+            "效率神器", "办公必备"
+        )
     else:
-        parser.print_help()
+        post = "{} - {}，仅需¥{}".format(product["name"], product["tagline"], product["price"])
+    
+    return post
 
+def generate_all():
+    posts = {}
+    for platform in PLATFORMS:
+        posts[platform] = {}
+        for pid in PRODUCT_INTROS:
+            posts[platform][pid] = generate_post(platform, pid)
+    return posts
+
+def save():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    posts = generate_all()
+    
+    path = DATA_DIR / "posts_{}.json".format(datetime.now().strftime("%Y%m%d"))
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(posts, f, ensure_ascii=False, indent=2)
+    
+    # Print a sample
+    print("✅ 推广文案已生成!")
+    print()
+    for platform in PLATFORMS:
+        for pid in PRODUCT_INTROS:
+            print("【{} - {}】".format(PLATFORMS[platform]["name"], PRODUCT_INTROS[pid]["name"]))
+            print(posts[platform][pid][:200] + "...")
+            print()
+    return posts
 
 if __name__ == "__main__":
-    main()
+    save()
