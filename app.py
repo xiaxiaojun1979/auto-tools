@@ -280,6 +280,56 @@ def revenue_dashboard():
     return render_template("revenue.html", report=report, services=SERVICES)
 
 
+@app.route("/admin/promotion")
+@admin_required
+def view_promotion():
+    return redirect(url_for("view_marketing"))
+
+
+@app.route("/admin/promotion/manage")
+@admin_required
+def manage_promotion():
+    from promotion_engine import PromotionEngine, PLATFORMS
+    engine = PromotionEngine()
+    summary = engine.generate_promotion_summary()
+    
+    posts = {}
+    posts_file = BASE_DIR / "promotion" / "data" / f"posts_{datetime.now().strftime('%Y-%m-%d')}.json"
+    if posts_file.exists():
+        with open(posts_file) as f:
+            posts = json.load(f)
+    
+    codes = []
+    codes_file = BASE_DIR / "promotion" / "data" / "discount_codes.json"
+    if codes_file.exists():
+        with open(codes_file) as f:
+            codes = json.load(f)
+    
+    return render_template("promotion.html", 
+                         summary=summary, 
+                         posts=posts, 
+                         codes=codes,
+                         platforms=PLATFORMS)
+
+
+@app.route("/admin/promotion/generate", methods=["POST"])
+@admin_required
+def generate_promo():
+    from promotion_engine import PromotionEngine
+    engine = PromotionEngine()
+    engine.generate_daily_posts()
+    return redirect(url_for("manage_promotion"))
+
+
+@app.route("/admin/promotion/discount/<pid>", methods=["POST"])
+@admin_required
+def create_discount(pid):
+    from promotion_engine import PromotionEngine
+    engine = PromotionEngine()
+    engine.create_discount_code(pid, "limited_time")
+    return redirect(url_for("manage_promotion"))
+
+
 @app.route("/admin/marketing")
 @admin_required
 def view_marketing():

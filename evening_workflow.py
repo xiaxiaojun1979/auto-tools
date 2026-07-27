@@ -130,6 +130,23 @@ def step4_send_email():
         log(traceback.format_exc())
 
 
+def step_generate_promotion():
+    """生成推广内容"""
+    log("📢 生成推广内容...")
+    try:
+        from promotion_engine import PromotionEngine
+        engine = PromotionEngine()
+        summary = engine.print_summary()
+        log(f"    ✅ 生成了 {summary['total_posts']} 条推广内容")
+        log(f"    ✅ 创建了 {len(summary['discounts'])} 个优惠码")
+        return summary
+    except Exception as e:
+        log(f"    ❌ 推广生成失败: {e}")
+        import traceback
+        log(traceback.format_exc())
+        return None
+
+
 def step5_push_to_git():
     """第五步：推送到GitHub触发Zeabur部署"""
     log("📤 第五步：推送到GitHub...")
@@ -219,6 +236,7 @@ def main():
     recommendations = step1_analyze_trends()
     developed = step2_develop_tools(recommendations)
     step3_generate_report()
+    step_generate_promotion()
     step4_send_email()
     step5_push_to_git()
     
