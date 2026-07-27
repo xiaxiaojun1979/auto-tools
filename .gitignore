@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+*.swp
+*.swo
+.DS_Store
+daily_report/data/
+cloudflared
+ngrok
+*.zip
+tunnel_*

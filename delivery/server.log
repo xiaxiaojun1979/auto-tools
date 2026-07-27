@@ -1,0 +1,29 @@
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/Library/Developer/CommandLineTools/usr/bin/python3: can't open file '/Users/tianmengpiaoxiang/Desktop/automation_business/delivery/order_server.py': [Errno 1] Operation not permitted
+/bin/bash: /Users/tianmengpiaoxiang/Desktop/automation_business/start_business.sh: Operation not permitted
+/bin/bash: /Users/tianmengpiaoxiang/Desktop/automation_business/start_business.sh: Operation not permitted
+127.0.0.1 - - [27/Jul/2026 14:53:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 14:53:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 14:53:53] "GET /assets/wechat_pay.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 14:53:53] "POST /api/order HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 14:53:53] "GET /admin HTTP/1.1" 200 -
+[💰] 记录收入: ¥49.00 - 文件批处理大师（来自支付宝）
+127.0.0.1 - - [27/Jul/2026 14:56:25] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 14:56:25] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [27/Jul/2026 15:00:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 15:15:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 15:17:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 15:17:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 15:17:41] "GET /admin HTTP/1.1" 200 -
