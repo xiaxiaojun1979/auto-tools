@@ -550,3 +550,60 @@ if __name__ == "__main__":
     print(f"  密码: {ADMIN_PASSWORD}")
     print(f"  产品数: {len(PRODUCTS)}")
     app.run(host="0.0.0.0", port=port, debug=False)
+
+# ===== 平台发布管理API =====
+@app.route("/admin/publishing")
+@admin_required
+def admin_publishing():
+    """发布管理看板"""
+    try:
+        from platform_publisher import get_publish_stats, get_publish_history, generate_toutiao_article, generate_baijiahao_article
+        stats = get_publish_stats()
+        history = get_publish_history(7)
+        return render_template("publishing.html", stats=stats, history=history)
+    except Exception as e:
+        return render_template("publishing.html", 
+                             stats={"total_publish": 0, "success": 0, "failed": 0, 
+                                   "toutiao_published": 0, "baijiahao_published": 0, "last_publish": "无"},
+                             history=[], error=str(e))
+
+
+@app.route("/admin/publishing/publish", methods=["POST"])
+@admin_required
+def trigger_publish():
+    """手动触发平台发布（仅文章生成，不打开浏览器）"""
+    try:
+        from platform_publisher import generate_toutiao_article, generate_baijiahao_article, save_article
+        
+        toutiao = generate_toutiao_article()
+        save_article(toutiao, "toutiao")
+        
+        baijiahao = generate_baijiahao_article()
+        save_article(baijiahao, "baijiahao")
+        
+        return jsonify({
+            "ok": True,
+            "toutiao": toutiao["title"],
+            "baijiahao": baijiahao["title"],
+            "msg": "文章已生成，晚上20:00自动发布将自动执行"
+        })
+    except Exception as e:
+        return jsonify({"ok": False, "msg": str(e)}), 500
+
+
+@app.route("/admin/publishing/latest")
+@admin_required
+def get_latest_articles():
+    """获取最新生成的文章"""
+    try:
+        from platform_publisher import load_latest_article
+        toutiao = load_latest_article("toutiao")
+        baijiahao = load_latest_article("baijiahao")
+        return jsonify({
+            "ok": True,
+            "toutiao": toutiao,
+            "baijiahao": baijiahao
+        })
+    except Exception as e:
+        return jsonify({"ok": False, "msg": str(e)}), 500
+

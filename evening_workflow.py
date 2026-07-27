@@ -5,11 +5,13 @@
 1. 分析热门应用趋势
 2. 开发1-2个新工具
 3. 发布到网站
-4. 生成运营报告
-5. 发送邮件通知
+4. 平台推广发布（今日头条+百家号）
+5. 生成运营报告
+6. 发送邮件通知
+7. 推送到GitHub
 """
 
-import sys, os, json
+import sys, os, json, subprocess, time
 from pathlib import Path
 from datetime import datetime
 
@@ -97,6 +99,80 @@ def step2_develop_tools(recommendations):
         return []
 
 
+def step_publish_articles():
+    """平台推广发布（今日头条+百家号）"""
+    log("📰 执行平台发布（今日头条+百家号）...")
+    try:
+        from platform_publisher import run_publish_all, get_publish_stats, generate_toutiao_article, generate_baijiahao_article, save_article
+        
+        # 先执行Chrome清理
+        log("   清理旧的浏览器进程...")
+        NODE = '/Users/tianmengpiaoxiang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node'
+        XB = os.path.expanduser('~/.qclaw/skills/xbrowser/scripts/xb.cjs')
+        subprocess.run([NODE, XB, 'cleanup'], capture_output=True, timeout=10)
+        subprocess.run([NODE, XB, 'stop', 'chrome', '--force'], capture_output=True, timeout=10)
+        time.sleep(2)
+        
+        # 今日头条发布
+        log("   📰 发布到今日头条...")
+        toutiao_article = generate_toutiao_article()
+        save_article(toutiao_article, 'toutiao')
+        toutiao_result = {"ok": False, "error": "skip"}
+        baijiahao_result = {"ok": False, "error": "skip"}
+        
+        try:
+            from platform_publisher import publish_toutiao
+            toutiao_result = publish_toutiao(toutiao_article)
+            if toutiao_result.get('ok'):
+                log(f"    ✅ 头条发布成功: {toutiao_article['title']}")
+            else:
+                log(f"    ⚠️ 头条发布状态: {toutiao_result.get('error', '需要手动处理')}")
+                # 保存文章供手动发布
+                txt = f"{toutiao_article['title']}\n\n{toutiao_article['body']}"
+                Path('/tmp/toutiao_ready.txt').write_text(txt)
+                log(f"    💾 文章已保存到 /tmp/toutiao_ready.txt")
+        except Exception as e:
+            log(f"    ❌ 头条发布异常: {e}")
+        
+        # 清理浏览器
+        time.sleep(3)
+        subprocess.run([NODE, XB, 'cleanup'], capture_output=True, timeout=10)
+        subprocess.run([NODE, XB, 'stop', 'chrome', '--force'], capture_output=True, timeout=10)
+        time.sleep(2)
+        
+        # 百家号发布
+        log("   📰 发布到百家号...")
+        baijiahao_article = generate_baijiahao_article()
+        save_article(baijiahao_article, 'baijiahao')
+        try:
+            from platform_publisher import publish_baijiahao
+            baijiahao_result = publish_baijiahao(baijiahao_article)
+            if baijiahao_result.get('ok'):
+                log(f"    ✅ 百家号发布成功: {baijiahao_article['title']}")
+            elif baijiahao_result.get('action_required') == 'sms_code':
+                log(f"    ⚠️ 百家号需要短信验证码（已发送到 {baijiahao_result.get('phone', '注册手机')}）")
+                txt = f"{baijiahao_article['title']}\n\n{baijiahao_article['body']}"
+                Path('/tmp/baijiahao_ready.txt').write_text(txt)
+                log(f"    💾 文章已保存到 /tmp/baijiahao_ready.txt")
+            else:
+                log(f"    ⚠️ 百家号发布状态: {baijiahao_result.get('error', '需要手动处理')}")
+        except Exception as e:
+            log(f"    ❌ 百家号发布异常: {e}")
+        
+        # 统计
+        try:
+            stats = get_publish_stats()
+            log(f"    📊 发布统计: 共{stats['total_publish']}次, 成功{stats['success']}次")
+        except:
+            pass
+        
+        log("    ✅ 平台发布流程完成")
+    except Exception as e:
+        log(f"    ❌ 平台发布失败: {e}")
+        import traceback
+        log(traceback.format_exc())
+
+
 def step3_generate_report():
     """第三步：生成运营报告"""
     log("📈 第三步：生成运营报告...")
@@ -151,7 +227,6 @@ def step5_push_to_git():
     """第五步：推送到GitHub触发Zeabur部署"""
     log("📤 第五步：推送到GitHub...")
     try:
-        import subprocess
         # Add all changes
         result = subprocess.run(
             ["git", "add", "-A"],
@@ -163,7 +238,7 @@ def step5_push_to_git():
         # Commit
         today = datetime.now().strftime("%Y-%m-%d")
         result = subprocess.run(
-            ["git", "commit", "-m", f"auto: 每日更新 {today} - 新工具+报告"],
+            ["git", "commit", "-m", f"auto: 每日更新 {today} - 新工具+报告+平台发布"],
             capture_output=True, text=True, timeout=30,
             cwd=str(BASE_DIR)
         )
@@ -223,7 +298,6 @@ def main():
         log(f"    ✅ 本地服务器在线 (HTTP {resp.status})")
     except:
         log(f"    ⚠️ 本地服务器未运行，尝试启动...")
-        import subprocess
         subprocess.Popen(
             ["python3", "app.py"],
             cwd=str(BASE_DIR),
@@ -235,6 +309,7 @@ def main():
     # 执行各步骤
     recommendations = step1_analyze_trends()
     developed = step2_develop_tools(recommendations)
+    step_publish_articles()  # 平台发布
     step3_generate_report()
     step_generate_promotion()
     step4_send_email()
@@ -251,6 +326,7 @@ def main():
     log(f"  ✅ 晚间工作流完成")
     log(f"  ⏱ 耗时: {duration:.0f}秒")
     log(f"  {'✅ 系统健康' if total_issues == 0 else f'⚠️ {total_issues} 个维护问题'}")
+    log(f"  📰 平台发布: 今日头条 + 百家号")
     log(f"  📦 新开发: {len(developed)} 个工具")
     log(f"  📧 邮件报告: 已保存/发送")
     log("=" * 50)

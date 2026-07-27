@@ -11,3 +11,9 @@ tunnel_*
 
 email_config.json
 *.secret
+promotion/data/test/
+promotion/data/article_*.json
+promotion/data/article_*.txt
+promotion/xianyu_listings.json
+*.bak
+promotion/xianyu_*.json

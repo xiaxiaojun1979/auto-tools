@@ -1,101 +1,87 @@
 #!/bin/bash
-# AutoTools 副业系统 - 状态查看和控制脚本
-# 用法: bash status.sh [url|status|restart|stop|admin]
+echo "====== AutoTools 副业系统状态 ======"
+echo ""
+echo "📅 时间: $(date '+%Y-%m-%d %H:%M:%S')"
+echo ""
 
-source /Users/tianmengpiaoxiang/auto_business/.env 2>/dev/null
+# Check local server
+if curl -s http://localhost:8000/health > /dev/null 2>&1; then
+    echo "✅ 本地服务: 运行中 (http://localhost:8000)"
+else
+    echo "❌ 本地服务: 未运行"
+fi
 
-show_status() {
-    echo ""
-    echo "============================================"
-    echo "  🚀 AutoTools 副业系统 - 状态报告"
-    echo "============================================"
-    echo ""
-    
-    # 检查本地服务器
-    if curl -s --max-time 3 http://127.0.0.1:8080 > /dev/null 2>&1; then
-        echo "  ✅ 本地服务器: 运行中"
-    else
-        echo "  ❌ 本地服务器: 未运行"
-    fi
-    
-    # 检查隧道
-    TUNNEL_URL=$(cat /tmp/auto_tunnel_url.txt 2>/dev/null || echo "")
-    if [ -n "$TUNNEL_URL" ]; then
-        echo "  ✅ 公网隧道: 活跃"
-        echo "  🌐 网站地址: $TUNNEL_URL"
-        echo "  📋 管理后台: $TUNNEL_URL/admin"
-    else
-        if ps aux | grep -q "nokey@localhost.run"; then
-            echo "  ⏳ 公网隧道: 连接中..."
-        else
-            echo "  ❌ 公网隧道: 未连接"
-        fi
-    fi
-    
-    echo ""
-    echo "  📊 收益统计:"
-    cd /Users/tianmengpiaoxiang/auto_business
-    python3 auto_optimizer.py --status 2>/dev/null | tail -8
-    
-    echo ""
-    echo "  ⚙️ 系统服务:"
-    launchctl list | grep "com.auto" | while read pid code label; do
-        if [ "$pid" = "-" ]; then
-            echo "    ❌ $label (已停止，代码: $code)"
-        else
-            echo "    ✅ $label (PID: $pid)"
-        fi
-    done
-    
-    echo ""
-    echo "============================================"
-    echo "  收款方式:"
-    echo "  💙 支付宝: 15156215580"
-    echo "  💚 微信: 扫描网站上的收款码"
-    echo "============================================"
-    echo ""
-}
+# Check online site
+code=$(curl -s -o /dev/null -w "%{http_code}" https://xiaxiaojun.zeabur.app/health 2>/dev/null)
+if [ "$code" = "200" ]; then
+    echo "✅ 线上网站: 运行中 (https://xiaxiaojun.zeabur.app)"
+else
+    echo "⚠️ 线上网站: HTTP $code"
+fi
 
-case "${1:-status}" in
-    url)
-        URL=$(cat /tmp/auto_tunnel_url.txt 2>/dev/null || echo "获取中...")
-        echo $URL
-        if [ "$URL" != "获取中..." ] && [ -n "$URL" ]; then
-            echo "📋 后台: $URL/admin"
-        fi
-        ;;
-    status)
-        show_status
-        ;;
-    restart)
-        echo "重新启动系统..."
-        launchctl unload ~/Library/LaunchAgents/com.auto.tunnel.plist 2>/dev/null
-        launchctl unload ~/Library/LaunchAgents/com.auto.order-server.plist 2>/dev/null
-        sleep 2
-        launchctl load ~/Library/LaunchAgents/com.auto.order-server.plist
-        launchctl load ~/Library/LaunchAgents/com.auto.tunnel.plist
-        echo "✅ 系统已重启"
-        sleep 3
-        bash "$0" url
-        ;;
-    stop)
-        echo "🛑 停止系统..."
-        launchctl unload ~/Library/LaunchAgents/com.auto.tunnel.plist 2>/dev/null
-        launchctl unload ~/Library/LaunchAgents/com.auto.order-server.plist 2>/dev/null
-        echo "✅ 系统已停止"
-        ;;
-    admin)
-        URL=$(cat /tmp/auto_tunnel_url.txt 2>/dev/null || echo "")
-        if [ -n "$URL" ]; then
-            echo "📋 管理后台: $URL/admin"
-            echo ""
-            echo "访问上述地址即可查看和管理订单。"
-            echo "当收到买家付款通知后，去后台确认即可。"
-        else
-            echo "⏳ 隧道尚未建立，请稍候..."
-        fi
-        ;;
-    *)
-        echo "用法: bash status.sh [url|status|restart|stop|admin]"
-        ;;
-esac
+# Check products
+count=$(curl -s http://localhost:8000/api/products 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('total',d.get('products',[0])) if isinstance(d,list) else len(d.get('products',[])))" 2>/dev/null)
+echo "📦 产品数量: ${count:-0}个"
+
+# Check revenue today
+today=$(date '+%Y-%m-%d')
+rev=$(curl -s http://localhost:8000/api/stats 2>/dev/null | python3 -c "
+import sys,json
+try:
+    d=json.load(sys.stdin)
+    orders=d.get('orders',[])
+    if not isinstance(orders,list) and isinstance(orders,dict):
+        orders=orders.get('orders',[])
+    today='$(date +%Y-%m-%d)'
+    todays=[o for o in orders if o.get('created_at','').startswith(today)] if orders else []
+    rev=sum(o.get('price',0) for o in todays)
+    print(rev)
+except:
+    print(0)
+" 2>/dev/null)
+echo "💰 今日收益: ¥${rev:-0}"
+
+# Check promo
+echo ""
+echo "🔥 当前推广活动:"
+curl -s http://localhost:8000/api/promo/flash 2>/dev/null | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin).get('data', [])
+    for item in data:
+        print(f'  {item.get(\"emoji\",\"\")} {item.get(\"name\",\"\")} ¥{item.get(\"price\",0)} ({item.get(\"discount_pct\",0)}%OFF)')
+except:
+    print('  (暂无)')
+" 2>/dev/null
+
+# Check marketing
+echo ""
+echo "📢 推广统计:"
+curl -s http://localhost:8000/api/promo/stats 2>/dev/null | python3 -c "
+import sys, json
+try:
+    d = json.load(sys.stdin).get('data', {})
+    s = d.get('stats', {})
+    print(f'  总推广次数: {s.get(\"total_promotions\", 0)}')
+    print(f'  总点击: {s.get(\"total_clicks\", 0)}')
+    print(f'  推广收入: ¥{s.get(\"promotion_revenue\", 0)}')
+except:
+    print('  (暂无数据)')
+" 2>/dev/null
+
+echo ""
+echo "⏰ 定时任务:"
+crontab -l 2>/dev/null | grep -v "^#" | while read line; do
+    echo "  $line"
+done
+
+echo ""
+echo "💡 快捷操作:"
+echo "  启动服务: cd ~/auto_business && python3 app.py"
+echo "  管理后台: http://localhost:8000/admin"
+echo "  线上网站: https://xiaxiaojun.zeabur.app"
+echo "  晚间工作流: python3 evening_workflow.py"
+echo ""
+
+# Check if running in background
+ps aux | grep "python3 app.py" | grep -v grep > /dev/null && echo "🟢 后台进程运行中" || echo "🔴 后台进程未运行"
