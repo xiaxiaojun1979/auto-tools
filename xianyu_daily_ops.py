@@ -322,7 +322,7 @@ def daily_ops():
     
     log(f"未发布产品: {len(unpublised)}个")
     
-    for i, product in enumerate(unpublised[:3]):
+    for i, product in enumerate(unpublised[:4]):
         item_id = publish_product(product, i)
         if item_id:
             published_ids.append(product["id"])
