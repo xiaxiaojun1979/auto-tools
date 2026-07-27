@@ -1,0 +1,17 @@
+{
+  "id": "data_tools",
+  "name": "数据清洗工具包",
+  "description": "Excel/CSV数据处理利器",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "智能缺失值填充",
+    "重复数据去重",
+    "异常值检测",
+    "多表合并",
+    "可视化报告"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

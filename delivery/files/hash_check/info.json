@@ -1,0 +1,17 @@
+{
+  "id": "hash_check",
+  "name": "文件校验工具",
+  "description": "计算和验证文件哈希值，确保文件完整",
+  "price": 19,
+  "version": "1.0",
+  "features": [
+    "MD5/SHA1/SHA256",
+    "批量校验",
+    "文件对比",
+    "拖拽操作",
+    "校验报告"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

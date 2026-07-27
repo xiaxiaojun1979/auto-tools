@@ -1,0 +1,17 @@
+{
+  "id": "file_tools",
+  "name": "文件批处理大师",
+  "description": "批量重命名、格式转换、智能分类 — 一键处理成千上万文件",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "批量重命名（支持正则/模板/序号）",
+    "智能文件分类",
+    "批量格式转换",
+    "重复文件查找",
+    "文件夹对比"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

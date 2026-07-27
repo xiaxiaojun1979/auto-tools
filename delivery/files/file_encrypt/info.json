@@ -1,0 +1,17 @@
+{
+  "id": "file_encrypt",
+  "name": "文件加密工具",
+  "description": "给文件加密码保护，安全存储私密文件",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "AES加密",
+    "批量加密",
+    "密码保护",
+    "解密还原",
+    "拖拽操作"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

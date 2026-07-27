@@ -1,0 +1,17 @@
+{
+  "id": "layout_helper",
+  "name": "排版助手工具",
+  "description": "快速排版公众号/小红书文章",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "公众号排版",
+    "小红书排版",
+    "模板库",
+    "一键复制",
+    "多格式支持"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

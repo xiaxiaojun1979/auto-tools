@@ -1,0 +1,11 @@
+{
+  "id": "vip_custom",
+  "name": "企业VIP定制",
+  "description": "全套工具+定制+年度维护",
+  "price": 2999,
+  "version": "1.0",
+  "features": [],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

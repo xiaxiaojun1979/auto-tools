@@ -1,0 +1,17 @@
+{
+  "id": "pdf_tools",
+  "name": "PDF全能工具箱",
+  "description": "PDF合并/拆分/转换/加密一站式处理",
+  "price": 45,
+  "version": "1.0",
+  "features": [
+    "PDF批量合并拆分",
+    "PDF转Word/Excel",
+    "PDF加密解密",
+    "图片转PDF",
+    "水印添加"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

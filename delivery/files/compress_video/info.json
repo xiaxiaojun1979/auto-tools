@@ -1,0 +1,17 @@
+{
+  "id": "compress_video",
+  "name": "视频压缩工具",
+  "description": "压缩视频体积，保持画质清晰",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "智能压缩",
+    "批量处理",
+    "质量调节",
+    "格式保持",
+    "快速处理"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

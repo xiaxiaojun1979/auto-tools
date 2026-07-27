@@ -1,0 +1,17 @@
+{
+  "id": "resize",
+  "name": "图片批量改尺寸",
+  "description": "一键调整图片尺寸和比例，支持批量",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "自定义尺寸",
+    "比例锁定",
+    "批量处理",
+    "预设模板",
+    "高清输出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

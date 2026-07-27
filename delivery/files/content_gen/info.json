@@ -1,0 +1,17 @@
+{
+  "id": "content_gen",
+  "name": "内容自动生成器",
+  "description": "AI驱动的内容创作工具，提升效率",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "文章标题生成",
+    "SEO关键词优化",
+    "摘要提取",
+    "多平台适配",
+    "批量生产"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

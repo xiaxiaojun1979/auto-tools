@@ -1,0 +1,17 @@
+{
+  "id": "clipboard_mgr",
+  "name": "剪贴板增强工具",
+  "description": "增强剪贴板功能，保存历史记录",
+  "price": 19,
+  "version": "1.0",
+  "features": [
+    "历史记录",
+    "快速粘贴",
+    "收藏夹",
+    "搜索过滤",
+    "同步功能"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "image_gen",
+  "name": "AI图片生成工具",
+  "description": "文字描述生成高质量图片，支持多种风格",
+  "price": 45,
+  "version": "1.0",
+  "features": [
+    "文生图",
+    "风格转换",
+    "批量生成",
+    "高清输出",
+    "多种模型"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

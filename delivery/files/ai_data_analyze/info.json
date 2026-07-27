@@ -1,0 +1,17 @@
+{
+  "id": "ai_data_analyze",
+  "name": "AI数据分析师",
+  "description": "上传数据自动分析生成报告",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "AI数据分析师核心功能",
+    "批量处理支持",
+    "简单易用界面",
+    "数据导出功能",
+    "持续更新维护"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

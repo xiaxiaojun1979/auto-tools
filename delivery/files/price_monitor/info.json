@@ -1,0 +1,17 @@
+{
+  "id": "price_monitor",
+  "name": "电商价格监控",
+  "description": "自动监控商品价格变动",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "多平台支持",
+    "价格追踪",
+    "降价提醒",
+    "历史记录",
+    "数据导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

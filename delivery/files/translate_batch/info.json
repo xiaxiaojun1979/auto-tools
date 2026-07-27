@@ -1,0 +1,17 @@
+{
+  "id": "translate_batch",
+  "name": "批量翻译工具",
+  "description": "支持多语言的批量翻译",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "多语言互译",
+    "批量文本翻译",
+    "文件翻译",
+    "术语库",
+    "导出结果"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

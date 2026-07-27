@@ -1,0 +1,17 @@
+{
+  "id": "tiktok_analyzer",
+  "name": "抖音数据分析工具",
+  "description": "分析抖音账号数据，优化内容策略",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "粉丝分析",
+    "视频数据",
+    "话题追踪",
+    "竞品分析",
+    "报告导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

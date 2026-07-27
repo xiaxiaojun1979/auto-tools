@@ -70,5 +70,77 @@
     "created": "2026-07-27",
     "expires": "2026-08-03",
     "used": false
+  },
+  {
+    "code": "AUTO0727938",
+    "product_id": "vip_member",
+    "product_name": "VIP终身会员",
+    "original_price": 199,
+    "discounted_price": 169,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
+  },
+  {
+    "code": "AUTO0727378",
+    "product_id": "custom_dev",
+    "product_name": "定制开发",
+    "original_price": 499,
+    "discounted_price": 424,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
+  },
+  {
+    "code": "AUTO0727153",
+    "product_id": "enterprise_pkg",
+    "product_name": "企业批量部署",
+    "original_price": 999,
+    "discounted_price": 849,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
+  },
+  {
+    "code": "AUTO0727992",
+    "product_id": "vip_member",
+    "product_name": "VIP终身会员",
+    "original_price": 199,
+    "discounted_price": 169,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
+  },
+  {
+    "code": "AUTO0727852",
+    "product_id": "custom_dev",
+    "product_name": "定制开发",
+    "original_price": 499,
+    "discounted_price": 424,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
+  },
+  {
+    "code": "AUTO0727847",
+    "product_id": "enterprise_pkg",
+    "product_name": "企业批量部署",
+    "original_price": 999,
+    "discounted_price": 849,
+    "discount_label": "限时85折",
+    "type": "limited_time",
+    "created": "2026-07-27",
+    "expires": "2026-08-03",
+    "used": false
   }
 ]

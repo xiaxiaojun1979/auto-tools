@@ -1,0 +1,17 @@
+{
+  "id": "compress",
+  "name": "图片压缩工具",
+  "description": "批量压缩图片体积，保持清晰度",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "智能压缩",
+    "批量处理",
+    "格式保持",
+    "自定义质量",
+    "原图备份"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

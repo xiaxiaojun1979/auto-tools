@@ -1,0 +1,17 @@
+{
+  "id": "article_collect",
+  "name": "文章采集工具",
+  "description": "批量采集网页文章内容到本地",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "URL采集",
+    "批量抓取",
+    "自动去重",
+    "导出格式",
+    "定时任务"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

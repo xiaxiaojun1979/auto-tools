@@ -1,0 +1,11 @@
+{
+  "id": "maintenance",
+  "name": "年度维护套餐",
+  "description": "全年技术支持+免费更新",
+  "price": 299,
+  "version": "1.0",
+  "features": [],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "format_convert",
+  "name": "图片格式转换器",
+  "description": "JPG/PNG/WebP等格式批量互转",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "多格式互转",
+    "批量处理",
+    "保持质量",
+    "拖拽操作",
+    "预览功能"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

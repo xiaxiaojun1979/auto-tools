@@ -829,5 +829,77 @@
     "price_old": 49,
     "category": "video",
     "created": "2026-07-27"
+  },
+  {
+    "id": "txt_splitter",
+    "emoji": "📝",
+    "name": "文本分割工具",
+    "desc": "快速分割大文本文件，按行数/大小自由划分",
+    "features": [
+      "按行数分割",
+      "按大小分割",
+      "编码自动识别",
+      "批量处理",
+      "保留原格式"
+    ],
+    "price": 9,
+    "price_old": 19,
+    "category": "system",
+    "is_loss_leader": true,
+    "tag": "💥 引流价"
+  },
+  {
+    "id": "img_optimizer",
+    "emoji": "🖼️",
+    "name": "图片快速优化器",
+    "desc": "一键压缩优化图片，保持画质减小体积",
+    "features": [
+      "智能压缩",
+      "格式转换",
+      "批量处理",
+      "保持EXIF",
+      "预览对比"
+    ],
+    "price": 9,
+    "price_old": 19,
+    "category": "image",
+    "is_loss_leader": true,
+    "tag": "💥 引流价"
+  },
+  {
+    "id": "clipboard_history",
+    "emoji": "📋",
+    "name": "剪贴板历史工具",
+    "desc": "记录剪贴板历史，随时找回复制过的内容",
+    "features": [
+      "历史记录",
+      "快速搜索",
+      "收藏功能",
+      "分类管理",
+      "导出备份"
+    ],
+    "price": 9,
+    "price_old": 19,
+    "category": "system",
+    "is_loss_leader": true,
+    "tag": "💥 引流价"
+  },
+  {
+    "id": "batch_rename_lite",
+    "emoji": "🏷️",
+    "name": "文件批量重命名",
+    "desc": "简单好用的文件批量重命名工具",
+    "features": [
+      "序号重命名",
+      "替换重命名",
+      "添加前缀后缀",
+      "预览效果",
+      "撤销操作"
+    ],
+    "price": 9,
+    "price_old": 19,
+    "category": "system",
+    "is_loss_leader": true,
+    "tag": "💥 引流价"
   }
 ]

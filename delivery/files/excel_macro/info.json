@@ -1,0 +1,17 @@
+{
+  "id": "excel_macro",
+  "name": "Excel宏工具包",
+  "description": "50+个即用型Excel宏，一键完成数据报表",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "数据透视表一键生成",
+    "批量图表生成",
+    "智能格式化",
+    "多表合并",
+    "自定义报表"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

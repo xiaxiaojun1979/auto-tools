@@ -1,0 +1,17 @@
+{
+  "id": "subtitle",
+  "name": "视频字幕提取工具",
+  "description": "自动识别并导出视频字幕文本",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "自动语音识别",
+    "字幕文本导出",
+    "多语言支持",
+    "SRT格式",
+    "TXT导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

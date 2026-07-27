@@ -1,0 +1,17 @@
+{
+  "id": "qr_code_gen",
+  "name": "二维码生成工具",
+  "description": "批量生成各种类型的二维码",
+  "price": 19,
+  "version": "1.0",
+  "features": [
+    "文本转码",
+    "URL转码",
+    "批量生成",
+    "自定义颜色",
+    "Logo嵌入"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

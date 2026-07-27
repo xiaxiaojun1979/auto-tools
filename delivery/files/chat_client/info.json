@@ -1,0 +1,17 @@
+{
+  "id": "chat_client",
+  "name": "AI对话客户端",
+  "description": "聚合多模型AI对话客户端",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "多模型支持",
+    "对话历史",
+    "提示词模板",
+    "导出对话",
+    "API接入"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

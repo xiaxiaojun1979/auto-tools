@@ -1,0 +1,17 @@
+{
+  "id": "password_gen",
+  "name": "密码生成器",
+  "description": "生成高强度随机密码，保障账号安全",
+  "price": 19,
+  "version": "1.0",
+  "features": [
+    "自定义长度",
+    "字符组合",
+    "批量生成",
+    "强度检测",
+    "一键复制"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "trending",
+  "name": "热点追踪工具",
+  "description": "实时追踪各平台热搜话题",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "多平台热点",
+    "实时更新",
+    "趋势分析",
+    "关键词监控",
+    "数据导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

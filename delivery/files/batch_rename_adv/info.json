@@ -1,0 +1,17 @@
+{
+  "id": "batch_rename_adv",
+  "name": "高级批量重命名",
+  "description": "正则/模板/序号等方式批量重命名",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "正则表达式",
+    "序号重命名",
+    "模板重命名",
+    "预览功能",
+    "撤销操作"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

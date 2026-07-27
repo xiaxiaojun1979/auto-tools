@@ -1,0 +1,17 @@
+{
+  "id": "file_sync",
+  "name": "文件夹同步工具",
+  "description": "两个文件夹之间实时同步文件",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "双向同步",
+    "增量同步",
+    "定时同步",
+    "过滤规则",
+    "冲突处理"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "deploy_service",
+  "name": "代部署服务",
+  "description": "远程安装调试一条龙服务",
+  "price": 99,
+  "version": "1.0",
+  "features": [],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "custom_dev",
+  "name": "定制开发",
+  "description": "按需求定制专属工具",
+  "price": 499,
+  "version": "1.0",
+  "features": [],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

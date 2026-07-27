@@ -1,0 +1,17 @@
+{
+  "id": "gif_maker",
+  "name": "GIF动图制作工具",
+  "description": "视频转GIF，截图合成动图",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "视频转GIF",
+    "截图合成",
+    "尺寸调整",
+    "帧率控制",
+    "压缩优化"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

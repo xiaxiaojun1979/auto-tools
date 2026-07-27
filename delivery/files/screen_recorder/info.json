@@ -1,0 +1,17 @@
+{
+  "id": "screen_recorder",
+  "name": "屏幕录制工具",
+  "description": "高清屏幕录制，支持区域/窗口/全屏",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "区域录制",
+    "窗口录制",
+    "全屏录制",
+    "音频录制",
+    "高清输出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "file_shredder",
+  "name": "文件粉碎工具",
+  "description": "安全删除文件，彻底不可恢复",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "多轮覆写",
+    "批量粉碎",
+    "目录粉碎",
+    "快速模式",
+    "安全标准"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

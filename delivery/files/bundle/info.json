@@ -1,0 +1,15 @@
+{
+  "id": "bundle",
+  "name": "三件套超值捆绑包",
+  "description": "一次性拥有全部三个基础工具，省¥98！",
+  "price": 79,
+  "version": "1.0",
+  "features": [
+    "文件批处理+内容生成+数据清洗",
+    "终身免费更新",
+    "VIP售后群"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

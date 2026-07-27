@@ -1,0 +1,17 @@
+{
+  "id": "reminder",
+  "name": "定时提醒工具",
+  "description": "桌面定时提醒，提高工作效率",
+  "price": 19,
+  "version": "1.0",
+  "features": [
+    "自定义提醒",
+    "重复任务",
+    "弹窗提醒",
+    "声音提醒",
+    "任务列表"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "download",
+  "name": "短视频批量下载器",
+  "description": "支持抖音/快手/小红书视频批量下载",
+  "price": 39,
+  "version": "1.0",
+  "features": [
+    "抖音视频下载",
+    "快手视频下载",
+    "小红书下载",
+    "批量下载",
+    "高清原画"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "calendar",
+  "name": "内容日历工具",
+  "description": "规划自媒体发布计划，提升内容效率",
+  "price": 25,
+  "version": "1.0",
+  "features": [
+    "日历视图",
+    "内容规划",
+    "提醒功能",
+    "模板库",
+    "进度追踪"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

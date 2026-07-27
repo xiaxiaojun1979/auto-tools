@@ -1,0 +1,17 @@
+{
+  "id": "comment_export",
+  "name": "评论导出工具",
+  "description": "导出网页评论数据到Excel",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "多平台评论",
+    "Excel导出",
+    "数据清洗",
+    "用户分析",
+    "批量导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

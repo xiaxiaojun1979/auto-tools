@@ -1,0 +1,17 @@
+{
+  "id": "short_video_script",
+  "name": "短视频脚本生成",
+  "description": "AI生成热门短视频脚本",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "短视频脚本生成核心功能",
+    "批量处理支持",
+    "简单易用界面",
+    "数据导出功能",
+    "持续更新维护"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

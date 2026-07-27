@@ -1,0 +1,17 @@
+{
+  "id": "vip_member",
+  "name": "VIP终身会员",
+  "description": "解锁全部现有和未来所有工具，终身免费更新",
+  "price": 199,
+  "version": "1.0",
+  "features": [
+    "全部工具",
+    "未来工具免费",
+    "终生更新",
+    "VIP群",
+    "一对一支持"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

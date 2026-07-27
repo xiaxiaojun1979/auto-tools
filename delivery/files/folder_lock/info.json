@@ -1,0 +1,17 @@
+{
+  "id": "folder_lock",
+  "name": "文件夹加密锁",
+  "description": "给文件夹加密码保护",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "文件夹加密",
+    "密码保护",
+    "隐藏保护",
+    "批量加密",
+    "简单易用"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "merge",
+  "name": "视频拼接合并工具",
+  "description": "多段视频一键拼接合并",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "多视频合并",
+    "顺序调整",
+    "过渡效果",
+    "音频同步",
+    "高清输出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

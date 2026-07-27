@@ -1,0 +1,17 @@
+{
+  "id": "seo_checker",
+  "name": "SEO检测工具",
+  "description": "检测网页SEO优化情况，提升搜索排名",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "SEO评分",
+    "关键词检测",
+    "链接分析",
+    "移动适配",
+    "优化建议"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

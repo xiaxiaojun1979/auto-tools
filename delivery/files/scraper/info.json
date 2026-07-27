@@ -1,0 +1,17 @@
+{
+  "id": "scraper",
+  "name": "通用爬虫工具",
+  "description": "灵活配置的网络数据采集工具",
+  "price": 49,
+  "version": "1.0",
+  "features": [
+    "自定义规则",
+    "JS渲染",
+    "数据清洗",
+    "定时采集",
+    "多格式导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

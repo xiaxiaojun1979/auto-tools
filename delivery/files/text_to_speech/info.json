@@ -1,0 +1,17 @@
+{
+  "id": "text_to_speech",
+  "name": "文字转语音工具",
+  "description": "文字自动转换为语音，支持多种声音",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "多音色选择",
+    "语速调节",
+    "批量转换",
+    "MP3导出",
+    "中英文支持"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

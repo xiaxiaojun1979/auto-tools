@@ -1,0 +1,17 @@
+{
+  "id": "duplicate_finder",
+  "name": "重复文件查找器",
+  "description": "快速查找并清理重复文件",
+  "price": 29,
+  "version": "1.0",
+  "features": [
+    "MD5比对",
+    "文件名比对",
+    "大小比对",
+    "批量删除",
+    "移动备份"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}

@@ -176,6 +176,20 @@ def confirm_order(oid):
             o["confirmed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             break
     save_orders(data)
+    
+    # 自动交付：付款确认后发送下载链接
+    try:
+        from delivery.auto_delivery import auto_deliver
+        for o in data["orders"]:
+            if o["order_id"] == oid:
+                result = auto_deliver(o)
+                print(f"  📦 Auto-delivery: {result['message']}")
+                if result.get("download_url"):
+                    o["download_url"] = result["download_url"]
+                break
+    except Exception as e:
+        print(f"  ⚠️ Auto-delivery failed: {e}")
+    
     return redirect(url_for("admin_dashboard"))
 
 
@@ -378,6 +392,80 @@ def reload_products():
     """重新加载产品列表"""
     refresh_products()
     return jsonify({"ok": True, "count": len(PRODUCTS), "msg": f"已重新加载 {len(PRODUCTS)} 个产品"})
+
+
+@app.route("/download/<token>")
+def download_product(token):
+    """产品下载页面"""
+    try:
+        from delivery.auto_delivery import validate_token, record_download, PRODUCTS_STORAGE
+        info, error = validate_token(token)
+        if not info:
+            return f"<h2>❌ {error}</h2><p>请联系商家获取新链接: 35538112@qq.com</p>", 404
+        
+        product_id = info["product_id"]
+        product_dir = PRODUCTS_STORAGE / product_id
+        
+        # 获取该产品的README
+        readme_content = ""
+        readme_file = product_dir / "README.md"
+        if readme_file.exists():
+            readme_content = readme_file.read_text()
+        
+        # 获取产品信息
+        product_info = {}
+        info_file = product_dir / "info.json"
+        if info_file.exists():
+            with open(info_file) as f:
+                product_info = json.load(f)
+        
+        # 记录下载
+        record_download(token)
+        
+        return render_template("download.html",
+                             info=info,
+                             product=product_info,
+                             readme=readme_content,
+                             token=token)
+    except Exception as e:
+        return f"<h2>❌ 系统错误</h2><p>{str(e)}</p>", 500
+
+
+@app.route("/api/download/<token>/file")
+def download_file(token):
+    """实际文件下载"""
+    try:
+        from delivery.auto_delivery import validate_token, record_download, PRODUCTS_STORAGE
+        info, error = validate_token(token)
+        if not info:
+            return jsonify({"ok": False, "msg": error}), 404
+        
+        product_id = info["product_id"]
+        product_dir = PRODUCTS_STORAGE / product_id
+        
+        # 返回产品的README作为下载文件（实际中这里返回真实文件）
+        record_download(token)
+        
+        readme_file = product_dir / "README.md"
+        if readme_file.exists():
+            return send_file(
+                str(readme_file),
+                as_attachment=True,
+                download_name=f"{product_id}_使用说明.txt"
+            )
+        
+        # 尝试打包目录
+        import subprocess
+        zip_path = f"/tmp/{product_id}_{token[:8]}.zip"
+        subprocess.run(["zip", "-r", zip_path, "."], 
+                      capture_output=True, cwd=str(product_dir))
+        if os.path.exists(zip_path):
+            return send_file(zip_path, as_attachment=True, 
+                           download_name=f"{product_id}.zip")
+        
+        return jsonify({"ok": False, "msg": "文件未找到"}), 404
+    except Exception as e:
+        return jsonify({"ok": False, "msg": str(e)}), 500
 
 
 @app.route("/download")

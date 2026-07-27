@@ -1,0 +1,17 @@
+{
+  "id": "keyword_analysis",
+  "name": "关键词分析工具",
+  "description": "分析热门关键词数据，优化SEO策略",
+  "price": 35,
+  "version": "1.0",
+  "features": [
+    "热搜分析",
+    "关键词挖掘",
+    "趋势追踪",
+    "竞争分析",
+    "数据导出"
+  ],
+  "file_size": "2.3 MB",
+  "platform": "Windows/Mac/Linux",
+  "delivery_method": "下载链接"
+}
