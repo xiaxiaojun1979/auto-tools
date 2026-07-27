@@ -108,32 +108,14 @@ class PromotionEngine:
         with open(DATA_DIR / "promotion_stats.json", 'w', encoding='utf-8') as f:
             json.dump(self.stats, f, ensure_ascii=False, indent=2)
 
-    def _pick_hot_products(self, count=3):
-        """选择热门产品推广"""
+    def _pick_hot_products(self, count=999):
+        """推广所有产品 - 收益第一原则"""
         if not self.products:
             return []
         
-        # 优先选有销售记录的
-        orders = self.orders.get("orders", [])
-        sold_ids = {}
-        for o in orders:
-            pid = o.get("product_id", "")
-            if pid:
-                sold_ids[pid] = sold_ids.get(pid, 0) + 1
-        
-        # 按销量排序
-        scored = []
-        for p in self.products:
-            score = sold_ids.get(p["id"], 0)
-            # 高价值产品加权
-            if p["price"] >= 199:
-                score += 2
-            elif p["price"] >= 99:
-                score += 1
-            scored.append((score, p))
-        
-        scored.sort(key=lambda x: -x[0])
-        return [p for _, p in scored[:count]]
+        # 按价格排序：低价引流品在前，高价值产品在后
+        sorted_products = sorted(self.products, key=lambda p: p.get("price", 999))
+        return sorted_products[:count]
 
     def _pick_best_angle(self, product):
         """为产品选择最佳推广角度"""
@@ -236,15 +218,15 @@ https://xiaoxiaojun.zeabur.app
         return post
 
     def generate_daily_posts(self):
-        """生成每日推广内容"""
-        hot_products = self._pick_hot_products(5)
-        if not hot_products:
-            hot_products = self.products[:5]
+        """生成所有产品推广内容"""
+        all_products = self._pick_hot_products(999)
+        if not all_products:
+            all_products = self.products
         
         posts = {}
         for platform in PLATFORMS:
             posts[platform] = {}
-            for product in hot_products:
+            for product in all_products:
                 posts[platform][product["id"]] = self.generate_platform_post(platform, product)
         
         # 保存
@@ -256,11 +238,11 @@ https://xiaoxiaojun.zeabur.app
         # 更新统计
         if self.today not in self.stats["daily_stats"]:
             self.stats["daily_stats"][self.today] = {"posts_generated": 0}
-        self.stats["daily_stats"][self.today]["posts_generated"] = len(hot_products) * len(PLATFORMS)
-        self.stats["total_posts"] += len(hot_products) * len(PLATFORMS)
+        self.stats["daily_stats"][self.today]["posts_generated"] = len(all_products) * len(PLATFORMS)
+        self.stats["total_posts"] += len(all_products) * len(PLATFORMS)
         self._save_stats()
         
-        return posts, hot_products
+        return posts, all_products
 
     def create_discount_code(self, product_id, discount_type="limited_time"):
         """创建限时优惠码"""

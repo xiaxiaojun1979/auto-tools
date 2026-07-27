@@ -1,11 +1,11 @@
 {
-  "total_posts": 150,
+  "total_posts": 498,
   "total_clicks": 0,
   "total_orders_from_promotion": 0,
   "revenue_from_promotion": 0,
   "daily_stats": {
     "2026-07-27": {
-      "posts_generated": 30
+      "posts_generated": 348
     }
   },
   "platform_stats": {}

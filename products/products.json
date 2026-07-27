@@ -11,8 +11,8 @@
       "重复文件查找",
       "文件夹对比"
     ],
-    "price": 49,
-    "price_old": 69,
+    "price": 19,
+    "price_old": 49,
     "category": "system"
   },
   {
@@ -27,8 +27,8 @@
       "多平台适配",
       "批量生产"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 19,
+    "price_old": 29,
     "category": "ai"
   },
   {
@@ -43,8 +43,8 @@
       "多表合并",
       "可视化报告"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "data"
   },
   {
@@ -57,8 +57,8 @@
       "终身免费更新",
       "VIP售后群"
     ],
-    "price": 79,
-    "price_old": 177,
+    "price": 39,
+    "price_old": 79,
     "is_bundle": true,
     "category": "bundle"
   },
@@ -74,8 +74,8 @@
       "多表合并",
       "自定义报表"
     ],
-    "price": 35,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 35,
     "category": "office"
   },
   {
@@ -90,8 +90,8 @@
       "图片转PDF",
       "水印添加"
     ],
-    "price": 45,
-    "price_old": 68,
+    "price": 29,
+    "price_old": 45,
     "category": "office"
   },
   {
@@ -106,8 +106,8 @@
       "VIP群",
       "一对一支持"
     ],
-    "price": 199,
-    "price_old": 499,
+    "price": 49,
+    "price_old": 199,
     "is_vip": true,
     "category": "vip"
   },
@@ -123,8 +123,8 @@
       "批量下载",
       "高清原画"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "video"
   },
   {
@@ -139,8 +139,8 @@
       "SRT格式",
       "TXT导出"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 19,
+    "price_old": 29,
     "category": "video"
   },
   {
@@ -155,8 +155,8 @@
       "音频同步",
       "高清输出"
     ],
-    "price": 35,
-    "price_old": 55,
+    "price": 19,
+    "price_old": 35,
     "category": "video"
   },
   {
@@ -171,8 +171,8 @@
       "导出对话",
       "API接入"
     ],
-    "price": 49,
-    "price_old": 79,
+    "price": 29,
+    "price_old": 49,
     "category": "ai"
   },
   {
@@ -187,8 +187,8 @@
       "术语库",
       "导出结果"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "ai"
   },
   {
@@ -203,8 +203,8 @@
       "位置调整",
       "透明度设置"
     ],
-    "price": 35,
-    "price_old": 55,
+    "price": 19,
+    "price_old": 35,
     "category": "image"
   },
   {
@@ -219,8 +219,8 @@
       "批量处理",
       "透明背景"
     ],
-    "price": 39,
-    "price_old": 69,
+    "price": 19,
+    "price_old": 39,
     "category": "image"
   },
   {
@@ -235,8 +235,8 @@
       "历史记录",
       "数据导出"
     ],
-    "price": 49,
-    "price_old": 79,
+    "price": 29,
+    "price_old": 49,
     "category": "web"
   },
   {
@@ -251,8 +251,8 @@
       "关键词监控",
       "数据导出"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "media"
   },
   {
@@ -267,8 +267,8 @@
       "批量加密",
       "简单易用"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 9,
+    "price_old": 29,
     "category": "security"
   },
   {
@@ -276,8 +276,8 @@
     "emoji": "📦",
     "name": "代部署服务",
     "desc": "远程安装调试一条龙服务",
-    "price": 99,
-    "price_old": 199,
+    "price": 69,
+    "price_old": 99,
     "category": "service"
   },
   {
@@ -285,8 +285,8 @@
     "emoji": "🏭",
     "name": "定制开发",
     "desc": "按需求定制专属工具",
-    "price": 499,
-    "price_old": 999,
+    "price": 299,
+    "price_old": 499,
     "category": "service"
   },
   {
@@ -294,8 +294,8 @@
     "emoji": "🏢",
     "name": "企业批量部署",
     "desc": "团队批量部署+培训",
-    "price": 999,
-    "price_old": 1999,
+    "price": 699,
+    "price_old": 999,
     "category": "service"
   },
   {
@@ -303,8 +303,8 @@
     "emoji": "🔧",
     "name": "年度维护套餐",
     "desc": "全年技术支持+免费更新",
-    "price": 299,
-    "price_old": 599,
+    "price": 199,
+    "price_old": 299,
     "category": "subscription"
   },
   {
@@ -312,8 +312,8 @@
     "emoji": "👑",
     "name": "企业VIP定制",
     "desc": "全套工具+定制+年度维护",
-    "price": 2999,
-    "price_old": 5999,
+    "price": 1999,
+    "price_old": 2999,
     "category": "enterprise"
   },
   {
@@ -328,8 +328,8 @@
       "高清输出",
       "多种模型"
     ],
-    "price": 45,
-    "price_old": 79,
+    "price": 29,
+    "price_old": 45,
     "category": "ai"
   },
   {
@@ -344,8 +344,8 @@
       "原文对比",
       "批量处理"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 14,
+    "price_old": 29,
     "category": "ai"
   },
   {
@@ -360,8 +360,8 @@
       "MP3导出",
       "中英文支持"
     ],
-    "price": 35,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 35,
     "category": "ai"
   },
   {
@@ -376,8 +376,8 @@
       "自定义质量",
       "原图备份"
     ],
-    "price": 25,
-    "price_old": 45,
+    "price": 14,
+    "price_old": 25,
     "category": "image"
   },
   {
@@ -392,8 +392,8 @@
       "拖拽操作",
       "预览功能"
     ],
-    "price": 25,
-    "price_old": 39,
+    "price": 14,
+    "price_old": 25,
     "category": "image"
   },
   {
@@ -408,8 +408,8 @@
       "预设模板",
       "高清输出"
     ],
-    "price": 25,
-    "price_old": 39,
+    "price": 14,
+    "price_old": 25,
     "category": "image"
   },
   {
@@ -424,8 +424,8 @@
       "数据统计",
       "批量同步"
     ],
-    "price": 59,
-    "price_old": 99,
+    "price": 29,
+    "price_old": 59,
     "category": "media"
   },
   {
@@ -440,8 +440,8 @@
       "模板库",
       "进度追踪"
     ],
-    "price": 25,
-    "price_old": 45,
+    "price": 14,
+    "price_old": 25,
     "category": "media"
   },
   {
@@ -456,8 +456,8 @@
       "竞争分析",
       "数据导出"
     ],
-    "price": 35,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 35,
     "category": "media"
   },
   {
@@ -472,8 +472,8 @@
       "解密还原",
       "拖拽操作"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 19,
+    "price_old": 29,
     "category": "security"
   },
   {
@@ -488,8 +488,8 @@
       "快速模式",
       "安全标准"
     ],
-    "price": 25,
-    "price_old": 39,
+    "price": 14,
+    "price_old": 25,
     "category": "security"
   },
   {
@@ -504,8 +504,8 @@
       "拖拽操作",
       "校验报告"
     ],
-    "price": 19,
-    "price_old": 29,
+    "price": 9,
+    "price_old": 19,
     "category": "security"
   },
   {
@@ -520,8 +520,8 @@
       "强度检测",
       "一键复制"
     ],
-    "price": 19,
-    "price_old": 29,
+    "price": 9,
+    "price_old": 19,
     "category": "security"
   },
   {
@@ -536,8 +536,8 @@
       "格式保持",
       "快速处理"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 19,
+    "price_old": 29,
     "category": "video"
   },
   {
@@ -552,8 +552,8 @@
       "批量处理",
       "简单易用"
     ],
-    "price": 39,
-    "price_old": 69,
+    "price": 19,
+    "price_old": 39,
     "category": "video"
   },
   {
@@ -568,8 +568,8 @@
       "导出格式",
       "定时任务"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "web"
   },
   {
@@ -584,8 +584,8 @@
       "用户分析",
       "批量导出"
     ],
-    "price": 35,
-    "price_old": 55,
+    "price": 19,
+    "price_old": 35,
     "category": "web"
   },
   {
@@ -600,8 +600,8 @@
       "定时采集",
       "多格式导出"
     ],
-    "price": 49,
-    "price_old": 79,
+    "price": 29,
+    "price_old": 49,
     "category": "web"
   },
   {
@@ -616,8 +616,8 @@
       "移动适配",
       "优化建议"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 14,
+    "price_old": 29,
     "category": "web"
   },
   {
@@ -632,8 +632,8 @@
       "一键复制",
       "多格式支持"
     ],
-    "price": 29,
-    "price_old": 49,
+    "price": 19,
+    "price_old": 29,
     "category": "media"
   },
   {
@@ -648,8 +648,8 @@
       "音频录制",
       "高清输出"
     ],
-    "price": 35,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 35,
     "category": "video"
   },
   {
@@ -664,8 +664,8 @@
       "帧率控制",
       "压缩优化"
     ],
-    "price": 25,
-    "price_old": 39,
+    "price": 14,
+    "price_old": 25,
     "category": "video"
   },
   {
@@ -680,8 +680,8 @@
       "竞品分析",
       "报告导出"
     ],
-    "price": 49,
-    "price_old": 79,
+    "price": 29,
+    "price_old": 49,
     "category": "media"
   },
   {
@@ -712,8 +712,8 @@
       "声音提醒",
       "任务列表"
     ],
-    "price": 19,
-    "price_old": 29,
+    "price": 9,
+    "price_old": 19,
     "category": "system"
   },
   {
@@ -728,8 +728,8 @@
       "预览功能",
       "撤销操作"
     ],
-    "price": 35,
-    "price_old": 55,
+    "price": 19,
+    "price_old": 35,
     "category": "system"
   },
   {
@@ -744,8 +744,8 @@
       "自定义颜色",
       "Logo嵌入"
     ],
-    "price": 19,
-    "price_old": 29,
+    "price": 9,
+    "price_old": 19,
     "category": "image"
   },
   {
@@ -760,8 +760,8 @@
       "过滤规则",
       "冲突处理"
     ],
-    "price": 39,
-    "price_old": 59,
+    "price": 19,
+    "price_old": 39,
     "category": "system"
   },
   {
@@ -776,8 +776,8 @@
       "批量删除",
       "移动备份"
     ],
-    "price": 29,
-    "price_old": 45,
+    "price": 19,
+    "price_old": 29,
     "category": "system"
   },
   {
@@ -792,8 +792,8 @@
       "位置调整",
       "透明度设置"
     ],
-    "price": 39,
-    "price_old": 65,
+    "price": 19,
+    "price_old": 39,
     "category": "video"
   },
   {
@@ -808,8 +808,8 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 49,
-    "price_old": 83,
+    "price": 29,
+    "price_old": 49,
     "category": "ai",
     "created": "2026-07-27"
   },
@@ -826,7 +826,7 @@
       "持续更新维护"
     ],
     "price": 29,
-    "price_old": 49,
+    "price_old": 29,
     "category": "video",
     "created": "2026-07-27"
   },
@@ -843,7 +843,7 @@
       "保留原格式"
     ],
     "price": 9,
-    "price_old": 19,
+    "price_old": 9,
     "category": "system",
     "is_loss_leader": true,
     "tag": "💥 引流价"
@@ -861,7 +861,7 @@
       "预览对比"
     ],
     "price": 9,
-    "price_old": 19,
+    "price_old": 9,
     "category": "image",
     "is_loss_leader": true,
     "tag": "💥 引流价"
@@ -879,7 +879,7 @@
       "导出备份"
     ],
     "price": 9,
-    "price_old": 19,
+    "price_old": 9,
     "category": "system",
     "is_loss_leader": true,
     "tag": "💥 引流价"
@@ -897,7 +897,7 @@
       "撤销操作"
     ],
     "price": 9,
-    "price_old": 19,
+    "price_old": 9,
     "category": "system",
     "is_loss_leader": true,
     "tag": "💥 引流价"
