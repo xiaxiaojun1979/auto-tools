@@ -42,14 +42,22 @@ def generate_product_image(name, price, idx, features, desc_text):
         draw.rectangle([(0, i), (1200, i)], fill=(r, g, b) if r > 0 and g > 0 and b > 0 else (102, 126, 234))
     
     try:
-        font_large = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 48)
-        font_title = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 36)
-        font_desc = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 28)
-        font_feature = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 26)
-        font_price = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 60)
-        font_url = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 20)
+        font_large = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 48)
+        font_title = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 36)
+        font_desc = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 28)
+        font_feature = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 26)
+        font_price = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 60)
+        font_url = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 20)
     except:
-        font_large = font_title = font_desc = font_feature = font_price = font_url = ImageFont.load_default()
+        try:
+            font_large = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 48)
+            font_title = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 36)
+            font_desc = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 28)
+            font_feature = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 26)
+            font_price = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 60)
+            font_url = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 20)
+        except:
+            font_large = font_title = font_desc = font_feature = font_price = font_url = ImageFont.load_default()
     
     # 产品名
     draw.text((600, 100), name, fill='white', font=font_large, anchor='mm')

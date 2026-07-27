@@ -79,14 +79,22 @@ def generate_product_card(name, desc, features, price, price_old, idx):
         draw.rectangle([(0, i), (1200, i)], fill=(r, g, b))
     
     try:
-        ft48 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 48)
-        ft36 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 36)
-        ft28 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 28)
-        ft26 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 26)
-        ft60 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 60)
-        ft20 = ImageFont.truetype("/System/Library/Fonts/PingFang.ttc", 20)
+        ft48 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 48)
+        ft36 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 36)
+        ft28 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 28)
+        ft26 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 26)
+        ft60 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 60)
+        ft20 = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 20)
     except:
-        ft48 = ft36 = ft28 = ft26 = ft60 = ft20 = ImageFont.load_default()
+        try:
+            ft48 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 48)
+            ft36 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 36)
+            ft28 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 28)
+            ft26 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 26)
+            ft60 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 60)
+            ft20 = ImageFont.truetype("/System/Library/Fonts/Hiragino Sans GB.ttc", 20)
+        except:
+            ft48 = ft36 = ft28 = ft26 = ft60 = ft20 = ImageFont.load_default()
     
     draw.text((600, 100), name, fill='white', font=ft48, anchor='mm')
     draw.text((600, 160), desc[:40], fill='#c4b5fd', font=ft28, anchor='mm')
