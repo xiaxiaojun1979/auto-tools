@@ -63,6 +63,7 @@ def load_orders():
         return {"orders": [], "total_revenue": 0}
 
 def save_orders(data):
+    ORDERS_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(ORDERS_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
@@ -194,17 +195,20 @@ def query_order(oid):
 
 @app.route("/api/stats")
 def get_stats():
-    data = load_orders()
-    ps = {}
-    for p in PRODUCTS:
-        s = [o for o in data["orders"] if o["product_id"]==p["id"]]
-        ps[p["id"]] = {"name":p["name"],"count":len(s),"revenue":sum(o["price"] for o in s)}
-    return jsonify({
-        "ok":True, "total_orders": len(data["orders"]),
-        "total_revenue": data["total_revenue"],
-        "pending": len([o for o in data["orders"] if o["status"]=="pending"]),
-        "product_sales": ps
-    })
+    try:
+        data = load_orders()
+        ps = {}
+        for p in PRODUCTS:
+            s = [o for o in data["orders"] if o["product_id"]==p["id"]]
+            ps[p["id"]] = {"name":p["name"],"count":len(s),"revenue":sum(o["price"] for o in s)}
+        return jsonify({
+            "ok":True, "total_orders": len(data["orders"]),
+            "total_revenue": data["total_revenue"],
+            "pending": len([o for o in data["orders"] if o["status"]=="pending"]),
+            "product_sales": ps
+        })
+    except Exception as e:
+        return jsonify({"ok":False, "error": str(e)}), 500
 
 @app.route("/assets/<path:filename>")
 def serve_asset(filename):
