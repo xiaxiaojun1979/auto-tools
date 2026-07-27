@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>激活码验证 - AutoTools</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+               background: linear-gradient(135deg, #667eea22, #764ba222); min-height: 100vh;
+               display: flex; align-items: center; justify-content: center; }
+        .container { background: white; border-radius: 20px; padding: 40px; max-width: 520px;
+                     width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; }
+        .logo { font-size: 3em; margin-bottom: 10px; }
+        h1 { font-size: 1.5em; color: #1a1a2e; margin-bottom: 8px; }
+        .sub { color: #888; font-size: 0.9em; margin-bottom: 24px; }
+        .code-input { display: flex; gap: 8px; margin-bottom: 16px; }
+        .code-input input { flex:1; padding: 14px 16px; border: 2px solid #e0e0e0;
+                           border-radius: 10px; font-size: 1.1em; text-align: center;
+                           letter-spacing: 2px; font-family: monospace; outline: none;
+                           transition: border-color 0.2s; }
+        .code-input input:focus { border-color: #667eea; }
+        .btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea, #764ba2);
+               color: white; border: none; border-radius: 10px; font-size: 1.1em;
+               cursor: pointer; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .result { margin-top: 20px; padding: 16px; border-radius: 10px; display: none; }
+        .result.success { display: block; background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+        .result.error { display: block; background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+        .result .dl-btn { display: inline-block; margin-top: 12px; padding: 10px 24px;
+                         background: #22c55e; color: white; text-decoration: none;
+                         border-radius: 8px; font-size: 0.95em; }
+        .result .dl-btn:hover { background: #16a34a; }
+        .meta { margin-top: 20px; font-size: 0.8em; color: #aaa; }
+        .meta a { color: #667eea; text-decoration: none; }
+        .loader { display: none; margin: 12px auto; border: 3px solid #f3f3f3;
+                  border-top: 3px solid #667eea; border-radius: 50%; width: 24px;
+                  height: 24px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">📦</div>
+    <h1>AutoTools 自助交付</h1>
+    <p class="sub">在闲鱼购买后，输入收到的激活码即可下载</p>
+    
+    <div class="code-input">
+        <input type="text" id="codeInput" placeholder="输入激活码" autocomplete="off"
+               oninput="document.getElementById('submitBtn').disabled=!this.value.trim()">
+    </div>
+    <button class="btn" id="submitBtn" disabled onclick="redeem()">验证并下载</button>
+    <div class="loader" id="loader"></div>
+    <div class="result" id="result"></div>
+    
+    <div class="meta">
+        在闲鱼购买后自动收到激活码<br>
+        没有激活码？<a href="https://xiaoxiaojun.zeabur.app/">去官网选购 →</a>
+    </div>
+</div>
+
+<script>
+async function redeem() {
+    const code = document.getElementById('codeInput').value.trim();
+    const btn = document.getElementById('submitBtn');
+    const loader = document.getElementById('loader');
+    const result = document.getElementById('result');
+    
+    btn.disabled = true;
+    loader.style.display = 'block';
+    result.style.display = 'none';
+    result.className = 'result';
+    
+    try {
+        const resp = await fetch('/api/delivery/redeem', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({code: code})
+        });
+        const data = await resp.json();
+        
+        loader.style.display = 'none';
+        
+        if (data.ok) {
+            result.className = 'result success';
+            result.innerHTML = `<div style="font-size:2em;margin-bottom:8px">✅</div>
+                <h3>验证成功！</h3>
+                <p>产品：<b>${data.product_name}</b></p>
+                <p>激活码：<code style="background:#f0f0f0;padding:2px 6px;border-radius:4px">${code}</code></p>
+                <a href="${data.download_url}" class="dl-btn" onclick="recordDownload('${code}')">📥 立即下载</a>
+                <p style="margin-top:8px;font-size:0.85em;color:#666;">或复制下载链接：${data.download_url}</p>`;
+        } else {
+            result.className = 'result error';
+            result.innerHTML = `<div style="font-size:2em;margin-bottom:8px">❌</div>
+                <h3>验证失败</h3>
+                <p>${data.msg}</p>
+                <p style="margin-top:8px;font-size:0.85em;color:#666;">请联系商家：35538112@qq.com</p>`;
+        }
+    } catch(e) {
+        loader.style.display = 'none';
+        result.className = 'result error';
+        result.innerHTML = `<h3>❌ 系统错误</h3><p>请稍后重试</p>`;
+    }
+    
+    btn.disabled = false;
+    result.style.display = 'block';
+}
+
+async function recordDownload(code) {
+    await fetch('/api/delivery/download', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({code: code})
+    });
+}
+</script>
+</body>
+</html>

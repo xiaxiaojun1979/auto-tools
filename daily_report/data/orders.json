@@ -1,1 +1,17 @@
-{"orders": [], "total_revenue": 0}
+{
+  "orders": [
+    {
+      "order_id": "XY20260728073840989",
+      "product_id": "file_tools",
+      "product_name": "文件批处理大师",
+      "price": 19,
+      "buyer_name": "测试买家",
+      "delivery_code": "AT-FILE-ACC77805",
+      "status": "completed",
+      "source": "xianyu",
+      "delivered_at": "2026-07-28 07:38:40",
+      "delivery_method": "xianyu_auto_reply"
+    }
+  ],
+  "total_revenue": 19
+}

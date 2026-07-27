@@ -626,3 +626,98 @@ def get_latest_articles():
     except Exception as e:
         return jsonify({"ok": False, "msg": str(e)}), 500
 
+
+
+# ========== 闲鱼激活码交付系统 ==========
+
+@app.route("/d")
+@app.route("/d/<code>")
+def delivery_page(code=None):
+    """闲鱼激活码交付页面"""
+    return render_template("delivery.html", code=code)
+
+
+@app.route("/api/delivery/redeem", methods=["POST"])
+def redeem_code():
+    """验证激活码并返回下载信息"""
+    try:
+        data = request.get_json()
+        code = data.get("code", "").strip().upper()
+        
+        # 读取激活码库
+        codes_file = BASE_DIR / "delivery" / "activation_codes.json"
+        if not codes_file.exists():
+            return jsonify({"ok": False, "msg": "交付系统未初始化"})
+        
+        with open(codes_file) as f:
+            all_codes = json.load(f)
+        
+        # 查找激活码
+        found = None
+        for pid, clist in all_codes.items():
+            for c in clist:
+                if c["code"] == code:
+                    found = c
+                    found["pid"] = pid
+                    break
+            if found:
+                break
+        
+        if not found:
+            return jsonify({"ok": False, "msg": "激活码无效，请检查输入"})
+        
+        if not found.get("used"):
+            return jsonify({"ok": False, "msg": "该激活码尚未激活，请先在闲鱼完成购买"})
+        
+        # 获取产品信息
+        products = load_products()
+        product = next((p for p in products if p["id"] == found["pid"]), None)
+        pname = product["name"] if product else found.get("product_name", "产品")
+        emoji = product.get("emoji", "\U0001f4e6") if product else "\U0001f4e6"
+        
+        download_url = f"{SITE_URL}/download/{code}"
+        
+        # 记录到订单系统
+        from datetime import datetime as dt
+        orders = load_orders()
+        already_recorded = any(o.get("delivery_code") == code for o in orders.get("orders", []))
+        if not already_recorded:
+            now = dt.now()
+            order = {
+                "order_id": f"XY{now.strftime('%Y%m%d%H%M%S')}",
+                "product_id": found["pid"],
+                "product_name": pname,
+                "price": product["price"] if product else 19,
+                "delivery_code": code,
+                "status": "completed",
+                "source": "xianyu",
+                "verified_at": now.strftime("%Y-%m-%d %H:%M:%S")
+            }
+            orders.setdefault("orders", []).append(order)
+            save_orders(orders)
+        
+        return jsonify({
+            "ok": True,
+            "product_name": f"{emoji} {pname}",
+            "download_url": download_url,
+            "code": code
+        })
+        
+    except Exception as e:
+        return jsonify({"ok": False, "msg": f"系统错误: {str(e)}"}), 500
+
+
+@app.route("/api/delivery/download", methods=["POST"])
+def record_delivery_download():
+    """记录下载"""
+    try:
+        from datetime import datetime as dt
+        data = request.get_json()
+        code = data.get("code", "")
+        log_file = BASE_DIR / "daily_report" / "data" / "downloads.log"
+        with open(log_file, "a") as f:
+            f.write(f"{dt.now().isoformat()} CODE:{code}\n")
+        return jsonify({"ok": True})
+    except:
+        return jsonify({"ok": False})
+
