@@ -132,7 +132,7 @@ def generate_html(stats, tips):
         c = "hot" if p["count"] > 0 else "cold"
         medal = "🥇" if n == 1 else "🥈" if n == 2 else "🥉" if n == 3 else f"{n}."
         rows += f'<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f5f5f5">'
-        rows += f'<span>{medal} {p["emoji"]} {p["name"]} {tag(f"{p["count"]}件", c)}</span>'
+        rows += f'<span>{medal} {p["emoji"]} {p["name"]} {tag("{}" + str(p["count"]) + "件", c)}</span>'
         rows += f'<span><strong>¥{p["revenue"]}</strong></span></div>'
 
     tips_html = ""
