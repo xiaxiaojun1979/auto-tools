@@ -302,6 +302,11 @@ def view_report(filename):
     return send_from_directory(str(report_dir), filename)
 
 
+@app.route("/health")
+def health_check():
+    return jsonify({"status": "ok", "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "products": len(PRODUCTS), "version": "2.0"})
+
+
 @app.route("/api/products")
 def api_products():
     """返回所有产品列表API"""
