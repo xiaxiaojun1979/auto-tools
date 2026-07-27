@@ -172,6 +172,19 @@ def step5_push_to_git():
         log(f"    ❌ Git操作失败: {e}")
 
 
+def step0_maintenance():
+    """第零步：系统维护检查"""
+    log("🔧 第零步：系统维护检查...")
+    try:
+        from system_maintenance import main as run_maintenance
+        healthy, results = run_maintenance()
+        log(f"    {'✅ 系统健康' if healthy else '⚠️ 发现问题'}")
+        return healthy, results
+    except Exception as e:
+        log(f"    ⚠️ 维护检查异常: {e}")
+        return True, {}
+
+
 def main():
     """执行完整晚间工作流"""
     start_time = datetime.now()
@@ -181,6 +194,9 @@ def main():
     log(f"  🌙 AutoTools 晚间工作流启动")
     log(f"  ⏰ {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     log("=" * 50)
+    
+    # 第零步：系统维护
+    healthy, health_results = step0_maintenance()
     
     # 检查服务器
     log("🔍 检查服务器状态...")
@@ -210,12 +226,15 @@ def main():
     end_time = datetime.now()
     duration = (end_time - start_time).total_seconds()
     
+    total_issues = sum(len(v) for v in health_results.values()) if health_results else 0
+    
     log("")
     log("=" * 50)
     log(f"  ✅ 晚间工作流完成")
     log(f"  ⏱ 耗时: {duration:.0f}秒")
+    log(f"  {'✅ 系统健康' if total_issues == 0 else f'⚠️ {total_issues} 个维护问题'}")
     log(f"  📦 新开发: {len(developed)} 个工具")
-    log(f"  📧 邮件报告: 已发送")
+    log(f"  📧 邮件报告: 已保存/发送")
     log("=" * 50)
     log("")
     

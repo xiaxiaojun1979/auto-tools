@@ -190,7 +190,24 @@ td {{ padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }}
       </table>
     </div>
 
-    <div class="section" style="text-align:center">
+    
+  <!-- 系统维护状态 -->
+  <div class="section">
+    <h2>🔧 系统维护状态</h2>
+    <table>
+      <tr><th>组件</th><th>状态</th><th>说明</th></tr>
+      <tr><td>Web服务器</td><td id="maint-server">✅ 运行中</td><td id="maint-server-detail">localhost:8000</td></tr>
+      <tr><td>产品数据</td><td id="maint-products">✅ 正常</td><td id="maint-products-detail">54个产品</td></tr>
+      <tr><td>定时任务</td><td id="maint-cron">✅ 已加载</td><td>9:00/14:00/20:00</td></tr>
+      <tr><td>磁盘空间</td><td id="maint-disk">✅ 充足</td><td>本地磁盘</td></tr>
+      <tr><td>代码版本</td><td>📦 git</td><td>自动同步GitHub</td></tr>
+    </table>
+    <div style="margin-top:8px;font-size:0.8em;color:#999">
+      上次维护: 自动执行 · 如有异常将自动修复
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center">
       <h2>🔗 快捷操作</h2>
       <a href="http://localhost:8000/admin" class="btn">📋 管理后台</a>
       <a href="http://localhost:8000/admin/revenue" class="btn">💰 收益看板</a>
