@@ -24,13 +24,22 @@ ALIPAY_ACCOUNT = "15156215580"
 
 def load_products():
     """从products.json动态加载产品列表"""
-    try:
-        with open(PRODUCTS_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Warning: Could not load products.json: {e}")
-        # 回退到硬编码的基础产品
-        return [
+    # 尝试多个路径（兼容本地和Zeabur部署）
+    possible_paths = [PRODUCTS_FILE, BASE_DIR / "products" / "products.json", Path("products") / "products.json"]
+    
+    for path in possible_paths:
+        try:
+            if path.exists():
+                with open(path, 'r', encoding='utf-8') as f:
+                    products = json.load(f)
+                    print(f"Loaded {len(products)} products from {path}")
+                    return products
+        except Exception as e:
+            print(f"  Tried {path}: {e}")
+    
+    print("Warning: Could not load products.json, using fallback")
+    # 回退到硬编码的基础产品
+    return [
             {"id": "file_tools", "emoji": "📁", "name": "文件批处理大师",
              "desc": "批量重命名、格式转换、智能分类 — 一键处理成千上万文件",
              "features": ["批量重命名（支持正则/模板/序号）","智能文件分类（按类型/日期/大小）",
