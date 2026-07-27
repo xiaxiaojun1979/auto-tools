@@ -1,0 +1,40 @@
+{
+  "date": "2026-07-27",
+  "total_revenue": 0,
+  "total_orders": 0,
+  "today_revenue": 0,
+  "today_orders": 0,
+  "month_revenue": 0,
+  "pending_count": 0,
+  "pending_orders": [],
+  "product_stats": {
+    "file_tools": {
+      "name": "文件批处理大师",
+      "count": 0,
+      "revenue": 0,
+      "price": 49,
+      "emoji": "1f4c1"
+    },
+    "content_gen": {
+      "name": "内容自动生成器",
+      "count": 0,
+      "revenue": 0,
+      "price": 29,
+      "emoji": "270d"
+    },
+    "data_tools": {
+      "name": "数据清洗工具包",
+      "count": 0,
+      "revenue": 0,
+      "price": 39,
+      "emoji": "1f9f9"
+    },
+    "bundle": {
+      "name": "三件套捆绑包",
+      "count": 0,
+      "revenue": 0,
+      "price": 79,
+      "emoji": "1f389"
+    }
+  }
+}

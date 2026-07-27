@@ -795,5 +795,39 @@
     "price": 39,
     "price_old": 65,
     "category": "video"
+  },
+  {
+    "id": "ai_data_analyze",
+    "emoji": "🤖",
+    "name": "AI数据分析师",
+    "desc": "上传数据自动分析生成报告",
+    "features": [
+      "AI数据分析师核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 49,
+    "price_old": 83,
+    "category": "ai",
+    "created": "2026-07-27"
+  },
+  {
+    "id": "short_video_script",
+    "emoji": "🎬",
+    "name": "短视频脚本生成",
+    "desc": "AI生成热门短视频脚本",
+    "features": [
+      "短视频脚本生成核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "video",
+    "created": "2026-07-27"
   }
 ]

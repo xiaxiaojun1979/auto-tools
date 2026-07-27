@@ -1,0 +1,69 @@
+{
+  "total_revenue": 177.0,
+  "total_sales": 3,
+  "daily_logs": [
+    {
+      "date": "2026-07-27",
+      "sales": [
+        {
+          "time": "14:31",
+          "product": "文件批处理大师",
+          "amount": 49,
+          "platform": "爱发电"
+        },
+        {
+          "time": "14:31",
+          "product": "三件套捆绑包",
+          "amount": 79,
+          "platform": "微信直售"
+        },
+        {
+          "time": "14:53",
+          "product": "文件批处理大师",
+          "amount": 49.0,
+          "platform": "支付宝"
+        }
+      ],
+      "total": 177.0
+    }
+  ],
+  "platforms": {
+    "爱发电": {
+      "enabled": true,
+      "revenue": 49,
+      "sales": 1
+    },
+    "闲鱼": {
+      "enabled": true,
+      "revenue": 0,
+      "sales": 0
+    },
+    "微信直售": {
+      "enabled": true,
+      "revenue": 79,
+      "sales": 1
+    }
+  },
+  "products": {
+    "文件批处理大师": {
+      "price": 49,
+      "sales": 2,
+      "revenue": 98.0
+    },
+    "内容自动生成器": {
+      "price": 29,
+      "sales": 0,
+      "revenue": 0
+    },
+    "数据清洗工具包": {
+      "price": 39,
+      "sales": 0,
+      "revenue": 0
+    },
+    "三件套捆绑包": {
+      "price": 79,
+      "sales": 1,
+      "revenue": 79
+    }
+  }
+}
