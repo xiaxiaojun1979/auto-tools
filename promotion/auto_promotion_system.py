@@ -84,8 +84,12 @@ def load_stats():
     return data
 
 def save_stats(stats):
-    with open(STATS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(stats, f, ensure_ascii=False, indent=2)
+    try:
+        STATS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(STATS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(stats, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f'[WARN] save_stats failed: {e}')
 
 def get_promotion_for_homepage():
     """
@@ -175,17 +179,20 @@ def get_promotion_for_homepage():
     total_products = len(products)
     bottom = random.choice(bottom_messages).format(count=total_products)
     
-    # 更新统计
-    stats = load_stats()
-    stats["total_promotions"] = stats.get("total_promotions", 0) + 1
-    today = now.strftime("%Y-%m-%d")
-    if today not in stats.setdefault("daily_stats", {}):
-        stats["daily_stats"][today] = {"promotions": 0}
-    stats["daily_stats"][today]["promotions"] = stats["daily_stats"][today].get("promotions", 0) + 1
-    if promo_type not in stats.setdefault("type_stats", {}):
-        stats["type_stats"][promo_type] = 0
-    stats["type_stats"][promo_type] += 1
-    save_stats(stats)
+    # 更新统计（安全执行）
+    try:
+        stats = load_stats()
+        stats["total_promotions"] = stats.get("total_promotions", 0) + 1
+        today = now.strftime("%Y-%m-%d")
+        if today not in stats.setdefault("daily_stats", {}):
+            stats["daily_stats"][today] = {"promotions": 0}
+        stats["daily_stats"][today]["promotions"] = stats["daily_stats"][today].get("promotions", 0) + 1
+        if promo_type not in stats.setdefault("type_stats", {}):
+            stats["type_stats"][promo_type] = 0
+        stats["type_stats"][promo_type] += 1
+        save_stats(stats)
+    except Exception as e:
+        print(f"[WARN] Stats update failed: {e}")
     
     return {
         "has_promo": True,

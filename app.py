@@ -138,11 +138,19 @@ def admin_required(f):
     return decorated
 
 
+def safe_call(func, fallback=None):
+    """安全调用函数，失败时返回fallback"""
+    try:
+        return func()
+    except Exception as e:
+        print(f"[WARN] Function {func.__name__} failed: {e}")
+        return fallback
+
 @app.route("/")
 def index():
-    promo = get_promotion_for_homepage()
-    flash = get_flash_sale()
-    bundles = get_bundle_deals()
+    promo = safe_call(get_promotion_for_homepage, {"has_promo": False})
+    flash = safe_call(get_flash_sale, [])
+    bundles = safe_call(get_bundle_deals, [])
     return render_template("index.html",
         products=PRODUCTS,
         alipay=ALIPAY_ACCOUNT,
