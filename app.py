@@ -421,9 +421,11 @@ def view_report(filename):
     return send_from_directory(str(report_dir), filename)
 
 
+COMMIT_HASH = "27197a4"  # fix(zeabur): add error handling
+
 @app.route("/health")
 def health_check():
-    return jsonify({"status": "ok", "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "products": len(PRODUCTS), "version": "2.0"})
+    return jsonify({"status": "ok", "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "products": len(PRODUCTS), "version": COMMIT_HASH, "commit": COMMIT_HASH})
 
 
 @app.route("/api/products")
