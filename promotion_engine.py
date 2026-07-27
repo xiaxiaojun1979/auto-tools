@@ -163,7 +163,7 @@ class PromotionEngine:
             for f in features:
                 card += f"  ✅ {f}\n"
         
-        card += f"\n🔗 https://xiaoxiaojun.zeabur.app\n💳 支付宝: 15156215580"
+        card += f"\n🔗 https://xiaxiaojun.zeabur.app\n💳 支付宝: 15156215580"
         
         return card
 
@@ -193,7 +193,7 @@ class PromotionEngine:
                 post += f"  • {f}\n"
         
         post += f"\n💡 一次购买，永久使用，终身免费更新！"
-        post += f"\n🔗 https://xiaoxiaojun.zeabur.app"
+        post += f"\n🔗 https://xiaxiaojun.zeabur.app"
         post += f"\n💳 支持支付宝/微信支付"
         
         # 平台特定结尾
@@ -211,7 +211,7 @@ class PromotionEngine:
 价格只要¥{price}，一次购买永久使用！
 
 👇 点击链接了解更多
-https://xiaoxiaojun.zeabur.app
+https://xiaxiaojun.zeabur.app
 
 🎵 推荐BGM：轻快/科技感"""
         

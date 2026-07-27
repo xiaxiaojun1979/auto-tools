@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoTools - 自动化工具集</title>
+    <title>AutoTools - 自动化工具集 | 提升10倍工作效率</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -18,7 +18,7 @@
         .card { background: white; border-radius: 16px; padding: 32px;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.08);
                 transition: transform 0.2s, box-shadow 0.2s;
-                display: flex; flex-direction: column; }
+                display: flex; flex-direction: column; position: relative; overflow: hidden; }
         .card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
         .card .emoji { font-size: 3em; margin-bottom: 16px; }
         .card h3 { font-size: 1.4em; margin-bottom: 8px; }
@@ -68,192 +68,353 @@
         .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
         .btn-close-modal { display: block; width: 100%; padding: 10px; margin-top: 12px;
                           border: 2px solid #ddd; border-radius: 8px; background: white;
-                          color: #666; cursor: pointer; font-size: 0.95em; }
-        .success-msg { display: none; padding: 40px 20px; }
-        .success-msg .icon { font-size: 3em; margin-bottom: 16px; }
-        .success-msg h3 { font-size: 1.5em; margin-bottom: 8px; }
-        .success-msg p { color: #666; font-size: 0.95em; }
-        .section-title { text-align: center; font-size: 1.6em; margin-bottom: 32px; color: #1a1a2e; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-                         gap: 20px; margin-bottom: 60px; }
-        .feature-item { text-align: center; padding: 24px; }
-        .feature-item .icon { font-size: 2.5em; margin-bottom: 12px; }
-        .feature-item h4 { font-size: 1.1em; margin-bottom: 8px; }
-        .feature-item p { font-size: 0.85em; color: #666; }
-        .footer { text-align: center; padding: 30px; color: #999; font-size: 0.85em; border-top: 1px solid #eee; }
-        .wechat-box img { max-width: 220px; border-radius: 8px; }
-        .wechat-box .tip { margin-top: 8px; color: #07c160; font-weight: 500; }
+                          color: #666; cursor: pointer; }
+        /* ===== 推广样式 ===== */
+        .promo-bar { background: linear-gradient(90deg, #ff4d4f, #ff7a45, #ff4d4f);
+                     color: white; text-align: center; padding: 10px; font-size: 0.95em;
+                     font-weight: 600; position: sticky; top: 0; z-index: 999;
+                     animation: promoPulse 2s ease-in-out infinite; }
+        @keyframes promoPulse { 0%,100%{opacity:1} 50%{opacity:0.85} }
+        .promo-bar .close-promo { float: right; margin-right: 10px; cursor: pointer;
+                                  opacity: 0.7; font-size: 1.2em; background: none;
+                                  border: none; color: white; }
+        .promo-bar .close-promo:hover { opacity: 1; }
+        .flash-section { background: linear-gradient(135deg, #fff7e6, #fff0d6);
+                         border-radius: 16px; padding: 28px; margin-bottom: 30px;
+                         border: 1px solid #ffe0b2; }
+        .flash-header { display: flex; justify-content: space-between; align-items: center;
+                        margin-bottom: 16px; }
+        .flash-header h2 { font-size: 1.3em; color: #e74c3c; }
+        .flash-countdown { font-size: 1.2em; font-weight: bold; color: #ff4d4f; }
+        .flash-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+                       gap: 12px; }
+        .flash-item { background: white; border-radius: 12px; padding: 16px;
+                      text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                      cursor: pointer; transition: transform 0.2s; }
+        .flash-item:hover { transform: translateY(-2px); }
+        .flash-item .f-emoji { font-size: 2em; margin-bottom: 4px; }
+        .flash-item .f-name { font-size: 0.9em; font-weight: 600; margin-bottom: 4px; }
+        .flash-item .f-price { font-size: 1.2em; font-weight: bold; color: #e74c3c; }
+        .flash-item .f-old-price { font-size: 0.8em; color: #999; text-decoration: line-through; }
+        .flash-item .f-discount { font-size: 0.75em; color: white; background: #ff4d4f;
+                                  border-radius: 10px; padding: 2px 8px; display: inline-block; margin-top: 4px; }
+        .bundle-section { background: linear-gradient(135deg, #f0f5ff, #e6f0ff);
+                          border-radius: 16px; padding: 28px; margin-bottom: 30px;
+                          border: 1px solid #d6e4ff; }
+        .bundle-header { margin-bottom: 16px; }
+        .bundle-header h2 { font-size: 1.3em; color: #1a1a2e; }
+        .bundle-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; }
+        .bundle-item { background: white; border-radius: 12px; padding: 16px;
+                       text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .bundle-item .b-emoji { font-size: 2em; margin-bottom: 4px; }
+        .bundle-item .b-name { font-size: 0.9em; font-weight: 600; }
+        .bundle-item .b-products { font-size: 0.8em; color: #666; margin: 4px 0; }
+        .bundle-item .b-price { font-size: 1.2em; font-weight: bold; color: #52c41a; }
+        .bundle-item .b-old { font-size: 0.8em; color: #999; text-decoration: line-through; }
+        .bundle-item .b-save { font-size: 0.75em; background: #52c41a; color: white;
+                               border-radius: 10px; padding: 2px 8px; display: inline-block; margin-top: 4px; }
+        /* 底部推广语 */
+        .promo-bottom { text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2);
+                        border-radius: 16px; color: white; margin: 30px 0; font-size: 1.1em; }
+        /* 推广弹窗 */
+        .promo-popup { display: none; position: fixed; bottom: 20px; right: 20px;
+                       z-index: 999; animation: slideIn 0.5s; }
+        .promo-popup.show { display: block; }
+        @keyframes slideIn { from { transform: translateX(100px); opacity: 0; }
+                             to { transform: translateX(0); opacity: 1; } }
+        .promo-popup-content { background: white; border-radius: 16px; padding: 20px;
+                               box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+                               max-width: 320px; text-align: center;
+                               border: 1px solid #667eea; }
+        .promo-popup-content .pp-emoji { font-size: 2.5em; margin-bottom: 8px; }
+        .promo-popup-content .pp-text { font-size: 0.95em; color: #333; margin-bottom: 12px; }
+        .promo-popup-content .pp-btn { display: inline-block; padding: 8px 24px;
+                                       background: linear-gradient(135deg, #667eea, #764ba2);
+                                       color: white; border-radius: 20px; border: none;
+                                       cursor: pointer; font-size: 0.9em; font-weight: 600; }
+        .promo-popup-content .pp-btn:hover { opacity: 0.9; }
+        .promo-popup-content .pp-close { position: absolute; top: 8px; right: 12px;
+                                         cursor: pointer; color: #999; font-size: 1.2em; background: none; border: none; }
+        .promo-badge { position: absolute; top: 10px; right: 10px;
+                       background: #ff4d4f; color: white; padding: 4px 10px;
+                       border-radius: 12px; font-size: 0.75em; font-weight: 600; }
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>🛠️ AutoTools 自动化工具集</h1>
-    <p>提升工作效率的利器 · 一次购买 · 永久使用</p>
-</div>
-<div class="container">
-    <div class="products">
-        {% for p in products %}
-        <div class="card {% if p.is_bundle %}bundle{% endif %}">
-            <div class="emoji">{{ p.emoji }}</div>
-            <h3>{{ p.name }}</h3>
-            <div class="desc">{{ p.desc }}</div>
-            <ul class="features">
-                {% for f in p.features %}<li>{{ f }}</li>{% endfor %}
-            </ul>
-            <div class="price-row">
-                <span class="price">¥{{ p.price }}</span>
-                {% if p.price_old %}<span class="price-old">¥{{ p.price_old }}</span>{% endif %}
-            </div>
-            <button class="btn-buy" onclick="showPay('{{ p.id }}','{{ p.name }}',{{ p.price }})">立即购买</button>
-        </div>
-        {% endfor %}
+    {% if promo and promo.get('has_promo') %}
+    <!-- 推广横幅 -->
+    <div class="promo-bar" id="promoBar">
+        {{ promo.slogan }}
+        <button class="close-promo" onclick="document.getElementById('promoBar').style.display='none'">✕</button>
+    </div>
+    {% endif %}
+
+    <div class="header">
+        <h1>🛠️ AutoTools</h1>
+        <p>{{ '%d'|format(products|length) }}款精选工具 · 一次购买永久使用 · 支付宝/微信支付</p>
     </div>
 
-    <h2 class="section-title">💡 为什么选择我们</h2>
-    <div class="features-grid">
-        <div class="feature-item"><div class="icon">🔒</div><h4>纯本地运行</h4><p>所有代码在你自己电脑上运行，数据绝不外泄</p></div>
-        <div class="feature-item"><div class="icon">♾️</div><h4>永久使用</h4><p>一次购买，永久使用，不限次数</p></div>
-        <div class="feature-item"><div class="icon">🔄</div><h4>终身更新</h4><p>免费获取所有版本更新</p></div>
-        <div class="feature-item"><div class="icon">💻</div><h4>跨平台</h4><p>支持 Mac / Windows / Linux</p></div>
-        <div class="feature-item"><div class="icon">📦</div><h4>即买即用</h4><p>付款后立即获取下载链接</p></div>
-    </div>
-</div>
-
-<div class="payment-modal" id="paymentModal">
-    <div class="modal-content">
-        <div id="modalOrderForm">
-            <h2>📦 <span id="modalProductName"></span></h2>
-            <div class="price-tag">¥<span id="modalProductPrice"></span></div>
-
-            <div class="pay-tabs">
-                <div class="pay-tab active" onclick="switchPayTab('alipay')">💙 支付宝</div>
-                <div class="pay-tab" onclick="switchPayTab('wechat')">💚 微信支付</div>
-            </div>
-
-            <div class="pay-panel active" id="payAlipay">
-                <div class="alipay-box">
-                    <div class="label">📱 支付宝账号</div>
-                    <div class="account" id="alipayAccount">{{ alipay }}</div>
-                    <div class="label" style="font-size:0.8em;color:#999;">（长按复制账号）</div>
-                    <ol class="steps">
-                        <li>打开支付宝 APP</li>
-                        <li>搜索"转账" → 输入上方账号</li>
-                        <li>输入金额 <strong>¥<span class="pay-amount"></span></strong></li>
-                        <li>转账完成后，填写邮箱提交订单</li>
-                    </ol>
+    <div class="container">
+        {% if flash %}
+        <!-- 限时闪购 -->
+        <div class="flash-section">
+            <div class="flash-header">
+                <h2>⚡ 限时闪购</h2>
+                <div class="flash-countdown">
+                    ⏱ <span id="flashCountdown">{{ '%02d'|format(flash[0].countdown_seconds // 3600) }}:{{ '%02d'|format((flash[0].countdown_seconds % 3600) // 60) }}:{{ '%02d'|format(flash[0].countdown_seconds % 60) }}</span>
                 </div>
             </div>
+            <div class="flash-items">
+                {% for item in flash %}
+                <div class="flash-item" onclick="showPay('{{ item.id }}','{{ item.name }}',{{ item.price }})">
+                    <div class="f-emoji">{{ item.emoji }}</div>
+                    <div class="f-name">{{ item.name }}</div>
+                    <div>
+                        <span class="f-price">¥{{ item.price }}</span>
+                        <span class="f-old-price">¥{{ item.price_old }}</span>
+                    </div>
+                    <span class="f-discount">-{{ item.discount_pct }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
 
-            <div class="pay-panel" id="payWechat">
-                <div class="wechat-box">
-                    <img src="/assets/wechat_pay.jpg" alt="微信收款码">
-                    <div class="tip">📱 打开微信扫一扫 ↑</div>
-                    <div style="margin-top:8px;font-size:0.85em;color:#666;">
-                        输入金额 <strong>¥<span class="pay-amount"></span></strong> → 转账后提交订单
+        {% if bundles %}
+        <!-- 捆绑优惠 -->
+        <div class="bundle-section">
+            <div class="bundle-header">
+                <h2>🎯 超值组合套餐</h2>
+                <p style="color:#666;font-size:0.85em;margin-top:4px;">一次购买多个工具，省更多！</p>
+            </div>
+            <div class="bundle-items">
+                {% for b in bundles %}
+                <div class="bundle-item">
+                    <div class="b-emoji">{{ b.emoji }}</div>
+                    <div class="b-name">{{ b.name }}</div>
+                    <div class="b-products">包含: {{ b.products|join('、') }}</div>
+                    <div>
+                        <span class="b-price">¥{{ b.bundle_price }}</span>
+                        <span class="b-old">¥{{ b.original_price }}</span>
+                    </div>
+                    <span class="b-save">省¥{{ b.savings }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- 所有产品 -->
+        <div class="products">
+            {% for p in products %}
+            <div class="card{% if p.get('is_bundle') %} bundle{% endif %}" id="card-{{ p.id }}">
+                {% if p.price <= 9 %}
+                <div class="promo-badge">🔥 超低价</div>
+                {% elif p.get('price_old', 0) and p.price_old > p.price * 1.3 %}
+                <div class="promo-badge">🔥 省¥{{ p.price_old - p.price }}</div>
+                {% endif %}
+                <div class="emoji">{{ p.emoji }}</div>
+                <h3>{{ p.name }}</h3>
+                <div class="desc">{{ p.desc[:80] }}{% if p.desc|length > 80 %}...{% endif %}</div>
+                <ul class="features">
+                    {% for f in (p.get("features", []) or [])[:4] %}
+                    <li>{{ f }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="price-row">
+                    <span class="price">¥{{ p.price }}</span>
+                    {% if p.get("price_old") %}
+                    <span class="price-old">¥{{ p.price_old }}</span>
+                    {% endif %}
+                </div>
+                <button class="btn-buy" onclick="showPay('{{ p.id }}','{{ p.name }}',{{ p.price }})">
+                    {% if p.get('is_bundle') %}🎉 立即购买捆绑包{% else %}立即购买{% endif %}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if promo and promo.get('bottom_message') %}
+        <div class="promo-bottom">
+            {{ promo.bottom_message }}
+        </div>
+        {% endif %}
+
+        <!-- 用户好评 -->
+        <div class="testimonials-section">
+            <h2 style="text-align:center;font-size:1.8em;margin-bottom:10px">💬 用户好评</h2>
+            <p style="text-align:center;color:#999;margin-bottom:30px">已有 50+ 用户选择了 AutoTools</p>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="t-content">"文件批处理大师帮我每天省了2小时！以前手动改文件名改到崩溃，现在一键搞定。"</p>
+                    <div class="t-author">—— 张** · 自媒体创作者</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="t-content">"数据清洗工具包太强了，几万条客户数据几分钟就处理完了。"</p>
+                    <div class="t-author">—— 李** · 电商运营</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="t-content">"VIP会员太值了，全部工具都能用，每个月还有新工具更新，强烈推荐！"</p>
+                    <div class="t-author">—— 陈** · 程序员</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .testimonials-section { max-width:1200px; margin:60px auto; padding:0 20px; }
+        .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+        .testimonial-card { background:white; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+        .testimonial-card .stars { font-size:1.2em; margin-bottom:12px; }
+        .testimonial-card .t-content { font-size:0.95em; line-height:1.6; color:#555; margin-bottom:16px; font-style:italic; }
+        .testimonial-card .t-author { font-size:0.85em; color:#999; text-align:right; }
+    </style>
+
+    <div class="footer">
+        <p>AutoTools &copy; 2026 · 纯本地工具 · 一次购买永久使用 · <a href="/admin" style="color:#999;">管理后台</a></p>
+    </div>
+
+    <!-- 推广弹窗 -->
+    <div class="promo-popup show" id="promoPopup">
+        <div class="promo-popup-content" style="position:relative;">
+            <button class="pp-close" onclick="document.getElementById('promoPopup').style.display='none'">✕</button>
+            <div class="pp-emoji">{{ (promo.get('items') or [{}])[0].get('emoji', '🎉') if promo and promo.get('items') else '🎉' }}</div>
+            <div class="pp-text">
+                <strong>{{ (promo.get('items') or [{}])[0].get('name', '🔥 限时优惠') if promo and promo.get('items') else '🔥 限时优惠' }}</strong><br>
+                {% if promo and promo.get('items') %}
+                限时特价 <strong style="color:#e74c3c;">¥{{ (promo.get('items') or [{}])[0].get('price', 0) }}</strong>
+                {% else %}
+                全场工具限时特惠中！
+                {% endif %}
+            </div>
+            <button class="pp-btn" onclick="document.getElementById('promoPopup').style.display='none';window.scrollTo({top:document.querySelector('.products').offsetTop-100,behavior:'smooth'})">去看看 →</button>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function(){document.getElementById('promoPopup').style.display='none';}, 10000);
+        // 倒计时
+        var totalSeconds = {{ flash[0].countdown_seconds if flash else 7200 }};
+        setInterval(function(){
+            totalSeconds--;
+            if(totalSeconds < 0) totalSeconds = 7200;
+            var h = Math.floor(totalSeconds/3600);
+            var m = Math.floor((totalSeconds%3600)/60);
+            var s = totalSeconds%60;
+            var el = document.getElementById('flashCountdown');
+            if(el) el.textContent = ('0'+h).slice(-2)+':'+('0'+m).slice(-2)+':'+('0'+s).slice(-2);
+        }, 1000);
+    </script>
+
+    <!-- 支付弹窗 -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="modal-content">
+            <h2>📦 购买 <span id="modalProductName"></span></h2>
+            <div class="price-tag">¥<span id="modalProductPrice"></span></div>
+            
+            <div id="modalOrderForm">
+                <div class="pay-tabs">
+                    <div class="pay-tab active" onclick="switchPayTab('alipay')">💙 支付宝</div>
+                    <div class="pay-tab" onclick="switchPayTab('wechat')">💚 微信支付</div>
+                </div>
+                
+                <div class="pay-panel active" id="payAlipay">
+                    <div class="alipay-box">
+                        <p style="color:#666;margin-bottom:8px;">请扫码或转账到支付宝账号</p>
+                        <div class="account" id="alipayAccount">{{ alipay }}</div>
+                        <div style="font-size:0.85em;color:#999;">点击账号即可复制</div>
                     </div>
                 </div>
+                
+                <div class="pay-panel" id="payWechat">
+                    <p style="color:#666;margin-bottom:12px;">微信扫码支付 <span class="pay-amount" style="font-weight:bold;color:#52c41a;">¥0</span></p>
+                    <div style="padding:12px;background:#f0f0f0;border-radius:8px;font-size:0.9em;color:#666;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' style='background:%2307c160'%3E%3Ctext x='100' y='100' text-anchor='middle' fill='white' font-size='14'%3E微信收款码%3C/text%3E%3Ctext x='100' y='120' text-anchor='middle' fill='white' font-size='12'%3E联系微信获取%3C/text%3E%3C/svg%3E" style="width:160px;height:160px;border-radius:8px;">
+                        <p style="margin-top:8px;font-size:0.8em;">或联系微信: <strong>15156215580</strong></p>
+                    </div>
+                </div>
+                
+                <div class="steps">
+                    <p style="font-weight:600;margin-bottom:8px;">📝 购买步骤：</p>
+                    <ol>
+                        <li>打开支付宝/微信，扫码或转账 <strong class="pay-amount">¥0</strong></li>
+                        <li>付款后，填写你的邮箱地址</li>
+                        <li>点击"我已付款"，系统自动发送产品下载链接到邮箱</li>
+                    </ol>
+                </div>
+                
+                <div class="order-form">
+                    <input type="email" id="buyerEmail" placeholder="📧 请输入你的邮箱地址（接收产品下载链接）" required>
+                    <button class="btn-submit" id="submitOrderBtn" onclick="submitOrder()">✅ 我已付款，立即获取产品</button>
+                </div>
             </div>
-
-            <div class="order-form">
-                <h3>✉️ 付款后，填写邮箱接收产品</h3>
-                <input type="email" id="buyerEmail" placeholder="请输入你的邮箱地址" required>
-                <button class="btn-submit" id="submitOrderBtn" onclick="submitOrder()">✅ 我已付款，立即获取产品</button>
-                <div style="margin-top:8px;font-size:0.8em;color:#999;">⚡ 提交后等待确认，产品将发送到你的邮箱</div>
+            
+            <div id="orderSuccess" style="display:none;padding:20px;">
+                <div style="font-size:3em;margin-bottom:16px;">🎉</div>
+                <h2>下单成功！</h2>
+                <p style="color:#666;margin-top:12px;line-height:1.6;">
+                    请耐心等待系统验证付款<br>
+                    验证通过后，产品下载链接将发送到你的邮箱<br>
+                    如有问题请联系: <strong>35538112@qq.com</strong>
+                </p>
             </div>
-
-            <button class="btn-close-modal" onclick="closeModal()">关闭</button>
-        </div>
-
-        <div class="success-msg" id="orderSuccess">
-            <div class="icon">✅</div>
-            <h3>订单提交成功！</h3>
-            <p>管理员确认收款后将发送产品到你的邮箱</p>
-            <p style="margin-top:8px;font-size:0.85em;color:#999;">通常 5-30 分钟内到账确认</p>
+            
             <button class="btn-close-modal" onclick="closeModal()" style="margin-top:20px;">完成</button>
         </div>
     </div>
-</div>
 
-<div class="testimonials-section">
-    <h2 style="text-align:center;font-size:1.8em;margin-bottom:10px">💬 用户好评</h2>
-    <p style="text-align:center;color:#999;margin-bottom:30px">已有 50+ 用户选择了 AutoTools</p>
-    <div class="testimonials">
-        <div class="testimonial-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="t-content">"文件批处理大师帮我每天省了2小时！以前手动改文件名改到崩溃，现在一键搞定。"</p>
-            <div class="t-author">—— 张** · 自媒体创作者</div>
-        </div>
-        <div class="testimonial-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="t-content">"数据清洗工具包太强了，几万条客户数据几分钟就处理完了。"</p>
-            <div class="t-author">—— 李** · 电商运营</div>
-        </div>
-        <div class="testimonial-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="t-content">"VIP会员太值了，全部工具都能用，每个月还有新工具更新，强烈推荐！"</p>
-            <div class="t-author">—— 陈** · 程序员</div>
-        </div>
-    </div>
-</div>
-
-<style>
-.testimonials-section { max-width:1200px; margin:60px auto; padding:0 20px; }
-.testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
-.testimonial-card { background:white; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.06); }
-.testimonial-card .stars { font-size:1.2em; margin-bottom:12px; }
-.testimonial-card .t-content { font-size:0.95em; line-height:1.6; color:#555; margin-bottom:16px; font-style:italic; }
-.testimonial-card .t-author { font-size:0.85em; color:#999; text-align:right; }
-</style>
-
-<div class="footer">
-    <p>AutoTools &copy; 2026 · 纯本地工具 · 一次购买永久使用 · <a href="/admin" style="color:#999;">管理后台</a></p>
-</div>
-
-<script>
-    let currentPid = ''; let currentPrice = 0;
-    function showPay(pid, name, price) {
-        currentPid = pid; currentPrice = price;
-        document.getElementById('modalProductName').textContent = name;
-        document.getElementById('modalProductPrice').textContent = price;
-        document.querySelectorAll('.pay-amount').forEach(el => el.textContent = price);
-        document.getElementById('buyerEmail').value = '';
-        document.getElementById('orderSuccess').style.display = 'none';
-        document.getElementById('modalOrderForm').style.display = 'block';
-        document.getElementById('paymentModal').classList.add('show');
-        document.getElementById('submitOrderBtn').disabled = false;
-        document.getElementById('submitOrderBtn').textContent = '✅ 我已付款，立即获取产品';
-    }
-    function closeModal() { document.getElementById('paymentModal').classList.remove('show'); }
-    function switchPayTab(tab) {
-        document.querySelectorAll('.pay-tab').forEach(e=>e.classList.remove('active'));
-        document.querySelectorAll('.pay-panel').forEach(e=>e.classList.remove('active'));
-        if(tab==='alipay'){document.querySelector('.pay-tab').classList.add('active');document.getElementById('payAlipay').classList.add('active');}
-        else{document.querySelectorAll('.pay-tab')[1].classList.add('active');document.getElementById('payWechat').classList.add('active');}
-    }
-    function getPayMethod() {
-        return document.getElementById('payAlipay').classList.contains('active')?'支付宝':'微信支付';
-    }
-    function submitOrder() {
-        const email = document.getElementById('buyerEmail').value.trim();
-        if(!email||!email.includes('@')){alert('请输入正确的邮箱地址');return;}
-        const btn = document.getElementById('submitOrderBtn');
-        btn.disabled = true; btn.textContent = '⏳ 提交中...';
-        fetch('/api/order',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({product_id:currentPid,email:email,payment:getPayMethod()})
-        }).then(r=>r.json()).then(res=>{
-            document.getElementById('modalOrderForm').style.display='none';
-            document.getElementById('orderSuccess').style.display='block';
-        }).catch(()=>{alert('提交失败，请稍后重试');btn.disabled=false;btn.textContent='✅ 我已付款，立即获取产品';});
-    }
-    document.getElementById('paymentModal').addEventListener('click',function(e){if(e.target===this) closeModal();});
-    // 自动复制支付宝账号
-    document.getElementById('alipayAccount').addEventListener('click',function(){
-        navigator.clipboard.writeText(this.textContent).then(()=>{
-            const orig=this.textContent; this.textContent='✅ 已复制!'; setTimeout(()=>{this.textContent=orig;},1500);
-        }).catch(()=>{});
-    });
-</script>
+    <script>
+        let currentPid = ''; let currentPrice = 0;
+        function showPay(pid, name, price) {
+            currentPid = pid; currentPrice = price;
+            document.getElementById('modalProductName').textContent = name;
+            document.getElementById('modalProductPrice').textContent = price;
+            document.querySelectorAll('.pay-amount').forEach(el => el.textContent = '¥' + price);
+            document.getElementById('buyerEmail').value = '';
+            document.getElementById('orderSuccess').style.display = 'none';
+            document.getElementById('modalOrderForm').style.display = 'block';
+            document.getElementById('paymentModal').classList.add('show');
+            document.getElementById('submitOrderBtn').disabled = false;
+            document.getElementById('submitOrderBtn').textContent = '✅ 我已付款，立即获取产品';
+        }
+        function closeModal() { document.getElementById('paymentModal').classList.remove('show'); }
+        function switchPayTab(tab) {
+            document.querySelectorAll('.pay-tab').forEach(e=>e.classList.remove('active'));
+            document.querySelectorAll('.pay-panel').forEach(e=>e.classList.remove('active'));
+            if(tab==='alipay'){document.querySelector('.pay-tab').classList.add('active');document.getElementById('payAlipay').classList.add('active');}
+            else{document.querySelectorAll('.pay-tab')[1].classList.add('active');document.getElementById('payWechat').classList.add('active');}
+        }
+        function getPayMethod() {
+            return document.getElementById('payAlipay').classList.contains('active')?'支付宝':'微信支付';
+        }
+        function submitOrder() {
+            const email = document.getElementById('buyerEmail').value.trim();
+            if(!email||!email.includes('@')){alert('请输入正确的邮箱地址');return;}
+            const btn = document.getElementById('submitOrderBtn');
+            btn.disabled = true; btn.textContent = '⏳ 提交中...';
+            fetch('/api/order',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({product_id:currentPid,email:email,payment:getPayMethod()})
+            }).then(r=>r.json()).then(res=>{
+                document.getElementById('modalOrderForm').style.display='none';
+                document.getElementById('orderSuccess').style.display='block';
+            }).catch(()=>{alert('提交失败，请稍后重试');btn.disabled=false;btn.textContent='✅ 我已付款，立即获取产品';});
+        }
+        document.getElementById('paymentModal').addEventListener('click',function(e){if(e.target===this) closeModal();});
+        document.getElementById('alipayAccount').addEventListener('click',function(){
+            navigator.clipboard.writeText(this.textContent).then(()=>{
+                const orig=this.textContent; this.textContent='✅ 已复制!'; setTimeout(()=>{this.textContent=orig;},1500);
+            }).catch(()=>{});
+        });
+        // 自动隐藏推广弹窗
+        setTimeout(function(){
+            var pp = document.getElementById('promoPopup');
+            if(pp) pp.style.display = 'none';
+        }, 8000);
+    </script>
 </body>
 </html>

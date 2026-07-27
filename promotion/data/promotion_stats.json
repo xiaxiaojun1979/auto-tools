@@ -5,8 +5,21 @@
   "revenue_from_promotion": 0,
   "daily_stats": {
     "2026-07-27": {
-      "posts_generated": 348
+      "posts_generated": 348,
+      "promotions": 12
     }
   },
-  "platform_stats": {}
+  "platform_stats": {},
+  "total_views": 0,
+  "total_promotions": 12,
+  "promotion_revenue": 0,
+  "type_stats": {
+    "flash_sale": 3,
+    "vip_offer": 3,
+    "new_arrival": 2,
+    "hot_product": 1,
+    "bundle_deal": 1,
+    "referral": 1,
+    "limited_time": 1
+  }
 }

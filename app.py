@@ -14,13 +14,23 @@ from flask import (
     redirect, url_for, session, send_from_directory, send_file
 )
 
+
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "daily_report" / "data"
 ORDERS_FILE = DATA_DIR / "orders.json"
 PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
 ADMIN_PASSWORD = "xxj63858930"
 ALIPAY_ACCOUNT = "15156215580"
-
+SITE_URL = "https://xiaxiaojun.zeabur.app"
+# 自动推广系统
+import sys
+PROMO_DIR = BASE_DIR / "promotion"
+sys.path.insert(0, str(BASE_DIR))
+from promotion.auto_promotion_system import (
+    get_promotion_for_homepage, get_flash_sale, get_bundle_deals,
+    get_share_content, get_admin_promo_data, get_promo_stats,
+    track_promo_click, scheduler as promo_scheduler
+)
 
 def load_products():
     """从products.json动态加载产品列表"""
@@ -130,7 +140,16 @@ def admin_required(f):
 
 @app.route("/")
 def index():
-    return render_template("index.html", products=PRODUCTS, alipay=ALIPAY_ACCOUNT)
+    promo = get_promotion_for_homepage()
+    flash = get_flash_sale()
+    bundles = get_bundle_deals()
+    return render_template("index.html",
+        products=PRODUCTS,
+        alipay=ALIPAY_ACCOUNT,
+        promo=promo,
+        flash=flash,
+        bundles=bundles,
+        site_url=SITE_URL)
 
 
 @app.route("/admin/login", methods=["GET", "POST"])
@@ -347,15 +366,25 @@ def create_discount(pid):
 @app.route("/admin/marketing")
 @admin_required
 def view_marketing():
-    """查看推广文案"""
+    """查看推广文案（自动生成）"""
+    # 自动生成所有产品的推广文案
+    products = load_products()
+    all_posts = {}
+    for p in products:
+        content = get_share_content(p["id"])
+        if content:
+            all_posts[p["id"]] = {"name": p["name"], "emoji": p.get("emoji", ""), "platforms": content}
+    
+    # 也获取已有的数据
     marketing_dir = BASE_DIR / "marketing" / "data"
-    posts = []
+    existing = {}
     if marketing_dir.exists():
         files = sorted(marketing_dir.glob("posts_*.json"), reverse=True)
         if files:
             with open(files[0], 'r') as f:
-                posts = json.load(f)
-    return render_template("marketing.html", posts=posts)
+                existing = json.load(f)
+    
+    return render_template("marketing.html", posts=all_posts, existing=existing, site_url=SITE_URL)
 
 
 @app.route("/admin/reports")
@@ -481,8 +510,37 @@ def download_code():
     return send_file(zip_path, as_attachment=True, download_name="autotools_deploy.zip")
 
 
+# ===== 自动推广API =====
+@app.route("/api/promo/flash")
+def api_flash_sale():
+    """获取当前闪购"""
+    return jsonify({"ok": True, "data": get_flash_sale()})
+
+@app.route("/api/promo/share/<pid>")
+def api_share_content(pid):
+    """获取产品分享文案"""
+    content = get_share_content(pid)
+    return jsonify({"ok": True, "data": content})
+
+@app.route("/api/promo/stats")
+@admin_required
+def api_promo_stats():
+    """推广统计"""
+    return jsonify({"ok": True, "data": get_admin_promo_data()})
+
+@app.route("/api/promo/click", methods=["POST"])
+def api_track_click():
+    """追踪推广点击"""
+    data = request.get_json() or {}
+    track_promo_click(data.get("type", "unknown"))
+    return jsonify({"ok": True})
+
 # 初始化数据目录
 init_data()
+
+# 启动自动推广调度器（只在主进程启动）
+if not os.environ.get("WERKZEUG_RUN_MAIN") and not os.environ.get("GUNICORN_CMD_ARGS"):
+    promo_scheduler.start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))

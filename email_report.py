@@ -212,7 +212,7 @@ td {{ padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }}
       <a href="http://localhost:8000/admin" class="btn">📋 管理后台</a>
       <a href="http://localhost:8000/admin/revenue" class="btn">💰 收益看板</a>
       <a href="http://localhost:8000/admin/reports" class="btn">📊 历史报告</a>
-      <a href="https://xiaoxiaojun.zeabur.app" class="btn">🌐 线上网站</a>
+      <a href="https://xiaxiaojun.zeabur.app" class="btn">🌐 线上网站</a>
     </div>
   </div>
   
