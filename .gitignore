@@ -8,3 +8,6 @@ cloudflared
 ngrok
 *.zip
 tunnel_*
+
+email_config.json
+*.secret

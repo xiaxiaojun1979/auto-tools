@@ -21,9 +21,9 @@ PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
 # QQ邮箱配置（用户需开启SMTP并获取授权码）
 SMTP_CONFIG = {
     "server": "smtp.qq.com",
-    "port": 587,
+    "port": 465,
     "sender": "35538112@qq.com",
-    "password": "SMTP授权码",  # 用户需要在QQ邮箱设置中获取
+    "password": "jrkmzqqfcuvkbgfb",  # 用户需要在QQ邮箱设置中获取
     "receivers": ["35538112@qq.com"]
 }
 
