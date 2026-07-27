@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收益看板 - AutoTools</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+               background: #f5f7fa; color: #1a1a2e; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2);
+                  color: white; padding: 20px; display: flex; align-items: center;
+                  justify-content: space-between; }
+        .header h1 { font-size: 1.4em; }
+        .header a { color: white; text-decoration: none; opacity: 0.8; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .total-rev { background: linear-gradient(135deg, #52c41a, #389e0d); color: white;
+                     border-radius: 16px; padding: 30px; text-align: center; margin-bottom: 20px; }
+        .total-rev .num { font-size: 3em; font-weight: bold; }
+        .total-rev .label { opacity: 0.9; font-size: 1em; margin-top: 4px; }
+        .goals { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+        .goal { background: white; border-radius: 12px; padding: 20px; text-align: center;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .goal .title { font-size: 0.85em; color: #999; margin-bottom: 8px; }
+        .goal .bar-bg { height: 8px; background: #f0f0f0; border-radius: 4px; margin: 8px 0; overflow: hidden; }
+        .goal .bar { height: 100%; border-radius: 4px; transition: width 1s; }
+        .goal .rate { font-size: 1.3em; font-weight: bold; }
+        .section { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px;
+                   box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 1.2em; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }
+        .plan-item { padding: 10px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.95em; }
+        .plan-item:last-child { border-bottom: none; }
+        .service-item { display: flex; justify-content: space-between; align-items: center;
+                        padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+        .service-item:last-child { border-bottom: none; }
+        .service-item .price { font-size: 1.2em; font-weight: bold; color: #e74c3c; }
+        .service-item .old-price { font-size: 0.85em; color: #999; text-decoration: line-through; }
+        .trend { display: flex; gap: 8px; flex-wrap: wrap; }
+        .trend-day { flex: 1; min-width: 80px; text-align: center; padding: 10px;
+                     background: #fafafa; border-radius: 8px; }
+        .trend-day .d { font-size: 0.8em; color: #999; }
+        .trend-day .r { font-size: 1.1em; font-weight: bold; color: #667eea; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75em;
+                 font-weight: 600; }
+        .badge-hot { background: #fff2f0; color: #ff4d4f; }
+        .badge-new { background: #f6ffed; color: #52c41a; }
+        .back-link { display: block; margin-top: 20px; color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💰 收益看板</h1>
+        <a href="/admin">← 返回后台</a>
+    </div>
+    <div class="container">
+        <div class="total-rev">
+            <div class="num">¥{{ report.stats.total }}</div>
+            <div class="label">累计收益（共 {{ report.stats.total_orders }} 单）</div>
+        </div>
+
+        <div class="goals">
+            {% for p, g in report.stats.goals.items() %}
+            <div class="goal">
+                <div class="title">{{ {'daily':'日目标 ¥100','weekly':'周目标 ¥700','monthly':'月目标 ¥3000'}.get(p, p) }}</div>
+                <div class="rate" style="color:{% if g.rate >= 100 %}#52c41a{% elif g.rate >= 50 %}#faad14{% else %}#ff4d4f{% endif %}">
+                    ¥{{ g.actual }}
+                </div>
+                <div class="bar-bg">
+                    <div class="bar" style="width:{{ g.rate if g.rate <= 100 else 100 }}%;background:{% if g.rate >= 100 %}#52c41a{% elif g.rate >= 50 %}#faad14{% else %}#ff4d4f{% endif %}"></div>
+                </div>
+                <div style="font-size:0.85em;color:#999;">{{ g.rate }}%</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <h2>📈 近7天收益趋势</h2>
+            <div class="trend">
+                {% for t in report.stats.trend %}
+                <div class="trend-day">
+                    <div class="d">{{ t.date[-5:] }}</div>
+                    <div class="r">¥{{ t.revenue }}</div>
+                    <div style="font-size:0.75em;color:#999;">{{ t.orders }}单</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% if report.stats.trend|sum(attribute='revenue') == 0 %}
+            <div style="text-align:center;padding:20px;color:#999;">暂无收益数据，开始推广吧！</div>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>💡 收益优化方案</h2>
+            {% for p in report.plans %}
+            <div class="plan-item">• {{ p }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <h2>🔧 高价值服务 <span class="badge badge-new">高收益</span></h2>
+            {% for s in services %}
+            <div class="service-item">
+                <div>
+                    <strong>{{ s.emoji }} {{ s.name }}</strong>
+                    <div style="font-size:0.85em;color:#666;">{{ s.desc }}</div>
+                </div>
+                <div>
+                    <span class="price">¥{{ s.price }}</span>
+                    <span class="old-price">¥{{ s.price_old }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/admin" class="back-link">← 返回管理后台</a>
+    </div>
+</body>
+</html>

@@ -42,7 +42,11 @@ if f.exists():
         print('✅ 无待处理订单')
 " >> "$LOG" 2>&1
 
-# 4. 汇总
+# 4. 收益分析
+echo "💰 分析收益数据..." >> "$LOG"
+cd "$BASE" && python3 revenue/tracker.py >> "$LOG" 2>&1
+
+# 5. 汇总
 echo "✅ 每日运营完成" >> "$LOG"
 echo "" >> "$LOG"
 

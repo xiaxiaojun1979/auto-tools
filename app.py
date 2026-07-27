@@ -219,6 +219,16 @@ def serve_asset(filename):
 
 
 
+
+@app.route("/admin/revenue")
+@admin_required
+def revenue_dashboard():
+    """收益看板"""
+    from revenue.tracker import RevenueTracker
+    tracker = RevenueTracker()
+    report = tracker.save_report()
+    return render_template("revenue.html", report=report, services=SERVICES)
+
 @app.route("/admin/marketing")
 @admin_required
 def view_marketing():

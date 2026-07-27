@@ -6,6 +6,8 @@ AutoTools 每日自动运营报告生成器
 
 import json
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
@@ -170,6 +172,14 @@ body {{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-seri
 def run():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    
+    # 收益分析
+    try:
+        from revenue.tracker import RevenueTracker
+        rt = RevenueTracker()
+        rt.save_report()
+    except:
+        pass
     
     stats = analyze()
     tips = generate_tips(stats)

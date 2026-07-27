@@ -1,0 +1,83 @@
+{
+  "date": "2026-07-27 17:00",
+  "stats": {
+    "total": 0,
+    "total_orders": 0,
+    "today": 0,
+    "today_orders": 0,
+    "week": 0,
+    "month": 0,
+    "trend": [
+      {
+        "date": "2026-07-21",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-22",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-23",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-24",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-25",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-26",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-27",
+        "revenue": 0,
+        "orders": 0
+      }
+    ],
+    "goals": {
+      "daily": {
+        "target": 100,
+        "actual": 0,
+        "rate": 0.0
+      },
+      "weekly": {
+        "target": 700,
+        "actual": 0,
+        "rate": 0.0
+      },
+      "monthly": {
+        "target": 3000,
+        "actual": 0,
+        "rate": 0.0
+      }
+    },
+    "product_revenue": {},
+    "pending": 0
+  },
+  "plans": [
+    "【daily目标】尚未有收入，需要立即启动推广！¥100/天",
+    "【weekly目标】尚未有收入，需要立即启动推广！¥700/天",
+    "【monthly目标】尚未有收入，需要立即启动推广！¥3000/天",
+    "【增收建议】推广 VIP 会员（¥199），利润率最高",
+    "【增收建议】推出企业定制服务，单价 ¥500+",
+    "【增收建议】闲鱼每天发1条商品信息，坚持7天",
+    "【增收建议】朋友圈每3天分享1次客户好评",
+    "【今日目标】至少完成1单（¥29-¥199）"
+  ],
+  "goals": {
+    "daily": 100,
+    "weekly": 700,
+    "monthly": 3000,
+    "yearly": 36000
+  }
+}
