@@ -99,6 +99,46 @@ def generate_article(category=None):
     title = random.choice(titles.get(category, titles["engineering"]))
     body = random.choice(bodies.get(category, bodies["engineering"]))
     
+    # ===== 推广融入 =====
+    # 根据文章分类自然融入推广CTA
+    promo_footers = {
+        "engineering": (
+            "\n\n💡 想了解更多工程行业趋势？提升职场竞争力？\n"
+            "我整理了一套「工程人效率工具包」，包含BIM学习资料、办公自动化脚本、"
+            "一键生成报表工具等，让工作效率翻倍。\n"
+            "👉 访问 https://xiaoxiaojun.zeabur.app 免费获取"
+        ),
+        "tech": (
+            "\n\n🚀 觉得这些技巧有用？\n"
+            "我开发了一套「自动化工具集」，包含文件批量处理、内容自动生成、"
+            "数据清洗分析等20+款效率工具，永久使用。\n"
+            "👉 访问 https://xiaoxiaojun.zeabur.app 了解更多"
+        ),
+        "health": (
+            "\n\n💪 工程人的身体是革命的本钱！\n"
+            "除了注意身体健康，工作效率也要提升。我整理的自动化工具"
+            "帮你减少重复劳动，准时下班少加班。\n"
+            "👉 访问 https://xiaoxiaojun.zeabur.app 免费工具等你拿"
+        )
+    }
+    
+    # 50%概率融入推广尾注（避免每篇都推太刻意）
+    if random.random() < 0.9:
+        footer = promo_footers.get(category, promo_footers["engineering"])
+        # 有时在正文中也自然提及（10%概率）
+        if random.random() < 0.4:
+            mid_insert = (
+                "\n\n对了，我最近用了一个自动化工具集还挺好用的，"
+                "批量处理文件、自动生成报表啥的都能搞定，省了不少时间。"
+                "有兴趣的可以去 https://xiaoxiaojun.zeabur.app 看看。"
+            )
+            # 插入到中间段落
+            paras = body.split('\n\n')
+            insert_pos = max(1, len(paras) // 2)
+            paras.insert(insert_pos, mid_insert.strip())
+            body = '\n\n'.join(paras)
+        body = body + footer
+    
     return {
         "title": title,
         "body": body.strip(),
