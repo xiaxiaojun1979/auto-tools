@@ -141,7 +141,7 @@ def generate_html(stats, tips):
 
     pending_html = ""
     if stats["pending_count"] > 0:
-        pending_html = f'<div style="padding:12px 0;background:#fff2f0;border-radius:8px;text-align:center">有 <strong>{stats["pending_count"]}</strong> 笔订单待确认！<br>👉 <a href="https://xiaoxiaojun.zeabur.app/admin" style="color:#667eea;font-weight:600">去后台处理 →</a></div>'
+        pending_html = f'<div style="padding:12px 0;background:#fff2f0;border-radius:8px;text-align:center">有 <strong>{stats["pending_count"]}</strong> 笔订单待确认！<br>👉 <a href="https://xiaxiaojun.zeabur.app/admin" style="color:#667eea;font-weight:600">去后台处理 →</a></div>'
     else:
         pending_html = '<div style="padding:12px 0;color:#52c41a;text-align:center">暂无待处理订单 ✅</div>'
 
@@ -195,7 +195,7 @@ body {{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-seri
   </div>
   <div class="footer">
     <p>AutoTools 自动运营 · 每日自动生成 · 收益第一原则</p>
-    <p>后台: <a href="https://xiaoxiaojun.zeabur.app/admin" style="color:#667eea">xiaoxiaojun.zeabur.app/admin</a></p>
+    <p>后台: <a href="https://xiaxiaojun.zeabur.app/admin" style="color:#667eea">xiaxiaojun.zeabur.app/admin</a></p>
     <p>支付宝: 15156215580 | {total_products}个产品在售 | 日目标¥100</p>
   </div>
 </div>

@@ -272,11 +272,11 @@ class AutoPromoter:
         desc = product.get("desc", "")
         
         share_texts = {
-            "wechat": f"{emoji} 发现一个好用的工具「{name}」，{desc[:30]}，只要¥{price}！一次购买永久使用👉 https://xiaoxiaojun1979.github.io/auto-tools/",
+            "wechat": f"{emoji} 发现一个好用的工具「{name}」，{desc[:30]}，只要¥{price}！一次购买永久使用👉 https://xiaxiaojun.zeabur.app/",
             "wechat_timeline": f"{emoji} {name} - ¥{price}\n{desc[:40]}\n一次购买永久使用，太值了！",
             "qq": f"推荐一个效率工具：{name}，{desc[:30]}，仅需¥{price}，一次购买永久更新！",
             "weibo": f"【{name}】{desc[:50]} 限时特价¥{price}（原价¥{product.get('price_old', price)}）一次购买永久使用！",
-            "copy": f"{emoji} 【{name}】\n{desc}\n💰 特价 ¥{price}（原价¥{product.get('price_old', price)}）\n🔗 https://xiaoxiaojun1979.github.io/auto-tools/"
+            "copy": f"{emoji} 【{name}】\n{desc}\n💰 特价 ¥{price}（原价¥{product.get('price_old', price)}）\n🔗 https://xiaxiaojun.zeabur.app/"
         }
         
         return share_texts
@@ -284,7 +284,7 @@ class AutoPromoter:
     def generate_share_links(self):
         """生成分享链接"""
         links = []
-        base_url = "https://xiaoxiaojun1979.github.io/auto-tools/"
+        base_url = "https://xiaxiaojun.zeabur.app/"
         
         # 为每个产品生成分享信息
         for p in self.products[:10]:  # 前10个产品

@@ -106,19 +106,19 @@ def generate_article(category=None):
             "\n\n💡 想了解更多工程行业趋势？提升职场竞争力？\n"
             "我整理了一套「工程人效率工具包」，包含BIM学习资料、办公自动化脚本、"
             "一键生成报表工具等，让工作效率翻倍。\n"
-            "👉 访问 https://xiaoxiaojun.zeabur.app 免费获取"
+            "👉 访问 https://xiaxiaojun.zeabur.app 免费获取"
         ),
         "tech": (
             "\n\n🚀 觉得这些技巧有用？\n"
             "我开发了一套「自动化工具集」，包含文件批量处理、内容自动生成、"
             "数据清洗分析等20+款效率工具，永久使用。\n"
-            "👉 访问 https://xiaoxiaojun.zeabur.app 了解更多"
+            "👉 访问 https://xiaxiaojun.zeabur.app 了解更多"
         ),
         "health": (
             "\n\n💪 工程人的身体是革命的本钱！\n"
             "除了注意身体健康，工作效率也要提升。我整理的自动化工具"
             "帮你减少重复劳动，准时下班少加班。\n"
-            "👉 访问 https://xiaoxiaojun.zeabur.app 免费工具等你拿"
+            "👉 访问 https://xiaxiaojun.zeabur.app 免费工具等你拿"
         )
     }
     
@@ -130,7 +130,7 @@ def generate_article(category=None):
             mid_insert = (
                 "\n\n对了，我最近用了一个自动化工具集还挺好用的，"
                 "批量处理文件、自动生成报表啥的都能搞定，省了不少时间。"
-                "有兴趣的可以去 https://xiaoxiaojun.zeabur.app 看看。"
+                "有兴趣的可以去 https://xiaxiaojun.zeabur.app 看看。"
             )
             # 插入到中间段落
             paras = body.split('\n\n')

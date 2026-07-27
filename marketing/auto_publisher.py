@@ -127,7 +127,7 @@ def generate_post(platform, product):
 {desc[:50]}...
 适用：{', '.join(use_cases[:3]) if use_cases else '办公效率'}
 {'限时特价中！' if discount > 0 else '一次购买永久使用'}
-链接：https://xiaoxiaojun.zeabur.app"""
+链接：https://xiaxiaojun.zeabur.app"""
 
     elif platform == "zhihu":
         post = f"""分享一个实用工具：{name}
@@ -140,7 +140,7 @@ def generate_post(platform, product):
 适用场景：
 {chr(10).join('- ' + f for f in use_cases[:4])}
 
-想了解详情的朋友可以访问：https://xiaoxiaojun.zeabur.app"""
+想了解详情的朋友可以访问：https://xiaxiaojun.zeabur.app"""
     else:
         post = f"{emoji} {name} - {desc[:30]}，仅需¥{price}"
 
