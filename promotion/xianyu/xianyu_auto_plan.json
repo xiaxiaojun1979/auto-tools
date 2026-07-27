@@ -1,0 +1,532 @@
+{
+  "title": "🐟 咸鱼自动推广方案",
+  "version": "1.0",
+  "generated": "2026-07-27",
+  "total_products": 58,
+  "account": "支付宝 15156215580",
+  "steps": [
+    {
+      "step": 1,
+      "action": "下载闲鱼App",
+      "detail": "在手机应用商店搜索「闲鱼」下载安装，用淘宝账号登录"
+    },
+    {
+      "step": 2,
+      "action": "开通卖家功能",
+      "detail": "点击「我的」→「我卖出的」→ 完成实名认证（需要身份证）"
+    },
+    {
+      "step": 3,
+      "action": "充值推广",
+      "detail": "推荐先充值¥50试水 → 每天花¥7-10做「闲鱼直通车」推广",
+      "amounts": {
+        "trial": {
+          "amount": 50,
+          "days": 7,
+          "daily_budget": 7,
+          "expected_views": "50-100/天"
+        },
+        "standard": {
+          "amount": 150,
+          "days": 7,
+          "daily_budget": 20,
+          "expected_views": "200-500/天"
+        },
+        "premium": {
+          "amount": 500,
+          "days": 7,
+          "daily_budget": 70,
+          "expected_views": "1000+/天"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "action": "发布商品",
+      "detail": "用电脑打开 https://www.goofish.com 或用手机闲鱼App发布\n复制下方文案到闲鱼发布页面"
+    },
+    {
+      "step": 5,
+      "action": "设置自动回复",
+      "detail": "在闲鱼App设置→自动回复中，添加常用回复模板\n如：\"您好，这个工具¥XX，支付宝转账后自动发邮箱\""
+    }
+  ],
+  "daily_schedule": [
+    {
+      "date": "07-27",
+      "weekday": "周一",
+      "products": [
+        {
+          "name": "文件批处理大师",
+          "emoji": "📁",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "内容自动生成器",
+          "emoji": "✍️",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "数据清洗工具包",
+          "emoji": "🧹",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "三件套超值捆绑包",
+          "emoji": "🎉",
+          "price": 39,
+          "promo_budget": 20,
+          "category": "高端"
+        }
+      ]
+    },
+    {
+      "date": "07-28",
+      "weekday": "周二",
+      "products": [
+        {
+          "name": "Excel宏工具包",
+          "emoji": "📊",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "PDF全能工具箱",
+          "emoji": "📄",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "VIP终身会员",
+          "emoji": "👑",
+          "price": 49,
+          "promo_budget": 20,
+          "category": "高端"
+        },
+        {
+          "name": "短视频批量下载器",
+          "emoji": "🎬",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "07-29",
+      "weekday": "周三",
+      "products": [
+        {
+          "name": "视频字幕提取工具",
+          "emoji": "📝",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "视频拼接合并工具",
+          "emoji": "🎞️",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "AI对话客户端",
+          "emoji": "🤖",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "批量翻译工具",
+          "emoji": "🌐",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "07-30",
+      "weekday": "周四",
+      "products": [
+        {
+          "name": "图片批量加水印",
+          "emoji": "💧",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "图片去背景工具",
+          "emoji": "✂️",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "电商价格监控",
+          "emoji": "📈",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "热点追踪工具",
+          "emoji": "🔥",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "07-31",
+      "weekday": "周五",
+      "products": [
+        {
+          "name": "文件夹加密锁",
+          "emoji": "🔒",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "代部署服务",
+          "emoji": "📦",
+          "price": 69,
+          "promo_budget": 20,
+          "category": "高端"
+        },
+        {
+          "name": "定制开发",
+          "emoji": "🏭",
+          "price": 299,
+          "promo_budget": 20,
+          "category": "高端"
+        },
+        {
+          "name": "企业批量部署",
+          "emoji": "🏢",
+          "price": 699,
+          "promo_budget": 20,
+          "category": "高端"
+        }
+      ]
+    },
+    {
+      "date": "08-01",
+      "weekday": "周六",
+      "products": [
+        {
+          "name": "年度维护套餐",
+          "emoji": "🔧",
+          "price": 199,
+          "promo_budget": 20,
+          "category": "高端"
+        },
+        {
+          "name": "企业VIP定制",
+          "emoji": "👑",
+          "price": 1999,
+          "promo_budget": 20,
+          "category": "高端"
+        },
+        {
+          "name": "AI图片生成工具",
+          "emoji": "🎨",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "文章摘要生成器",
+          "emoji": "📝",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        }
+      ]
+    },
+    {
+      "date": "08-02",
+      "weekday": "周日",
+      "products": [
+        {
+          "name": "文字转语音工具",
+          "emoji": "🔊",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "图片压缩工具",
+          "emoji": "📦",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "图片格式转换器",
+          "emoji": "🔄",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "图片批量改尺寸",
+          "emoji": "📐",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        }
+      ]
+    },
+    {
+      "date": "08-03",
+      "weekday": "周一",
+      "products": [
+        {
+          "name": "多平台发布器",
+          "emoji": "📤",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "内容日历工具",
+          "emoji": "📅",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "关键词分析工具",
+          "emoji": "🔍",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "文件加密工具",
+          "emoji": "🔐",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "08-04",
+      "weekday": "周二",
+      "products": [
+        {
+          "name": "文件粉碎工具",
+          "emoji": "🗑️",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "文件校验工具",
+          "emoji": "✅",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "密码生成器",
+          "emoji": "🔑",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "视频压缩工具",
+          "emoji": "🎥",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "08-05",
+      "weekday": "周三",
+      "products": [
+        {
+          "name": "视频去水印工具",
+          "emoji": "✨",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "文章采集工具",
+          "emoji": "📰",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "评论导出工具",
+          "emoji": "💬",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "通用爬虫工具",
+          "emoji": "🕷️",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "08-06",
+      "weekday": "周四",
+      "products": [
+        {
+          "name": "SEO检测工具",
+          "emoji": "📊",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "排版助手工具",
+          "emoji": "🎯",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "屏幕录制工具",
+          "emoji": "🖥️",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "GIF动图制作工具",
+          "emoji": "🎞️",
+          "price": 14,
+          "promo_budget": 5,
+          "category": "引流"
+        }
+      ]
+    },
+    {
+      "date": "08-07",
+      "weekday": "周五",
+      "products": [
+        {
+          "name": "抖音数据分析工具",
+          "emoji": "📱",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "剪贴板增强工具",
+          "emoji": "📋",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "定时提醒工具",
+          "emoji": "⏰",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "高级批量重命名",
+          "emoji": "🏷️",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "08-08",
+      "weekday": "周六",
+      "products": [
+        {
+          "name": "二维码生成工具",
+          "emoji": "📱",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "文件夹同步工具",
+          "emoji": "🔄",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "重复文件查找器",
+          "emoji": "🔎",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "视频批量加水印",
+          "emoji": "💧",
+          "price": 19,
+          "promo_budget": 10,
+          "category": "利润"
+        }
+      ]
+    },
+    {
+      "date": "08-09",
+      "weekday": "周日",
+      "products": [
+        {
+          "name": "AI数据分析师",
+          "emoji": "🤖",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "短视频脚本生成",
+          "emoji": "🎬",
+          "price": 29,
+          "promo_budget": 10,
+          "category": "利润"
+        },
+        {
+          "name": "文本分割工具",
+          "emoji": "📝",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        },
+        {
+          "name": "图片快速优化器",
+          "emoji": "🖼️",
+          "price": 9,
+          "promo_budget": 5,
+          "category": "引流"
+        }
+      ]
+    }
+  ]
+}

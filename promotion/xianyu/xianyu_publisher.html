@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>咸鱼批量发布助手</title>
+<style>
+body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+h1 { text-align: center; color: #ff6a00; }
+.product { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.product h3 { margin: 0 0 8px; }
+.price { font-size: 1.3em; color: #ff6a00; font-weight: bold; }
+.tag { display: inline-block; background: #ff6a00; color: white; padding: 2px 10px; border-radius: 10px; font-size: 0.8em; margin-top: 8px; }
+.copy-area { background: #f9f9f9; padding: 12px; border-radius: 8px; margin-top: 12px; white-space: pre-wrap; font-size: 0.9em; border: 1px solid #eee; position: relative; }
+.copy-btn { float: right; padding: 4px 12px; border: 1px solid #ff6a00; border-radius: 6px; color: #ff6a00; cursor: pointer; font-size: 0.8em; background: white; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 0.85em; }
+.nav { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.nav button { padding: 8px 16px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: white; }
+.nav button.active { background: #ff6a00; color: white; border-color: #ff6a00; }
+</style>
+</head>
+<body>
+<h1>🐟 咸鱼批量发布助手</h1>
+<p style="text-align:center;color:#666;">一键生成咸鱼文案，复制粘贴即可发布</p>
+
+<div class="nav">
+  <button class="active" onclick="filterCategory('all')">全部(58)</button>
+  <button onclick="filterCategory('cheap')">🔥引流款 ¥9-14 (17)</button>
+  <button onclick="filterCategory('medium')">💰利润款 ¥19-29 (34)</button>
+  <button onclick="filterCategory('expensive')">🏆高端款 ¥29+ (7)</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📁 文件批处理大师 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_file_tools">📁 【文件批处理大师】限时特价！
+  
+批量重命名、格式转换、智能分类 — 一键处理成千上万文件
+
+✅ 功能亮点：
+• 批量重命名（支持正则/模板/序号）
+• 智能文件分类
+• 批量格式转换
+• 重复文件查找
+  
+💰 价格：¥19（原价¥49，省¥30）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_file_tools')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>✍️ 内容自动生成器 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_content_gen">✍️ 【内容自动生成器】限时特价！
+  
+AI驱动的内容创作工具，提升效率
+
+✅ 功能亮点：
+• 文章标题生成
+• SEO关键词优化
+• 摘要提取
+• 多平台适配
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_content_gen')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🧹 数据清洗工具包 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_data_tools">🧹 【数据清洗工具包】限时特价！
+  
+Excel/CSV数据处理利器
+
+✅ 功能亮点：
+• 智能缺失值填充
+• 重复数据去重
+• 异常值检测
+• 多表合并
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_data_tools')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>🎉 三件套超值捆绑包 <span class="price">¥39</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_bundle">🎉 【三件套超值捆绑包】限时特价！
+  
+一次性拥有全部三个基础工具，省¥98！
+
+✅ 功能亮点：
+• 文件批处理+内容生成+数据清洗
+• 终身免费更新
+• VIP售后群
+  
+💰 价格：¥39（原价¥79，省¥40）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_bundle')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📊 Excel宏工具包 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_excel_macro">📊 【Excel宏工具包】限时特价！
+  
+50+个即用型Excel宏，一键完成数据报表
+
+✅ 功能亮点：
+• 数据透视表一键生成
+• 批量图表生成
+• 智能格式化
+• 多表合并
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_excel_macro')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📄 PDF全能工具箱 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_pdf_tools">📄 【PDF全能工具箱】限时特价！
+  
+PDF合并/拆分/转换/加密一站式处理
+
+✅ 功能亮点：
+• PDF批量合并拆分
+• PDF转Word/Excel
+• PDF加密解密
+• 图片转PDF
+  
+💰 价格：¥29（原价¥45，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_pdf_tools')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>👑 VIP终身会员 <span class="price">¥49</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_vip_member">👑 【VIP终身会员】限时特价！
+  
+解锁全部现有和未来所有工具，终身免费更新
+
+✅ 功能亮点：
+• 全部工具
+• 未来工具免费
+• 终生更新
+• VIP群
+  
+💰 价格：¥49（原价¥199，省¥150）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_vip_member')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎬 短视频批量下载器 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_download">🎬 【短视频批量下载器】限时特价！
+  
+支持抖音/快手/小红书视频批量下载
+
+✅ 功能亮点：
+• 抖音视频下载
+• 快手视频下载
+• 小红书下载
+• 批量下载
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_download')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📝 视频字幕提取工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_subtitle">📝 【视频字幕提取工具】限时特价！
+  
+自动识别并导出视频字幕文本
+
+✅ 功能亮点：
+• 自动语音识别
+• 字幕文本导出
+• 多语言支持
+• SRT格式
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_subtitle')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎞️ 视频拼接合并工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_merge">🎞️ 【视频拼接合并工具】限时特价！
+  
+多段视频一键拼接合并
+
+✅ 功能亮点：
+• 多视频合并
+• 顺序调整
+• 过渡效果
+• 音频同步
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_merge')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🤖 AI对话客户端 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_chat_client">🤖 【AI对话客户端】限时特价！
+  
+聚合多模型AI对话客户端
+
+✅ 功能亮点：
+• 多模型支持
+• 对话历史
+• 提示词模板
+• 导出对话
+  
+💰 价格：¥29（原价¥49，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_chat_client')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🌐 批量翻译工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_translate_batch">🌐 【批量翻译工具】限时特价！
+  
+支持多语言的批量翻译
+
+✅ 功能亮点：
+• 多语言互译
+• 批量文本翻译
+• 文件翻译
+• 术语库
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_translate_batch')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>💧 图片批量加水印 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_watermark_add">💧 【图片批量加水印】限时特价！
+  
+给图片批量添加文字/图片水印
+
+✅ 功能亮点：
+• 文字水印
+• 图片水印
+• 批量处理
+• 位置调整
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_watermark_add')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>✂️ 图片去背景工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_remove_bg">✂️ 【图片去背景工具】限时特价！
+  
+AI自动去除图片背景
+
+✅ 功能亮点：
+• 一键去背景
+• 人像抠图
+• 商品抠图
+• 批量处理
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_remove_bg')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📈 电商价格监控 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_price_monitor">📈 【电商价格监控】限时特价！
+  
+自动监控商品价格变动
+
+✅ 功能亮点：
+• 多平台支持
+• 价格追踪
+• 降价提醒
+• 历史记录
+  
+💰 价格：¥29（原价¥49，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_price_monitor')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔥 热点追踪工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_trending">🔥 【热点追踪工具】限时特价！
+  
+实时追踪各平台热搜话题
+
+✅ 功能亮点：
+• 多平台热点
+• 实时更新
+• 趋势分析
+• 关键词监控
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_trending')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🔒 文件夹加密锁 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_folder_lock">🔒 【文件夹加密锁】限时特价！
+  
+给文件夹加密码保护
+
+✅ 功能亮点：
+• 文件夹加密
+• 密码保护
+• 隐藏保护
+• 批量加密
+  
+💰 价格：¥9（原价¥29，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_folder_lock')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>📦 代部署服务 <span class="price">¥69</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_deploy_service">📦 【代部署服务】限时特价！
+  
+远程安装调试一条龙服务
+
+✅ 功能亮点：
+  
+💰 价格：¥69（原价¥99，省¥30）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_deploy_service')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>🏭 定制开发 <span class="price">¥299</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_custom_dev">🏭 【定制开发】限时特价！
+  
+按需求定制专属工具
+
+✅ 功能亮点：
+  
+💰 价格：¥299（原价¥499，省¥200）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_custom_dev')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>🏢 企业批量部署 <span class="price">¥699</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_enterprise_pkg">🏢 【企业批量部署】限时特价！
+  
+团队批量部署+培训
+
+✅ 功能亮点：
+  
+💰 价格：¥699（原价¥999，省¥300）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_enterprise_pkg')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>🔧 年度维护套餐 <span class="price">¥199</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_maintenance">🔧 【年度维护套餐】限时特价！
+  
+全年技术支持+免费更新
+
+✅ 功能亮点：
+  
+💰 价格：¥199（原价¥299，省¥100）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_maintenance')">📋 复制文案</button>
+</div>
+<div class="product" data-category="expensive">
+  <h3>👑 企业VIP定制 <span class="price">¥1999</span> <span class="tag">🏆高端款</span></h3>
+  <div class="copy-area" id="copy_vip_custom">👑 【企业VIP定制】限时特价！
+  
+全套工具+定制+年度维护
+
+✅ 功能亮点：
+  
+💰 价格：¥1999（原价¥2999，省¥1000）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_vip_custom')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎨 AI图片生成工具 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_image_gen">🎨 【AI图片生成工具】限时特价！
+  
+文字描述生成高质量图片，支持多种风格
+
+✅ 功能亮点：
+• 文生图
+• 风格转换
+• 批量生成
+• 高清输出
+  
+💰 价格：¥29（原价¥45，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_image_gen')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📝 文章摘要生成器 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_summary">📝 【文章摘要生成器】限时特价！
+  
+自动提取文章核心要点，快速获取内容精华
+
+✅ 功能亮点：
+• 一键摘要
+• 关键词提取
+• 多语言支持
+• 原文对比
+  
+💰 价格：¥14（原价¥29，省¥15）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_summary')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔊 文字转语音工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_text_to_speech">🔊 【文字转语音工具】限时特价！
+  
+文字自动转换为语音，支持多种声音
+
+✅ 功能亮点：
+• 多音色选择
+• 语速调节
+• 批量转换
+• MP3导出
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_text_to_speech')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📦 图片压缩工具 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_compress">📦 【图片压缩工具】限时特价！
+  
+批量压缩图片体积，保持清晰度
+
+✅ 功能亮点：
+• 智能压缩
+• 批量处理
+• 格式保持
+• 自定义质量
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_compress')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🔄 图片格式转换器 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_format_convert">🔄 【图片格式转换器】限时特价！
+  
+JPG/PNG/WebP等格式批量互转
+
+✅ 功能亮点：
+• 多格式互转
+• 批量处理
+• 保持质量
+• 拖拽操作
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_format_convert')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📐 图片批量改尺寸 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_resize">📐 【图片批量改尺寸】限时特价！
+  
+一键调整图片尺寸和比例，支持批量
+
+✅ 功能亮点：
+• 自定义尺寸
+• 比例锁定
+• 批量处理
+• 预设模板
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_resize')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📤 多平台发布器 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_batch_publish">📤 【多平台发布器】限时特价！
+  
+一键同步内容到多个自媒体平台
+
+✅ 功能亮点：
+• 多平台支持
+• 定时发布
+• 内容管理
+• 数据统计
+  
+💰 价格：¥29（原价¥59，省¥30）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_batch_publish')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📅 内容日历工具 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_calendar">📅 【内容日历工具】限时特价！
+  
+规划自媒体发布计划，提升内容效率
+
+✅ 功能亮点：
+• 日历视图
+• 内容规划
+• 提醒功能
+• 模板库
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_calendar')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔍 关键词分析工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_keyword_analysis">🔍 【关键词分析工具】限时特价！
+  
+分析热门关键词数据，优化SEO策略
+
+✅ 功能亮点：
+• 热搜分析
+• 关键词挖掘
+• 趋势追踪
+• 竞争分析
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_keyword_analysis')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔐 文件加密工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_file_encrypt">🔐 【文件加密工具】限时特价！
+  
+给文件加密码保护，安全存储私密文件
+
+✅ 功能亮点：
+• AES加密
+• 批量加密
+• 密码保护
+• 解密还原
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_file_encrypt')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🗑️ 文件粉碎工具 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_file_shredder">🗑️ 【文件粉碎工具】限时特价！
+  
+安全删除文件，彻底不可恢复
+
+✅ 功能亮点：
+• 多轮覆写
+• 批量粉碎
+• 目录粉碎
+• 快速模式
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_file_shredder')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>✅ 文件校验工具 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_hash_check">✅ 【文件校验工具】限时特价！
+  
+计算和验证文件哈希值，确保文件完整
+
+✅ 功能亮点：
+• MD5/SHA1/SHA256
+• 批量校验
+• 文件对比
+• 拖拽操作
+  
+💰 价格：¥9（原价¥19，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_hash_check')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🔑 密码生成器 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_password_gen">🔑 【密码生成器】限时特价！
+  
+生成高强度随机密码，保障账号安全
+
+✅ 功能亮点：
+• 自定义长度
+• 字符组合
+• 批量生成
+• 强度检测
+  
+💰 价格：¥9（原价¥19，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_password_gen')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎥 视频压缩工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_compress_video">🎥 【视频压缩工具】限时特价！
+  
+压缩视频体积，保持画质清晰
+
+✅ 功能亮点：
+• 智能压缩
+• 批量处理
+• 质量调节
+• 格式保持
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_compress_video')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>✨ 视频去水印工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_remove_watermark">✨ 【视频去水印工具】限时特价！
+  
+智能去除视频中的水印和Logo
+
+✅ 功能亮点：
+• 智能识别
+• 去水印
+• 无损画质
+• 批量处理
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_remove_watermark')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📰 文章采集工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_article_collect">📰 【文章采集工具】限时特价！
+  
+批量采集网页文章内容到本地
+
+✅ 功能亮点：
+• URL采集
+• 批量抓取
+• 自动去重
+• 导出格式
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_article_collect')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>💬 评论导出工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_comment_export">💬 【评论导出工具】限时特价！
+  
+导出网页评论数据到Excel
+
+✅ 功能亮点：
+• 多平台评论
+• Excel导出
+• 数据清洗
+• 用户分析
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_comment_export')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🕷️ 通用爬虫工具 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_scraper">🕷️ 【通用爬虫工具】限时特价！
+  
+灵活配置的网络数据采集工具
+
+✅ 功能亮点：
+• 自定义规则
+• JS渲染
+• 数据清洗
+• 定时采集
+  
+💰 价格：¥29（原价¥49，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_scraper')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📊 SEO检测工具 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_seo_checker">📊 【SEO检测工具】限时特价！
+  
+检测网页SEO优化情况，提升搜索排名
+
+✅ 功能亮点：
+• SEO评分
+• 关键词检测
+• 链接分析
+• 移动适配
+  
+💰 价格：¥14（原价¥29，省¥15）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_seo_checker')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎯 排版助手工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_layout_helper">🎯 【排版助手工具】限时特价！
+  
+快速排版公众号/小红书文章
+
+✅ 功能亮点：
+• 公众号排版
+• 小红书排版
+• 模板库
+• 一键复制
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_layout_helper')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🖥️ 屏幕录制工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_screen_recorder">🖥️ 【屏幕录制工具】限时特价！
+  
+高清屏幕录制，支持区域/窗口/全屏
+
+✅ 功能亮点：
+• 区域录制
+• 窗口录制
+• 全屏录制
+• 音频录制
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_screen_recorder')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🎞️ GIF动图制作工具 <span class="price">¥14</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_gif_maker">🎞️ 【GIF动图制作工具】限时特价！
+  
+视频转GIF，截图合成动图
+
+✅ 功能亮点：
+• 视频转GIF
+• 截图合成
+• 尺寸调整
+• 帧率控制
+  
+💰 价格：¥14（原价¥25，省¥11）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_gif_maker')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📱 抖音数据分析工具 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_tiktok_analyzer">📱 【抖音数据分析工具】限时特价！
+  
+分析抖音账号数据，优化内容策略
+
+✅ 功能亮点：
+• 粉丝分析
+• 视频数据
+• 话题追踪
+• 竞品分析
+  
+💰 价格：¥29（原价¥49，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_tiktok_analyzer')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>📋 剪贴板增强工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_clipboard_mgr">📋 【剪贴板增强工具】限时特价！
+  
+增强剪贴板功能，保存历史记录
+
+✅ 功能亮点：
+• 历史记录
+• 快速粘贴
+• 收藏夹
+• 搜索过滤
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_clipboard_mgr')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>⏰ 定时提醒工具 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_reminder">⏰ 【定时提醒工具】限时特价！
+  
+桌面定时提醒，提高工作效率
+
+✅ 功能亮点：
+• 自定义提醒
+• 重复任务
+• 弹窗提醒
+• 声音提醒
+  
+💰 价格：¥9（原价¥19，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_reminder')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🏷️ 高级批量重命名 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_batch_rename_adv">🏷️ 【高级批量重命名】限时特价！
+  
+正则/模板/序号等方式批量重命名
+
+✅ 功能亮点：
+• 正则表达式
+• 序号重命名
+• 模板重命名
+• 预览功能
+  
+💰 价格：¥19（原价¥35，省¥16）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_batch_rename_adv')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📱 二维码生成工具 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_qr_code_gen">📱 【二维码生成工具】限时特价！
+  
+批量生成各种类型的二维码
+
+✅ 功能亮点：
+• 文本转码
+• URL转码
+• 批量生成
+• 自定义颜色
+  
+💰 价格：¥9（原价¥19，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_qr_code_gen')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔄 文件夹同步工具 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_file_sync">🔄 【文件夹同步工具】限时特价！
+  
+两个文件夹之间实时同步文件
+
+✅ 功能亮点：
+• 双向同步
+• 增量同步
+• 定时同步
+• 过滤规则
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_file_sync')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🔎 重复文件查找器 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_duplicate_finder">🔎 【重复文件查找器】限时特价！
+  
+快速查找并清理重复文件
+
+✅ 功能亮点：
+• MD5比对
+• 文件名比对
+• 大小比对
+• 批量删除
+  
+💰 价格：¥19（原价¥29，省¥10）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_duplicate_finder')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>💧 视频批量加水印 <span class="price">¥19</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_image_watermark_video">💧 【视频批量加水印】限时特价！
+  
+给视频批量添加文字/图片水印
+
+✅ 功能亮点：
+• 文字水印
+• 图片水印
+• 批量处理
+• 位置调整
+  
+💰 价格：¥19（原价¥39，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_image_watermark_video')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🤖 AI数据分析师 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_ai_data_analyze">🤖 【AI数据分析师】限时特价！
+  
+上传数据自动分析生成报告
+
+✅ 功能亮点：
+• AI数据分析师核心功能
+• 批量处理支持
+• 简单易用界面
+• 数据导出功能
+  
+💰 价格：¥29（原价¥49，省¥20）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_ai_data_analyze')">📋 复制文案</button>
+</div>
+<div class="product" data-category="medium">
+  <h3>🎬 短视频脚本生成 <span class="price">¥29</span> <span class="tag">💰利润款</span></h3>
+  <div class="copy-area" id="copy_short_video_script">🎬 【短视频脚本生成】限时特价！
+  
+AI生成热门短视频脚本
+
+✅ 功能亮点：
+• 短视频脚本生成核心功能
+• 批量处理支持
+• 简单易用界面
+• 数据导出功能
+  
+💰 价格：¥29（原价¥29，省¥0）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_short_video_script')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📝 文本分割工具 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_txt_splitter">📝 【文本分割工具】限时特价！
+  
+快速分割大文本文件，按行数/大小自由划分
+
+✅ 功能亮点：
+• 按行数分割
+• 按大小分割
+• 编码自动识别
+• 批量处理
+  
+💰 价格：¥9（原价¥9，省¥0）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_txt_splitter')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🖼️ 图片快速优化器 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_img_optimizer">🖼️ 【图片快速优化器】限时特价！
+  
+一键压缩优化图片，保持画质减小体积
+
+✅ 功能亮点：
+• 智能压缩
+• 格式转换
+• 批量处理
+• 保持EXIF
+  
+💰 价格：¥9（原价¥9，省¥0）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_img_optimizer')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>📋 剪贴板历史工具 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_clipboard_history">📋 【剪贴板历史工具】限时特价！
+  
+记录剪贴板历史，随时找回复制过的内容
+
+✅ 功能亮点：
+• 历史记录
+• 快速搜索
+• 收藏功能
+• 分类管理
+  
+💰 价格：¥9（原价¥9，省¥0）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_clipboard_history')">📋 复制文案</button>
+</div>
+<div class="product" data-category="cheap">
+  <h3>🏷️ 文件批量重命名 <span class="price">¥9</span> <span class="tag">🔥引流款</span></h3>
+  <div class="copy-area" id="copy_batch_rename_lite">🏷️ 【文件批量重命名】限时特价！
+  
+简单好用的文件批量重命名工具
+
+✅ 功能亮点：
+• 序号重命名
+• 替换重命名
+• 添加前缀后缀
+• 预览效果
+  
+💰 价格：¥9（原价¥9，省¥0）
+🎁 一次购买，永久使用，终身免费更新！
+🔗 教程：https://xiaxiaojun.zeabur.app
+💳 支持支付宝/微信支付
+  
+#效率工具 #办公必备 #Python #自动化 #电脑工具</div>
+  <button class="copy-btn" onclick="copyText('copy_batch_rename_lite')">📋 复制文案</button>
+</div>
+
+<script>
+function copyText(id) {
+    var text = document.getElementById(id).textContent.trim();
+    navigator.clipboard.writeText(text).then(function() {
+        alert('✅ 已复制！粘贴到咸鱼发布即可');
+    });
+}
+function filterCategory(cat) {
+    document.querySelectorAll('.product').forEach(function(p) {
+        if (cat === 'all' || p.getAttribute('data-category') === cat) {
+            p.style.display = '';
+        } else {
+            p.style.display = 'none';
+        }
+    });
+    document.querySelectorAll('.nav button').forEach(function(b) {
+        b.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+</script>
+<div class="footer">
+  <p>📌 发布技巧：</p>
+  <p>1. 每天发2-3条，分时段发布（12:00, 20:00）</p>
+  <p>2. 咸鱼发布时加上3-6张图片，浏览量提升300%</p>
+  <p>3. 标题控制在25字内，突出价格优势</p>
+  <p>4. 每天¥10-20推广费（直通车），ROI约1:5</p>
+  <p>5. 坚持7天，系统会给你更多流量</p>
+</div>
+</body>
+</html>

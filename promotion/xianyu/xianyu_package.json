@@ -1,0 +1,601 @@
+{
+  "platform": "闲鱼",
+  "version": "1.0",
+  "generated": "2026-07-27",
+  "strategy": {
+    "daily_limit": 3,
+    "best_hours": [
+      "12:00-13:00",
+      "20:00-22:00"
+    ],
+    "recommended_days": 7,
+    "promotion_budget": {
+      "daily": 10,
+      "weekly": 70,
+      "monthly": 300,
+      "note": "每天花¥10-20做闲鱼直通车推广，ROI约1:5"
+    }
+  },
+  "listings": [
+    {
+      "id": "file_tools",
+      "name": "文件批处理大师",
+      "emoji": "📁",
+      "price": 19,
+      "original_price": 49,
+      "category": "system",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "content_gen",
+      "name": "内容自动生成器",
+      "emoji": "✍️",
+      "price": 19,
+      "original_price": 29,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "data_tools",
+      "name": "数据清洗工具包",
+      "emoji": "🧹",
+      "price": 19,
+      "original_price": 39,
+      "category": "data",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "bundle",
+      "name": "三件套超值捆绑包",
+      "emoji": "🎉",
+      "price": 39,
+      "original_price": 79,
+      "category": "bundle",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "excel_macro",
+      "name": "Excel宏工具包",
+      "emoji": "📊",
+      "price": 19,
+      "original_price": 35,
+      "category": "office",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "pdf_tools",
+      "name": "PDF全能工具箱",
+      "emoji": "📄",
+      "price": 29,
+      "original_price": 45,
+      "category": "office",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "vip_member",
+      "name": "VIP终身会员",
+      "emoji": "👑",
+      "price": 49,
+      "original_price": 199,
+      "category": "vip",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "download",
+      "name": "短视频批量下载器",
+      "emoji": "🎬",
+      "price": 19,
+      "original_price": 39,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "subtitle",
+      "name": "视频字幕提取工具",
+      "emoji": "📝",
+      "price": 19,
+      "original_price": 29,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "merge",
+      "name": "视频拼接合并工具",
+      "emoji": "🎞️",
+      "price": 19,
+      "original_price": 35,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "chat_client",
+      "name": "AI对话客户端",
+      "emoji": "🤖",
+      "price": 29,
+      "original_price": 49,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "translate_batch",
+      "name": "批量翻译工具",
+      "emoji": "🌐",
+      "price": 19,
+      "original_price": 39,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "watermark_add",
+      "name": "图片批量加水印",
+      "emoji": "💧",
+      "price": 19,
+      "original_price": 35,
+      "category": "image",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "remove_bg",
+      "name": "图片去背景工具",
+      "emoji": "✂️",
+      "price": 19,
+      "original_price": 39,
+      "category": "image",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "price_monitor",
+      "name": "电商价格监控",
+      "emoji": "📈",
+      "price": 29,
+      "original_price": 49,
+      "category": "web",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "trending",
+      "name": "热点追踪工具",
+      "emoji": "🔥",
+      "price": 19,
+      "original_price": 39,
+      "category": "media",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "folder_lock",
+      "name": "文件夹加密锁",
+      "emoji": "🔒",
+      "price": 9,
+      "original_price": 29,
+      "category": "security",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "deploy_service",
+      "name": "代部署服务",
+      "emoji": "📦",
+      "price": 69,
+      "original_price": 99,
+      "category": "service",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "custom_dev",
+      "name": "定制开发",
+      "emoji": "🏭",
+      "price": 299,
+      "original_price": 499,
+      "category": "service",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "enterprise_pkg",
+      "name": "企业批量部署",
+      "emoji": "🏢",
+      "price": 699,
+      "original_price": 999,
+      "category": "service",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "maintenance",
+      "name": "年度维护套餐",
+      "emoji": "🔧",
+      "price": 199,
+      "original_price": 299,
+      "category": "subscription",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "vip_custom",
+      "name": "企业VIP定制",
+      "emoji": "👑",
+      "price": 1999,
+      "original_price": 2999,
+      "category": "enterprise",
+      "promo_strategy": "高端款 - 每天发1个，精准客户",
+      "suggested_boost": 20
+    },
+    {
+      "id": "image_gen",
+      "name": "AI图片生成工具",
+      "emoji": "🎨",
+      "price": 29,
+      "original_price": 45,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "summary",
+      "name": "文章摘要生成器",
+      "emoji": "📝",
+      "price": 14,
+      "original_price": 29,
+      "category": "ai",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "text_to_speech",
+      "name": "文字转语音工具",
+      "emoji": "🔊",
+      "price": 19,
+      "original_price": 35,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "compress",
+      "name": "图片压缩工具",
+      "emoji": "📦",
+      "price": 14,
+      "original_price": 25,
+      "category": "image",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "format_convert",
+      "name": "图片格式转换器",
+      "emoji": "🔄",
+      "price": 14,
+      "original_price": 25,
+      "category": "image",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "resize",
+      "name": "图片批量改尺寸",
+      "emoji": "📐",
+      "price": 14,
+      "original_price": 25,
+      "category": "image",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "batch_publish",
+      "name": "多平台发布器",
+      "emoji": "📤",
+      "price": 29,
+      "original_price": 59,
+      "category": "media",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "calendar",
+      "name": "内容日历工具",
+      "emoji": "📅",
+      "price": 14,
+      "original_price": 25,
+      "category": "media",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "keyword_analysis",
+      "name": "关键词分析工具",
+      "emoji": "🔍",
+      "price": 19,
+      "original_price": 35,
+      "category": "media",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "file_encrypt",
+      "name": "文件加密工具",
+      "emoji": "🔐",
+      "price": 19,
+      "original_price": 29,
+      "category": "security",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "file_shredder",
+      "name": "文件粉碎工具",
+      "emoji": "🗑️",
+      "price": 14,
+      "original_price": 25,
+      "category": "security",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "hash_check",
+      "name": "文件校验工具",
+      "emoji": "✅",
+      "price": 9,
+      "original_price": 19,
+      "category": "security",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "password_gen",
+      "name": "密码生成器",
+      "emoji": "🔑",
+      "price": 9,
+      "original_price": 19,
+      "category": "security",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "compress_video",
+      "name": "视频压缩工具",
+      "emoji": "🎥",
+      "price": 19,
+      "original_price": 29,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "remove_watermark",
+      "name": "视频去水印工具",
+      "emoji": "✨",
+      "price": 19,
+      "original_price": 39,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "article_collect",
+      "name": "文章采集工具",
+      "emoji": "📰",
+      "price": 19,
+      "original_price": 39,
+      "category": "web",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "comment_export",
+      "name": "评论导出工具",
+      "emoji": "💬",
+      "price": 19,
+      "original_price": 35,
+      "category": "web",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "scraper",
+      "name": "通用爬虫工具",
+      "emoji": "🕷️",
+      "price": 29,
+      "original_price": 49,
+      "category": "web",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "seo_checker",
+      "name": "SEO检测工具",
+      "emoji": "📊",
+      "price": 14,
+      "original_price": 29,
+      "category": "web",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "layout_helper",
+      "name": "排版助手工具",
+      "emoji": "🎯",
+      "price": 19,
+      "original_price": 29,
+      "category": "media",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "screen_recorder",
+      "name": "屏幕录制工具",
+      "emoji": "🖥️",
+      "price": 19,
+      "original_price": 35,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "gif_maker",
+      "name": "GIF动图制作工具",
+      "emoji": "🎞️",
+      "price": 14,
+      "original_price": 25,
+      "category": "video",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "tiktok_analyzer",
+      "name": "抖音数据分析工具",
+      "emoji": "📱",
+      "price": 29,
+      "original_price": 49,
+      "category": "media",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "clipboard_mgr",
+      "name": "剪贴板增强工具",
+      "emoji": "📋",
+      "price": 19,
+      "original_price": 29,
+      "category": "system",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "reminder",
+      "name": "定时提醒工具",
+      "emoji": "⏰",
+      "price": 9,
+      "original_price": 19,
+      "category": "system",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "batch_rename_adv",
+      "name": "高级批量重命名",
+      "emoji": "🏷️",
+      "price": 19,
+      "original_price": 35,
+      "category": "system",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "qr_code_gen",
+      "name": "二维码生成工具",
+      "emoji": "📱",
+      "price": 9,
+      "original_price": 19,
+      "category": "image",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "file_sync",
+      "name": "文件夹同步工具",
+      "emoji": "🔄",
+      "price": 19,
+      "original_price": 39,
+      "category": "system",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "duplicate_finder",
+      "name": "重复文件查找器",
+      "emoji": "🔎",
+      "price": 19,
+      "original_price": 29,
+      "category": "system",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "image_watermark_video",
+      "name": "视频批量加水印",
+      "emoji": "💧",
+      "price": 19,
+      "original_price": 39,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "ai_data_analyze",
+      "name": "AI数据分析师",
+      "emoji": "🤖",
+      "price": 29,
+      "original_price": 49,
+      "category": "ai",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "short_video_script",
+      "name": "短视频脚本生成",
+      "emoji": "🎬",
+      "price": 29,
+      "original_price": 29,
+      "category": "video",
+      "promo_strategy": "利润款 - 每天发2个，稳定出单",
+      "suggested_boost": 10
+    },
+    {
+      "id": "txt_splitter",
+      "name": "文本分割工具",
+      "emoji": "📝",
+      "price": 9,
+      "original_price": 9,
+      "category": "system",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "img_optimizer",
+      "name": "图片快速优化器",
+      "emoji": "🖼️",
+      "price": 9,
+      "original_price": 9,
+      "category": "image",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "clipboard_history",
+      "name": "剪贴板历史工具",
+      "emoji": "📋",
+      "price": 9,
+      "original_price": 9,
+      "category": "system",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    },
+    {
+      "id": "batch_rename_lite",
+      "name": "文件批量重命名",
+      "emoji": "🏷️",
+      "price": 9,
+      "original_price": 9,
+      "category": "system",
+      "promo_strategy": "引流款 - 每天发2个，吸引流量",
+      "suggested_boost": 5
+    }
+  ]
+}
