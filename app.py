@@ -54,8 +54,13 @@ def init_data():
             json.dump({"orders":[], "total_revenue":0}, f, ensure_ascii=False, indent=2)
 
 def load_orders():
-    with open(ORDERS_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    if not ORDERS_FILE.exists():
+        return {"orders": [], "total_revenue": 0}
+    try:
+        with open(ORDERS_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return {"orders": [], "total_revenue": 0}
 
 def save_orders(data):
     with open(ORDERS_FILE, 'w', encoding='utf-8') as f:
