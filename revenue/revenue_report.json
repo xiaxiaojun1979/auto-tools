@@ -1,18 +1,13 @@
 {
-  "date": "2026-07-27 20:00",
+  "date": "2026-07-28 20:00",
   "stats": {
-    "total": 0,
-    "total_orders": 0,
-    "today": 0,
-    "today_orders": 0,
-    "week": 0,
-    "month": 0,
+    "total": 164,
+    "total_orders": 6,
+    "today": 145,
+    "today_orders": 5,
+    "week": 145,
+    "month": 145,
     "trend": [
-      {
-        "date": "2026-07-21",
-        "revenue": 0,
-        "orders": 0
-      },
       {
         "date": "2026-07-22",
         "revenue": 0,
@@ -42,37 +37,47 @@
         "date": "2026-07-27",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-07-28",
+        "revenue": 145,
+        "orders": 5
       }
     ],
     "goals": {
       "daily": {
         "target": 100,
-        "actual": 0,
-        "rate": 0.0
+        "actual": 145,
+        "rate": 145.0
       },
       "weekly": {
         "target": 700,
-        "actual": 0,
-        "rate": 0.0
+        "actual": 145,
+        "rate": 20.7
       },
       "monthly": {
         "target": 3000,
-        "actual": 0,
-        "rate": 0.0
+        "actual": 145,
+        "rate": 4.8
       }
     },
-    "product_revenue": {},
+    "product_revenue": {
+      "file_tools": {
+        "count": 6,
+        "revenue": 164
+      }
+    },
     "pending": 0
   },
   "plans": [
-    "【daily目标】尚未有收入，需要立即启动推广！¥100/天",
-    "【weekly目标】尚未有收入，需要立即启动推广！¥700/天",
-    "【monthly目标】尚未有收入，需要立即启动推广！¥3000/天",
+    "【daily目标】已超额完成！达成率145.0% 🎉",
+    "【weekly目标】达成率20.7%，需要加大推广力度",
+    "【monthly目标】达成率4.8%，需要加大推广力度",
+    "【畅销品】file_tools 收入¥164，建议重点推广",
     "【增收建议】推广 VIP 会员（¥199），利润率最高",
     "【增收建议】推出企业定制服务，单价 ¥500+",
     "【增收建议】闲鱼每天发1条商品信息，坚持7天",
-    "【增收建议】朋友圈每3天分享1次客户好评",
-    "【今日目标】至少完成1单（¥29-¥199）"
+    "【增收建议】朋友圈每3天分享1次客户好评"
   ],
   "goals": {
     "daily": 100,

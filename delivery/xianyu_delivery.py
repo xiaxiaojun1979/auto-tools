@@ -15,7 +15,7 @@ XB = "/Users/tianmengpiaoxiang/.qclaw/skills/xbrowser/scripts/xb.cjs"
 CODES_FILE = BASE_DIR / "delivery" / "activation_codes.json"
 ORDERS_FILE = BASE_DIR / "daily_report" / "data" / "orders.json"
 DELIVERY_LOG = "/tmp/xianyu_delivery.log"
-SITE_URL = "https://xiaxiaojun.zeabur.app"
+SITE_URL = "https://xiaxiaojun.com"
 
 
 def log(msg):

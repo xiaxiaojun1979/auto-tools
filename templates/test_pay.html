@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>支付测试</title>
+<style>
+body{font-family:sans-serif;max-width:500px;margin:50px auto;padding:20px;text-align:center}
+.btn{display:block;width:100%;padding:16px;margin:12px 0;border:none;border-radius:12px;font-size:1.1em;font-weight:700;cursor:pointer;color:white}
+.btn-buy{background:linear-gradient(135deg,#667eea,#764ba2)}
+.btn-paid{background:linear-gradient(135deg,#52c41a,#389e0d)}
+.btn-download{background:linear-gradient(135deg,#1677ff,#0958d9)}
+.success{display:none;background:linear-gradient(135deg,#f6ffed,#d9f7be);border:2px solid #95de64;border-radius:20px;padding:28px 20px;margin-top:20px}
+.success .code{font-size:2.6em;font-weight:bold;letter-spacing:10px;background:white;border:2px dashed #52c41a;border-radius:12px;padding:14px;margin:12px auto;max-width:260px}
+input{width:100%;padding:14px;border:2px solid #e8e8e8;border-radius:12px;font-size:1em;margin-top:8px;box-sizing:border-box}
+.hidden{display:none}
+.loading{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite;margin-right:6px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style></head>
+<body>
+<h2>🛒 文件批处理大师</h2>
+<p style="color:#666">¥29 - 付款后自动交付</p>
+
+<div id="step1">
+  <button class="btn btn-buy" onclick="step1()">💳 确认支付 - ¥29</button>
+</div>
+
+<div id="step2" class="hidden">
+  <p>⏳ 二维码加载中...</p>
+  <div id="qrArea"></div>
+  <button class="btn btn-paid" id="paidBtn" onclick="step2to3()">✅ 我已付款</button>
+</div>
+
+<div id="step3" class="hidden">
+  <div class="success" id="successBox">
+    <div style="font-size:3em">🎉</div>
+    <h3 style="color:#389e0d;margin:4px 0">支付成功 支付成功！</h3>
+    <div style="color:#666;font-size:0.9em">下载验证码自动生成</div>
+    <div class="code" id="codeDisplay">----</div>
+  </div>
+  <label style="display:block;text-align:left;font-weight:600;margin-top:16px">📧 请输入下载邮箱</label>
+  <input type="email" id="emailInput" placeholder="如 123@qq.com">
+  <button class="btn btn-download" id="dlBtn" onclick="doDownload()">📥 获取产品下载链接</button>
+  <div id="result" style="margin-top:16px;padding:20px;background:#f6ffed;border-radius:16px;display:none"></div>
+</div>
+
+<script>
+var code = '';
+function step1() {
+  document.getElementById('step1').classList.add('hidden');
+  document.getElementById('step2').classList.remove('hidden');
+  document.getElementById('qrArea').innerHTML = '<p>正在生成二维码...</p>';
+  
+  fetch('/api/payment/qrcode', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({product_id:'file_tools', payment:'alipay'})
+  }).then(r=>r.json()).then(d=>{
+    if(d.ok) document.getElementById('qrArea').innerHTML = '<p>✅ 二维码已生成，请用支付宝扫码付款</p>';
+    else document.getElementById('qrArea').innerHTML = '<p>请转账到支付宝 15156215580</p>';
+  });
+}
+function step2to3() {
+  var btn = document.getElementById('paidBtn');
+  btn.disabled = true; btn.innerHTML = '<span class="loading"></span> 校验码生成中...';
+  
+  fetch('/api/order/pay-confirm', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({product_id:'file_tools', payment:'alipay'})
+  }).then(r=>r.json()).then(d=>{
+    if(d.ok) {
+      code = d.verify_code;
+      document.getElementById('codeDisplay').textContent = code;
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+      document.getElementById('successBox').style.display = 'block';
+      document.getElementById('emailInput').focus();
+    } else {
+      alert('失败: ' + d.msg);
+      btn.disabled=false; btn.innerHTML='✅ 我已付款';
+    }
+  }).catch(()=>{alert('网络错误');btn.disabled=false;btn.innerHTML='✅ 我已付款';});
+}
+function doDownload() {
+  var email = document.getElementById('emailInput').value.trim();
+  if(!email||!email.includes('@')){alert('请输入邮箱');return;}
+  var btn = document.getElementById('dlBtn');
+  btn.disabled=true; btn.innerHTML='<span class="loading"></span> 发送中...';
+  
+  fetch('/api/order', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({product_id:'file_tools', email:email, payment:'支付宝', verify_code:code})
+  }).then(r=>r.json()).then(d=>{
+    if(d.ok) {
+      document.getElementById('result').style.display='block';
+      document.getElementById('result').innerHTML = '🎉 成功！激活码: <b>'+d.delivery_code+'</b><br><a href="'+d.download_url+'" target="_blank">📥 下载</a><br>已发送到邮箱';
+      btn.style.display='none';
+    } else {
+      alert('失败: '+d.msg);
+      btn.disabled=false; btn.innerHTML='📥 获取产品下载链接';
+    }
+  });
+}
+</script>
+</body></html>

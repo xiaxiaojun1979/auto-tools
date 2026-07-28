@@ -95,7 +95,7 @@
                         <th>买家</th>
                         <th>付款方式</th>
                         <th>时间</th>
-                        <th>状态</th>
+                        <th>激活码</th><th>状态</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -107,7 +107,7 @@
                         <td>{{ o.product_name }}</td>
                         <td><strong>¥{{ o.price }}</strong></td>
                         <td>{{ o.buyer_email }}</td>
-                        <td>{{ o.payment }}</td>
+                        <td>{{ o.payment }}{% if o.transaction_id %}<br><small style="color:#888;font-size:10px;">交易号: {{ o.transaction_id }}</small>{% endif %}</td>
                         <td class="order-detail">{{ o.created_at[5:16] }}</td>
                         <td>
                             {% if o.status == 'pending' %}

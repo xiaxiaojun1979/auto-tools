@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免费在线工具 - AutoTools | 免下载免安装</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+               background: #f5f7fa; color: #1a1a2e; }
+        .header { background: linear-gradient(135deg, #52c41a, #389e0d);
+                  color: white; padding: 40px 20px; text-align: center; }
+        .header h1 { font-size: 2em; margin-bottom: 6px; }
+        .header p { font-size: 1em; opacity: 0.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        .back-link { display:inline-block; margin-bottom:20px; color:#667eea; text-decoration:none; font-weight:500; }
+        .back-link:hover { text-decoration:underline; }
+        
+        {% if tool %}
+        <!-- ===== 单个工具页 ===== -->
+        <div style="background:white;border-radius:16px;padding:32px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="font-size:3em;margin-bottom:12px;">{{ tool.emoji }}</div>
+            <h2 style="margin-bottom:4px;">{{ tool.name }} <span style="font-size:12px;background:#52c41a;color:white;padding:2px 10px;border-radius:10px;vertical-align:middle;">免费</span></h2>
+            <p style="color:#666;margin-bottom:20px;">{{ tool.desc }}</p>
+            
+            <div style="background:#f9f9f9;border-radius:12px;padding:24px;margin-bottom:20px;min-height:200px;text-align:center;" id="freeToolDemo">
+                <div style="padding:40px;color:#999;">
+                    <div style="font-size:48px;margin-bottom:12px;">🛠️</div>
+                    <div>在线演示加载中...</div>
+                    <div style="font-size:12px;margin-top:8px;">这是一个免费试用版，部分功能受限</div>
+                </div>
+            </div>
+            
+            <div style="background:linear-gradient(135deg,#fff7e6,#fff0d6);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid #ffe0b2;">
+                <div style="font-size:14px;font-weight:600;margin-bottom:8px;">🔒 免费版 vs 付费版</div>
+                <table style="width:100%;font-size:13px;border-collapse:collapse;">
+                    <tr><td style="padding:6px 0;color:#52c41a;">✅ 免费版</td><td style="padding:6px 0;color:#888;">基础功能 + 每日3次</td></tr>
+                    <tr><td style="padding:6px 0;color:#667eea;">⭐ 付费版</td><td style="padding:6px 0;color:#888;">全部功能 + 无限使用 + 批量处理</td></tr>
+                </table>
+            </div>
+            
+            <a href="/" 
+               style="display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:16px;font-weight:600;
+                      background:linear-gradient(135deg,#667eea,#764ba2);color:white;cursor:pointer;text-align:center;text-decoration:none;">
+                ⭐ 解锁完整版 · 仅 ¥{{ tool.price }}
+            </a>
+            <div style="text-align:center;margin-top:10px;font-size:12px;color:#999;">
+                返回首页，找到「{{ tool.name }}」点击购买即可
+            </div>
+        </div>
+        {% else %}
+        <!-- ===== 工具列表 ===== -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+            {% for p in products %}
+            <a href="/free/{{ p.id }}" style="text-decoration:none;color:inherit;">
+                <div style="background:white;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform 0.2s;border:1px solid #e8e8e8;">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+                        <span style="font-size:2em;">{{ p.emoji }}</span>
+                        <div>
+                            <div style="font-weight:600;">{{ p.name }}</div>
+                            <div style="font-size:12px;color:#888;">免费在线版 · 无需安装</div>
+                        </div>
+                        <span style="margin-left:auto;background:#52c41a;color:white;padding:2px 8px;border-radius:8px;font-size:11px;">免费</span>
+                    </div>
+                    <p style="font-size:13px;color:#666;">{{ p.desc[:60] }}{% if p.desc|length > 60 %}...{% endif %}</p>
+                    <div style="margin-top:12px;text-align:right;color:#667eea;font-size:13px;font-weight:500;">立即使用 →</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div style="text-align:center;margin-top:40px;padding:20px;background:white;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+            <p style="color:#888;font-size:13px;margin-bottom:12px;">💡 免费版每天限制使用3次，购买付费版解锁全部功能</p>
+            <a href="/" style="display:inline-block;padding:10px 32px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;text-decoration:none;border-radius:10px;font-weight:600;">🏠 返回首页查看全部工具</a>
+        </div>
+    </div>
+</body>
+</html>

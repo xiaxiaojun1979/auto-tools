@@ -1,0 +1,6 @@
+{
+  "gateway": "none",
+  "payjs_mchid": "",
+  "payjs_key": "",
+  "notify_url": "https://xiaxiaojun.com/api/payment/notify"
+}

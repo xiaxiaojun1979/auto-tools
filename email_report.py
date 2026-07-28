@@ -290,3 +290,70 @@ def send_email(html_content, subject=None):
 if __name__ == "__main__":
     html = build_report()
     send_email(html)
+
+SITE_URL = 'https://xiaoxiaojun.com'
+
+def send_order_email(order_id, buyer_email, product_name, activation_code, download_url):
+    """发送订单确认和交付邮件"""
+    subject = f"✅ AutoTools - {product_name} 已自动交付"
+    
+    html = f"""<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><style>
+body {{ font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }}
+.header {{ background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 16px; text-align: center; }}
+.header h1 {{ margin: 0; font-size: 24px; }}
+.content {{ padding: 24px; background: #f9fafb; border-radius: 12px; margin: 16px 0; }}
+.code {{ background: #1a1a2e; color: #ffd700; padding: 12px; border-radius: 8px; font-size: 18px; text-align: center; letter-spacing: 3px; font-family: monospace; }}
+.btn {{ display: inline-block; padding: 14px 32px; background: #22c55e; color: white; text-decoration: none; border-radius: 8px; font-size: 16px; margin: 8px 0; }}
+.footer {{ color: #999; font-size: 12px; margin-top: 24px; text-align: center; }}
+</style></head>
+<body>
+<div class="header">
+    <h1>✅ 购买成功！产品已自动交付</h1>
+    <p style="opacity:0.9;margin-top:8px;">感谢你的信任与支持</p>
+</div>
+<div class="content">
+    <h3>📦 产品信息</h3>
+    <p><b>产品：</b>{product_name}</p>
+    <p><b>订单号：</b>{order_id}</p>
+    <h3 style="margin-top:20px;">🔑 激活码</h3>
+    <div class="code" style="font-size:22px;letter-spacing:4px;padding:16px;user-select:all;">{activation_code}</div>
+    <p style="font-size:11px;color:#999;">👆 点击选中后复制激活码</p>
+    <p style="color:#666;font-size:14px;margin-top:8px;">请妥善保管此激活码</p>
+    <div style="text-align:center;margin-top:20px;">
+        <a href="{download_url}" class="btn">📥 立即下载产品</a>
+    </div>
+    <p style="color:#888;font-size:13px;margin-top:8px;">💡 如果下载链接打不开，请复制以下链接到浏览器打开：<br>
+    <code style="font-size:12px;word-break:break-all;color:#1677ff;">{download_url}</code></p>
+    <p style="color:#888;font-size:13px;margin-top:8px;">激活码也可在官网 <b>xiaxiaojun.com</b> → 输入激活码使用</p>
+</div>
+<div class="footer">
+    <p>AutoTools 自动化工具集 | <a href="{SITE_URL}">{SITE_URL}</a></p>
+    <p>如有问题请联系：35538112@qq.com</p>
+</div>
+</body></html>"""
+    
+    try:
+        from email.mime.text import MIMEText
+        import smtplib
+        
+        sender = "35538112@qq.com"
+        password = SMTP_CONFIG.get("password", "")
+        
+        if password and password != "SMTP授权码":
+            msg = MIMEText(html, 'html', 'utf-8')
+            msg['Subject'] = subject
+            msg['From'] = sender
+            msg['To'] = buyer_email
+            
+            server = smtplib.SMTP_SSL('smtp.qq.com', 465, timeout=15)
+            server.login(sender, password)
+            server.sendmail(sender, [buyer_email], msg.as_string())
+            server.quit()
+            print(f"  ✅ 交付邮件已发送到 {buyer_email}")
+            return True
+    except Exception as e:
+        print(f"  ⚠️ 发送邮件失败: {e}")
+    
+    return False

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoTools 优化报告 - 2026-07-28</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f0f2f5; color:#1a1a2e; padding:20px; }
+.container { max-width:900px; margin:0 auto; }
+.header { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:30px; border-radius:16px; margin-bottom:20px; text-align:center; }
+.header h1 { font-size:1.6em; }
+.header .sub { opacity:0.8;font-size:0.9em;margin-top:4px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.card { background:white; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.card .num { font-size:1.8em; font-weight:bold; }
+.card .lbl { font-size:0.8em; color:#999; margin-top:2px; }
+.card.green .num { color:#52c41a; }
+.card.blue .num { color:#667eea; }
+.card.orange .num { color:#fa8c16; }
+.card.red .num { color:#ff4d4f; }
+.section { background:white; border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:1.1em; margin-bottom:12px; border-bottom:2px solid #f0f0f0; padding-bottom:8px; color:#333; }
+.goal-bar { background:#f5f5f5; border-radius:12px; height:24px; overflow:hidden; margin:12px 0; }
+.goal-fill { height:100%; background:linear-gradient(90deg,#52c41a,#73d13d); border-radius:12px; transition:width 0.5s; text-align:center; line-height:24px; color:white; font-size:0.8em; }
+.footer { text-align:center; color:#999; font-size:0.8em; padding:20px; }
+.tag { display:inline-block; padding:0 6px; border-radius:4px; font-size:0.75em; margin:2px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🚀 AutoTools 自动优化报告</h1>
+    <div class="sub">📅 2026-07-28 · 83个产品在售 · 总价值¥6679</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card green">
+      <div class="num">¥164</div>
+      <div class="lbl">累计收入</div>
+    </div>
+    <div class="card blue">
+      <div class="num">6</div>
+      <div class="lbl">累计订单</div>
+    </div>
+    <div class="card orange">
+      <div class="num">¥145</div>
+      <div class="lbl">今日收入</div>
+    </div>
+    <div class="card red">
+      <div class="num">5</div>
+      <div class="lbl">今日订单</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎯 日目标进度（¥100）</h2>
+    <div style="display:flex;justify-content:space-between;font-size:0.85em;color:#999">
+      <span>今日收入: ¥145</span>
+      <span>达成率: 100%</span>
+      <span>目标: ¥100</span>
+    </div>
+    <div class="goal-bar">
+      <div class="goal-fill" style="width:100%">¥145</div>
+    </div>
+    <div style="color:#52c41a;font-size:0.85em;text-align:center;margin-top:4px">✅ 恭喜达成日目标！继续保持 🎉</div>
+  </div>
+
+  <div class="section">
+    <h2>📈 近7天趋势</h2>
+    
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-22</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-23</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-24</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-25</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-26</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-27</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:0.0%;background:#f0f0f0;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥0</span>
+            </div>
+            <div style="display:flex;align-items:center;margin:4px 0">
+                <span style="width:80px;font-size:0.8em;color:#999">07-28</span>
+                <div style="flex:1;height:20px;background:#f5f5f5;border-radius:10px;overflow:hidden">
+                    <div style="height:100%;width:100.0%;background:#52c41a;border-radius:10px;transition:width 0.3s"></div>
+                </div>
+                <span style="width:60px;text-align:right;font-size:0.85em;font-weight:bold">¥145</span>
+            </div>
+  </div>
+
+  <div class="section">
+    <h2>🏆 产品排行（Top 10）</h2>
+    
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>🥇 文件批处理大师 <span style="background:#ff4d4f;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">6单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥164</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>🥈 内容创作者效率包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>🥉 办公自动化全家桶 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>4. 开发者效率工具包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>5. AI创新应用包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>6. 企业管理超值包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>7. 内容自动生成器 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>8. 数据清洗工具包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>9. Excel宏工具包 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee">
+                <span>10. PDF全能工具箱 <span style="background:#f0f0f0;color:white;padding:1px 8px;border-radius:8px;font-size:0.75em">0单</span></span>
+                <span style="font-weight:bold;color:#52c41a">¥0</span>
+            </div>
+  </div>
+
+  <div class="grid2">
+    <div class="section" style="margin:0">
+      <h2>📂 分类统计</h2>
+      
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>system</span>
+                <span>6单 · ¥164</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>package</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>ai</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>data</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>office</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>vip</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>video</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>image</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>web</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>media</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>security</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>service</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>subscription</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>enterprise</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>ai_tool</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>video_tool</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>career</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>dev_tool</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>tool</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>data_tool</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>education</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>marketing</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>professional</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>lifestyle</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>finance</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>productivity</span>
+                <span>0单 · ¥0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:0.85em">
+                <span>design</span>
+                <span>0单 · ¥0</span>
+            </div>
+    </div>
+    <div class="section" style="margin:0">
+      <h2>📋 待处理</h2>
+      <div style="color:#52c41a">✅ 无待处理</div>
+      <div style="margin-top:12px;font-size:0.9em">
+        <div>后台: <a href="http://localhost:8000/admin" style="color:#667eea">localhost:8000/admin</a></div>
+        <div>密码: xxj63858930</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💡 今日优化策略</h2>
+    
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">🟢</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">达成</span>
+                <span style="color:#555">今日收入¥145，达成日目标🎉</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">🏆</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">畅销</span>
+                <span style="color:#555">文件批处理大师(6单/¥164)</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">📢</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">推广</span>
+                <span style="color:#555">重点推广文件批处理大师，闲鱼/小红书多发帖</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">💎</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">高利</span>
+                <span style="color:#555">高价值服务(9个): ¥299-¥1999</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">🎯</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">推荐</span>
+                <span style="color:#555">企业客户推荐定制开发(¥499)和企业部署(¥999)</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">📱</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">闲鱼</span>
+                <span style="color:#555">每天发1条商品信息，用带图文案</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">👥</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">朋友圈</span>
+                <span style="color:#555">每3天分享一次客户好评</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">📕</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">小红书</span>
+                <span style="color:#555">发布工具使用教程引流</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">🤝</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">知乎</span>
+                <span style="color:#555">在相关问题下回答引流</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">💰</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">定价</span>
+                <span style="color:#555">¥19-29(55个) ¥35-99(19个) ¥199+(9个)</span>
+            </div>
+            <div style="display:flex;padding:8px 0;border-bottom:1px solid #f5f5f5;font-size:0.95em">
+                <span style="margin-right:8px">🎁</span>
+                <span style="background:#667eea;color:white;padding:0 8px;border-radius:4px;font-size:0.8em;margin-right:8px;white-space:nowrap">捆绑</span>
+                <span style="color:#555">推荐三件套(¥79)和VIP会员(¥199)，提升客单价</span>
+            </div>
+  </div>
+
+  <div class="footer">
+    <p>AutoTools 自动优化引擎 · 收益第一原则</p>
+    <p>支付宝: 15156215580 | 每天自动运行 · 数据分析驱动决策</p>
+  </div>
+</div>
+</body>
+</html>

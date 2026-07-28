@@ -107,3 +107,104 @@
 [2026-07-27 20:01:10]   📧 邮件报告: 已保存/发送
 [2026-07-27 20:01:10] ==================================================
 [2026-07-27 20:01:10] 
+[2026-07-28 20:00:00] 
+[2026-07-28 20:00:00] ==================================================
+[2026-07-28 20:00:00]   🌙 AutoTools 晚间工作流启动
+[2026-07-28 20:00:00]   ⏰ 2026-07-28 20:00:00
+[2026-07-28 20:00:00] ==================================================
+[2026-07-28 20:00:00] 🔧 第零步：系统维护检查...
+[2026-07-28 20:00:01]     ✅ 系统健康
+[2026-07-28 20:00:01] 🔍 检查服务器状态...
+[2026-07-28 20:00:01]     ✅ 本地服务器在线 (HTTP 200)
+[2026-07-28 20:00:01] 📊 第一步：分析热门应用趋势...
+[2026-07-28 20:00:01]     趋势类别: 7
+[2026-07-28 20:00:01]     已有产品: 79
+[2026-07-28 20:00:01]     可开发: 36 个
+[2026-07-28 20:00:01]     推荐开发: 2 个
+[2026-07-28 20:00:01]       ✅ AI思维导图工具 (¥29)
+[2026-07-28 20:00:01]       ✅ 抖音自动回复 (¥45)
+[2026-07-28 20:00:01] 🔧 第二步：开发 2 个新工具...
+[2026-07-28 20:00:01]      📄 代码生成: /Users/tianmengpiaoxiang/auto_business/products/ai工具/ai_mindmap.py
+[2026-07-28 20:00:01]      ✅ 已上架: AI思维导图工具 ¥29
+[2026-07-28 20:00:01]      📄 代码生成: /Users/tianmengpiaoxiang/auto_business/products/短视频_直播工具/tiktok_auto_reply.py
+[2026-07-28 20:00:01]      ✅ 已上架: 抖音自动回复 ¥45
+[2026-07-28 20:00:01]      📊 产品总数: 81, 总价值: ¥6585
+[2026-07-28 20:00:01] 📰 执行平台发布（今日头条+百家号）...
+[2026-07-28 20:00:01]    清理旧的浏览器进程...
+[2026-07-28 20:00:05] 
+[2026-07-28 20:00:05] ==================================================
+[2026-07-28 20:00:05]   🌙 AutoTools 晚间工作流启动
+[2026-07-28 20:00:05]   ⏰ 2026-07-28 20:00:05
+[2026-07-28 20:00:05] ==================================================
+[2026-07-28 20:00:05] 🔧 第零步：系统维护检查...
+[2026-07-28 20:00:05]     ✅ 系统健康
+[2026-07-28 20:00:05] 🔍 检查服务器状态...
+[2026-07-28 20:00:05]     ✅ 本地服务器在线 (HTTP 200)
+[2026-07-28 20:00:05] 📊 第一步：分析热门应用趋势...
+[2026-07-28 20:00:05]     趋势类别: 7
+[2026-07-28 20:00:05]     已有产品: 81
+[2026-07-28 20:00:05]     可开发: 34 个
+[2026-07-28 20:00:05]     推荐开发: 2 个
+[2026-07-28 20:00:05]       ✅ AI自动生成PPT (¥45)
+[2026-07-28 20:00:05]       ✅ 视频批量剪辑 (¥49)
+[2026-07-28 20:00:05] 🔧 第二步：开发 2 个新工具...
+[2026-07-28 20:00:05]      📄 代码生成: /Users/tianmengpiaoxiang/auto_business/products/ai工具/ai_ppt.py
+[2026-07-28 20:00:05]      ✅ 已上架: AI自动生成PPT ¥45
+[2026-07-28 20:00:05]      📄 代码生成: /Users/tianmengpiaoxiang/auto_business/products/短视频_直播工具/video_clip_batch.py
+[2026-07-28 20:00:05]      ✅ 已上架: 视频批量剪辑 ¥49
+[2026-07-28 20:00:05]      📊 产品总数: 83, 总价值: ¥6679
+[2026-07-28 20:00:05] 📰 执行平台发布（今日头条+百家号）...
+[2026-07-28 20:00:05]    清理旧的浏览器进程...
+[2026-07-28 20:00:06]    📰 发布到今日头条...
+[2026-07-28 20:00:10]    📰 发布到今日头条...
+[2026-07-28 20:00:13]     ⚠️ 头条发布状态: Need login
+[2026-07-28 20:00:13]     💾 文章已保存到 /tmp/toutiao_ready.txt
+[2026-07-28 20:00:15]     ⚠️ 头条发布状态: Need login
+[2026-07-28 20:00:15]     💾 文章已保存到 /tmp/toutiao_ready.txt
+[2026-07-28 20:00:21]    📰 发布到百家号...
+[2026-07-28 20:00:23]    📰 发布到百家号...
+[2026-07-28 20:00:29]     ⚠️ 百家号发布状态: Open failed: Exit code 1: 
+[2026-07-28 20:00:29]     📊 发布统计: 共0次, 成功0次
+[2026-07-28 20:00:29]     ✅ 平台发布流程完成
+[2026-07-28 20:00:29] 📈 第三步：生成运营报告...
+[2026-07-28 20:00:29]     ✅ 运营报告已生成
+[2026-07-28 20:00:29]     ✅ 优化报告已生成
+[2026-07-28 20:00:29] 📢 生成推广内容...
+[2026-07-28 20:00:29]     ❌ 推广生成失败: 'total_posts'
+[2026-07-28 20:00:29] Traceback (most recent call last):
+  File "/Users/tianmengpiaoxiang/auto_business/evening_workflow.py", line 215, in step_generate_promotion
+    summary = engine.print_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 312, in print_summary
+    summary = self.generate_promotion_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 292, in generate_promotion_summary
+    posts, hot = self.generate_daily_posts()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 242, in generate_daily_posts
+    self.stats["total_posts"] += len(all_products) * len(PLATFORMS)
+KeyError: 'total_posts'
+
+[2026-07-28 20:00:29] 📧 第四步：发送邮件报告...
+[2026-07-28 20:00:29]     ⚠️ 百家号发布状态: Open failed: Exit code 1: /bin/sh: ioreg: command not found
+[2026-07-28 20:00:29]     📊 发布统计: 共0次, 成功0次
+[2026-07-28 20:00:29]     ✅ 平台发布流程完成
+[2026-07-28 20:00:29] 📈 第三步：生成运营报告...
+[2026-07-28 20:00:29]     ✅ 运营报告已生成
+[2026-07-28 20:00:29]     ✅ 优化报告已生成
+[2026-07-28 20:00:29] 📢 生成推广内容...
+[2026-07-28 20:00:29]     ❌ 推广生成失败: 'total_posts'
+[2026-07-28 20:00:29] Traceback (most recent call last):
+  File "/Users/tianmengpiaoxiang/auto_business/evening_workflow.py", line 215, in step_generate_promotion
+    summary = engine.print_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 312, in print_summary
+    summary = self.generate_promotion_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 292, in generate_promotion_summary
+    posts, hot = self.generate_daily_posts()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 242, in generate_daily_posts
+    self.stats["total_posts"] += len(all_products) * len(PLATFORMS)
+KeyError: 'total_posts'
+
+[2026-07-28 20:00:29] 📧 第四步：发送邮件报告...
+[2026-07-28 20:00:59]     ✅ 邮件处理完成
+[2026-07-28 20:00:59] 📤 第五步：推送到GitHub...
+[2026-07-28 20:00:59]     ✅ 邮件处理完成
+[2026-07-28 20:00:59] 📤 第五步：推送到GitHub...
+[2026-07-28 20:00:59]     git add: 128

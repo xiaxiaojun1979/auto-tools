@@ -1,0 +1,559 @@
+{
+  "total": 79,
+  "generated_at": "2026-07-28 10:31:29",
+  "products": [
+    {
+      "id": "creator_pack",
+      "name": "内容创作者效率包",
+      "price": 299,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_creator_pack.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_creator_pack.png"
+    },
+    {
+      "id": "office_pack",
+      "name": "办公自动化全家桶",
+      "price": 199,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_office_pack.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_office_pack.png"
+    },
+    {
+      "id": "dev_pack",
+      "name": "开发者效率工具包",
+      "price": 199,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_dev_pack.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_dev_pack.png"
+    },
+    {
+      "id": "ai_pack",
+      "name": "AI创新应用包",
+      "price": 149,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_pack.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_pack.png"
+    },
+    {
+      "id": "enterprise_pack",
+      "name": "企业管理超值包",
+      "price": 499,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_enterprise_pack.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_enterprise_pack.png"
+    },
+    {
+      "id": "file_tools",
+      "name": "文件批处理大师",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_file_tools.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_file_tools.png"
+    },
+    {
+      "id": "content_gen",
+      "name": "内容自动生成器",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_content_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_content_gen.png"
+    },
+    {
+      "id": "data_tools",
+      "name": "数据清洗工具包",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_data_tools.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_data_tools.png"
+    },
+    {
+      "id": "excel_macro",
+      "name": "Excel宏工具包",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_excel_macro.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_excel_macro.png"
+    },
+    {
+      "id": "pdf_tools",
+      "name": "PDF全能工具箱",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_pdf_tools.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_pdf_tools.png"
+    },
+    {
+      "id": "vip_member",
+      "name": "VIP终身会员",
+      "price": 49,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_vip_member.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_vip_member.png"
+    },
+    {
+      "id": "subtitle",
+      "name": "视频字幕提取工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_subtitle.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_subtitle.png"
+    },
+    {
+      "id": "merge",
+      "name": "视频拼接合并工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_merge.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_merge.png"
+    },
+    {
+      "id": "chat_client",
+      "name": "AI对话客户端",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_chat_client.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_chat_client.png"
+    },
+    {
+      "id": "translate_batch",
+      "name": "批量翻译工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_translate_batch.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_translate_batch.png"
+    },
+    {
+      "id": "watermark_add",
+      "name": "图片批量加水印",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_watermark_add.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_watermark_add.png"
+    },
+    {
+      "id": "remove_bg",
+      "name": "图片去背景工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_remove_bg.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_remove_bg.png"
+    },
+    {
+      "id": "price_monitor",
+      "name": "电商价格监控",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_price_monitor.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_price_monitor.png"
+    },
+    {
+      "id": "trending",
+      "name": "热点追踪工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_trending.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_trending.png"
+    },
+    {
+      "id": "folder_lock",
+      "name": "文件夹加密锁",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_folder_lock.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_folder_lock.png"
+    },
+    {
+      "id": "deploy_service",
+      "name": "代部署服务",
+      "price": 69,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_deploy_service.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_deploy_service.png"
+    },
+    {
+      "id": "custom_dev",
+      "name": "定制开发",
+      "price": 299,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_custom_dev.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_custom_dev.png"
+    },
+    {
+      "id": "enterprise_pkg",
+      "name": "企业批量部署",
+      "price": 699,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_enterprise_pkg.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_enterprise_pkg.png"
+    },
+    {
+      "id": "maintenance",
+      "name": "年度维护套餐",
+      "price": 199,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_maintenance.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_maintenance.png"
+    },
+    {
+      "id": "vip_custom",
+      "name": "企业VIP定制",
+      "price": 1999,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_vip_custom.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_vip_custom.png"
+    },
+    {
+      "id": "image_gen",
+      "name": "AI图片生成工具",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_image_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_image_gen.png"
+    },
+    {
+      "id": "summary",
+      "name": "文章摘要生成器",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_summary.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_summary.png"
+    },
+    {
+      "id": "text_to_speech",
+      "name": "文字转语音工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_text_to_speech.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_text_to_speech.png"
+    },
+    {
+      "id": "compress",
+      "name": "图片压缩工具",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_compress.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_compress.png"
+    },
+    {
+      "id": "format_convert",
+      "name": "图片格式转换器",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_format_convert.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_format_convert.png"
+    },
+    {
+      "id": "resize",
+      "name": "图片批量改尺寸",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_resize.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_resize.png"
+    },
+    {
+      "id": "batch_publish",
+      "name": "多平台发布器",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_batch_publish.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_batch_publish.png"
+    },
+    {
+      "id": "calendar",
+      "name": "内容日历工具",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_calendar.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_calendar.png"
+    },
+    {
+      "id": "keyword_analysis",
+      "name": "关键词分析工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_keyword_analysis.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_keyword_analysis.png"
+    },
+    {
+      "id": "file_encrypt",
+      "name": "文件加密工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_file_encrypt.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_file_encrypt.png"
+    },
+    {
+      "id": "file_shredder",
+      "name": "文件粉碎工具",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_file_shredder.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_file_shredder.png"
+    },
+    {
+      "id": "hash_check",
+      "name": "文件校验工具",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_hash_check.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_hash_check.png"
+    },
+    {
+      "id": "password_gen",
+      "name": "密码生成器",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_password_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_password_gen.png"
+    },
+    {
+      "id": "compress_video",
+      "name": "视频压缩工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_compress_video.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_compress_video.png"
+    },
+    {
+      "id": "seo_checker",
+      "name": "SEO检测工具",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_seo_checker.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_seo_checker.png"
+    },
+    {
+      "id": "layout_helper",
+      "name": "排版助手工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_layout_helper.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_layout_helper.png"
+    },
+    {
+      "id": "screen_recorder",
+      "name": "屏幕录制工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_screen_recorder.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_screen_recorder.png"
+    },
+    {
+      "id": "gif_maker",
+      "name": "GIF动图制作工具",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_gif_maker.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_gif_maker.png"
+    },
+    {
+      "id": "clipboard_mgr",
+      "name": "剪贴板增强工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_clipboard_mgr.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_clipboard_mgr.png"
+    },
+    {
+      "id": "reminder",
+      "name": "定时提醒工具",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_reminder.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_reminder.png"
+    },
+    {
+      "id": "batch_rename_adv",
+      "name": "高级批量重命名",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_batch_rename_adv.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_batch_rename_adv.png"
+    },
+    {
+      "id": "qr_code_gen",
+      "name": "二维码生成工具",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_qr_code_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_qr_code_gen.png"
+    },
+    {
+      "id": "file_sync",
+      "name": "文件夹同步工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_file_sync.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_file_sync.png"
+    },
+    {
+      "id": "duplicate_finder",
+      "name": "重复文件查找器",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_duplicate_finder.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_duplicate_finder.png"
+    },
+    {
+      "id": "image_watermark_video",
+      "name": "视频批量加水印",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_image_watermark_video.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_image_watermark_video.png"
+    },
+    {
+      "id": "ai_data_analyze",
+      "name": "AI数据分析师",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_data_analyze.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_data_analyze.png"
+    },
+    {
+      "id": "short_video_script",
+      "name": "短视频脚本生成",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_short_video_script.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_short_video_script.png"
+    },
+    {
+      "id": "txt_splitter",
+      "name": "文本分割工具",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_txt_splitter.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_txt_splitter.png"
+    },
+    {
+      "id": "img_optimizer",
+      "name": "图片快速优化器",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_img_optimizer.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_img_optimizer.png"
+    },
+    {
+      "id": "clipboard_history",
+      "name": "剪贴板历史工具",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_clipboard_history.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_clipboard_history.png"
+    },
+    {
+      "id": "batch_rename_lite",
+      "name": "文件批量重命名",
+      "price": 9,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_batch_rename_lite.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_batch_rename_lite.png"
+    },
+    {
+      "id": "ai_code_review",
+      "name": "AI代码审查工具",
+      "price": 59,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_code_review.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_code_review.png"
+    },
+    {
+      "id": "live_stream_helper",
+      "name": "直播辅助工具",
+      "price": 49,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_live_stream_helper.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_live_stream_helper.png"
+    },
+    {
+      "id": "ai_writing_assist",
+      "name": "AI写作助手",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_writing_assist.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_writing_assist.png"
+    },
+    {
+      "id": "ai_ppt_gen",
+      "name": "AI PPT自动生成",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_ppt_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_ppt_gen.png"
+    },
+    {
+      "id": "video_subtitle",
+      "name": "视频自动加字幕",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_video_subtitle.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_video_subtitle.png"
+    },
+    {
+      "id": "ai_avatar",
+      "name": "AI数字人主播",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_avatar.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_avatar.png"
+    },
+    {
+      "id": "voice_clone",
+      "name": "AI声音克隆工具",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_voice_clone.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_voice_clone.png"
+    },
+    {
+      "id": "ai_interview",
+      "name": "AI模拟面试官",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_interview.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_interview.png"
+    },
+    {
+      "id": "resume_opt",
+      "name": "AI简历优化大师",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_resume_opt.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_resume_opt.png"
+    },
+    {
+      "id": "ai_coding",
+      "name": "AI编程助手",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_coding.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_coding.png"
+    },
+    {
+      "id": "ai_translator_pro",
+      "name": "AI专业翻译工具",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_translator_pro.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_translator_pro.png"
+    },
+    {
+      "id": "ai_music_gen",
+      "name": "AI音乐生成器",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_music_gen.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_music_gen.png"
+    },
+    {
+      "id": "video_short_clip",
+      "name": "短视频智能剪辑",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_video_short_clip.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_video_short_clip.png"
+    },
+    {
+      "id": "website_builder",
+      "name": "AI网站自动搭建",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_website_builder.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_website_builder.png"
+    },
+    {
+      "id": "data_vis",
+      "name": "AI数据可视化",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_data_vis.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_data_vis.png"
+    },
+    {
+      "id": "exam_helper",
+      "name": "AI考试助手",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_exam_helper.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_exam_helper.png"
+    },
+    {
+      "id": "social_media_mgr",
+      "name": "社媒运营助手",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_social_media_mgr.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_social_media_mgr.png"
+    },
+    {
+      "id": "ai_lawyer",
+      "name": "AI法律文书助手",
+      "price": 39,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_lawyer.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_lawyer.png"
+    },
+    {
+      "id": "meal_planner",
+      "name": "AI健康饮食规划",
+      "price": 19,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_meal_planner.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_meal_planner.png"
+    },
+    {
+      "id": "fitness_coach",
+      "name": "AI健身私教",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_fitness_coach.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_fitness_coach.png"
+    },
+    {
+      "id": "stock_analyzer",
+      "name": "AI股票分析助手",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_stock_analyzer.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_stock_analyzer.png"
+    },
+    {
+      "id": "meeting_summary",
+      "name": "AI会议纪要助手",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_meeting_summary.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_meeting_summary.png"
+    },
+    {
+      "id": "ai_room_design",
+      "name": "AI室内设计助手",
+      "price": 29,
+      "desc_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/desc_ai_room_design.txt",
+      "qr_file": "/Users/tianmengpiaoxiang/auto_business/xianyu_products/qr_ai_room_design.png"
+    }
+  ]
+}

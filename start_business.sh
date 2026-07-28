@@ -73,7 +73,7 @@ echo "🌐 检查 Zeabur 部署..." >> "$LOG"
 python3 -c "
 import urllib.request
 try:
-    resp = urllib.request.urlopen('https://xiaoxiaojun.zeabur.app/api/products', timeout=10)
+    resp = urllib.request.urlopen('https://xiaxiaojun.com/api/products', timeout=10)
     data = resp.read().decode()
     import json
     products = json.loads(data)
@@ -135,4 +135,4 @@ echo "" >> "$LOG"
 echo "📄 最新报告: $BASE/daily_report/reports/report_$DATE.html"
 echo "📊 收益看板: http://localhost:8000/admin/revenue"
 echo "📋 管理后台: http://localhost:8000/admin"
-echo "🌐 线上网站: https://xiaoxiaojun.zeabur.app"
+echo "🌐 线上网站: https://xiaxiaojun.com"

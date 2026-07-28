@@ -1,0 +1,169 @@
+[
+  {
+    "id": "creator_pack",
+    "emoji": "🎬",
+    "name": "内容创作者效率包",
+    "subtitle": "视频创作 · 图文排版 · 多平台发布",
+    "desc": "专为短视频创作者、自媒体人打造的全流程效率工具包。从内容生成到多平台发布，一站式搞定。",
+    "price": 299,
+    "price_old": 598,
+    "badge": "🔥 最受欢迎",
+    "features": [
+      "视频字幕提取 + 自动加字幕",
+      "智能视频剪辑 + 拼接合并",
+      "多平台一键排版发布",
+      "AI脚本生成 + 数字人主播",
+      "图片批量处理（压缩/去背景/加水印）",
+      "含1个月使用教程 + 专属客服支持"
+    ],
+    "tools": [
+      "subtitle",
+      "video_subtitle",
+      "merge",
+      "video_short_clip",
+      "layout_helper",
+      "batch_publish",
+      "short_video_script",
+      "ai_avatar",
+      "compress",
+      "remove_bg",
+      "watermark_add",
+      "screen_recorder",
+      "gif_maker",
+      "live_stream_helper",
+      "social_media_mgr",
+      "calendar",
+      "keyword_analysis",
+      "text_to_speech"
+    ]
+  },
+  {
+    "id": "office_pack",
+    "emoji": "📊",
+    "name": "办公自动化全家桶",
+    "subtitle": "文档处理 · 数据分析 · 效率提升10倍",
+    "desc": "告别重复劳动！文件批处理、PDF处理、Excel自动化、AI写作，覆盖90%办公场景。",
+    "price": 199,
+    "price_old": 428,
+    "badge": "💼 职场必备",
+    "features": [
+      "文件批量重命名 + 智能分类",
+      "PDF全能工具箱（合并/拆分/转换）",
+      "Excel宏工具包 + 数据清洗",
+      "AI写作助手 + 批量翻译",
+      "AI数据分析 + 数据可视化",
+      "含1个月使用教程 + 专属客服支持"
+    ],
+    "tools": [
+      "file_tools",
+      "batch_rename_adv",
+      "batch_rename_lite",
+      "pdf_tools",
+      "excel_macro",
+      "data_tools",
+      "content_gen",
+      "ai_writing_assist",
+      "translate_batch",
+      "ai_translator_pro",
+      "ai_data_analyze",
+      "data_vis",
+      "meeting_summary",
+      "duplicate_finder",
+      "txt_splitter",
+      "clipboard_mgr",
+      "clipboard_history",
+      "file_sync",
+      "summary",
+      "format_convert"
+    ]
+  },
+  {
+    "id": "dev_pack",
+    "emoji": "💻",
+    "name": "开发者效率工具包",
+    "subtitle": "AI编程 · 代码审查 · 网站搭建",
+    "desc": "提升编程效率的AI工具集。代码审查、AI编程助手、自动搭建网站，让开发更高效。",
+    "price": 199,
+    "price_old": 460,
+    "badge": "⚡ 极客首选",
+    "features": [
+      "AI代码审查（支持多种语言）",
+      "AI编程助手 + 代码补全",
+      "AI网站自动搭建工具",
+      "文件加密 + 安全工具集",
+      "二维码生成 + 密码管理",
+      "含1个月使用教程 + 专属客服支持"
+    ],
+    "tools": [
+      "ai_code_review",
+      "ai_coding",
+      "website_builder",
+      "file_encrypt",
+      "file_shredder",
+      "hash_check",
+      "password_gen",
+      "qr_code_gen",
+      "folder_lock",
+      "folder_sync",
+      "deploy_service"
+    ]
+  },
+  {
+    "id": "ai_pack",
+    "emoji": "🤖",
+    "name": "AI创新应用包",
+    "subtitle": "AI面试 · 简历优化 · 法律文书 · 健康管理",
+    "desc": "AI赋能生活方方面面。面试模拟、简历优化、法律文书、饮食健康，一个包全部搞定。",
+    "price": 149,
+    "price_old": 360,
+    "badge": "🌟 热门推荐",
+    "features": [
+      "AI模拟面试官（各行业题库）",
+      "AI简历优化大师 + 一键美化",
+      "AI法律文书助手",
+      "AI健康饮食规划 + 健身私教",
+      "AI考试助手 + 股票分析",
+      "含1个月使用教程 + 专属客服支持"
+    ],
+    "tools": [
+      "ai_interview",
+      "resume_opt",
+      "ai_lawyer",
+      "meal_planner",
+      "fitness_coach",
+      "exam_helper",
+      "stock_analyzer",
+      "ai_room_design",
+      "chat_client",
+      "ai_ppt_gen",
+      "ai_music_gen",
+      "ai_avatar",
+      "voice_clone"
+    ]
+  },
+  {
+    "id": "enterprise_pack",
+    "emoji": "🏢",
+    "name": "企业管理超值包",
+    "subtitle": "批量部署 · 定制开发 · 年度维护",
+    "desc": "面向企业客户的全套解决方案。批量部署、定制开发、年度维护，售后无忧。",
+    "price": 499,
+    "price_old": 1299,
+    "badge": "👑 企业首选",
+    "features": [
+      "全站75+工具全部解锁",
+      "批量部署到企业内部",
+      "定制开发专属功能",
+      "1年技术维护 + 紧急响应",
+      "专属客服 + 培训支持"
+    ],
+    "tools": [
+      "deploy_service",
+      "custom_dev",
+      "enterprise_pkg",
+      "maintenance",
+      "vip_member",
+      "vip_custom"
+    ]
+  }
+]

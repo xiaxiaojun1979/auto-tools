@@ -21,7 +21,7 @@ DATA_DIR = BASE_DIR / "promotion" / "data"
 PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
 ORDERS_FILE = BASE_DIR / "daily_report" / "data" / "orders.json"
 STATS_FILE = DATA_DIR / "promotion_stats.json"
-SITE_URL = "https://xiaxiaojun.zeabur.app"
+SITE_URL = "https://xiaxiaojun.com"
 
 # 确保目录存在
 DATA_DIR.mkdir(parents=True, exist_ok=True)

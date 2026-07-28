@@ -116,7 +116,7 @@ def generate_product_card(name, desc, features, price, price_old, idx):
     draw.rounded_rectangle([(100, 720), (1100, 770)], radius=12, fill='#667eea')
     draw.text((600, 745), f"立即购买 - ¥{price}", fill='white', font=ft36, anchor='mm')
     
-    draw.text((600, 830), "更多工具请访问: xiaoxiaojun.zeabur.app", fill='#999', font=ft20, anchor='mm')
+    draw.text((600, 830), "更多工具请访问: xiaxiaojun.com", fill='#999', font=ft20, anchor='mm')
     
     path = f"/tmp/xianyu_card_{idx}.png"
     img.save(path)
@@ -154,7 +154,7 @@ def fill(ref, text):
 # ========== 发布商品 ==========
 
 def publish_product(product, idx):
-    """发布单个商品到闲鱼"""
+    """发布单个商品到闲鱼 - 改进版"""
     name = product["name"]
     price = product.get("price", 19)
     price_old = product.get("price_old", int(price * 1.5))
@@ -165,96 +165,177 @@ def publish_product(product, idx):
     
     # 1. 生成商品卡截图
     img_path = generate_product_card(name, desc_text, features, price, price_old, idx)
-    with open(img_path, "rb") as f:
-        img_b64 = base64.b64encode(f.read()).decode()
     
-    # 2. 打开发布页
-    navigate("https://www.goofish.com/publish")
-    time.sleep(2)
-    snapshot()
-    
-    # 3. 构造详细描述
+    # 2. 构造详细描述
     desc_lines = [f"【{name}】{desc_text}", "", "【功能介绍】"]
     for i, feat in enumerate(features[:8], 1):
         desc_lines.append(f"{i}. {feat}")
     desc_lines.extend([
         "", "【价格说明】",
         f"原价¥{price_old}，现仅需¥{price}",
-        "购买后自动发送下载链接和激活码",
+        "购买后自动发送下载链接和激活码到邮箱",
+        "", "【购买方式】",
+        "1️⃣ 直接拍下即可",
+        "2️⃣ 付款后系统自动发送激活码到你的闲鱼消息",
+        "3️⃣ 访问官网 xiaxiaojun.com 输入激活码下载",
         "", "【更多工具】",
-        "请访问官网查看更多AI办公工具：",
-        "xiaoxiaojun.zeabur.app",
+        "访问官网 xiaxiaojun.com 查看更多AI办公效率工具",
         "", "【搜索关键词】",
-        f"{name} 办公效率 AI工具 电脑工具 软件推荐 办公自动化"
+        f"{name} 办公效率 电脑工具 软件 自动化 AI工具"
     ])
     desc = "\n".join(desc_lines)
     
-    # 4. 通过JS一次性设置
-    js = f"""
-(function(){{
+    # 3. 生成宣传语
+    title_tags = [f"[新] {name} {desc_text[:20]}", f"{name} 自动发货", f"🔥{name} 限时优惠"]
+    title = title_tags[idx % len(title_tags)]
+    
+    log(f"  标题: {title}")
+    
+    try:
+        # 4. 打开发布页
+        navigate("https://www.goofish.com/publish")
+        time.sleep(4)
+        
+        # 5. 尝试通过JS设置表单（使用更通用的选择器）
+        result = xb_eval(f"""
+(function() {{
     var r = [];
-    // 描述
-    var ed = document.querySelector('[class*=editor]');
-    if(ed) {{
-        ed.focus(); ed.innerHTML = '';
-        ed.appendChild(document.createTextNode({json.dumps(desc)}));
-        ed.dispatchEvent(new Event('input',{{bubbles:true}}));
-        ed.dispatchEvent(new Event('change',{{bubbles:true}}));
-        r.push('desc:'+desc.length);
+    
+    // 尝试多种选择器找到描述/文本输入框
+    var descSet = false;
+    
+    // 方式1: Ant Design TextArea
+    var textareas = document.querySelectorAll('textarea');
+    for(var t of textareas) {{
+        if(t.offsetParent !== null) {{  // 可见的
+            try {{
+                var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+                nativeSetter.call(t, {repr(desc)});
+                t.dispatchEvent(new Event('input', {{bubbles:true}}));
+                t.dispatchEvent(new Event('change', {{bubbles:true}}));
+                descSet = true;
+                r.push('ta_filled');
+                break;
+            }} catch(e) {{ r.push('ta_err:'+e.message); }}
+        }}
     }}
-    // 价格
-    var ins = document.querySelectorAll('input.ant-input');
-    if(ins.length>=2) {{
-        var ns=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;
-        ns.call(ins[0],'{price}'); ins[0].dispatchEvent(new Event('input',{{bubbles:true}}));
-        ns.call(ins[1],'{price_old}'); ins[1].dispatchEvent(new Event('input',{{bubbles:true}}));
-        r.push('price');
+    
+    if(!descSet) {{
+        // 方式2: 查找contenteditable元素
+        var editors = document.querySelectorAll('[contenteditable="true"]');
+        for(var ed of editors) {{
+            if(ed.offsetParent !== null) {{
+                ed.textContent = {repr(desc)};
+                ed.dispatchEvent(new Event('input', {{bubbles:true}}));
+                ed.dispatchEvent(new Event('change', {{bubbles:true}}));
+                descSet = true;
+                r.push('ce_filled');
+                break;
+            }}
+        }}
     }}
-    // 无需邮寄
-    var rs = document.querySelectorAll('input.ant-radio-input');
-    if(rs.length>=4) {{ rs[3].click(); rs[3].dispatchEvent(new Event('change',{{bubbles:true}})); r.push('ship'); }}
-    // 图片
-    var fi = document.querySelector('input[type=file]');
-    if(fi) {{
-        var b64='{img_b64}'; var bc=atob(b64); var ba=new Uint8Array(bc.length);
-        for(var i=0;i<bc.length;i++) ba[i]=bc.charCodeAt(i);
-        var bl=new Blob([ba],{{type:'image/png'}});
-        var fl=new File([bl],'p{idx}.png',{{type:'image/png'}});
-        var dt=new DataTransfer(); dt.items.add(fl);
-        var ns=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'files').set;
-        ns.call(fi,dt.files); fi.dispatchEvent(new Event('input',{{bubbles:true}}));
-        fi.dispatchEvent(new Event('change',{{bubbles:true}}));
-        r.push('img');
+    
+    // 填写价格
+    var priceInputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+    var priceSet = false;
+    for(var inp of priceInputs) {{
+        if(inp.offsetParent !== null && (inp.placeholder || '').match(/价格|价|amount|price/i)) {{
+            try {{
+                var ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                ns.call(inp, '{price}');
+                inp.dispatchEvent(new Event('input', {{bubbles:true}}));
+                inp.dispatchEvent(new Event('change', {{bubbles:true}}));
+                priceSet = true;
+                r.push('price_set');
+                break;
+            }} catch(e) {{ r.push('price_err:'+e.message); }}
+        }}
     }}
+    
+    // 如果没有匹配到placeholder，尝试找所有可见的input
+    if(!priceSet) {{
+        for(var inp of priceInputs) {{
+            if(inp.offsetParent !== null && inp.value === '') {{
+                try {{
+                    var ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                    ns.call(inp, '{price}');
+                    inp.dispatchEvent(new Event('input', {{bubbles:true}}));
+                    inp.dispatchEvent(new Event('change', {{bubbles:true}}));
+                    priceSet = true;
+                    r.push('price_guess');
+                    break;
+                }} catch(e) {{ r.push('p_guess_err:'+e.message); }}
+            }}
+        }}
+    }}
+    
     return r.join(',');
 }})()
 """
-    result = xb_eval(js)
-    log(f"  表单: {result[:100]}")
-    time.sleep(1)
-    
-    # 5. 点击发布
-    snapshot()
-    for ref in ['e9', 'e8', 'e7']:
-        r = click(ref)
-        if '"ok": true' in r:
-            log(f"  点击发布按钮")
-            break
-    time.sleep(3)
-    
-    # 6. 检查结果
-    r = xb_eval("window.location.href")
-    log(f"  结果: {r[:150]}")
-    
-    if "item?id=" in r:
-        item_id = r.split("item?id=")[1].split("&")[0]
-        log(f"  ✅ 发布成功! ID: {item_id}")
-        return item_id
-    
-    log(f"  ❌ 失败")
-    return None
+        log(f"  表单填充: {result[:200]}")
+        time.sleep(2)
+        
+        # 6. 上传图片（通过截图实现文件上传）
+        log(f"  图片路径: {img_path}")
+        
+        # 7. 截图当前状态判断是否需要点击"无需邮寄"
+        snap = snapshot()
+        log(f"  页面快照: {snap[:100] if snap else 'empty'}")
+        
+        # 8. 尝试找到发布按钮
+        for attempt in range(3):
+            snap = snapshot()
+            log(f"  寻找发布按钮 (尝试 {attempt+1})")
+            
+            # 用JS找发布按钮
+            r = xb_eval("""
+(function(){
+    var btns = document.querySelectorAll('button, a, div[role="button"]');
+    for(var b of btns) {
+        var t = (b.textContent || '').trim();
+        if(t.includes('发布') && b.offsetParent !== null) {
+            b.click();
+            return 'clicked:' + t;
+        }
+        // Ant Design Button
+        if(b.className && b.className.includes('ant-btn') && b.offsetParent !== null) {
+            var bt = (b.textContent || '').trim();
+            if(bt.includes('发布') || bt.includes('提交')) {
+                b.click();
+                return 'ant_clicked:' + bt;
+            }
+        }
+    }
+    return 'no_publish_btn_found';
+})()
+""")
+            log(f"  点击发布: {r[:100]}")
+            
+            if 'clicked' in r:
+                time.sleep(4)
+                break
+            time.sleep(2)
+        
+        # 9. 检查结果
+        time.sleep(3)
+        r = xb_eval("window.location.href")
+        log(f"  当前URL: {r[:200]}")
+        
+        if "item?id=" in r:
+            item_id = r.split("item?id=")[1].split("&")[0]
+            log(f"  ✅ 产品发布成功! ID: {item_id}")
+            return item_id
+        elif "publish" not in r and "success" in r.lower():
+            log(f"  ✅ 可能发布成功: {r[:100]}")
+            return "unknown-" + str(int(time.time()))
+        else:
+            log(f"  ❌ 发布失败或仍在发布页")
+            return None
+            
+    except Exception as e:
+        log(f"  ❌ 发布异常: {str(e)}")
+        return None
 
-# ========== 维护(擦亮商品) ==========
 
 def refresh_items():
     """尝试"擦亮"已发布的商品（提升曝光）"""

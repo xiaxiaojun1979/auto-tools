@@ -5,10 +5,15 @@ AutoTools 自动副业系统 - Flask Web 应用
 动态加载产品列表，支持自动扩展
 """
 
-import json, os, uuid
-from datetime import datetime
+import json, os, uuid, io, base64, qrcode, hashlib, hmac, time as time_module
+import random
+from datetime import datetime, timedelta
+from pathlib import Path
 from pathlib import Path
 from functools import wraps
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from flask import (
     Flask, render_template, request, jsonify,
     redirect, url_for, session, send_from_directory, send_file
@@ -21,7 +26,121 @@ ORDERS_FILE = DATA_DIR / "orders.json"
 PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
 ADMIN_PASSWORD = "xxj63858930"
 ALIPAY_ACCOUNT = "15156215580"
-SITE_URL = "https://xiaxiaojun.zeabur.app"
+SITE_URL = "https://xiaxiaojun.com"
+ALIPAY_QR_URL = "alipays://platformapi/startapp?appId=20000123&actionType=toAccount&goBack=NO&source=qr&account="
+SITE_NAME = "AutoTools 自动化工具集"
+
+def generate_alipay_qr(amount, order_id):
+    """生成支付宝支付二维码（含金额）"""
+    try:
+        # Alipay deep link with amount
+        pay_url = f"{ALIPAY_QR_URL}{ALIPAY_ACCOUNT}&amount={amount}"
+        # Add order reference
+        pay_url += f"&memo=AutoTools-{order_id}"
+        
+        # Generate QR code
+        qr = qrcode.QRCode(
+            version=2,
+            error_correction=qrcode.constants.ERROR_CORRECT_M,
+            box_size=8,
+            border=2,
+        )
+        qr.add_data(pay_url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        
+        buf = io.BytesIO()
+        img.save(buf, format='PNG')
+        img_b64 = base64.b64encode(buf.getvalue()).decode()
+        return f"data:image/png;base64,{img_b64}"
+    except Exception as e:
+        print(f"  ⚠️ QR generation error: {e}")
+        return None
+
+def generate_wechat_qr(amount, order_id):
+    """生成微信支付二维码"""
+    try:
+        pay_url = f"wxp://{ALIPAY_ACCOUNT}?amount={amount}&memo=AutoTools-{order_id}"
+        qr = qrcode.QRCode(
+            version=2,
+            error_correction=qrcode.constants.ERROR_CORRECT_M,
+            box_size=8,
+            border=2,
+        )
+        qr.add_data(pay_url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        
+        buf = io.BytesIO()
+        img.save(buf, format='PNG')
+        img_b64 = base64.b64encode(buf.getvalue()).decode()
+        return f"data:image/png;base64,{img_b64}"
+    except Exception as e:
+        print(f"  ⚠️ WeChat QR error: {e}")
+        return None
+
+def auto_deliver_activation_code(product_id, product_name, buyer_email, price):
+    """自动分配激活码并返回交付信息"""
+    try:
+        codes_file = BASE_DIR / "delivery" / "activation_codes.json"
+        if not codes_file.exists():
+            return None, "交付系统未初始化"
+        
+        with open(codes_file) as f:
+            all_codes = json.load(f)
+        
+        # Find unused code for this product
+        if product_id in all_codes:
+            for c in all_codes[product_id]:
+                if not c.get("used"):
+                    c["used"] = True
+                    c["used_by"] = buyer_email
+                    c["used_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    
+                    # Save back
+                    with open(codes_file, 'w') as f:
+                        json.dump(all_codes, f, ensure_ascii=False, indent=2)
+                    
+                    download_url = f"{SITE_URL}/download/{c['code']}"
+                    return {
+                        "code": c["code"],
+                        "download_url": download_url,
+                        "product_name": product_name
+                    }, None
+        
+        # No unused code, generate one on the fly
+        import uuid
+        new_code = f"AT-{product_id[:4].upper()}-{uuid.uuid4().hex[:8].upper()}"
+        
+        if product_id not in all_codes:
+            all_codes[product_id] = []
+        
+        all_codes[product_id].append({
+            "code": new_code,
+            "product_id": product_id,
+            "product_name": product_name,
+            "price": price,
+            "used": True,
+            "used_by": buyer_email,
+            "used_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "created_at": datetime.now().strftime("%Y-%m-%d")
+        })
+        
+        with open(codes_file, 'w') as f:
+            json.dump(all_codes, f, ensure_ascii=False, indent=2)
+        
+        download_url = f"{SITE_URL}/download/{new_code}"
+        return {"code": new_code, "download_url": download_url, "product_name": product_name}, None
+    except Exception as e:
+        return None, str(e)
+
+# ========== 支付校验码临时存储（付款后生成）==========
+PENDING_VERIFICATIONS = {}
+
+def generate_verify_code():
+    """生成4位随机数字校验码"""
+    return f"{random.randint(0, 9999):04d}"
+
 # 自动推广系统
 import sys
 PROMO_DIR = BASE_DIR / "promotion"
@@ -258,33 +377,211 @@ def delete_order(oid):
     return redirect(url_for("admin_dashboard"))
 
 
+@app.route("/api/payment/qrcode", methods=["POST"])
+def get_payment_qrcode():
+    """生成支付二维码（自动选择支付网关或手动转账）"""
+    try:
+        req = request.get_json()
+        pid = req.get("product_id", "")
+        payment = req.get("payment", "alipay")
+        product = get_product(pid)
+        if not product:
+            return jsonify({"ok": False, "msg": "产品不存在"}), 400
+        
+        amount = product["price"]
+        order_id = gen_order_id()
+        
+        # 检查是否配置了PayJS支付网关
+        gw_config = pg.load_config()
+        if gw_config.get("gateway") == "payjs" and gw_config.get("payjs_mchid"):
+            # 使用PayJS生成二维码
+            result = pg.create_native_qrcode(amount, order_id, attach=pid)
+            if result.get("ok"):
+                return jsonify({
+                    "ok": True,
+                    "qr": result["qrcode_url"],
+                    "amount": amount,
+                    "order_id": order_id,
+                    "payjs_order_id": result["payjs_order_id"],
+                    "product_name": product["name"],
+                    "gateway": "payjs",
+                    "account": "PayJS支付"
+                })
+            # 如果PayJS失败，回退到手动转账
+            print(f"  ⚠️ PayJS创建订单失败: {result.get('msg')}")
+        
+        # 手动转账模式
+        if payment == "alipay":
+            qr = generate_alipay_qr(amount, order_id)
+        else:
+            qr = generate_wechat_qr(amount, order_id)
+        
+        if not qr:
+            return jsonify({"ok": False, "msg": "二维码生成失败"}), 500
+        
+        return jsonify({
+            "ok": True,
+            "qr": qr,
+            "amount": amount,
+            "order_id": order_id,
+            "product_name": product["name"],
+            "gateway": "manual",
+            "account": ALIPAY_ACCOUNT if payment == "alipay" else "微信扫码"
+        })
+    except Exception as e:
+        return jsonify({"ok": False, "msg": f"系统错误: {str(e)}"}), 500
+
+
 @app.route("/api/order", methods=["POST"])
 def submit_order():
+    """验证校验码后创建订单并发送软件"""
     try:
-        req = request.json
+        req = request.get_json()
         pid = req.get("product_id", "")
         email = req.get("email", "").strip()
         payment = req.get("payment", "支付宝")
+        verify_code = req.get("verify_code", "").strip()
         product = get_product(pid)
+        
         if not email or "@" not in email:
             return jsonify({"ok": False, "msg": "请输入正确的邮箱"}), 400
         if not product:
             return jsonify({"ok": False, "msg": "产品不存在"}), 400
+        if not verify_code or len(verify_code) != 4 or not verify_code.isdigit():
+            return jsonify({"ok": False, "msg": "校验码必须是4位数字"}), 400
+        
+        # 验证校验码：必须是付款后系统生成的
+        found_order_id = None
+        for oid, pend in list(PENDING_VERIFICATIONS.items()):
+            if pend["code"] == verify_code and pend["product_id"] == pid and not pend.get("used", False):
+                found_order_id = oid
+                break
+        
+        if not found_order_id:
+            return jsonify({"ok": False, "msg": "❌ 校验码无效或已过期，请重新付款获取"}), 400
+        
+        # 防滥用：同一邮箱每天最多3个产品
+        data = load_orders()
+        today = datetime.now().strftime("%Y-%m-%d")
+        today_orders = [o for o in data["orders"] 
+                       if o.get("buyer_email") == email and o["created_at"].startswith(today)]
+        if len(today_orders) >= 3:
+            return jsonify({"ok": False, "msg": "每个邮箱每天最多购买3个产品"}), 429
+        
+        # 防滥用：同一IP每天最多5次
+        ip = request.remote_addr or "unknown"
+        ip_orders = [o for o in data["orders"] 
+                    if o.get("buyer_ip") == ip and o["created_at"].startswith(today)]
+        if len(ip_orders) >= 5:
+            return jsonify({"ok": False, "msg": "操作太频繁"}), 429
+        
+        # 存储交易号并标记已使用
+        PENDING_VERIFICATIONS[found_order_id]["used"] = True
+        PENDING_VERIFICATIONS[found_order_id]["email"] = email
+        PENDING_VERIFICATIONS[found_order_id]["tx_id"] = req.get("tx_id", "")
+        
         oid = gen_order_id()
+        
+        delivery_info, error = auto_deliver_activation_code(
+            pid, product["name"], email, product["price"]
+        )
+        
+        if error:
+            return jsonify({"ok": False, "msg": f"交付失败: {error}"}), 500
+        
         order = {
             "order_id": oid, "product_id": pid,
             "product_name": product["name"], "price": product["price"],
             "buyer_email": email, "payment": payment,
-            "status": "pending",
+            "verify_code": verify_code,
+            "buyer_ip": ip,
+            "status": "delivered",
+            "verified": True,
+            "delivery_code": delivery_info["code"],
+            "download_url": delivery_info["download_url"],
             "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "confirmed_at": None, "delivered_at": None
+            "confirmed_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "delivered_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
-        data = load_orders()
         data["orders"].append(order)
         data["total_revenue"] += product["price"]
         save_orders(data)
-        return jsonify({"ok": True, "order_id": oid, "msg": "订单提交成功！确认收款后将发送产品到你的邮箱"})
+        
+        # 发送邮件
+        try:
+            from email_report import send_order_email
+            send_order_email(oid, email, product["name"], delivery_info["code"], delivery_info["download_url"])
+        except Exception as email_err:
+            print(f"  ⚠️ 邮件发送失败: {email_err}")
+        
+        return jsonify({
+            "ok": True,
+            "order_id": oid,
+            "verify_code": verify_code,
+            "delivery_code": delivery_info["code"],
+            "download_url": delivery_info["download_url"],
+            "product_name": product["name"],
+            "msg": "🎉 验证成功！邮件已发送到你的邮箱"
+        })
     except Exception as e:
+        return jsonify({"ok": False, "msg": f"系统错误: {str(e)}"}), 500
+
+
+@app.route("/api/order/pay-confirm", methods=["POST"])
+def pay_confirm():
+    """付款后生成4位数字校验码，用户需用此码验证"""
+    try:
+        req = request.get_json()
+        pid = req.get("product_id", "")
+        payment = req.get("payment", "alipay")
+        product = get_product(pid)
+        
+        if not product:
+            return jsonify({"ok": False, "msg": "产品不存在"}), 400
+        
+        # 防滥用：同一IP每分钟最多5次
+        ip = request.remote_addr or "unknown"
+        now = datetime.now()
+        recent_count = sum(
+            1 for p in PENDING_VERIFICATIONS.values()
+            if p.get("ip") == ip and (now - p.get("created_at", now)).total_seconds() < 60
+        )
+        if recent_count >= 5:
+            return jsonify({"ok": False, "msg": "操作太频繁，请稍后再试"}), 429
+        
+        # 生成4位随机校验码
+        code = generate_verify_code()
+        order_id = gen_order_id()
+        
+        PENDING_VERIFICATIONS[order_id] = {
+            "code": code,
+            "product_id": pid,
+            "payment": payment,
+            "ip": ip,
+            "created_at": now,
+            "email": None,
+            "used": False,
+            "tx_id": None
+        }
+        
+        # 清理超过10分钟的过期校验码
+        expired = [oid for oid, p in list(PENDING_VERIFICATIONS.items())
+                   if (now - p.get("created_at", now)).total_seconds() > 600]
+        for oid in expired:
+            del PENDING_VERIFICATIONS[oid]
+        
+        print(f"\n  💳 新支付校验码已生成: 订单={order_id} 校验码={code}")
+        
+        return jsonify({
+            "ok": True,
+            "verify_code": code,
+            "order_id": order_id,
+            "product_name": product["name"],
+            "amount": product["price"],
+            "msg": "✅ 校验码已生成"
+        })
+    except Exception as e:
+        import traceback; traceback.print_exc()
         return jsonify({"ok": False, "msg": f"系统错误: {str(e)}"}), 500
 
 
@@ -421,7 +718,200 @@ def view_report(filename):
     return send_from_directory(str(report_dir), filename)
 
 
+
+@app.route("/admin/revoke/<oid>", methods=["POST"])
+@admin_required
+def revoke_order(oid):
+    """作废订单和激活码（用于未收到付款的订单）"""
+    try:
+        data = load_orders()
+        for o in data["orders"]:
+            if o["order_id"] == oid:
+                # Mark as revoked
+                o["status"] = "revoked"
+                o["revoked_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                # We could also mark the activation code as usable again
+                save_orders(data)
+                return jsonify({"ok": True, "msg": f"订单 {oid} 已作废"})
+        return jsonify({"ok": False, "msg": "订单不存在"}), 404
+    except Exception as e:
+        return jsonify({"ok": False, "msg": str(e)}), 500
+
+
+@app.route("/admin/orders/unverified")
+@admin_required
+def unverified_orders():
+    """查看未验证交易号的订单"""
+    data = load_orders()
+    unverified = [o for o in reversed(data["orders"]) if not o.get("verified")]
+    return jsonify({"ok": True, "orders": unverified, "count": len(unverified)})
+
+
+@app.route("/api/delivery/send-email", methods=["POST"])
+def verify_and_send_email():
+    """验证校验码并发送交付邮件（备用入口）"""
+    try:
+        req = request.get_json()
+        order_id = req.get("order_id", "")
+        email = req.get("email", "").strip()
+        verify_code = req.get("verify_code", "").strip()
+        
+        if not order_id or not email:
+            return jsonify({"ok": False, "msg": "参数不完整"}), 400
+        
+        # Find the order
+        data = load_orders()
+        order = None
+        for o in data["orders"]:
+            if o["order_id"] == order_id:
+                order = o
+                break
+        
+        if not order:
+            return jsonify({"ok": False, "msg": "订单不存在"}), 404
+        
+        # 验证校验码
+        stored_vc = order.get("verify_code", "")
+        if not stored_vc:
+            return jsonify({"ok": False, "msg": "订单状态异常，请联系客服"}), 400
+        
+        if verify_code != stored_vc:
+            return jsonify({"ok": False, "msg": "❌ 校验码不正确"}), 400
+        
+        # Mark as verified
+        order["verified"] = True
+        order["verified_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        save_orders(data)
+        
+        # Send email
+        try:
+            from email_report import send_order_email
+            send_order_email(
+                order_id, 
+                email, 
+                order["product_name"], 
+                order["delivery_code"], 
+                order["download_url"]
+            )
+        except Exception as email_err:
+            print(f"  ⚠️ 邮件发送失败: {email_err}")
+            return jsonify({
+                "ok": True, "msg": "✅ 验证成功！邮件发送失败，请直接使用下载链接",
+                "product_name": order["product_name"],
+                "delivery_code": order["delivery_code"],
+                "download_url": order["download_url"]
+            })
+        
+        return jsonify({
+            "ok": True,
+            "product_name": order["product_name"],
+            "delivery_code": order["delivery_code"],
+            "download_url": order["download_url"],
+            "msg": "✅ 验证成功！邮件已发送到你的邮箱"
+        })
+    except Exception as e:
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "msg": str(e)}), 500
+
 COMMIT_HASH = "27197a4"  # fix(zeabur): add error handling
+
+@app.route("/buy/<pid>")
+def buy_page(pid):
+    product = get_product(pid)
+    if not product:
+        return "产品不存在", 404
+    return render_template("buy.html", 
+        pid=product["id"],
+        name=product["name"], 
+        price=product["price"],
+        emoji=product.get("emoji", "📦"),
+        alipay=ALIPAY_ACCOUNT,
+        site_url=SITE_URL)
+
+@app.route("/free", strict_slashes=False)
+@app.route("/free/")
+@app.route("/free/<tool_id>")
+def free_tools(tool_id=None):
+    """免费Web工具页面"""
+    if tool_id:
+        # Find the tool
+        tool = get_product(tool_id)
+        if not tool or not tool.get('has_free'):
+            return render_template("free.html", tool=None, products=[p for p in PRODUCTS if p.get('has_free')], alipay=ALIPAY_ACCOUNT, site_url=SITE_URL)
+        
+        # Special interactive demo for file batch processor
+        if tool_id == 'file_tools':
+            return render_template("free_file_tools.html", tool=tool, products=PRODUCTS, alipay=ALIPAY_ACCOUNT, site_url=SITE_URL)
+        
+        return render_template("free.html", tool=tool, products=PRODUCTS, alipay=ALIPAY_ACCOUNT, site_url=SITE_URL)
+    # List all free tools
+    free_prods = [p for p in PRODUCTS if p.get('has_free')]
+    return render_template("free.html", tool=None, products=free_prods, alipay=ALIPAY_ACCOUNT, site_url=SITE_URL)
+
+
+@app.route("/api/track/conversion", methods=["POST"])
+def track_conversion():
+    """跟踪免费试用→购买转化"""
+    try:
+        data = request.get_json()
+        if data:
+            log_file = BASE_DIR / "daily_report" / "data" / "conversion_tracking.jsonl"
+            with open(log_file, "a") as f:
+                data["time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                f.write(json.dumps(data, ensure_ascii=False) + "\n")
+        return jsonify({"ok": True})
+    except:
+        return jsonify({"ok": False})
+
+
+@app.route("/api/payment/check/<order_id>")
+def check_payment_status(order_id):
+    """查询支付状态（前端轮询用）"""
+    try:
+        config = pg.load_config()
+        if config.get("gateway") == "payjs":
+            # 从PENDING_VERIFICATIONS获取payjs_order_id
+            from app import PENDING_VERIFICATIONS
+            pend = PENDING_VERIFICATIONS.get(order_id)
+            if pend and pend.get("payjs_order_id"):
+                result = pg.check_payment(pend["payjs_order_id"])
+                if result.get("ok") and result.get("paid"):
+                    return jsonify({"ok": True, "status": "paid"})
+                elif result.get("ok"):
+                    return jsonify({"ok": True, "status": "unpaid"})
+        return jsonify({"ok": True, "status": "unknown"})
+    except Exception as e:
+        return jsonify({"ok": False, "msg": str(e)})
+
+@app.route("/api/payment/notify", methods=["POST"])
+def payment_notify():
+    """PayJS支付通知回调"""
+    try:
+        data = request.form.to_dict()
+        config = pg.load_config()
+        if not data.get("sign"):
+            return "fail"
+        # 验证签名
+        sign = data.pop("sign", "")
+        expected = pg.get_sign(data, config.get("payjs_key", ""))
+        if sign.upper() != expected:
+            return "sign error"
+        # 处理支付成功
+        out_trade_no = data.get("out_trade_no", "")
+        payjs_order_id = data.get("payjs_order_id", "")
+        total_fee = data.get("total_fee", "0")
+        
+        print(f"  ✅ 支付通知: 订单={out_trade_no}, PayJS订单={payjs_order_id}, 金额={total_fee}")
+        
+        # 更新PENDING_VERIFICATIONS中的支付状态
+        if out_trade_no in PENDING_VERIFICATIONS:
+            PENDING_VERIFICATIONS[out_trade_no]["payjs_order_id"] = payjs_order_id
+            PENDING_VERIFICATIONS[out_trade_no]["paid"] = True
+        
+        return "success"
+    except Exception as e:
+        print(f"  ⚠️ 支付通知处理异常: {e}")
+        return "fail"
 
 @app.route("/health")
 def health_check():
@@ -561,16 +1051,35 @@ init_data()
 if not os.environ.get("WERKZEUG_RUN_MAIN") and not os.environ.get("GUNICORN_CMD_ARGS"):
     promo_scheduler.start()
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    print(f"\n  🛠️ AutoTools 副业系统")
-    print(f"  🌐 网站: http://localhost:{port}")
-    print(f"  📋 后台: http://localhost:{port}/admin")
-    print(f"  密码: {ADMIN_PASSWORD}")
-    print(f"  产品数: {len(PRODUCTS)}")
-    app.run(host="0.0.0.0", port=port, debug=False)
 
 # ===== 平台发布管理API =====
+@app.route("/admin/conversion")
+@admin_required
+def admin_conversion():
+    """免费工具转化数据看板"""
+    log_file = BASE_DIR / "daily_report" / "data" / "conversion_tracking.jsonl"
+    events = []
+    if log_file.exists():
+        with open(log_file) as f:
+            for line in f:
+                try:
+                    events.append(json.loads(line.strip()))
+                except:
+                    pass
+    
+    # Stats
+    total_free_uses = len(events)
+    total_buy_clicks = sum(1 for e in events if e.get('event') == 'free_to_buy')
+    rate = round(total_buy_clicks / total_free_uses * 100, 1) if total_free_uses > 0 else 0
+    
+    return jsonify({
+        "total_free_uses": total_free_uses,
+        "total_buy_clicks": total_buy_clicks,
+        "conversion_rate": rate,
+        "events": events[-100:]  # Last 100 events
+    })
+
+
 @app.route("/admin/publishing")
 @admin_required
 def admin_publishing():
@@ -678,7 +1187,7 @@ def redeem_code():
         download_url = f"{SITE_URL}/download/{code}"
         
         # 记录到订单系统
-        from datetime import datetime as dt
+        from datetime import datetime
         orders = load_orders()
         already_recorded = any(o.get("delivery_code") == code for o in orders.get("orders", []))
         if not already_recorded:
@@ -720,4 +1229,13 @@ def record_delivery_download():
         return jsonify({"ok": True})
     except:
         return jsonify({"ok": False})
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    print(f"\n  🛠️ AutoTools 副业系统")
+    print(f"  🌐 网站: http://localhost:{port}")
+    print(f"  📋 后台: http://localhost:{port}/admin")
+    print(f"  密码: {ADMIN_PASSWORD}")
+    print(f"  产品数: {len(PRODUCTS)}")
+    app.run(host="0.0.0.0", port=port, debug=False)
 

@@ -28,35 +28,306 @@
         .btn-buy { display: block; width: 100%; padding: 16px; border: none;
                    border-radius: 12px; font-size: 1.2em; font-weight: 600;
                    background: linear-gradient(135deg, #667eea, #764ba2);
-                   color: white; cursor: pointer; }
-        .site-url { text-align: center; margin-top: 24px; color: #999; font-size: 0.9em; }
+                   color: white; cursor: pointer; transition: transform 0.2s; }
+        .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+
+        /* 支付弹窗 - 仅步骤1-2 */
+        .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+                         background: rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
+        .modal-overlay.show { display: flex; }
+        .modal { background: white; border-radius: 20px; padding: 30px; max-width: 420px; width:90%;
+                 text-align: center; position: relative; }
+        .modal h2 { font-size: 1.4em; margin-bottom: 8px; color: #333; }
+        .modal .amount { font-size: 2em; font-weight: bold; color: #e74c3c; margin: 12px 0; }
+        .payment-options { display: flex; gap: 12px; margin: 16px 0; }
+        .payment-btn { flex:1; padding: 14px; border: 2px solid #e0e0e0; border-radius: 12px;
+                       cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.2s; background: white; }
+        .payment-btn.active { border-color: #667eea; background: #f0f0ff; }
+        .payment-btn .icon { font-size: 1.5em; display: block; margin-bottom: 4px; }
+        .qrcode-box { margin: 16px auto; width: 200px; height: 200px; background: #f5f5f5; border-radius: 12px;
+                      display: flex; align-items: center; justify-content: center; }
+        .qrcode-box img { width: 180px; height: 180px; }
+        .account-info { background: #f8f9fa; border-radius: 8px; padding: 12px; margin: 12px 0;
+                        font-size: 0.95em; color: #666; }
+        .account-info strong { color: #333; }
+        .pay-tips { background: #fff8e1; border-radius: 8px; padding: 10px; font-size: 0.85em; color: #795548; margin: 12px 0; }
+        .btn-close-modal { position: absolute; top: 12px; right: 16px; border: none; background: none;
+                           font-size: 1.5em; cursor: pointer; color: #999; }
+        .btn-paid { width: 100%; padding: 14px; border: none; border-radius: 12px;
+                     font-size: 1.1em; font-weight: 600; cursor: pointer;
+                     background: linear-gradient(135deg, #52c41a, #389e0d); color: white;
+                     transition: transform 0.2s; margin-top: 12px; }
+        .btn-paid:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(82,196,26,0.4); }
+        .btn-paid:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3);
+                    border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite;
+                    margin-right: 6px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .step-content { display: none; }
+        .step-content.show { display: block; }
+
+        /* 付款成功后页面内嵌的校验码+邮箱区域 */
+        .pay-success-section { display: none; margin-top: 24px; }
+        .pay-success-section.show { display: block; }
+        .pay-success-box { background: linear-gradient(135deg,#f6ffed,#d9f7be); border: 2px solid #95de64;
+                           border-radius: 20px; padding: 28px 20px; text-align: center;
+                           animation: fadeInUp 0.5s ease; }
+        .pay-success-box .icon-big { font-size: 3.5em; display: block; margin-bottom: 4px; }
+        .pay-success-box h3 { font-size: 1.5em; color: #389e0d; margin: 4px 0; }
+        .pay-success-box .sub { font-size: 0.95em; color: #666; margin: 4px 0 12px 0; }
+        .pay-success-box .code-display { background: white; border: 2px dashed #52c41a; border-radius: 12px;
+                                         padding: 14px; margin: 0 auto 12px auto; max-width: 260px;
+                                         font-size: 2.6em; font-weight: bold; color: #1a1a2e;
+                                         letter-spacing: 10px; font-family: 'Courier New', monospace;
+                                         animation: pulse 1.5s ease infinite; }
+        .pay-success-box .code-label { font-size: 0.8em; color: #999; }
+        .email-input-area { margin-top: 16px; text-align: left; padding: 0 4px; }
+        .email-input-area label { font-size: 0.95em; color: #333; font-weight: 600; display: block; margin-bottom: 6px; }
+        .email-input-area input { width: 100%; padding: 14px 16px; border: 2px solid #e8e8e8; border-radius: 12px;
+                                  font-size: 1em; outline: none; box-sizing: border-box; }
+        .email-input-area input:focus { border-color: #1677ff; }
+        .btn-download { width: 100%; padding: 16px; margin-top: 12px; border: none; border-radius: 12px;
+                        font-size: 1.15em; font-weight: 700;
+                        background: linear-gradient(135deg, #1677ff, #0958d9); color: white; cursor: pointer;
+                        transition: transform 0.2s; }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(22,119,255,0.3); }
+        .btn-download:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .delivery-result { display: none; margin-top: 16px; padding: 20px; background: #f6ffed;
+                           border: 1px solid #b7eb8f; border-radius: 16px; text-align: center; }
+        .delivery-result.show { display: block; }
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.03); } }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="emoji">{{ product.emoji or '&#x1F6E0;' }}</div>
+        <div class="emoji">{{ product.emoji }}</div>
         <h1>{{ product.name }}</h1>
-        <p>{{ product.desc }}</p>
+        <p>{{ product.description }}</p>
     </div>
     <div class="container">
         <div class="card">
-            <div class="price-row">
-                <span class="price">&#165;{{ product.price }}</span>
-                {% if product.price_old and product.price_old > product.price %}
-                <span class="price-old">&#165;{{ product.price_old }}</span>
-                {% endif %}
-            </div>
-            {% if product.features and product.features|length > 0 %}
-            <h3 style="margin-bottom:16px;color:#333;">功能列表</h3>
+            <h2>{{ product.name }}</h2>
+            {% if product.long_desc %}
+            <div class="desc">{{ product.long_desc | safe }}</div>
+            {% endif %}
+            {% if product.features %}
             <ul class="features">
                 {% for f in product.features %}
                 <li>{{ f }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
-            <button class="btn-buy" onclick="alert('请访问官网购买')">立即购买 - &#165;{{ product.price }}</button>
-            <div class="site-url">更多工具请访问: xiaxiaojun.zeabur.app</div>
+            <div class="price-row">
+                {% if product.original_price %}
+                <span class="price-old">¥{{ product.original_price }}</span>
+                {% endif %}
+                <span class="price">¥{{ product.price }}</span>
+            </div>
+            <button class="btn-buy" id="buyBtn" onclick="openBuy()">立即购买</button>
+            {% if product.has_free %}
+            <div style="margin-top:12px;text-align:center;">
+                <a href="/free/{{ product.id }}" style="color:#667eea;font-size:0.9em;">免费试用体验版 →</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- 付款成功区域：初始隐藏，付款后显示 -->
+        <div class="pay-success-section" id="paySuccessSection">
+            <div class="pay-success-box">
+                <span class="icon-big">🎉</span>
+                <h3>支付成功 支付成功！</h3>
+                <div class="sub">下载验证码自动生成</div>
+                <div class="code-display" id="verifyCodeDisplay">----</div>
+                <div class="code-label">付款校验码（请勿关闭此页）</div>
+            </div>
+            <div class="email-input-area">
+                <label for="buyerEmail">📧 请输入下载邮箱</label>
+                <input type="email" id="buyerEmail" placeholder="如 123@qq.com" />
+                <button class="btn-download" id="downloadBtn" onclick="doDownload()">
+                    📥 获取产品下载链接
+                </button>
+            </div>
+            <div class="delivery-result" id="deliveryResult">
+                <div id="deliveryContent"></div>
+                <div style="margin-top:12px;"><a href="/" style="color:#1677ff;">返回首页</a></div>
+            </div>
         </div>
     </div>
+
+    <!-- 支付弹窗：仅用于选支付方式 + 扫码付款 -->
+    <div class="modal-overlay" id="payModal">
+        <div class="modal">
+            <button class="btn-close-modal" onclick="closeModal()">×</button>
+            <div class="step-content show" id="modalStep1">
+                <h2>{{ product.name }}</h2>
+                <div class="amount">¥{{ product.price }}</div>
+                <div class="payment-options">
+                    <button class="payment-btn active" id="alipayBtn" onclick="selPay('alipay')">
+                        <span class="icon">💳</span>支付宝
+                    </button>
+                    <button class="payment-btn" id="wechatBtn" onclick="selPay('wechat')">
+                        <span class="icon">💚</span>微信
+                    </button>
+                </div>
+                <button class="btn-buy" id="payBtn" onclick="startPay()">💳 确认支付 - ¥{{ product.price }}</button>
+            </div>
+            <div class="step-content" id="modalStep2">
+                <h2>💳 扫码付款</h2>
+                <div class="amount">¥<span id="payAmount">{{ product.price }}</span></div>
+                <div class="qrcode-box"><img id="qrcodeImg" src="" alt="" style="display:none;"><span id="qrPlaceholder">...</span></div>
+                <div class="account-info">收款账户：<strong id="payAccount">{{ alipay }}</strong></div>
+                <div class="pay-tips">💡 请用<span id="payMethodName">支付宝</span>扫码付款</div>
+                <button class="btn-paid" id="paidBtn" onclick="paid()">✅ 我已付款</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var pid = '{{ product.id }}';
+        var price = {{ product.price }};
+        var payType = 'alipay';
+        var verifyCode = '';
+
+        // 页面加载时检查是否有待付款状态
+        (function() {
+            var saved = sessionStorage.getItem('autotools_' + pid);
+            if (saved) {
+                try {
+                    var data = JSON.parse(saved);
+                    if (data.code) {
+                        verifyCode = data.code;
+                        showPaySuccess(data.code);
+                    }
+                } catch(e) {}
+            }
+        })();
+
+        function openBuy() {
+            document.getElementById('payModal').classList.add('show');
+            document.getElementById('modalStep1').classList.add('show');
+            document.getElementById('modalStep2').classList.remove('show');
+            document.getElementById('payBtn').disabled = false;
+            document.getElementById('payBtn').innerHTML = '💳 确认支付 - ¥' + price;
+            document.getElementById('paidBtn').disabled = false;
+            document.getElementById('paidBtn').innerHTML = '✅ 我已付款';
+            document.getElementById('qrcodeImg').style.display = 'none';
+            document.getElementById('qrPlaceholder').style.display = 'block';
+            document.getElementById('qrPlaceholder').textContent = '正在生成...';
+        }
+
+        function closeModal() { document.getElementById('payModal').classList.remove('show'); }
+
+        function selPay(t) {
+            payType = t;
+            document.querySelectorAll('.payment-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(t + 'Btn').classList.add('active');
+        }
+
+        function startPay() {
+            var btn = document.getElementById('payBtn');
+            btn.disabled = true; btn.innerHTML = '<span class="loading"></span> 生成中...';
+            fetch('/api/payment/qrcode', {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({product_id:pid, payment:payType})
+            })
+            .then(r=>r.json()).then(d => {
+                if (d.ok) {
+                    document.getElementById('qrcodeImg').src = d.qr;
+                    document.getElementById('qrcodeImg').style.display = 'block';
+                    document.getElementById('qrPlaceholder').style.display = 'none';
+                    document.getElementById('payAccount').textContent = d.account;
+                    document.getElementById('payMethodName').textContent = payType==='alipay'?'支付宝':'微信';
+                    document.getElementById('modalStep1').classList.remove('show');
+                    document.getElementById('modalStep2').classList.add('show');
+                } else { alert('失败: '+d.msg); }
+                btn.disabled=false; btn.innerHTML='💳 确认支付 - ¥'+price;
+            }).catch(e=>{alert('网络错误');btn.disabled=false;btn.innerHTML='💳 确认支付 - ¥'+price;});
+        }
+
+        function paid() {
+            var btn = document.getElementById('paidBtn');
+            btn.disabled = true; btn.innerHTML = '<span class="loading"></span> 校验码生成中...';
+            fetch('/api/order/pay-confirm', {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({product_id:pid, payment:payType})
+            })
+            .then(r=>r.json()).then(d => {
+                if (d.ok) {
+                    verifyCode = d.verify_code;
+                    // 存到sessionStorage，刷新页面后还能显示
+                    sessionStorage.setItem('autotools_' + pid, JSON.stringify({code: verifyCode, time: Date.now()}));
+                    // 关弹窗
+                    closeModal();
+                    // 页面显示支付成功
+                    showPaySuccess(verifyCode);
+                } else { alert('失败: '+d.msg); btn.disabled=false; btn.innerHTML='✅ 我已付款'; }
+            }).catch(e=>{alert('网络错误');btn.disabled=false;btn.innerHTML='✅ 我已付款';});
+        }
+
+        function showPaySuccess(code) {
+            document.getElementById('verifyCodeDisplay').textContent = code;
+            document.getElementById('paySuccessSection').classList.add('show');
+            document.getElementById('buyBtn').style.display = 'none';
+            // 自动滚动到支付成功区域
+            setTimeout(function(){
+                document.getElementById('paySuccessSection').scrollIntoView({behavior:'smooth',block:'center'});
+                document.getElementById('buyerEmail').focus();
+            }, 300);
+        }
+
+        function doDownload() {
+            var email = document.getElementById('buyerEmail').value.trim();
+            if (!email || email.indexOf('@') === -1) { alert('请输入正确的邮箱'); return; }
+
+            var btn = document.getElementById('downloadBtn');
+            btn.disabled = true; btn.innerHTML = '<span class="loading"></span> 发送中...';
+
+            fetch('/api/order', {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    product_id: pid,
+                    email: email,
+                    payment: payType === 'alipay' ? '支付宝' : '微信',
+                    verify_code: verifyCode
+                })
+            })
+            .then(r=>r.json()).then(d => {
+                if (d.ok) {
+                    document.getElementById('deliveryResult').classList.add('show');
+                    document.getElementById('deliveryContent').innerHTML = `
+                        <div style="font-size:2em;margin-bottom:8px;">🎉</div>
+                        <div style="font-size:1.1em;margin-bottom:4px;"><strong>${d.product_name}</strong></div>
+                        <div style="font-size:0.9em;color:#666;margin-bottom:6px;">激活码：</div>
+                        <div style="background:#f0f0f0;padding:8px 20px;border-radius:6px;font-weight:bold;display:inline-block;">${d.delivery_code}</div>
+                        <div style="margin-top:14px;">
+                            <a href="${d.download_url}" target="_blank"
+                               style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#1677ff,#0958d9);
+                                      color:white;border-radius:10px;text-decoration:none;font-weight:700;">
+                                📥 点击下载产品
+                            </a>
+                        </div>
+                        <div style="margin-top:10px;font-size:0.85em;color:#52c41a;">
+                            ✅ 已发送到邮箱：<strong>${email}</strong>
+                        </div>
+                    `;
+                    btn.style.display = 'none';
+                    document.getElementById('buyerEmail').disabled = true;
+                    // 清除sessionStorage
+                    sessionStorage.removeItem('autotools_' + pid);
+                } else {
+                    alert('失败: ' + (d.msg || '校验码无效'));
+                    btn.disabled = false; btn.innerHTML = '📥 获取产品下载链接';
+                }
+            }).catch(e=>{alert('网络错误');btn.disabled=false;btn.innerHTML='📥 获取产品下载链接';});
+        }
+
+        document.getElementById('payModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.getElementById('buyerEmail').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doDownload();
+        });
+    </script>
 </body>
 </html>

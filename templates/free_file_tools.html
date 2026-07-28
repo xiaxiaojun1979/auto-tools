@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免费在线文件批量重命名 - AutoTools</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+               background: #f5f7fa; color: #1a1a2e; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2);
+                  color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { font-size: 1.6em; margin-bottom: 4px; }
+        .header p { font-size: 0.9em; opacity: 0.9; }
+        .header .free-badge { display:inline-block; background:#52c41a; color:white; padding:2px 12px;
+                              border-radius:10px; font-size:0.8em; margin-top:4px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .tool-card { background:white; border-radius:14px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); margin-bottom:16px; }
+        .tool-card h2 { font-size:1.2em; margin-bottom:8px; }
+        .limit-bar { background:#fff3cd; border:1px solid #ffc107; border-radius:8px; padding:10px 14px; font-size:13px; color:#856404; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+        .limit-bar .count { font-weight:700; color:#d63384; }
+        .drop-zone { border:2px dashed #d9d9d9; border-radius:12px; padding:40px; text-align:center; cursor:pointer; transition:all 0.2s; background:#fafafa; }
+        .drop-zone:hover, .drop-zone.dragover { border-color:#667eea; background:#f0f0ff; }
+        .drop-zone .icon { font-size:3em; margin-bottom:8px; }
+        .drop-zone .text { color:#888; font-size:14px; }
+        .drop-zone .hint { color:#bbb; font-size:12px; margin-top:4px; }
+        .file-list { margin-top:16px; }
+        .file-item { display:flex; align-items:center; padding:8px 12px; background:#fafafa; border-radius:8px; margin-bottom:6px; gap:8px; }
+        .file-item .num { color:#888; font-size:12px; min-width:24px; }
+        .file-item .name { flex:1; font-size:13px; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .file-item .new-name { flex:1; font-size:13px; color:#667eea; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .file-item .arrow { color:#bbb; margin:0 4px; }
+        .rename-options { margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; }
+        .rename-options input, .rename-options select { padding:8px 12px; border:2px solid #e8e8e8; border-radius:8px; font-size:13px; outline:none; flex:1; min-width:120px; }
+        .rename-options input:focus { border-color:#667eea; }
+        .rename-options button { padding:8px 20px; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+        .btn-preview { background:#667eea; color:white; }
+        .btn-preview:hover { opacity:0.9; }
+        .btn-reset { background:#f5f5f5; color:#666; }
+        .btn-reset:hover { background:#e8e8e8; }
+        .upgrade-card { background:linear-gradient(135deg,#f0f5ff,#e6f0ff); border:2px solid #667eea; border-radius:14px; padding:20px; text-align:center; }
+        .upgrade-card h3 { font-size:1.2em; margin-bottom:6px; color:#1a1a2e; }
+        .upgrade-card .features { font-size:13px; color:#555; line-height:2; margin-bottom:12px; }
+        .upgrade-card .btn-upgrade { display:inline-block; padding:12px 40px; border:none; border-radius:10px;
+                                      background:linear-gradient(135deg,#667eea,#764ba2); color:white; font-size:15px;
+                                      font-weight:600; cursor:pointer; text-decoration:none; }
+        .upgrade-card .btn-upgrade:hover { opacity:0.9; }
+        .hidden-input { display:none; }
+        .toast { position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#1a1a2e; color:white;
+                 padding:12px 24px; border-radius:10px; font-size:14px; z-index:999; opacity:0; transition:opacity 0.3s; }
+        .toast.show { opacity:1; }
+        @media(max-width:600px) {
+            .rename-options { flex-direction:column; }
+            .file-item { flex-direction:column; align-items:flex-start; gap:2px; }
+            .file-item .arrow { transform:rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<div class="header">
+    <h1>📁 文件批量重命名 <span class="free-badge">🆓 免费在线版</span></h1>
+    <p>拖入文件，预览重命名效果 · {{ "每日限制10个文件" if True else "" }}</p>
+</div>
+
+<div class="container">
+    <div class="tool-card">
+        <div class="limit-bar" id="limitBar">
+            <span>📊 今日已处理 <span class="count" id="fileCount">0</span> / 10 个文件</span>
+            <span>💡 免费版限制10个文件，购买完整版无限处理</span>
+        </div>
+
+        <!-- Drop zone -->
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+            <div class="icon">📂</div>
+            <div class="text">点击上传 或 拖拽文件到此处</div>
+            <div class="hint">支持任意格式文件 · 免费版最多10个文件</div>
+        </div>
+        <input type="file" id="fileInput" class="hidden-input" multiple onchange="handleFiles(this.files)">
+
+        <!-- Rename options -->
+        <div class="rename-options">
+            <input type="text" id="prefixInput" placeholder="前缀 (如: 毕业设计_)" oninput="previewRename()">
+            <input type="text" id="suffixInput" placeholder="后缀 (如: _v1)" oninput="previewRename()">
+            <select id="renameMode" onchange="previewRename()">
+                <option value="prefix">前缀+序号</option>
+                <option value="suffix">后缀+序号</option>
+                <option value="both">前缀+后缀+序号</option>
+                <option value="date">日期+原文件名</option>
+            </select>
+            <button class="btn-preview" onclick="previewRename()">👁️ 预览</button>
+            <button class="btn-reset" onclick="resetAll()">🔄 重置</button>
+        </div>
+
+        <!-- File list -->
+        <div class="file-list" id="fileList"></div>
+        
+        {% if files_remaining is defined %}
+        <div style="text-align:center;margin-top:12px;font-size:12px;color:#888;">
+            已使用 <b>{{ 10 - files_remaining }}</b> / 10 次
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Upgrade CTA -->
+    <div class="upgrade-card">
+        <h3>⭐ 解锁完整版文件批处理大师</h3>
+        <div class="features">
+            ✅ 无限文件数量 · ✅ 批量格式转换 · ✅ 智能分类<br>
+            ✅ 正则表达式重命名 · ✅ 文件夹对比同步 · ✅ 终身免费更新
+        </div>
+        <div style="font-size:1.5em;font-weight:700;color:#e74c3c;margin-bottom:10px;">仅 ¥29 <span style="font-size:0.6em;color:#999;text-decoration:line-through;">¥69</span></div>
+        <a href="/" class="btn-upgrade" onclick="trackConversion()">🚀 立即购买完整版</a>
+        <div style="font-size:11px;color:#888;margin-top:8px;">付款后自动发送下载链接到邮箱</div>
+    </div>
+</div>
+
+<script>
+// ===== File Processing =====
+var uploadedFiles = [];
+var MAX_FILES = 10;
+
+// Check localStorage for daily usage
+function getDailyUsage() {
+    var today = new Date().toISOString().slice(0,10);
+    var key = 'filetools_usage_' + today;
+    return parseInt(localStorage.getItem(key) || '0');
+}
+
+function addDailyUsage(count) {
+    var today = new Date().toISOString().slice(0,10);
+    var key = 'filetools_usage_' + today;
+    var current = parseInt(localStorage.getItem(key) || '0');
+    localStorage.setItem(key, current + count);
+}
+
+function getRemaining() {
+    return Math.max(0, MAX_FILES - getDailyUsage());
+}
+
+function updateLimitBar() {
+    var used = getDailyUsage();
+    var remaining = getRemaining();
+    document.getElementById('fileCount').textContent = used;
+    document.getElementById('limitBar').querySelector('span:first-child').innerHTML = 
+        '📊 今日已处理 <span class="count">' + used + '</span> / 10 个文件' +
+        (remaining === 0 ? ' <span style="color:#e74c3c;">⚠️ 已达今日限额</span>' : '');
+}
+
+// Drag & drop
+var dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.classList.add('dragover');
+});
+dropZone.addEventListener('dragleave', function() {
+    this.classList.remove('dragover');
+});
+dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(files) {
+    var remaining = getRemaining();
+    if (remaining <= 0) {
+        showToast('⚠️ 今日免费额度已用完，购买完整版无限使用！');
+        return;
+    }
+    
+    var newFiles = [];
+    for (var i = 0; i < Math.min(files.length, remaining); i++) {
+        newFiles.push({
+            name: files[i].name,
+            size: files[i].size,
+            lastModified: files[i].lastModified,
+            handle: files[i]
+        });
+    }
+    
+    uploadedFiles = uploadedFiles.concat(newFiles);
+    addDailyUsage(newFiles.length);
+    
+    if (newFiles.length < files.length) {
+        showToast('⚠️ 免费版限10个文件，已超出限制');
+    }
+    
+    renderFileList();
+    previewRename();
+    updateLimitBar();
+}
+
+function renderFileList() {
+    var list = document.getElementById('fileList');
+    if (uploadedFiles.length === 0) {
+        list.innerHTML = '';
+        return;
+    }
+    
+    var html = '<div style="font-size:13px;color:#888;margin-bottom:8px;">已上传 ' + uploadedFiles.length + ' 个文件</div>';
+    for (var i = 0; i < uploadedFiles.length; i++) {
+        html += '<div class="file-item">' +
+            '<span class="num">#' + (i+1) + '</span>' +
+            '<span class="name" title="' + uploadedFiles[i].name + '">' + uploadedFiles[i].name + '</span>' +
+            '<span class="arrow">→</span>' +
+            '<span class="new-name" id="newName-' + i + '">' + uploadedFiles[i].name + '</span>' +
+            '<button onclick="removeFile(' + i + ')" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:16px;">✕</button>' +
+        '</div>';
+    }
+    list.innerHTML = html;
+}
+
+function removeFile(idx) {
+    uploadedFiles.splice(idx, 1);
+    renderFileList();
+    previewRename();
+}
+
+function previewRename() {
+    var prefix = document.getElementById('prefixInput').value;
+    var suffix = document.getElementById('suffixInput').value;
+    var mode = document.getElementById('renameMode').value;
+    
+    for (var i = 0; i < uploadedFiles.length; i++) {
+        var f = uploadedFiles[i];
+        var ext = f.name.lastIndexOf('.') >= 0 ? f.name.slice(f.name.lastIndexOf('.')) : '';
+        var base = f.name.lastIndexOf('.') >= 0 ? f.name.slice(0, f.name.lastIndexOf('.')) : f.name;
+        var newName = '';
+        var num = (i + 1).toString().padStart(2, '0');
+        var today = new Date().toISOString().slice(0,10).replace(/-/g,'');
+        
+        switch(mode) {
+            case 'prefix':
+                newName = prefix + num + ext;
+                break;
+            case 'suffix':
+                newName = base + suffix + '_' + num + ext;
+                break;
+            case 'both':
+                newName = prefix + base + suffix + '_' + num + ext;
+                break;
+            case 'date':
+                newName = today + '_' + base + ext;
+                break;
+        }
+        
+        var el = document.getElementById('newName-' + i);
+        if (el) el.textContent = newName;
+    }
+}
+
+function resetAll() {
+    uploadedFiles = [];
+    document.getElementById('fileList').innerHTML = '';
+    document.getElementById('prefixInput').value = '';
+    document.getElementById('suffixInput').value = '';
+}
+
+function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
+
+// ===== Track conversion =====
+function trackConversion() {
+    try {
+        var data = {event:'free_to_buy', tool:'file_tools', files_processed: uploadedFiles.length};
+        navigator.sendBeacon('/api/track/conversion', JSON.stringify(data));
+    } catch(e) {}
+}
+
+// Init
+updateLimitBar();
+</script>
+</body>
+</html>
