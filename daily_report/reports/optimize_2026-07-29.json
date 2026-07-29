@@ -3,8 +3,8 @@
     "total_revenue": 164,
     "total_orders": 6,
     "today": {
-      "revenue": 145,
-      "orders": 5
+      "revenue": 0,
+      "orders": 0
     },
     "week": {
       "revenue": 145
@@ -16,133 +16,133 @@
     "product_sales": {
       "creator_pack": {
         "name": "内容创作者效率包",
-        "price": 299,
+        "price": 179,
         "category": "package",
         "count": 0,
         "revenue": 0
       },
       "office_pack": {
         "name": "办公自动化全家桶",
-        "price": 199,
+        "price": 119,
         "category": "package",
         "count": 0,
         "revenue": 0
       },
       "dev_pack": {
         "name": "开发者效率工具包",
-        "price": 199,
+        "price": 119,
         "category": "package",
         "count": 0,
         "revenue": 0
       },
       "ai_pack": {
         "name": "AI创新应用包",
-        "price": 149,
+        "price": 89,
         "category": "package",
         "count": 0,
         "revenue": 0
       },
       "enterprise_pack": {
         "name": "企业管理超值包",
-        "price": 499,
+        "price": 299,
         "category": "package",
         "count": 0,
         "revenue": 0
       },
       "file_tools": {
         "name": "文件批处理大师",
-        "price": 29,
+        "price": 17,
         "category": "system",
         "count": 6,
         "revenue": 164
       },
       "content_gen": {
         "name": "内容自动生成器",
-        "price": 29,
+        "price": 17,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "data_tools": {
         "name": "数据清洗工具包",
-        "price": 29,
+        "price": 17,
         "category": "data",
         "count": 0,
         "revenue": 0
       },
       "excel_macro": {
         "name": "Excel宏工具包",
-        "price": 29,
+        "price": 17,
         "category": "office",
         "count": 0,
         "revenue": 0
       },
       "pdf_tools": {
         "name": "PDF全能工具箱",
-        "price": 39,
+        "price": 23,
         "category": "office",
         "count": 0,
         "revenue": 0
       },
       "vip_member": {
         "name": "VIP终身会员",
-        "price": 49,
+        "price": 29,
         "category": "vip",
         "count": 0,
         "revenue": 0
       },
       "subtitle": {
         "name": "视频字幕提取工具",
-        "price": 29,
+        "price": 17,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "merge": {
         "name": "视频拼接合并工具",
-        "price": 29,
+        "price": 17,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "chat_client": {
         "name": "AI对话客户端",
-        "price": 39,
+        "price": 23,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "translate_batch": {
         "name": "批量翻译工具",
-        "price": 29,
+        "price": 17,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "watermark_add": {
         "name": "图片批量加水印",
-        "price": 29,
+        "price": 17,
         "category": "image",
         "count": 0,
         "revenue": 0
       },
       "remove_bg": {
         "name": "图片去背景工具",
-        "price": 29,
+        "price": 17,
         "category": "image",
         "count": 0,
         "revenue": 0
       },
       "price_monitor": {
         "name": "电商价格监控",
-        "price": 29,
+        "price": 17,
         "category": "web",
         "count": 0,
         "revenue": 0
       },
       "trending": {
         "name": "热点追踪工具",
-        "price": 29,
+        "price": 17,
         "category": "media",
         "count": 0,
         "revenue": 0
@@ -156,112 +156,112 @@
       },
       "deploy_service": {
         "name": "代部署服务",
-        "price": 69,
+        "price": 41,
         "category": "service",
         "count": 0,
         "revenue": 0
       },
       "custom_dev": {
         "name": "定制开发",
-        "price": 299,
+        "price": 179,
         "category": "service",
         "count": 0,
         "revenue": 0
       },
       "enterprise_pkg": {
         "name": "企业批量部署",
-        "price": 699,
+        "price": 419,
         "category": "service",
         "count": 0,
         "revenue": 0
       },
       "maintenance": {
         "name": "年度维护套餐",
-        "price": 199,
+        "price": 119,
         "category": "subscription",
         "count": 0,
         "revenue": 0
       },
       "vip_custom": {
         "name": "企业VIP定制",
-        "price": 1999,
+        "price": 1199,
         "category": "enterprise",
         "count": 0,
         "revenue": 0
       },
       "image_gen": {
         "name": "AI图片生成工具",
-        "price": 39,
+        "price": 23,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "summary": {
         "name": "文章摘要生成器",
-        "price": 19,
+        "price": 11,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "text_to_speech": {
         "name": "文字转语音工具",
-        "price": 29,
+        "price": 17,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "compress": {
         "name": "图片压缩工具",
-        "price": 19,
+        "price": 11,
         "category": "image",
         "count": 0,
         "revenue": 0
       },
       "format_convert": {
         "name": "图片格式转换器",
-        "price": 19,
+        "price": 11,
         "category": "image",
         "count": 0,
         "revenue": 0
       },
       "resize": {
         "name": "图片批量改尺寸",
-        "price": 19,
+        "price": 11,
         "category": "image",
         "count": 0,
         "revenue": 0
       },
       "batch_publish": {
         "name": "多平台发布器",
-        "price": 39,
+        "price": 23,
         "category": "media",
         "count": 0,
         "revenue": 0
       },
       "calendar": {
         "name": "内容日历工具",
-        "price": 19,
+        "price": 11,
         "category": "media",
         "count": 0,
         "revenue": 0
       },
       "keyword_analysis": {
         "name": "关键词分析工具",
-        "price": 29,
+        "price": 17,
         "category": "media",
         "count": 0,
         "revenue": 0
       },
       "file_encrypt": {
         "name": "文件加密工具",
-        "price": 29,
+        "price": 17,
         "category": "security",
         "count": 0,
         "revenue": 0
       },
       "file_shredder": {
         "name": "文件粉碎工具",
-        "price": 19,
+        "price": 11,
         "category": "security",
         "count": 0,
         "revenue": 0
@@ -282,42 +282,42 @@
       },
       "compress_video": {
         "name": "视频压缩工具",
-        "price": 29,
+        "price": 17,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "seo_checker": {
         "name": "SEO检测工具",
-        "price": 19,
+        "price": 11,
         "category": "web",
         "count": 0,
         "revenue": 0
       },
       "layout_helper": {
         "name": "排版助手工具",
-        "price": 29,
+        "price": 17,
         "category": "media",
         "count": 0,
         "revenue": 0
       },
       "screen_recorder": {
         "name": "屏幕录制工具",
-        "price": 29,
+        "price": 17,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "gif_maker": {
         "name": "GIF动图制作工具",
-        "price": 19,
+        "price": 11,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "clipboard_mgr": {
         "name": "剪贴板增强工具",
-        "price": 29,
+        "price": 17,
         "category": "system",
         "count": 0,
         "revenue": 0
@@ -331,7 +331,7 @@
       },
       "batch_rename_adv": {
         "name": "高级批量重命名",
-        "price": 29,
+        "price": 17,
         "category": "system",
         "count": 0,
         "revenue": 0
@@ -345,35 +345,35 @@
       },
       "file_sync": {
         "name": "文件夹同步工具",
-        "price": 29,
+        "price": 17,
         "category": "system",
         "count": 0,
         "revenue": 0
       },
       "duplicate_finder": {
         "name": "重复文件查找器",
-        "price": 29,
+        "price": 17,
         "category": "system",
         "count": 0,
         "revenue": 0
       },
       "image_watermark_video": {
         "name": "视频批量加水印",
-        "price": 29,
+        "price": 17,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "ai_data_analyze": {
         "name": "AI数据分析师",
-        "price": 39,
+        "price": 23,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "short_video_script": {
         "name": "短视频脚本生成",
-        "price": 39,
+        "price": 23,
         "category": "video",
         "count": 0,
         "revenue": 0
@@ -408,190 +408,218 @@
       },
       "ai_code_review": {
         "name": "AI代码审查工具",
-        "price": 59,
+        "price": 35,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "live_stream_helper": {
         "name": "直播辅助工具",
-        "price": 49,
+        "price": 29,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "ai_writing_assist": {
         "name": "AI写作助手",
-        "price": 39,
+        "price": 23,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "ai_ppt_gen": {
         "name": "AI PPT自动生成",
-        "price": 29,
+        "price": 17,
         "category": "ai_tool",
         "count": 0,
         "revenue": 0
       },
       "video_subtitle": {
         "name": "视频自动加字幕",
-        "price": 29,
+        "price": 17,
         "category": "video_tool",
         "count": 0,
         "revenue": 0
       },
       "ai_avatar": {
         "name": "AI数字人主播",
-        "price": 39,
+        "price": 23,
         "category": "ai_tool",
         "count": 0,
         "revenue": 0
       },
       "voice_clone": {
         "name": "AI声音克隆工具",
-        "price": 39,
+        "price": 23,
         "category": "ai_tool",
         "count": 0,
         "revenue": 0
       },
       "ai_interview": {
         "name": "AI模拟面试官",
-        "price": 29,
+        "price": 17,
         "category": "career",
         "count": 0,
         "revenue": 0
       },
       "resume_opt": {
         "name": "AI简历优化大师",
-        "price": 19,
+        "price": 11,
         "category": "career",
         "count": 0,
         "revenue": 0
       },
       "ai_coding": {
         "name": "AI编程助手",
-        "price": 39,
+        "price": 23,
         "category": "dev_tool",
         "count": 0,
         "revenue": 0
       },
       "ai_translator_pro": {
         "name": "AI专业翻译工具",
-        "price": 29,
+        "price": 17,
         "category": "tool",
         "count": 0,
         "revenue": 0
       },
       "ai_music_gen": {
         "name": "AI音乐生成器",
-        "price": 29,
+        "price": 17,
         "category": "ai_tool",
         "count": 0,
         "revenue": 0
       },
       "video_short_clip": {
         "name": "短视频智能剪辑",
-        "price": 29,
+        "price": 17,
         "category": "video_tool",
         "count": 0,
         "revenue": 0
       },
       "website_builder": {
         "name": "AI网站自动搭建",
-        "price": 39,
+        "price": 23,
         "category": "dev_tool",
         "count": 0,
         "revenue": 0
       },
       "data_vis": {
         "name": "AI数据可视化",
-        "price": 29,
+        "price": 17,
         "category": "data_tool",
         "count": 0,
         "revenue": 0
       },
       "exam_helper": {
         "name": "AI考试助手",
-        "price": 19,
+        "price": 11,
         "category": "education",
         "count": 0,
         "revenue": 0
       },
       "social_media_mgr": {
         "name": "社媒运营助手",
-        "price": 29,
+        "price": 17,
         "category": "marketing",
         "count": 0,
         "revenue": 0
       },
       "ai_lawyer": {
         "name": "AI法律文书助手",
-        "price": 39,
+        "price": 23,
         "category": "professional",
         "count": 0,
         "revenue": 0
       },
       "meal_planner": {
         "name": "AI健康饮食规划",
-        "price": 19,
+        "price": 11,
         "category": "lifestyle",
         "count": 0,
         "revenue": 0
       },
       "fitness_coach": {
         "name": "AI健身私教",
-        "price": 29,
+        "price": 17,
         "category": "lifestyle",
         "count": 0,
         "revenue": 0
       },
       "stock_analyzer": {
         "name": "AI股票分析助手",
-        "price": 29,
+        "price": 17,
         "category": "finance",
         "count": 0,
         "revenue": 0
       },
       "meeting_summary": {
         "name": "AI会议纪要助手",
-        "price": 29,
+        "price": 17,
         "category": "productivity",
         "count": 0,
         "revenue": 0
       },
       "ai_room_design": {
         "name": "AI室内设计助手",
-        "price": 29,
+        "price": 17,
         "category": "design",
         "count": 0,
         "revenue": 0
       },
       "ai_mindmap": {
         "name": "AI思维导图工具",
-        "price": 29,
+        "price": 17,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "tiktok_auto_reply": {
         "name": "抖音自动回复",
-        "price": 45,
+        "price": 27,
         "category": "video",
         "count": 0,
         "revenue": 0
       },
       "ai_ppt": {
         "name": "AI自动生成PPT",
-        "price": 45,
+        "price": 27,
         "category": "ai",
         "count": 0,
         "revenue": 0
       },
       "video_clip_batch": {
         "name": "视频批量剪辑",
-        "price": 49,
+        "price": 29,
         "category": "video",
+        "count": 0,
+        "revenue": 0
+      },
+      "ai_resume": {
+        "name": "AI简历优化工具",
+        "price": 39,
+        "category": "ai",
+        "count": 0,
+        "revenue": 0
+      },
+      "short_video_edit": {
+        "name": "短视频快速剪辑",
+        "price": 39,
+        "category": "video",
+        "count": 0,
+        "revenue": 0
+      },
+      "danmaku_collect": {
+        "name": "弹幕采集工具",
+        "price": 35,
+        "category": "video",
+        "count": 0,
+        "revenue": 0
+      },
+      "price_history": {
+        "name": "商品历史价格查询",
+        "price": 29,
+        "category": "ecommerce",
         "count": 0,
         "revenue": 0
       }
@@ -704,14 +732,13 @@
       "design": {
         "count": 0,
         "revenue": 0
+      },
+      "ecommerce": {
+        "count": 0,
+        "revenue": 0
       }
     },
     "trend": [
-      {
-        "date": "2026-07-22",
-        "revenue": 0,
-        "orders": 0
-      },
       {
         "date": "2026-07-23",
         "revenue": 0,
@@ -741,15 +768,25 @@
         "date": "2026-07-28",
         "revenue": 145,
         "orders": 5
+      },
+      {
+        "date": "2026-07-29",
+        "revenue": 0,
+        "orders": 0
       }
     ],
-    "analysis_time": "2026-07-28 21:00:04"
+    "analysis_time": "2026-07-29 20:00:36"
   },
   "strategies": [
     [
-      "🟢",
-      "达成",
-      "今日收入¥145，达成日目标🎉"
+      "🔴",
+      "紧急",
+      "今日尚无收入！立即启动推广"
+    ],
+    [
+      "💡",
+      "行动",
+      "在闲鱼发布1-2个商品，定价¥29-¥79"
     ],
     [
       "🏆",
@@ -764,7 +801,7 @@
     [
       "💎",
       "高利",
-      "高价值服务(9个): ¥299-¥1999"
+      "高价值服务(8个): ¥179-¥1199"
     ],
     [
       "🎯",
@@ -794,7 +831,7 @@
     [
       "💰",
       "定价",
-      "¥19-29(55个) ¥35-99(19个) ¥199+(9个)"
+      "¥19-29(73个) ¥35-99(6个) ¥199+(8个)"
     ],
     [
       "🎁",

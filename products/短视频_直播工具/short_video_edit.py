@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-弹幕采集工具 - 采集直播间弹幕数据
+短视频快速剪辑 - 一键剪辑热门短视频
 开发日期: 2026-07-29
-价格: ¥35
+价格: ¥39
 类别: 短视频_直播工具
 """
 
 
-class DanmakuCollect:
-    """弹幕采集工具 - 采集直播间弹幕数据"""
+class ShortVideoEdit:
+    """短视频快速剪辑 - 一键剪辑热门短视频"""
     
     def __init__(self):
-        self.name = "弹幕采集工具"
-        self.desc = "采集直播间弹幕数据"
-        self.price = 35
+        self.name = "短视频快速剪辑"
+        self.desc = "一键剪辑热门短视频"
+        self.price = 39
         self.version = "1.0"
         self.created = "2026-07-29"
     
     def get_info(self):
         return {
-            "id": "danmaku_collect",
+            "id": "short_video_edit",
             "name": self.name,
             "desc": self.desc,
             "price": self.price,
@@ -43,7 +43,7 @@ class DanmakuCollect:
 
 
 def main():
-    tool = DanmakuCollect()
+    tool = ShortVideoEdit()
     tool.demo()
 
 

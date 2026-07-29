@@ -11,14 +11,15 @@
       "图片批量处理（压缩/去背景/加水印）",
       "含1个月使用教程+专属客服支持"
     ],
-    "price": 299,
+    "price": 179,
     "price_old": 598,
     "category": "package",
     "is_package": true,
     "badge": "🔥 最受欢迎",
     "tools_count": 18,
     "role": "creator",
-    "has_free": false
+    "has_free": false,
+    "original_price": 299
   },
   {
     "id": "office_pack",
@@ -32,14 +33,15 @@
       "文件夹同步+重复文件清理+剪贴板增强",
       "含1个月使用教程+专属客服支持"
     ],
-    "price": 199,
+    "price": 119,
     "price_old": 428,
     "category": "package",
     "is_package": true,
     "badge": "💼 职场必备",
     "tools_count": 20,
     "role": "office",
-    "has_free": false
+    "has_free": false,
+    "original_price": 199
   },
   {
     "id": "dev_pack",
@@ -53,14 +55,15 @@
       "文件加密+安全工具+代部署服务",
       "含1个月使用教程+专属客服支持"
     ],
-    "price": 199,
+    "price": 119,
     "price_old": 460,
     "category": "package",
     "is_package": true,
     "badge": "⚡ 极客首选",
     "tools_count": 11,
     "role": "dev",
-    "has_free": false
+    "has_free": false,
+    "original_price": 199
   },
   {
     "id": "ai_pack",
@@ -74,14 +77,15 @@
       "AI考试助手+股票分析+室内设计",
       "含1个月使用教程+专属客服支持"
     ],
-    "price": 149,
+    "price": 89,
     "price_old": 360,
     "category": "package",
     "is_package": true,
     "badge": "🌟 热门推荐",
     "tools_count": 13,
     "role": "ai",
-    "has_free": false
+    "has_free": false,
+    "original_price": 149
   },
   {
     "id": "enterprise_pack",
@@ -95,14 +99,15 @@
       "专属客服+培训支持",
       "紧急响应+7x24小时服务"
     ],
-    "price": 499,
+    "price": 299,
     "price_old": 1299,
     "category": "package",
     "is_package": true,
     "badge": "👑 企业首选",
     "tools_count": 75,
     "role": "enterprise",
-    "has_free": false
+    "has_free": false,
+    "original_price": 499
   },
   {
     "id": "file_tools",
@@ -116,12 +121,13 @@
       "重复文件查找",
       "文件夹对比"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "system",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：整理毕业论文素材的毕业生、清理公司文件档案的行政"
+    "has_free": true,
+    "scenario": "适合：整理毕业论文素材的毕业生、清理公司文件档案的行政",
+    "original_price": 29
   },
   {
     "id": "content_gen",
@@ -135,12 +141,13 @@
       "多平台适配",
       "批量生产"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "ai",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：生成产品描述文案的运营、撰写SEO文章的站长"
+    "has_free": true,
+    "scenario": "适合：生成产品描述文案的运营、撰写SEO文章的站长",
+    "original_price": 29
   },
   {
     "id": "data_tools",
@@ -154,12 +161,13 @@
       "多表合并",
       "可视化报告"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "data",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：清洗用户数据的分析狮、整理调研问卷的市场部"
+    "has_free": true,
+    "scenario": "适合：清洗用户数据的分析狮、整理调研问卷的市场部",
+    "original_price": 29
   },
   {
     "id": "excel_macro",
@@ -173,12 +181,13 @@
       "多表合并",
       "自定义报表"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "office",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：处理月度报表的财务、整理销售数据的运营"
+    "has_free": true,
+    "scenario": "适合：处理月度报表的财务、整理销售数据的运营",
+    "original_price": 29
   },
   {
     "id": "pdf_tools",
@@ -192,12 +201,13 @@
       "图片转PDF",
       "水印添加"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "office",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：合并扫描件的HR、拆分PDF合同的法务"
+    "has_free": true,
+    "scenario": "适合：合并扫描件的HR、拆分PDF合同的法务",
+    "original_price": 39
   },
   {
     "id": "vip_member",
@@ -211,13 +221,14 @@
       "VIP群",
       "一对一支持"
     ],
-    "price": 49,
+    "price": 29,
     "price_old": 199,
     "is_vip": true,
     "category": "vip",
     "role": "enterprise",
-    "has_free": false,
-    "scenario": "适合：想一次解锁全部工具的深度用户"
+    "has_free": true,
+    "scenario": "适合：想一次解锁全部工具的深度用户",
+    "original_price": 49
   },
   {
     "id": "subtitle",
@@ -231,12 +242,13 @@
       "SRT格式",
       "TXT导出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：提取网课字幕的学生、整理采访稿的记者"
+    "has_free": true,
+    "scenario": "适合：提取网课字幕的学生、整理采访稿的记者",
+    "original_price": 29
   },
   {
     "id": "merge",
@@ -250,12 +262,13 @@
       "音频同步",
       "高清输出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：合并会议录像的行政、拼接课程片段的讲师"
+    "has_free": true,
+    "scenario": "适合：合并会议录像的行政、拼接课程片段的讲师",
+    "original_price": 29
   },
   {
     "id": "chat_client",
@@ -269,12 +282,13 @@
       "导出对话",
       "API接入"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：需要本地AI对话的隐私敏感用户、离线使用的场景"
+    "has_free": true,
+    "scenario": "适合：需要本地AI对话的隐私敏感用户、离线使用的场景",
+    "original_price": 39
   },
   {
     "id": "translate_batch",
@@ -288,12 +302,13 @@
       "术语库",
       "导出结果"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "ai",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：翻译产品说明的跨境电商、处理多语言文档的外贸人员"
+    "has_free": true,
+    "scenario": "适合：翻译产品说明的跨境电商、处理多语言文档的外贸人员",
+    "original_price": 29
   },
   {
     "id": "watermark_add",
@@ -307,12 +322,13 @@
       "位置调整",
       "透明度设置"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "image",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：保护原创作品的摄影师、添加品牌水印的设计师"
+    "has_free": true,
+    "scenario": "适合：保护原创作品的摄影师、添加品牌水印的设计师",
+    "original_price": 29
   },
   {
     "id": "remove_bg",
@@ -326,12 +342,13 @@
       "批量处理",
       "透明背景"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "image",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作产品主图的电商运营、去证件照背景的求职者"
+    "has_free": true,
+    "scenario": "适合：制作产品主图的电商运营、去证件照背景的求职者",
+    "original_price": 29
   },
   {
     "id": "price_monitor",
@@ -345,12 +362,13 @@
       "历史记录",
       "数据导出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 49,
     "category": "web",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：追踪商品价格的比价达人、分析竞品定价的运营"
+    "has_free": true,
+    "scenario": "适合：追踪商品价格的比价达人、分析竞品定价的运营",
+    "original_price": 29
   },
   {
     "id": "trending",
@@ -364,12 +382,13 @@
       "关键词监控",
       "数据导出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "media",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：追热点的自媒体小编、分析流行趋势的营销"
+    "has_free": true,
+    "scenario": "适合：追热点的自媒体小编、分析流行趋势的营销",
+    "original_price": 29
   },
   {
     "id": "folder_lock",
@@ -387,68 +406,74 @@
     "price_old": 29,
     "category": "security",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：加密私密文件的自由职业者、保护工作文档的白领"
+    "has_free": true,
+    "scenario": "适合：加密私密文件的自由职业者、保护工作文档的白领",
+    "original_price": 9
   },
   {
     "id": "deploy_service",
     "emoji": "📦",
     "name": "代部署服务",
     "desc": "远程安装调试一条龙服务",
-    "price": 69,
+    "price": 41,
     "price_old": 99,
     "category": "service",
     "role": "enterprise",
     "has_free": false,
-    "scenario": "适合：需要技术部署支持的个人开发者或小团队"
+    "scenario": "适合：需要技术部署支持的个人开发者或小团队",
+    "original_price": 69
   },
   {
     "id": "custom_dev",
     "emoji": "🏭",
     "name": "定制开发",
     "desc": "按需求定制专属工具",
-    "price": 299,
+    "price": 179,
     "price_old": 499,
     "category": "service",
     "role": "enterprise",
     "has_free": false,
-    "scenario": "适合：有定制开发需求的企业客户"
+    "scenario": "适合：有定制开发需求的企业客户",
+    "original_price": 299
   },
   {
     "id": "enterprise_pkg",
     "emoji": "🏢",
     "name": "企业批量部署",
     "desc": "团队批量部署+培训",
-    "price": 699,
+    "price": 419,
     "price_old": 999,
     "category": "service",
     "role": "enterprise",
     "has_free": false,
-    "scenario": "适合：需要批量部署工具的IT部门负责人"
+    "scenario": "适合：需要批量部署工具的IT部门负责人",
+    "original_price": 699
   },
   {
     "id": "maintenance",
     "emoji": "🔧",
     "name": "年度维护套餐",
     "desc": "全年技术支持+免费更新",
-    "price": 199,
+    "price": 119,
     "price_old": 299,
     "category": "subscription",
     "role": "enterprise",
     "has_free": false,
-    "scenario": "适合：希望持续获得技术支持和更新的企业客户"
+    "scenario": "适合：希望持续获得技术支持和更新的企业客户",
+    "original_price": 199
   },
   {
     "id": "vip_custom",
     "emoji": "👑",
     "name": "企业VIP定制",
     "desc": "全套工具+定制+年度维护",
-    "price": 1999,
+    "price": 1199,
     "price_old": 2999,
     "category": "enterprise",
     "role": "enterprise",
     "has_free": false,
-    "scenario": "适合：需要专属定制和VIP服务的集团客户"
+    "scenario": "适合：需要专属定制和VIP服务的集团客户",
+    "original_price": 1999
   },
   {
     "id": "image_gen",
@@ -462,12 +487,13 @@
       "高清输出",
       "多种模型"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：生成配图的自媒体编辑、制作素材的设计师"
+    "has_free": true,
+    "scenario": "适合：生成配图的自媒体编辑、制作素材的设计师",
+    "original_price": 39
   },
   {
     "id": "summary",
@@ -481,12 +507,13 @@
       "原文对比",
       "批量处理"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "ai",
     "role": "office",
     "has_free": true,
-    "scenario": "适合：快速阅读论文的研究生、提炼报告要点的经理"
+    "scenario": "适合：快速阅读论文的研究生、提炼报告要点的经理",
+    "original_price": 19
   },
   {
     "id": "text_to_speech",
@@ -500,12 +527,13 @@
       "MP3导出",
       "中英文支持"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "ai",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作有声读物的作者、生成配音的短视频创作者"
+    "has_free": true,
+    "scenario": "适合：制作有声读物的作者、生成配音的短视频创作者",
+    "original_price": 29
   },
   {
     "id": "compress",
@@ -519,12 +547,13 @@
       "自定义质量",
       "原图备份"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "image",
     "role": "creator",
     "has_free": true,
-    "scenario": "适合：压缩产品图片的电商卖家、优化网站图片的站长"
+    "scenario": "适合：压缩产品图片的电商卖家、优化网站图片的站长",
+    "original_price": 19
   },
   {
     "id": "format_convert",
@@ -538,12 +567,13 @@
       "拖拽操作",
       "预览功能"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "image",
     "role": "creator",
     "has_free": true,
-    "scenario": "适合：转换课件格式的老师、统一图片格式的设计师"
+    "scenario": "适合：转换课件格式的老师、统一图片格式的设计师",
+    "original_price": 19
   },
   {
     "id": "resize",
@@ -557,12 +587,13 @@
       "预设模板",
       "高清输出"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "image",
     "role": "creator",
     "has_free": true,
-    "scenario": "适合：批量调整商品图的淘宝店主、制作统一封面的自媒体"
+    "scenario": "适合：批量调整商品图的淘宝店主、制作统一封面的自媒体",
+    "original_price": 19
   },
   {
     "id": "batch_publish",
@@ -576,12 +607,13 @@
       "数据统计",
       "批量同步"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "media",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：一键多平台发布的内容创作者、同步更新文章的博主"
+    "has_free": true,
+    "scenario": "适合：一键多平台发布的内容创作者、同步更新文章的博主",
+    "original_price": 39
   },
   {
     "id": "calendar",
@@ -595,12 +627,13 @@
       "模板库",
       "进度追踪"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "media",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：规划内容排期的编辑、管理发布计划的社媒运营"
+    "has_free": true,
+    "scenario": "适合：规划内容排期的编辑、管理发布计划的社媒运营",
+    "original_price": 19
   },
   {
     "id": "keyword_analysis",
@@ -614,12 +647,13 @@
       "竞争分析",
       "数据导出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "media",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：挖掘长尾关键词的SEO、分析搜索趋势的内容运营"
+    "has_free": true,
+    "scenario": "适合：挖掘长尾关键词的SEO、分析搜索趋势的内容运营",
+    "original_price": 29
   },
   {
     "id": "file_encrypt",
@@ -633,12 +667,13 @@
       "解密还原",
       "拖拽操作"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "security",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：加密合同附件的律师、保护隐私数据的技术人员"
+    "has_free": true,
+    "scenario": "适合：加密合同附件的律师、保护隐私数据的技术人员",
+    "original_price": 29
   },
   {
     "id": "file_shredder",
@@ -652,12 +687,13 @@
       "快速模式",
       "安全标准"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "security",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：销毁旧电脑文件的人、清除离职前数据的员工"
+    "has_free": true,
+    "scenario": "适合：销毁旧电脑文件的人、清除离职前数据的员工",
+    "original_price": 19
   },
   {
     "id": "hash_check",
@@ -676,7 +712,8 @@
     "category": "security",
     "role": "dev",
     "has_free": true,
-    "scenario": "适合：校验下载文件完整性的程序员、验证系统镜像的运维"
+    "scenario": "适合：校验下载文件完整性的程序员、验证系统镜像的运维",
+    "original_price": 9
   },
   {
     "id": "password_gen",
@@ -695,7 +732,8 @@
     "category": "security",
     "role": "dev",
     "has_free": true,
-    "scenario": "适合：生成高强度密码的网民、管理多账号密码的白领"
+    "scenario": "适合：生成高强度密码的网民、管理多账号密码的白领",
+    "original_price": 9
   },
   {
     "id": "compress_video",
@@ -709,12 +747,13 @@
       "格式保持",
       "快速处理"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：压缩视频发微信的普通用户、减小视频体积上传平台的创作者"
+    "has_free": true,
+    "scenario": "适合：压缩视频发微信的普通用户、减小视频体积上传平台的创作者",
+    "original_price": 29
   },
   {
     "id": "seo_checker",
@@ -728,12 +767,13 @@
       "移动适配",
       "优化建议"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "web",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：优化网站排名的SEO专员、检测关键词的站长"
+    "has_free": true,
+    "scenario": "适合：优化网站排名的SEO专员、检测关键词的站长",
+    "original_price": 19
   },
   {
     "id": "layout_helper",
@@ -747,12 +787,13 @@
       "一键复制",
       "多格式支持"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "media",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：排版公众号文章的编辑、美化小红书笔记的博主"
+    "has_free": true,
+    "scenario": "适合：排版公众号文章的编辑、美化小红书笔记的博主",
+    "original_price": 29
   },
   {
     "id": "screen_recorder",
@@ -766,12 +807,13 @@
       "音频录制",
       "高清输出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：录制教程的网课老师、制作操作演示的产品经理"
+    "has_free": true,
+    "scenario": "适合：录制教程的网课老师、制作操作演示的产品经理",
+    "original_price": 29
   },
   {
     "id": "gif_maker",
@@ -785,12 +827,13 @@
       "帧率控制",
       "压缩优化"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作表情包的网友、生成产品演示GIF的运营"
+    "has_free": true,
+    "scenario": "适合：制作表情包的网友、生成产品演示GIF的运营",
+    "original_price": 19
   },
   {
     "id": "clipboard_mgr",
@@ -804,12 +847,13 @@
       "搜索过滤",
       "同步功能"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "system",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：频繁复制粘贴的新媒体编辑、整理零散资料的文案"
+    "has_free": true,
+    "scenario": "适合：频繁复制粘贴的新媒体编辑、整理零散资料的文案",
+    "original_price": 29
   },
   {
     "id": "reminder",
@@ -828,7 +872,8 @@
     "category": "system",
     "role": "other",
     "has_free": true,
-    "scenario": "适合：提醒重要截止日期的项目经理、定时吃药的中老年人"
+    "scenario": "适合：提醒重要截止日期的项目经理、定时吃药的中老年人",
+    "original_price": 9
   },
   {
     "id": "batch_rename_adv",
@@ -842,12 +887,13 @@
       "预览功能",
       "撤销操作"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "system",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：整理摄影作品的摄影师、归档项目文件的程序员"
+    "has_free": true,
+    "scenario": "适合：整理摄影作品的摄影师、归档项目文件的程序员",
+    "original_price": 29
   },
   {
     "id": "qr_code_gen",
@@ -866,7 +912,8 @@
     "category": "image",
     "role": "dev",
     "has_free": true,
-    "scenario": "适合：生成活动二维码的策划、制作产品二维码的商家"
+    "scenario": "适合：生成活动二维码的策划、制作产品二维码的商家",
+    "original_price": 9
   },
   {
     "id": "file_sync",
@@ -880,12 +927,13 @@
       "过滤规则",
       "冲突处理"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "system",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：同步工作文件的远程办公者、备份项目代码的程序员"
+    "has_free": true,
+    "scenario": "适合：同步工作文件的远程办公者、备份项目代码的程序员",
+    "original_price": 29
   },
   {
     "id": "duplicate_finder",
@@ -899,12 +947,13 @@
       "批量删除",
       "移动备份"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "system",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：清理重复照片的摄影爱好者、整理混乱文件夹的上班族"
+    "has_free": true,
+    "scenario": "适合：清理重复照片的摄影爱好者、整理混乱文件夹的上班族",
+    "original_price": 29
   },
   {
     "id": "image_watermark_video",
@@ -918,12 +967,13 @@
       "位置调整",
       "透明度设置"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：发布教学视频的UP主、保护原创视频的创作者"
+    "has_free": true,
+    "scenario": "适合：发布教学视频的UP主、保护原创视频的创作者",
+    "original_price": 29
   },
   {
     "id": "ai_data_analyze",
@@ -937,13 +987,14 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai",
     "created": "2026-07-27",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：分析销售数据的店长、制作季度报表的财务"
+    "has_free": true,
+    "scenario": "适合：分析销售数据的店长、制作季度报表的财务",
+    "original_price": 39
   },
   {
     "id": "short_video_script",
@@ -957,13 +1008,14 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "video",
     "created": "2026-07-27",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：写短视频脚本的编导、策划口播内容的创作者"
+    "has_free": true,
+    "scenario": "适合：写短视频脚本的编导、策划口播内容的创作者",
+    "original_price": 39
   },
   {
     "id": "txt_splitter",
@@ -984,7 +1036,8 @@
     "tag": "💥 引流价",
     "role": "office",
     "has_free": true,
-    "scenario": "适合：拆分大文本文件的数据处理员、分割日志的运维"
+    "scenario": "适合：拆分大文本文件的数据处理员、分割日志的运维",
+    "original_price": 9
   },
   {
     "id": "img_optimizer",
@@ -1005,7 +1058,8 @@
     "tag": "💥 引流价",
     "role": "creator",
     "has_free": true,
-    "scenario": "适合：压缩公众号配图的编辑、优化朋友圈图片的微商"
+    "scenario": "适合：压缩公众号配图的编辑、优化朋友圈图片的微商",
+    "original_price": 9
   },
   {
     "id": "clipboard_history",
@@ -1025,8 +1079,9 @@
     "is_loss_leader": true,
     "tag": "💥 引流价",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：找回误复制内容的打字员、管理粘贴历史的程序员"
+    "has_free": true,
+    "scenario": "适合：找回误复制内容的打字员、管理粘贴历史的程序员",
+    "original_price": 9
   },
   {
     "id": "batch_rename_lite",
@@ -1046,8 +1101,9 @@
     "is_loss_leader": true,
     "tag": "💥 引流价",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：整理手机相册的普通用户、归类下载文件夹的学生"
+    "has_free": true,
+    "scenario": "适合：整理手机相册的普通用户、归类下载文件夹的学生",
+    "original_price": 9
   },
   {
     "id": "ai_code_review",
@@ -1061,13 +1117,14 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 59,
+    "price": 35,
     "price_old": 100,
     "category": "ai",
     "created": "2026-07-27",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：审查代码质量的技术Leader、学习代码规范的新手程序员"
+    "has_free": true,
+    "scenario": "适合：审查代码质量的技术Leader、学习代码规范的新手程序员",
+    "original_price": 59
   },
   {
     "id": "live_stream_helper",
@@ -1081,13 +1138,14 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 49,
+    "price": 29,
     "price_old": 83,
     "category": "video",
     "created": "2026-07-27",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：提升直播效果的带货主播、管理直播间互动的运营"
+    "has_free": true,
+    "scenario": "适合：提升直播效果的带货主播、管理直播间互动的运营",
+    "original_price": 49
   },
   {
     "id": "ai_writing_assist",
@@ -1101,13 +1159,14 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai",
     "created": "2026-07-27",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：写公众号文章的编辑、润色工作邮件的白领"
+    "has_free": true,
+    "scenario": "适合：写公众号文章的编辑、润色工作邮件的白领",
+    "original_price": 39
   },
   {
     "id": "ai_ppt_gen",
@@ -1121,12 +1180,13 @@
       "支持导出PPT/PDF",
       "演讲备注自动生成"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "ai_tool",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：快速生成PPT的职场人、制作课件的讲师"
+    "has_free": true,
+    "scenario": "适合：快速生成PPT的职场人、制作课件的讲师",
+    "original_price": 29
   },
   {
     "id": "video_subtitle",
@@ -1140,12 +1200,13 @@
       "多种字幕样式",
       "批量处理视频"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video_tool",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作双语字幕的翻译、给Vlog加字幕的博主"
+    "has_free": true,
+    "scenario": "适合：制作双语字幕的翻译、给Vlog加字幕的博主",
+    "original_price": 29
   },
   {
     "id": "ai_avatar",
@@ -1159,12 +1220,13 @@
       "支持多语言",
       "高清视频导出"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai_tool",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作虚拟主播的直播主、生成数字人视频的内容团队"
+    "has_free": true,
+    "scenario": "适合：制作虚拟主播的直播主、生成数字人视频的内容团队",
+    "original_price": 39
   },
   {
     "id": "voice_clone",
@@ -1178,12 +1240,13 @@
       "支持中英文",
       "API接口调用"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "ai_tool",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作个性化语音包的主播、生成配音的创作者"
+    "has_free": true,
+    "scenario": "适合：制作个性化语音包的主播、生成配音的创作者",
+    "original_price": 39
   },
   {
     "id": "ai_interview",
@@ -1197,12 +1260,13 @@
       "简历优化建议",
       "面试技巧指导"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "career",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：准备面试的应届生、模拟练习的跳槽者"
+    "has_free": true,
+    "scenario": "适合：准备面试的应届生、模拟练习的跳槽者",
+    "original_price": 29
   },
   {
     "id": "resume_opt",
@@ -1216,12 +1280,13 @@
       "多模板自动排版",
       "一键导出PDF"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 39,
     "category": "career",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：优化简历的求职者、制作英文简历的留学生"
+    "has_free": true,
+    "scenario": "适合：优化简历的求职者、制作英文简历的留学生",
+    "original_price": 19
   },
   {
     "id": "ai_coding",
@@ -1235,12 +1300,13 @@
       "多语言支持",
       "单元测试生成"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "dev_tool",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：提高编码效率的全栈工程师、学习新语言的学生"
+    "has_free": true,
+    "scenario": "适合：提高编码效率的全栈工程师、学习新语言的学生",
+    "original_price": 39
   },
   {
     "id": "ai_translator_pro",
@@ -1254,12 +1320,13 @@
       "批量文件翻译",
       "字幕文件翻译"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "tool",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：翻译技术文档的工程师、处理涉外合同的外贸"
+    "has_free": true,
+    "scenario": "适合：翻译技术文档的工程师、处理涉外合同的外贸",
+    "original_price": 29
   },
   {
     "id": "ai_music_gen",
@@ -1273,12 +1340,13 @@
       "节奏匹配调整",
       "无损音频导出"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "ai_tool",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：制作BGM的短视频创作者、生成背景音乐的播主"
+    "has_free": true,
+    "scenario": "适合：制作BGM的短视频创作者、生成背景音乐的播主",
+    "original_price": 29
   },
   {
     "id": "video_short_clip",
@@ -1292,12 +1360,13 @@
       "多种转场效果",
       "一键发布多平台"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "video_tool",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：剪辑短视频素材的新媒体运营、制作快剪花絮的婚礼摄影师"
+    "has_free": true,
+    "scenario": "适合：剪辑短视频素材的新媒体运营、制作快剪花絮的婚礼摄影师",
+    "original_price": 29
   },
   {
     "id": "website_builder",
@@ -1311,12 +1380,13 @@
       "一键部署上线",
       "后台管理系统"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "dev_tool",
     "role": "dev",
-    "has_free": false,
-    "scenario": "适合：快速搭官网的小企业主、制作活动页面的运营"
+    "has_free": true,
+    "scenario": "适合：快速搭官网的小企业主、制作活动页面的运营",
+    "original_price": 39
   },
   {
     "id": "data_vis",
@@ -1330,12 +1400,13 @@
       "交互式图表",
       "一键导出报告"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "data_tool",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：将数据转图表的分析师、制作汇报PPT的经理"
+    "has_free": true,
+    "scenario": "适合：将数据转图表的分析师、制作汇报PPT的经理",
+    "original_price": 29
   },
   {
     "id": "exam_helper",
@@ -1349,12 +1420,13 @@
       "错题本分析",
       "学习进度追踪"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 39,
     "category": "education",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：备考的考研学生、准备职业资格考试的白领"
+    "has_free": true,
+    "scenario": "适合：备考的考研学生、准备职业资格考试的白领",
+    "original_price": 19
   },
   {
     "id": "social_media_mgr",
@@ -1368,12 +1440,13 @@
       "数据分析报告",
       "粉丝互动回复"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "marketing",
     "role": "creator",
-    "has_free": false,
-    "scenario": "适合：管理多账号的社媒运营、统一发布内容的新媒体团队"
+    "has_free": true,
+    "scenario": "适合：管理多账号的社媒运营、统一发布内容的新媒体团队",
+    "original_price": 29
   },
   {
     "id": "ai_lawyer",
@@ -1387,12 +1460,13 @@
       "风险提示分析",
       "常见法律问答"
     ],
-    "price": 39,
+    "price": 23,
     "price_old": 78,
     "category": "professional",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：起草合同的小企业主、查询法律条款的普通人"
+    "has_free": true,
+    "scenario": "适合：起草合同的小企业主、查询法律条款的普通人",
+    "original_price": 39
   },
   {
     "id": "meal_planner",
@@ -1406,12 +1480,13 @@
       "热量自动计算",
       "购物清单生成"
     ],
-    "price": 19,
+    "price": 11,
     "price_old": 38,
     "category": "lifestyle",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：规划健康饮食的减肥者、定制健身餐的教练"
+    "has_free": true,
+    "scenario": "适合：规划健康饮食的减肥者、定制健身餐的教练",
+    "original_price": 19
   },
   {
     "id": "fitness_coach",
@@ -1425,12 +1500,13 @@
       "饮食搭配建议",
       "目标智能调整"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "lifestyle",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：在家健身的上班族、制定训练计划的新手"
+    "has_free": true,
+    "scenario": "适合：在家健身的上班族、制定训练计划的新手",
+    "original_price": 29
   },
   {
     "id": "stock_analyzer",
@@ -1444,12 +1520,13 @@
       "投资组合建议",
       "市场热点追踪"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 69,
     "category": "finance",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：分析股票的散户投资者、研究行情的交易员"
+    "has_free": true,
+    "scenario": "适合：分析股票的散户投资者、研究行情的交易员",
+    "original_price": 29
   },
   {
     "id": "meeting_summary",
@@ -1463,12 +1540,13 @@
       "待办事项提取",
       "多会议管理"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "productivity",
     "role": "office",
-    "has_free": false,
-    "scenario": "适合：整理会议纪要的秘书、复盘项目讨论的PM"
+    "has_free": true,
+    "scenario": "适合：整理会议纪要的秘书、复盘项目讨论的PM",
+    "original_price": 29
   },
   {
     "id": "ai_room_design",
@@ -1482,12 +1560,13 @@
       "家具搭配建议",
       "预算估算"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 58,
     "category": "design",
     "role": "ai",
-    "has_free": false,
-    "scenario": "适合：装修前看效果图的业主、出方案给客户的设计师"
+    "has_free": true,
+    "scenario": "适合：装修前看效果图的业主、出方案给客户的设计师",
+    "original_price": 29
   },
   {
     "id": "ai_mindmap",
@@ -1501,10 +1580,12 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 29,
+    "price": 17,
     "price_old": 49,
     "category": "ai",
-    "created": "2026-07-28"
+    "created": "2026-07-28",
+    "original_price": 29,
+    "has_free": true
   },
   {
     "id": "tiktok_auto_reply",
@@ -1518,10 +1599,12 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 45,
+    "price": 27,
     "price_old": 76,
     "category": "video",
-    "created": "2026-07-28"
+    "created": "2026-07-28",
+    "original_price": 45,
+    "has_free": true
   },
   {
     "id": "ai_ppt",
@@ -1535,10 +1618,12 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 45,
+    "price": 27,
     "price_old": 76,
     "category": "ai",
-    "created": "2026-07-28"
+    "created": "2026-07-28",
+    "original_price": 45,
+    "has_free": true
   },
   {
     "id": "video_clip_batch",
@@ -1552,9 +1637,79 @@
       "数据导出功能",
       "持续更新维护"
     ],
-    "price": 49,
+    "price": 29,
     "price_old": 83,
     "category": "video",
-    "created": "2026-07-28"
+    "created": "2026-07-28",
+    "original_price": 49,
+    "has_free": true
+  },
+  {
+    "id": "ai_resume",
+    "emoji": "🤖",
+    "name": "AI简历优化工具",
+    "desc": "智能分析简历，提供优化建议",
+    "features": [
+      "AI简历优化工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 39,
+    "price_old": 66,
+    "category": "ai",
+    "created": "2026-07-29"
+  },
+  {
+    "id": "short_video_edit",
+    "emoji": "🎬",
+    "name": "短视频快速剪辑",
+    "desc": "一键剪辑热门短视频",
+    "features": [
+      "短视频快速剪辑核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 39,
+    "price_old": 66,
+    "category": "video",
+    "created": "2026-07-29"
+  },
+  {
+    "id": "danmaku_collect",
+    "emoji": "🎬",
+    "name": "弹幕采集工具",
+    "desc": "采集直播间弹幕数据",
+    "features": [
+      "弹幕采集工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "video",
+    "created": "2026-07-29"
+  },
+  {
+    "id": "price_history",
+    "emoji": "🛒",
+    "name": "商品历史价格查询",
+    "desc": "查看商品历史价格走势",
+    "features": [
+      "商品历史价格查询核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "ecommerce",
+    "created": "2026-07-29"
   }
 ]

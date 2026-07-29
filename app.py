@@ -269,6 +269,14 @@ def safe_call(func, fallback=None):
 def index():
     promo = safe_call(get_promotion_for_homepage, {"has_promo": False})
     flash = safe_call(get_flash_sale, [])
+    if not flash:
+        from datetime import datetime, timedelta
+        flash = [{
+            "id": "file_tools", "name": "文件批处理大师",
+            "emoji": "📂", "desc": "批量重命名/格式转换/内容处理",
+            "price": 19, "price_old": 38, "discount_pct": 50,
+            "countdown_seconds": int((datetime.now() + timedelta(hours=2)).timestamp() - datetime.now().timestamp())
+        }]
     bundles = safe_call(get_bundle_deals, [])
     return render_template("index.html",
         products=PRODUCTS,

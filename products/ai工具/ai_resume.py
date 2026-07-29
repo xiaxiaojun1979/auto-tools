@@ -1,30 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-弹幕采集工具 - 采集直播间弹幕数据
+AI简历优化工具 - 智能分析简历，提供优化建议
 开发日期: 2026-07-29
-价格: ¥35
-类别: 短视频_直播工具
+价格: ¥39
+类别: ai工具
 """
 
 
-class DanmakuCollect:
-    """弹幕采集工具 - 采集直播间弹幕数据"""
+class AiResume:
+    """AI简历优化工具 - 智能分析简历，提供优化建议"""
     
     def __init__(self):
-        self.name = "弹幕采集工具"
-        self.desc = "采集直播间弹幕数据"
-        self.price = 35
+        self.name = "AI简历优化工具"
+        self.desc = "智能分析简历，提供优化建议"
+        self.price = 39
         self.version = "1.0"
         self.created = "2026-07-29"
     
     def get_info(self):
         return {
-            "id": "danmaku_collect",
+            "id": "ai_resume",
             "name": self.name,
             "desc": self.desc,
             "price": self.price,
-            "category": "短视频_直播工具",
+            "category": "ai工具",
             "version": self.version,
             "created": self.created
         }
@@ -43,7 +43,7 @@ class DanmakuCollect:
 
 
 def main():
-    tool = DanmakuCollect()
+    tool = AiResume()
     tool.demo()
 
 
