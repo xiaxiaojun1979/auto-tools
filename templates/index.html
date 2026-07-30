@@ -333,7 +333,7 @@
             </div>
             <div class="flash-items">
                 {% for item in flash %}
-                <div class="flash-item" onclick="location.href='/buy/{{ item.id }}'">
+                <div class="flash-item" onclick="location.href='/buy/{{ item.id }}'" style="cursor:pointer;">
                     <div class="f-emoji">{{ item.emoji }}</div>
                     <div class="f-name">{{ item.name }}</div>
                     <div>

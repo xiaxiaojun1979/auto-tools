@@ -14,3 +14,15 @@ SyntaxError: invalid syntax
     log(f"  表单填充: {result[:200]}")
     ^
 SyntaxError: invalid syntax
+  File "/Users/tianmengpiaoxiang/auto_business/xianyu_daily_ops.py", line 275
+    log(f"  表单填充: {result[:200]}")
+    ^
+SyntaxError: invalid syntax
+  File "/Users/tianmengpiaoxiang/auto_business/xianyu_daily_ops.py", line 275
+    log(f"  表单填充: {result[:200]}")
+    ^
+SyntaxError: invalid syntax
+  File "/Users/tianmengpiaoxiang/auto_business/xianyu_daily_ops.py", line 275
+    log(f"  表单填充: {result[:200]}")
+    ^
+SyntaxError: invalid syntax

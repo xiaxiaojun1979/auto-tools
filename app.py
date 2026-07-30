@@ -26,7 +26,7 @@ ORDERS_FILE = DATA_DIR / "orders.json"
 PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
 ADMIN_PASSWORD = "xxj63858930"
 ALIPAY_ACCOUNT = "15156215580"
-SITE_URL = "https://xiaxiaojun.com"
+SITE_URL = "http://118.31.4.27"
 ALIPAY_QR_URL = "alipays://platformapi/startapp?appId=20000123&actionType=toAccount&goBack=NO&source=qr&account="
 SITE_NAME = "AutoTools 自动化工具集"
 
@@ -140,6 +140,12 @@ PENDING_VERIFICATIONS = {}
 def generate_verify_code():
     """生成4位随机数字校验码"""
     return f"{random.randint(0, 9999):04d}"
+
+# 支付网关
+import sys
+sys.path.insert(0, str(BASE_DIR))
+import payment_gateway as pg
+import alipay_payment as ap
 
 # 自动推广系统
 import sys
@@ -288,6 +294,39 @@ def index():
 
 
 
+
+
+@app.route("/xianyu")
+def xianyu_publish():
+    return render_template("xianyu_publish.html")
+
+
+@app.route("/api/xianyu/products")
+def api_xianyu_products():
+    """返回闲鱼发布用的产品数据"""
+    products = load_products()
+    # Filter out services and high-price items
+    xianyu_items = []
+    for p in products:
+        price = p.get("price", 0)
+        cat = p.get("category", "")
+        # Skip enterprise services
+        if cat in ("enterprise", "service", "subscription"):
+            if price > 200:
+                continue
+        xianyu_items.append({
+            "id": p["id"],
+            "name": p["name"],
+            "price": price,
+            "original_price": p.get("original_price", price),
+            "emoji": p.get("emoji", "📦"),
+            "desc": p.get("desc", ""),
+            "features": p.get("features", []),
+            "category": cat,
+            "download_url": f"http://118.31.4.27/buy/{p['id']}"
+        })
+    return jsonify({"ok": True, "products": xianyu_items})
+
 @app.route("/product/<pid>")
 def product_detail(pid):
     p = get_product(pid)
@@ -399,10 +438,34 @@ def get_payment_qrcode():
         amount = product["price"]
         order_id = gen_order_id()
         
+        # 检查是否配置了支付宝当面付
+        alipay_cfg = ap.load_config()
+        if alipay_cfg.get("configured"):
+            # 使用支付宝当面付
+            result = ap.create_qrcode(amount, order_id, subject=product["name"])
+            if result.get("ok"):
+                # 存入待支付记录
+                PENDING_VERIFICATIONS[order_id] = {
+                    "product_id": pid,
+                    "payment": "alipay",
+                    "amount": amount,
+                    "created_at": datetime.now(),
+                    "status": "pending"
+                }
+                return jsonify({
+                    "ok": True,
+                    "qr": result["qrcode"],
+                    "amount": amount,
+                    "order_id": order_id,
+                    "product_name": product["name"],
+                    "gateway": "alipay_f2f",
+                    "account": "支付宝当面付"
+                })
+            print(f"  ⚠️ 支付宝当面付失败: {result.get('msg')}")
+        
         # 检查是否配置了PayJS支付网关
         gw_config = pg.load_config()
         if gw_config.get("gateway") == "payjs" and gw_config.get("payjs_mchid"):
-            # 使用PayJS生成二维码
             result = pg.create_native_qrcode(amount, order_id, attach=pid)
             if result.get("ok"):
                 return jsonify({
@@ -415,7 +478,6 @@ def get_payment_qrcode():
                     "gateway": "payjs",
                     "account": "PayJS支付"
                 })
-            # 如果PayJS失败，回退到手动转账
             print(f"  ⚠️ PayJS创建订单失败: {result.get('msg')}")
         
         # 手动转账模式
@@ -466,7 +528,7 @@ def submit_order():
                 break
         
         if not found_order_id:
-            return jsonify({"ok": False, "msg": "❌ 校验码无效或已过期，请重新付款获取"}), 400
+            return jsonify({"ok": False, "msg": "❌ 校验码无效或已过期，请联系客服"}), 400
         
         # 防滥用：同一邮箱每天最多3个产品
         data = load_orders()
@@ -486,7 +548,6 @@ def submit_order():
         # 存储交易号并标记已使用
         PENDING_VERIFICATIONS[found_order_id]["used"] = True
         PENDING_VERIFICATIONS[found_order_id]["email"] = email
-        PENDING_VERIFICATIONS[found_order_id]["tx_id"] = req.get("tx_id", "")
         
         oid = gen_order_id()
         
@@ -537,7 +598,7 @@ def submit_order():
 
 @app.route("/api/order/pay-confirm", methods=["POST"])
 def pay_confirm():
-    """付款后生成4位数字校验码，用户需用此码验证"""
+    """付款后生成4位数字校验码（无需交易号，信任模式）"""
     try:
         req = request.get_json()
         pid = req.get("product_id", "")
@@ -552,7 +613,7 @@ def pay_confirm():
         now = datetime.now()
         recent_count = sum(
             1 for p in PENDING_VERIFICATIONS.values()
-            if p.get("ip") == ip and (now - p.get("created_at", now)).total_seconds() < 60
+            if p.get("ip") == ip and (now - p.get("created_at", now)).total_seconds() < 120
         )
         if recent_count >= 5:
             return jsonify({"ok": False, "msg": "操作太频繁，请稍后再试"}), 429
@@ -568,17 +629,16 @@ def pay_confirm():
             "ip": ip,
             "created_at": now,
             "email": None,
-            "used": False,
-            "tx_id": None
+            "used": False
         }
         
-        # 清理超过10分钟的过期校验码
-        expired = [oid for oid, p in list(PENDING_VERIFICATIONS.items())
-                   if (now - p.get("created_at", now)).total_seconds() > 600]
+        # 清理超过30分钟的过期校验码
+        expired = [oid for oid, pend in list(PENDING_VERIFICATIONS.items())
+                   if (now - pend.get("created_at", now)).total_seconds() > 1800]
         for oid in expired:
             del PENDING_VERIFICATIONS[oid]
         
-        print(f"\n  💳 新支付校验码已生成: 订单={order_id} 校验码={code}")
+        print(f"\n  💳 校验码已生成: {code} (产品: {product['name']}, IP: {ip})")
         
         return jsonify({
             "ok": True,
@@ -586,7 +646,7 @@ def pay_confirm():
             "order_id": order_id,
             "product_name": product["name"],
             "amount": product["price"],
-            "msg": "✅ 校验码已生成"
+            "msg": "✅ 支付成功！请使用校验码获取产品"
         })
     except Exception as e:
         import traceback; traceback.print_exc()
@@ -600,6 +660,73 @@ def query_order(oid):
         if o["order_id"] == oid:
             return jsonify({"ok": True, "order": o})
     return jsonify({"ok": False, "msg": "订单不存在"}), 404
+
+
+
+@app.route("/api/alipay/notify", methods=["POST"])
+def alipay_notify():
+    """支付宝支付异步通知"""
+    try:
+        data = request.form.to_dict()
+        print(f"  📩 支付宝通知: {json.dumps(data, ensure_ascii=False)}")
+        
+        if ap.verify_notify(data):
+            out_trade_no = data.get("out_trade_no", "")
+            trade_no = data.get("trade_no", "")
+            trade_status = data.get("trade_status", "")
+            
+            if trade_status == "TRADE_SUCCESS":
+                # 支付成功，生成校验码
+                if out_trade_no in PENDING_VERIFICATIONS:
+                    code = generate_verify_code()
+                    pid = PENDING_VERIFICATIONS[out_trade_no]["product_id"]
+                    PENDING_VERIFICATIONS[out_trade_no]["code"] = code
+                    PENDING_VERIFICATIONS[out_trade_no]["paid"] = True
+                    PENDING_VERIFICATIONS[out_trade_no]["tx_id"] = trade_no
+                    print(f"  ✅ 支付宝支付成功: {out_trade_no} 校验码={code}")
+                
+                return "success", 200
+            return "fail", 400
+        else:
+            print(f"  ⚠️ 支付宝通知验签失败")
+            return "fail", 400
+    except Exception as e:
+        print(f"  ⚠️ 支付宝通知处理异常: {e}")
+        return "fail", 400
+
+
+@app.route("/api/payment/check/<order_id>")
+def check_payment(order_id):
+    """轮询查询支付状态"""
+    try:
+        # 先检查是否有Alipay当面付记录
+        pend = PENDING_VERIFICATIONS.get(order_id)
+        if pend and pend.get("paid"):
+            code = pend.get("code")
+            return jsonify({
+                "ok": True, "status": "paid",
+                "verify_code": code,
+                "msg": "支付成功！校验码已生成"
+            })
+        
+        # 查询支付宝
+        result = ap.query_payment(order_id)
+        if result.get("ok") and result.get("paid"):
+            if pend:
+                code = generate_verify_code()
+                pend["code"] = code
+                pend["paid"] = True
+                pend["tx_id"] = result.get("trade_no", "")
+                return jsonify({
+                    "ok": True, "status": "paid",
+                    "verify_code": code,
+                    "msg": "支付成功！校验码已生成"
+                })
+            return jsonify({"ok": True, "status": "paid", "msg": "已支付"})
+        
+        return jsonify({"ok": True, "status": "unpaid", "msg": "等待支付"})
+    except Exception as e:
+        return jsonify({"ok": False, "status": "error", "msg": str(e)}), 500
 
 
 @app.route("/api/stats")

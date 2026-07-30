@@ -1711,5 +1711,73 @@
     "price_old": 49,
     "category": "ecommerce",
     "created": "2026-07-29"
+  },
+  {
+    "id": "review_analyzer",
+    "emoji": "🛒",
+    "name": "评论分析工具",
+    "desc": "分析商品评论情感倾向",
+    "features": [
+      "评论分析工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 39,
+    "price_old": 66,
+    "category": "ecommerce",
+    "created": "2026-07-30"
+  },
+  {
+    "id": "todo_manager",
+    "emoji": "📊",
+    "name": "智能待办管理",
+    "desc": "AI优先级排序待办清单",
+    "features": [
+      "智能待办管理核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 25,
+    "price_old": 42,
+    "category": "office",
+    "created": "2026-07-30"
+  },
+  {
+    "id": "taobao_keyword",
+    "emoji": "🛒",
+    "name": "淘宝关键词挖掘",
+    "desc": "挖掘高转化关键词",
+    "features": [
+      "淘宝关键词挖掘核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 39,
+    "price_old": 66,
+    "category": "ecommerce",
+    "created": "2026-07-30"
+  },
+  {
+    "id": "ocr_tool",
+    "emoji": "📊",
+    "name": "OCR文字识别工具",
+    "desc": "图片文字识别提取",
+    "features": [
+      "OCR文字识别工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "office",
+    "created": "2026-07-30"
   }
 ]

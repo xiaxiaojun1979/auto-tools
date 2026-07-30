@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>闲鱼发布助手 - AutoTools</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;color:#333;padding-bottom:80px}
+.header{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:white;padding:30px 16px 20px;text-align:center}
+.header h1{font-size:1.4em}
+.header .sub{font-size:0.85em;opacity:0.9;margin-top:4px}
+.tabs{display:flex;background:white;padding:8px;gap:6px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.tab{flex:1;padding:10px;border:none;border-radius:8px;font-size:0.85em;font-weight:600;cursor:pointer;background:#f0f0f0;color:#666;text-align:center}
+.tab.active{background:#ee5a24;color:white}
+.product-list{padding:12px}
+.product-card{background:white;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.product-card .title{font-size:1em;font-weight:700;color:#333;margin-bottom:6px}
+.product-card .price{color:#ee5a24;font-weight:700;font-size:1.1em}
+.product-card .desc{font-size:0.85em;color:#666;margin:6px 0;line-height:1.5;background:#f9f9f9;padding:10px;border-radius:8px;white-space:pre-wrap}
+.product-card .actions{display:flex;gap:8px;margin-top:8px}
+.product-card .actions button{flex:1;padding:10px;border:none;border-radius:8px;font-size:0.85em;font-weight:600;cursor:pointer}
+.btn-copy{background:#e8f5e9;color:#2e7d32}
+.btn-open{background:#e3f2fd;color:#1565c0}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75em;margin-right:4px}
+.tag-hot{background:#fff3e0;color:#e65100}
+.tag-new{background:#e8f5e9;color:#2e7d32}
+.tag-profit{background:#fce4ec;color:#c62828}
+.search-bar{padding:12px 12px 0}
+.search-bar input{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:0.95em;outline:none}
+.search-bar input:focus{border-color:#ee5a24}
+.copy-toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:10px 20px;border-radius:8px;font-size:0.85em;display:none;z-index:999}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📱 闲鱼发布助手</h1>
+  <div class="sub">点击复制文案 → 去闲鱼粘贴发布</div>
+</div>
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍 搜索产品名称..." oninput="filterProducts()">
+</div>
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('all')">全部</div>
+  <div class="tab" onclick="switchTab('cheap')">引流款</div>
+  <div class="tab" onclick="switchTab('mid')">利润款</div>
+  <div class="tab" onclick="switchTab('package')">套餐包</div>
+</div>
+<div class="product-list" id="productList"></div>
+<div class="copy-toast" id="toast">✅ 已复制！去闲鱼粘贴发布</div>
+<script>
+var products = [];
+var currentTab = 'all';
+function loadProducts() {
+  fetch('/products/products.json').then(function(r){return r.json()}).then(function(data){
+    products = data; renderProducts();
+  });
+}
+function switchTab(tab) {
+  currentTab = tab;
+  var tabs = document.querySelectorAll('.tab');
+  var names = ['all','cheap','mid','package'];
+  tabs.forEach(function(t,i){t.classList.toggle('active',names[i]===tab)});
+  renderProducts();
+}
+function filterProducts(){renderProducts();}
+function getTier(p){
+  if(p<=17)return{label:'引流价',cls:'tag-hot'};
+  if(p<=41)return{label:'超值',cls:'tag-new'};
+  return{label:'热销',cls:'tag-profit'};
+}
+function renderProducts(){
+  var kw=document.getElementById('searchInput').value.trim().toLowerCase();
+  var list=document.getElementById('productList');
+  list.innerHTML='';
+  var f=products.filter(function(p){
+    var n=(p.name||'').toLowerCase();
+    if(kw&&!n.includes(kw))return false;
+    if(currentTab==='cheap')return p.price<=17;
+    if(currentTab==='mid')return p.price>17&&p.price<=41;
+    if(currentTab==='package')return p.price>=89;
+    return true;
+  });
+  f.forEach(function(p){
+    var t=getTier(p.price);
+    var feats=(p.features||[]).slice(0,5).map(function(f){return '✅ '+f}).join('\n');
+    var div=document.createElement('div');
+    div.className='product-card';
+    div.innerHTML='<div style="display:flex;justify-content:space-between;align-items:start"><div><span class="tag '+t.cls+'">'+t.label+'</span><span class="tag" style="background:#e0e0e0;color:#555">'+(p.category||'工具')+'</span></div><div class="price">¥'+p.price+'</div></div><div class="title">'+(p.emoji||'')+' '+p.name+'</div><div class="desc">'+(p.desc||'')+'\n\n✨ 功能亮点：\n'+feats+'</div><div class="actions"><button class="btn-copy" onclick="copyProduct(\''+p.id+'\')">📋 复制文案</button><button class="btn-open" onclick="window.open(\'https://www.goofish.com/\',\'_blank\')">📤 去发布</button></div></div>';
+    list.appendChild(div);
+  });
+}
+function copyProduct(id){
+  var p=products.find(function(x){return x.id===id});
+  if(!p)return;
+  var feats=(p.features||[]).map(function(f){return '✅ '+f}).join('\n');
+  var text='【'+p.name+'】¥'+p.price+'\n\n'+(p.desc||'')+'\n\n✨ 功能亮点：\n'+feats+'\n\n📥 购买后自动发送到邮箱\n🔗 http://118.31.4.27/buy/'+p.id;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){showToast()});
+  }else{
+    var ta=document.createElement('textarea');
+    ta.value=text;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);
+    showToast();
+  }
+}
+function showToast(){
+  var t=document.getElementById('toast');
+  t.style.display='block';
+  setTimeout(function(){t.style.display='none'},2000);
+}
+loadProducts();
+</script>
+</body>
+</html>

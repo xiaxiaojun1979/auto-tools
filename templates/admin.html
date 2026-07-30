@@ -108,7 +108,7 @@
                         <td><strong>¥{{ o.price }}</strong></td>
                         <td>{{ o.buyer_email }}</td>
                         <td>{{ o.payment }}{% if o.transaction_id %}<br><small style="color:#888;font-size:10px;">交易号: {{ o.transaction_id }}</small>{% endif %}</td>
-                        <td class="order-detail">{{ o.created_at[5:16] }}</td>
+                        <td class="order-detail">{{ o.created_at[5:16] if o.created_at else o.delivered_at[5:16] if o.delivered_at else "-" }}</td>
                         <td>
                             {% if o.status == 'pending' %}
                             <span class="badge badge-pending">⏳ 待确认</span>

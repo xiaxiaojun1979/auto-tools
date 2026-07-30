@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-29 20:00",
+  "date": "2026-07-30 20:00",
   "stats": {
     "total": 164,
     "total_orders": 6,
@@ -8,11 +8,6 @@
     "week": 145,
     "month": 145,
     "trend": [
-      {
-        "date": "2026-07-23",
-        "revenue": 0,
-        "orders": 0
-      },
       {
         "date": "2026-07-24",
         "revenue": 0,
@@ -40,6 +35,11 @@
       },
       {
         "date": "2026-07-29",
+        "revenue": 0,
+        "orders": 0
+      },
+      {
+        "date": "2026-07-30",
         "revenue": 0,
         "orders": 0
       }
