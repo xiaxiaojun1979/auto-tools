@@ -650,6 +650,34 @@
         "category": "office",
         "count": 0,
         "revenue": 0
+      },
+      "ecommerce_analyze": {
+        "name": "电商数据看板",
+        "price": 59,
+        "category": "ecommerce",
+        "count": 0,
+        "revenue": 0
+      },
+      "meeting_notes": {
+        "name": "会议记录工具",
+        "price": 35,
+        "category": "office",
+        "count": 0,
+        "revenue": 0
+      },
+      "batch_order_print": {
+        "name": "批量订单打印",
+        "price": 35,
+        "category": "ecommerce",
+        "count": 0,
+        "revenue": 0
+      },
+      "batch_print": {
+        "name": "批量打印工具",
+        "price": 25,
+        "category": "office",
+        "count": 0,
+        "revenue": 0
       }
     },
     "category_stats": {
@@ -768,11 +796,6 @@
     },
     "trend": [
       {
-        "date": "2026-07-24",
-        "revenue": 0,
-        "orders": 0
-      },
-      {
         "date": "2026-07-25",
         "revenue": 0,
         "orders": 0
@@ -801,9 +824,14 @@
         "date": "2026-07-30",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-07-31",
+        "revenue": 0,
+        "orders": 0
       }
     ],
-    "analysis_time": "2026-07-30 21:00:02"
+    "analysis_time": "2026-07-31 20:00:38"
   },
   "strategies": [
     [
@@ -859,7 +887,7 @@
     [
       "💰",
       "定价",
-      "¥19-29(75个) ¥35-99(8个) ¥199+(8个)"
+      "¥19-29(76个) ¥35-99(11个) ¥199+(8个)"
     ],
     [
       "🎁",

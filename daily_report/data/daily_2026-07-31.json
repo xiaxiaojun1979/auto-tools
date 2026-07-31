@@ -1,0 +1,676 @@
+{
+  "date": "2026-07-31",
+  "total_revenue": 164,
+  "total_orders": 6,
+  "today_revenue": 0,
+  "today_orders": 0,
+  "week_revenue": 0,
+  "pending_count": 0,
+  "product_stats": {
+    "creator_pack": {
+      "name": "内容创作者效率包",
+      "emoji": "🎬",
+      "price": 179,
+      "count": 0,
+      "revenue": 0
+    },
+    "office_pack": {
+      "name": "办公自动化全家桶",
+      "emoji": "📊",
+      "price": 119,
+      "count": 0,
+      "revenue": 0
+    },
+    "dev_pack": {
+      "name": "开发者效率工具包",
+      "emoji": "💻",
+      "price": 119,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_pack": {
+      "name": "AI创新应用包",
+      "emoji": "🤖",
+      "price": 89,
+      "count": 0,
+      "revenue": 0
+    },
+    "enterprise_pack": {
+      "name": "企业管理超值包",
+      "emoji": "🏢",
+      "price": 299,
+      "count": 0,
+      "revenue": 0
+    },
+    "file_tools": {
+      "name": "文件批处理大师",
+      "emoji": "📁",
+      "price": 17,
+      "count": 6,
+      "revenue": 164
+    },
+    "content_gen": {
+      "name": "内容自动生成器",
+      "emoji": "✍️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "data_tools": {
+      "name": "数据清洗工具包",
+      "emoji": "🧹",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "excel_macro": {
+      "name": "Excel宏工具包",
+      "emoji": "📊",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "pdf_tools": {
+      "name": "PDF全能工具箱",
+      "emoji": "📄",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "vip_member": {
+      "name": "VIP终身会员",
+      "emoji": "👑",
+      "price": 29,
+      "count": 0,
+      "revenue": 0
+    },
+    "subtitle": {
+      "name": "视频字幕提取工具",
+      "emoji": "📝",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "merge": {
+      "name": "视频拼接合并工具",
+      "emoji": "🎞️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "chat_client": {
+      "name": "AI对话客户端",
+      "emoji": "🤖",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "translate_batch": {
+      "name": "批量翻译工具",
+      "emoji": "🌐",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "watermark_add": {
+      "name": "图片批量加水印",
+      "emoji": "💧",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "remove_bg": {
+      "name": "图片去背景工具",
+      "emoji": "✂️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "price_monitor": {
+      "name": "电商价格监控",
+      "emoji": "📈",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "trending": {
+      "name": "热点追踪工具",
+      "emoji": "🔥",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "folder_lock": {
+      "name": "文件夹加密锁",
+      "emoji": "🔒",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "deploy_service": {
+      "name": "代部署服务",
+      "emoji": "📦",
+      "price": 41,
+      "count": 0,
+      "revenue": 0
+    },
+    "custom_dev": {
+      "name": "定制开发",
+      "emoji": "🏭",
+      "price": 179,
+      "count": 0,
+      "revenue": 0
+    },
+    "enterprise_pkg": {
+      "name": "企业批量部署",
+      "emoji": "🏢",
+      "price": 419,
+      "count": 0,
+      "revenue": 0
+    },
+    "maintenance": {
+      "name": "年度维护套餐",
+      "emoji": "🔧",
+      "price": 119,
+      "count": 0,
+      "revenue": 0
+    },
+    "vip_custom": {
+      "name": "企业VIP定制",
+      "emoji": "👑",
+      "price": 1199,
+      "count": 0,
+      "revenue": 0
+    },
+    "image_gen": {
+      "name": "AI图片生成工具",
+      "emoji": "🎨",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "summary": {
+      "name": "文章摘要生成器",
+      "emoji": "📝",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "text_to_speech": {
+      "name": "文字转语音工具",
+      "emoji": "🔊",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "compress": {
+      "name": "图片压缩工具",
+      "emoji": "📦",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "format_convert": {
+      "name": "图片格式转换器",
+      "emoji": "🔄",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "resize": {
+      "name": "图片批量改尺寸",
+      "emoji": "📐",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "batch_publish": {
+      "name": "多平台发布器",
+      "emoji": "📤",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "calendar": {
+      "name": "内容日历工具",
+      "emoji": "📅",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "keyword_analysis": {
+      "name": "关键词分析工具",
+      "emoji": "🔍",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "file_encrypt": {
+      "name": "文件加密工具",
+      "emoji": "🔐",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "file_shredder": {
+      "name": "文件粉碎工具",
+      "emoji": "🗑️",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "hash_check": {
+      "name": "文件校验工具",
+      "emoji": "✅",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "password_gen": {
+      "name": "密码生成器",
+      "emoji": "🔑",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "compress_video": {
+      "name": "视频压缩工具",
+      "emoji": "🎥",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "seo_checker": {
+      "name": "SEO检测工具",
+      "emoji": "📊",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "layout_helper": {
+      "name": "排版助手工具",
+      "emoji": "🎯",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "screen_recorder": {
+      "name": "屏幕录制工具",
+      "emoji": "🖥️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "gif_maker": {
+      "name": "GIF动图制作工具",
+      "emoji": "🎞️",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "clipboard_mgr": {
+      "name": "剪贴板增强工具",
+      "emoji": "📋",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "reminder": {
+      "name": "定时提醒工具",
+      "emoji": "⏰",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "batch_rename_adv": {
+      "name": "高级批量重命名",
+      "emoji": "🏷️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "qr_code_gen": {
+      "name": "二维码生成工具",
+      "emoji": "📱",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "file_sync": {
+      "name": "文件夹同步工具",
+      "emoji": "🔄",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "duplicate_finder": {
+      "name": "重复文件查找器",
+      "emoji": "🔎",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "image_watermark_video": {
+      "name": "视频批量加水印",
+      "emoji": "💧",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_data_analyze": {
+      "name": "AI数据分析师",
+      "emoji": "🤖",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "short_video_script": {
+      "name": "短视频脚本生成",
+      "emoji": "🎬",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "txt_splitter": {
+      "name": "文本分割工具",
+      "emoji": "📝",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "img_optimizer": {
+      "name": "图片快速优化器",
+      "emoji": "🖼️",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "clipboard_history": {
+      "name": "剪贴板历史工具",
+      "emoji": "📋",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "batch_rename_lite": {
+      "name": "文件批量重命名",
+      "emoji": "🏷️",
+      "price": 9,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_code_review": {
+      "name": "AI代码审查工具",
+      "emoji": "🤖",
+      "price": 35,
+      "count": 0,
+      "revenue": 0
+    },
+    "live_stream_helper": {
+      "name": "直播辅助工具",
+      "emoji": "🎬",
+      "price": 29,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_writing_assist": {
+      "name": "AI写作助手",
+      "emoji": "🤖",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_ppt_gen": {
+      "name": "AI PPT自动生成",
+      "emoji": "📊",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "video_subtitle": {
+      "name": "视频自动加字幕",
+      "emoji": "📝",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_avatar": {
+      "name": "AI数字人主播",
+      "emoji": "👤",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "voice_clone": {
+      "name": "AI声音克隆工具",
+      "emoji": "🎙️",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_interview": {
+      "name": "AI模拟面试官",
+      "emoji": "🎯",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "resume_opt": {
+      "name": "AI简历优化大师",
+      "emoji": "📄",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_coding": {
+      "name": "AI编程助手",
+      "emoji": "💻",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_translator_pro": {
+      "name": "AI专业翻译工具",
+      "emoji": "🌐",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_music_gen": {
+      "name": "AI音乐生成器",
+      "emoji": "🎵",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "video_short_clip": {
+      "name": "短视频智能剪辑",
+      "emoji": "✂️",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "website_builder": {
+      "name": "AI网站自动搭建",
+      "emoji": "🌐",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "data_vis": {
+      "name": "AI数据可视化",
+      "emoji": "📈",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "exam_helper": {
+      "name": "AI考试助手",
+      "emoji": "📚",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "social_media_mgr": {
+      "name": "社媒运营助手",
+      "emoji": "📱",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_lawyer": {
+      "name": "AI法律文书助手",
+      "emoji": "⚖️",
+      "price": 23,
+      "count": 0,
+      "revenue": 0
+    },
+    "meal_planner": {
+      "name": "AI健康饮食规划",
+      "emoji": "🍱",
+      "price": 11,
+      "count": 0,
+      "revenue": 0
+    },
+    "fitness_coach": {
+      "name": "AI健身私教",
+      "emoji": "💪",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "stock_analyzer": {
+      "name": "AI股票分析助手",
+      "emoji": "📊",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "meeting_summary": {
+      "name": "AI会议纪要助手",
+      "emoji": "📋",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_room_design": {
+      "name": "AI室内设计助手",
+      "emoji": "🏠",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_mindmap": {
+      "name": "AI思维导图工具",
+      "emoji": "🤖",
+      "price": 17,
+      "count": 0,
+      "revenue": 0
+    },
+    "tiktok_auto_reply": {
+      "name": "抖音自动回复",
+      "emoji": "🎬",
+      "price": 27,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_ppt": {
+      "name": "AI自动生成PPT",
+      "emoji": "🤖",
+      "price": 27,
+      "count": 0,
+      "revenue": 0
+    },
+    "video_clip_batch": {
+      "name": "视频批量剪辑",
+      "emoji": "🎬",
+      "price": 29,
+      "count": 0,
+      "revenue": 0
+    },
+    "ai_resume": {
+      "name": "AI简历优化工具",
+      "emoji": "🤖",
+      "price": 39,
+      "count": 0,
+      "revenue": 0
+    },
+    "short_video_edit": {
+      "name": "短视频快速剪辑",
+      "emoji": "🎬",
+      "price": 39,
+      "count": 0,
+      "revenue": 0
+    },
+    "danmaku_collect": {
+      "name": "弹幕采集工具",
+      "emoji": "🎬",
+      "price": 35,
+      "count": 0,
+      "revenue": 0
+    },
+    "price_history": {
+      "name": "商品历史价格查询",
+      "emoji": "🛒",
+      "price": 29,
+      "count": 0,
+      "revenue": 0
+    },
+    "review_analyzer": {
+      "name": "评论分析工具",
+      "emoji": "🛒",
+      "price": 39,
+      "count": 0,
+      "revenue": 0
+    },
+    "todo_manager": {
+      "name": "智能待办管理",
+      "emoji": "📊",
+      "price": 25,
+      "count": 0,
+      "revenue": 0
+    },
+    "taobao_keyword": {
+      "name": "淘宝关键词挖掘",
+      "emoji": "🛒",
+      "price": 39,
+      "count": 0,
+      "revenue": 0
+    },
+    "ocr_tool": {
+      "name": "OCR文字识别工具",
+      "emoji": "📊",
+      "price": 29,
+      "count": 0,
+      "revenue": 0
+    },
+    "ecommerce_analyze": {
+      "name": "电商数据看板",
+      "emoji": "🛒",
+      "price": 59,
+      "count": 0,
+      "revenue": 0
+    },
+    "meeting_notes": {
+      "name": "会议记录工具",
+      "emoji": "📊",
+      "price": 35,
+      "count": 0,
+      "revenue": 0
+    },
+    "batch_order_print": {
+      "name": "批量订单打印",
+      "emoji": "🛒",
+      "price": 35,
+      "count": 0,
+      "revenue": 0
+    },
+    "batch_print": {
+      "name": "批量打印工具",
+      "emoji": "📊",
+      "price": 25,
+      "count": 0,
+      "revenue": 0
+    }
+  }
+}

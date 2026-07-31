@@ -1779,5 +1779,73 @@
     "price_old": 49,
     "category": "office",
     "created": "2026-07-30"
+  },
+  {
+    "id": "ecommerce_analyze",
+    "emoji": "🛒",
+    "name": "电商数据看板",
+    "desc": "店铺数据分析可视化",
+    "features": [
+      "电商数据看板核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 59,
+    "price_old": 100,
+    "category": "ecommerce",
+    "created": "2026-07-31"
+  },
+  {
+    "id": "meeting_notes",
+    "emoji": "📊",
+    "name": "会议记录工具",
+    "desc": "语音转文字会议记录",
+    "features": [
+      "会议记录工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "office",
+    "created": "2026-07-31"
+  },
+  {
+    "id": "batch_order_print",
+    "emoji": "🛒",
+    "name": "批量订单打印",
+    "desc": "一键打印电商订单",
+    "features": [
+      "批量订单打印核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "ecommerce",
+    "created": "2026-07-31"
+  },
+  {
+    "id": "batch_print",
+    "emoji": "📊",
+    "name": "批量打印工具",
+    "desc": "批量打印文档和图片",
+    "features": [
+      "批量打印工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 25,
+    "price_old": 42,
+    "category": "office",
+    "created": "2026-07-31"
   }
 ]
