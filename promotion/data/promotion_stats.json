@@ -1,7 +1,7 @@
 {
   "total_views": 0,
   "total_clicks": 0,
-  "total_promotions": 243,
+  "total_promotions": 306,
   "promotion_revenue": 0,
   "daily_stats": {
     "2026-07-28": {
@@ -14,16 +14,19 @@
       "promotions": 61
     },
     "2026-07-31": {
-      "promotions": 58
+      "promotions": 61
+    },
+    "2026-08-01": {
+      "promotions": 60
     }
   },
   "type_stats": {
-    "referral": 36,
-    "vip_offer": 32,
-    "new_arrival": 38,
-    "limited_time": 34,
-    "hot_product": 37,
-    "bundle_deal": 30,
-    "flash_sale": 36
+    "referral": 47,
+    "vip_offer": 45,
+    "new_arrival": 47,
+    "limited_time": 40,
+    "hot_product": 45,
+    "bundle_deal": 34,
+    "flash_sale": 48
   }
 }

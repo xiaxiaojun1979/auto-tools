@@ -1847,5 +1847,73 @@
     "price_old": 42,
     "category": "office",
     "created": "2026-07-31"
+  },
+  {
+    "id": "goods_compare",
+    "emoji": "🛒",
+    "name": "商品比价工具",
+    "desc": "多平台商品价格对比",
+    "features": [
+      "商品比价工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "ecommerce",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "doc_compare",
+    "emoji": "📊",
+    "name": "文档对比工具",
+    "desc": "快速对比两份文档差异",
+    "features": [
+      "文档对比工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "office",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "time_tracker",
+    "emoji": "📊",
+    "name": "时间追踪工具",
+    "desc": "自动记录工作时间分配",
+    "features": [
+      "时间追踪工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "office",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "title_generator",
+    "emoji": "📱",
+    "name": "爆款标题生成器",
+    "desc": "AI生成高点击率标题",
+    "features": [
+      "爆款标题生成器核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "media",
+    "created": "2026-08-01"
   }
 ]

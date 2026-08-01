@@ -10,7 +10,7 @@
       "revenue": 145
     },
     "month": {
-      "revenue": 145
+      "revenue": 0
     },
     "pending": 0,
     "product_sales": {
@@ -678,6 +678,34 @@
         "category": "office",
         "count": 0,
         "revenue": 0
+      },
+      "goods_compare": {
+        "name": "商品比价工具",
+        "price": 29,
+        "category": "ecommerce",
+        "count": 0,
+        "revenue": 0
+      },
+      "doc_compare": {
+        "name": "文档对比工具",
+        "price": 35,
+        "category": "office",
+        "count": 0,
+        "revenue": 0
+      },
+      "time_tracker": {
+        "name": "时间追踪工具",
+        "price": 29,
+        "category": "office",
+        "count": 0,
+        "revenue": 0
+      },
+      "title_generator": {
+        "name": "爆款标题生成器",
+        "price": 29,
+        "category": "media",
+        "count": 0,
+        "revenue": 0
       }
     },
     "category_stats": {
@@ -796,11 +824,6 @@
     },
     "trend": [
       {
-        "date": "2026-07-25",
-        "revenue": 0,
-        "orders": 0
-      },
-      {
         "date": "2026-07-26",
         "revenue": 0,
         "orders": 0
@@ -829,9 +852,14 @@
         "date": "2026-07-31",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-01",
+        "revenue": 0,
+        "orders": 0
       }
     ],
-    "analysis_time": "2026-07-31 21:00:02"
+    "analysis_time": "2026-08-01 20:00:34"
   },
   "strategies": [
     [
@@ -887,7 +915,7 @@
     [
       "💰",
       "定价",
-      "¥19-29(76个) ¥35-99(11个) ¥199+(8个)"
+      "¥19-29(79个) ¥35-99(12个) ¥199+(8个)"
     ],
     [
       "🎁",
