@@ -1915,5 +1915,73 @@
     "price_old": 49,
     "category": "media",
     "created": "2026-08-01"
+  },
+  {
+    "id": "cover_design",
+    "emoji": "📱",
+    "name": "封面设计工具",
+    "desc": "一键生成自媒体封面图",
+    "features": [
+      "封面设计工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "media",
+    "created": "2026-08-02"
+  },
+  {
+    "id": "quiz_generator",
+    "emoji": "📚",
+    "name": "考题生成器",
+    "desc": "自动生成练习题和答案",
+    "features": [
+      "考题生成器核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "education",
+    "created": "2026-08-02"
+  },
+  {
+    "id": "data_dashboard",
+    "emoji": "📱",
+    "name": "自媒体数据看板",
+    "desc": "各平台数据统一展示",
+    "features": [
+      "自媒体数据看板核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 45,
+    "price_old": 76,
+    "category": "media",
+    "created": "2026-08-02"
+  },
+  {
+    "id": "note_taker",
+    "emoji": "📚",
+    "name": "智能笔记工具",
+    "desc": "语音/文字自动整理笔记",
+    "features": [
+      "智能笔记工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "education",
+    "created": "2026-08-02"
   }
 ]

@@ -46,3 +46,15 @@ Traceback (most recent call last):
   File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 242, in generate_daily_posts
     self.stats["total_posts"] += len(all_products) * len(PLATFORMS)
 KeyError: 'total_posts'
+Traceback (most recent call last):
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 349, in <module>
+    run()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 345, in run
+    return engine.print_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 312, in print_summary
+    summary = self.generate_promotion_summary()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 292, in generate_promotion_summary
+    posts, hot = self.generate_daily_posts()
+  File "/Users/tianmengpiaoxiang/auto_business/promotion_engine.py", line 242, in generate_daily_posts
+    self.stats["total_posts"] += len(all_products) * len(PLATFORMS)
+KeyError: 'total_posts'

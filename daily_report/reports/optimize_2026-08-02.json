@@ -706,6 +706,34 @@
         "category": "media",
         "count": 0,
         "revenue": 0
+      },
+      "cover_design": {
+        "name": "封面设计工具",
+        "price": 29,
+        "category": "media",
+        "count": 0,
+        "revenue": 0
+      },
+      "quiz_generator": {
+        "name": "考题生成器",
+        "price": 35,
+        "category": "education",
+        "count": 0,
+        "revenue": 0
+      },
+      "data_dashboard": {
+        "name": "自媒体数据看板",
+        "price": 45,
+        "category": "media",
+        "count": 0,
+        "revenue": 0
+      },
+      "note_taker": {
+        "name": "智能笔记工具",
+        "price": 29,
+        "category": "education",
+        "count": 0,
+        "revenue": 0
       }
     },
     "category_stats": {
@@ -824,11 +852,6 @@
     },
     "trend": [
       {
-        "date": "2026-07-26",
-        "revenue": 0,
-        "orders": 0
-      },
-      {
         "date": "2026-07-27",
         "revenue": 0,
         "orders": 0
@@ -857,9 +880,14 @@
         "date": "2026-08-01",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-02",
+        "revenue": 0,
+        "orders": 0
       }
     ],
-    "analysis_time": "2026-08-01 21:00:01"
+    "analysis_time": "2026-08-02 20:00:40"
   },
   "strategies": [
     [
@@ -915,7 +943,7 @@
     [
       "💰",
       "定价",
-      "¥19-29(79个) ¥35-99(12个) ¥199+(8个)"
+      "¥19-29(81个) ¥35-99(14个) ¥199+(8个)"
     ],
     [
       "🎁",
