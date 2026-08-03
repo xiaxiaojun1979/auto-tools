@@ -1983,5 +1983,73 @@
     "price_old": 49,
     "category": "education",
     "created": "2026-08-02"
+  },
+  {
+    "id": "hot_comment",
+    "emoji": "📱",
+    "name": "神评论采集器",
+    "desc": "采集热门评论作为素材",
+    "features": [
+      "神评论采集器核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 25,
+    "price_old": 42,
+    "category": "media",
+    "created": "2026-08-03"
+  },
+  {
+    "id": "flashcard_maker",
+    "emoji": "📚",
+    "name": "智能记忆卡片",
+    "desc": "AI生成记忆卡片辅助学习",
+    "features": [
+      "智能记忆卡片核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 25,
+    "price_old": 42,
+    "category": "education",
+    "created": "2026-08-03"
+  },
+  {
+    "id": "content_planner",
+    "emoji": "📱",
+    "name": "内容规划工具",
+    "desc": "规划一个月内容排期",
+    "features": [
+      "内容规划工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "media",
+    "created": "2026-08-03"
+  },
+  {
+    "id": "book_summary",
+    "emoji": "📚",
+    "name": "书籍摘要工具",
+    "desc": "快速提取书籍核心内容",
+    "features": [
+      "书籍摘要工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 35,
+    "price_old": 59,
+    "category": "education",
+    "created": "2026-08-03"
   }
 ]

@@ -1,0 +1,69 @@
+{
+  "date": "2026-08-03",
+  "total_categories": 7,
+  "existing_products": 105,
+  "recommendations": [
+    {
+      "category": "自媒体/内容创作",
+      "trend_level": "🔥🔥🔥🔥",
+      "tool_id": "content_planner",
+      "name": "内容规划工具",
+      "desc": "规划一个月内容排期",
+      "price": 35,
+      "reason": "自媒体/内容创作趋势火爆(🔥🔥🔥🔥)，内容规划工具市场需求大"
+    },
+    {
+      "category": "学习/教育工具",
+      "trend_level": "🔥🔥🔥",
+      "tool_id": "book_summary",
+      "name": "书籍摘要工具",
+      "desc": "快速提取书籍核心内容",
+      "price": 35,
+      "reason": "学习/教育工具趋势火爆(🔥🔥🔥)，书籍摘要工具市场需求大"
+    }
+  ],
+  "all_categories": {
+    "AI工具": {
+      "trend": "🔥🔥🔥🔥🔥",
+      "total_tools": 7,
+      "developed": 7,
+      "available": 0
+    },
+    "短视频/直播工具": {
+      "trend": "🔥🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "电商/购物工具": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "办公效率工具": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "自媒体/内容创作": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 4,
+      "available": 2
+    },
+    "学习/教育工具": {
+      "trend": "🔥🔥🔥",
+      "total_tools": 5,
+      "developed": 3,
+      "available": 2
+    },
+    "生活/实用工具": {
+      "trend": "🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 0,
+      "available": 6
+    }
+  }
+}

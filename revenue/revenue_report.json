@@ -1,18 +1,13 @@
 {
-  "date": "2026-08-02 20:00",
+  "date": "2026-08-03 20:00",
   "stats": {
     "total": 164,
     "total_orders": 6,
     "today": 0,
     "today_orders": 0,
-    "week": 145,
+    "week": 0,
     "month": 0,
     "trend": [
-      {
-        "date": "2026-07-27",
-        "revenue": 0,
-        "orders": 0
-      },
       {
         "date": "2026-07-28",
         "revenue": 145,
@@ -42,6 +37,11 @@
         "date": "2026-08-02",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-03",
+        "revenue": 0,
+        "orders": 0
       }
     ],
     "goals": {
@@ -52,8 +52,8 @@
       },
       "weekly": {
         "target": 700,
-        "actual": 145,
-        "rate": 20.7
+        "actual": 0,
+        "rate": 0.0
       },
       "monthly": {
         "target": 3000,
@@ -71,7 +71,7 @@
   },
   "plans": [
     "【daily目标】尚未有收入，需要立即启动推广！¥100/天",
-    "【weekly目标】达成率20.7%，需要加大推广力度",
+    "【weekly目标】尚未有收入，需要立即启动推广！¥700/天",
     "【monthly目标】尚未有收入，需要立即启动推广！¥3000/天",
     "【畅销品】file_tools 收入¥164，建议重点推广",
     "【增收建议】推广 VIP 会员（¥199），利润率最高",

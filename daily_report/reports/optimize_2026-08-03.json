@@ -7,7 +7,7 @@
       "orders": 0
     },
     "week": {
-      "revenue": 145
+      "revenue": 0
     },
     "month": {
       "revenue": 0
@@ -734,6 +734,34 @@
         "category": "education",
         "count": 0,
         "revenue": 0
+      },
+      "hot_comment": {
+        "name": "神评论采集器",
+        "price": 25,
+        "category": "media",
+        "count": 0,
+        "revenue": 0
+      },
+      "flashcard_maker": {
+        "name": "智能记忆卡片",
+        "price": 25,
+        "category": "education",
+        "count": 0,
+        "revenue": 0
+      },
+      "content_planner": {
+        "name": "内容规划工具",
+        "price": 35,
+        "category": "media",
+        "count": 0,
+        "revenue": 0
+      },
+      "book_summary": {
+        "name": "书籍摘要工具",
+        "price": 35,
+        "category": "education",
+        "count": 0,
+        "revenue": 0
       }
     },
     "category_stats": {
@@ -852,11 +880,6 @@
     },
     "trend": [
       {
-        "date": "2026-07-27",
-        "revenue": 0,
-        "orders": 0
-      },
-      {
         "date": "2026-07-28",
         "revenue": 145,
         "orders": 5
@@ -885,9 +908,14 @@
         "date": "2026-08-02",
         "revenue": 0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-03",
+        "revenue": 0,
+        "orders": 0
       }
     ],
-    "analysis_time": "2026-08-02 21:00:05"
+    "analysis_time": "2026-08-03 20:00:41"
   },
   "strategies": [
     [
@@ -943,7 +971,7 @@
     [
       "💰",
       "定价",
-      "¥19-29(81个) ¥35-99(14个) ¥199+(8个)"
+      "¥19-29(83个) ¥35-99(16个) ¥199+(8个)"
     ],
     [
       "🎁",
