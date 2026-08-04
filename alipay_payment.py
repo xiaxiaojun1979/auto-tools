@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).parent
 CONFIG_FILE = BASE_DIR / "alipay_config.json"
 
 # App 通知回调地址（必须配置在支付宝开放平台）
-NOTIFY_URL = "http://118.31.4.27/api/alipay/notify"
+NOTIFY_URL = "https://xiaxiaojun.com/api/alipay/notify"
 
 def load_config():
     """加载支付宝配置"""

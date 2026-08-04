@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "daily_report" / "data"
 ORDERS_FILE = DATA_DIR / "orders.json"
 PRODUCTS_FILE = BASE_DIR / "products" / "products.json"
-ADMIN_PASSWORD = "xxj63858930"
-ALIPAY_ACCOUNT = "15156215580"
-SITE_URL = "http://118.31.4.27"
+SUBSCRIBERS_FILE = DATA_DIR / "subscribers.json"
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "xxj63858930")
+ALIPAY_ACCOUNT = os.environ.get("ALIPAY_ACCOUNT", "15156215580")
+SITE_URL = os.environ.get("SITE_URL", "https://xiaxiaojun.com")
 ALIPAY_QR_URL = "alipays://platformapi/startapp?appId=20000123&actionType=toAccount&goBack=NO&source=qr&account="
 SITE_NAME = "AutoTools 自动化工具集"
 
@@ -140,6 +141,122 @@ PENDING_VERIFICATIONS = {}
 def generate_verify_code():
     """生成4位随机数字校验码"""
     return f"{random.randint(0, 9999):04d}"
+
+
+def find_order(order_id):
+    """按订单号查订单，返回 (order, orders_data)"""
+    data = load_orders()
+    for o in data["orders"]:
+        if o["order_id"] == order_id:
+            return o, data
+    return None, data
+
+
+def fulfill_paid_order(order, orders_data, trade_no="", buyer_logon_id=""):
+    """
+    支付确认后自动交付：生成激活码 + 更新订单 + 发送邮件。
+    返回 (order, error)，幂等：已交付订单直接返回。
+    """
+    if order.get("status") == "delivered":
+        return order, None
+    delivery_info, error = auto_deliver_activation_code(
+        order["product_id"], order["product_name"],
+        order.get("buyer_email", ""), order["price"]
+    )
+    if error:
+        return order, error
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    order["status"] = "delivered"
+    order["verified"] = True
+    order["delivery_code"] = delivery_info["code"]
+    order["download_url"] = delivery_info["download_url"]
+    if trade_no:
+        order["trade_no"] = trade_no
+    if buyer_logon_id:
+        order["buyer_logon_id"] = buyer_logon_id
+    order["paid_at"] = now
+    order["confirmed_at"] = order.get("confirmed_at") or now
+    order["delivered_at"] = now
+    save_orders(orders_data)
+    email = order.get("buyer_email", "")
+    if email:
+        try:
+            from email_report import send_order_email
+            send_order_email(order["order_id"], email, order["product_name"],
+                             delivery_info["code"], delivery_info["download_url"])
+        except Exception as e:
+            print(f"  ⚠️ 交付邮件发送失败: {e}")
+    return order, None
+
+
+def send_welcome_email(email):
+    """私域订阅欢迎邮件（含免费资料入口）"""
+    cfg_file = BASE_DIR / "email_config.json"
+    if not cfg_file.exists():
+        return False, "邮件未配置"
+    with open(cfg_file) as f:
+        cfg = json.load(f)
+    sender = cfg.get("sender", "")
+    password = cfg.get("password", "")
+    if not password:
+        return False, "SMTP未配置"
+    subject = "🎁 你的免费 AI 效率工具包已就绪"
+    body = f"""<html><body style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:20px">
+<div style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:28px;border-radius:14px;text-align:center">
+<h2 style="margin:0">🎁 免费资料已就绪</h2>
+<p style="opacity:.9;margin:8px 0 0">AutoTools · AI 效率工具集</p>
+</div>
+<div style="padding:22px;background:#f9fafb;border-radius:12px;margin-top:14px">
+<p>你好，欢迎加入 AutoTools 效率工具私域名单！</p>
+<p>这里有一些可以立刻使用的免费工具：</p>
+<ul>
+<li>📂 <a href="https://xiaxiaojun.com/free">免费在线工具（去背景 / 压缩 / 字幕等）</a></li>
+<li>🤖 每周 1 封「AI 效率技巧 + 新品内测」邮件，只在名单里发布</li>
+</ul>
+<p style="color:#666">如果邮件里有任何问题，回复本邮件即可联系到我们。</p>
+</div>
+<p style="color:#999;font-size:12px;text-align:center;margin-top:18px">AutoTools 自动化工具集 · xiaxiaojun.com</p>
+</body></html>"""
+    msg = MIMEText(body, "html", "utf-8")
+    msg["Subject"] = subject
+    msg["From"] = sender
+    msg["To"] = email
+    server = smtplib.SMTP_SSL(cfg.get("server", "smtp.qq.com"),
+                              int(cfg.get("port", 465)), timeout=15)
+    server.login(sender, password)
+    server.sendmail(sender, [email], msg.as_string())
+    server.quit()
+    return True, "已发送"
+
+
+def resolve_delivery(token):
+    """
+    解析下载链接：优先 download_links.json，兼容激活码直达。
+    返回 (info, product_dir, error)
+    """
+    from delivery.auto_delivery import validate_token, PRODUCTS_STORAGE
+    info, error = validate_token(token)
+    if info:
+        return info, PRODUCTS_STORAGE / info["product_id"], None
+    # 兼容激活码（auto_deliver_activation_code 生成的交付链接）
+    codes_file = BASE_DIR / "delivery" / "activation_codes.json"
+    if codes_file.exists():
+        with open(codes_file, encoding="utf-8") as f:
+            all_codes = json.load(f)
+        for pid, clist in all_codes.items():
+            for c in clist:
+                if c.get("code", "").upper() == token.upper() and c.get("used"):
+                    return {
+                        "order_id": str(c.get("used_by", "")),
+                        "product_id": pid,
+                        "token": token,
+                        "created_at": c.get("created_at", ""),
+                        "expires_at": "",
+                        "download_count": 0,
+                        "max_downloads": 10,
+                        "buyer_email": str(c.get("used_by", "")),
+                    }, PRODUCTS_STORAGE / pid, None
+    return None, None, error
 
 # 支付网关
 import sys
@@ -323,7 +440,7 @@ def api_xianyu_products():
             "desc": p.get("desc", ""),
             "features": p.get("features", []),
             "category": cat,
-            "download_url": f"http://118.31.4.27/buy/{p['id']}"
+            "download_url": f"{SITE_URL}/buy/{p['id']}"
         })
     return jsonify({"ok": True, "products": xianyu_items})
 
@@ -431,12 +548,42 @@ def get_payment_qrcode():
         req = request.get_json()
         pid = req.get("product_id", "")
         payment = req.get("payment", "alipay")
+        email = (req.get("email") or "").strip()
         product = get_product(pid)
         if not product:
             return jsonify({"ok": False, "msg": "产品不存在"}), 400
+        if email and "@" not in email:
+            return jsonify({"ok": False, "msg": "邮箱格式不正确"}), 400
         
         amount = product["price"]
         order_id = gen_order_id()
+
+        def persist_pending(gateway, account):
+            """先把待支付订单落库，支付回调/轮询据此自动交付（重启不丢）"""
+            data = load_orders()
+            order = {
+                "order_id": order_id,
+                "product_id": pid,
+                "product_name": product["name"],
+                "price": amount,
+                "buyer_email": email or "",
+                "payment": "支付宝" if payment == "alipay" else "微信",
+                "gateway": gateway,
+                "account": account,
+                "buyer_ip": request.remote_addr or "",
+                "status": "pending",
+                "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            }
+            data["orders"].append(order)
+            save_orders(data)
+            PENDING_VERIFICATIONS[order_id] = {
+                "product_id": pid,
+                "payment": payment,
+                "amount": amount,
+                "email": email or None,
+                "created_at": datetime.now(),
+                "status": "pending",
+            }
         
         # 检查是否配置了支付宝当面付
         alipay_cfg = ap.load_config()
@@ -444,19 +591,13 @@ def get_payment_qrcode():
             # 使用支付宝当面付
             result = ap.create_qrcode(amount, order_id, subject=product["name"])
             if result.get("ok"):
-                # 存入待支付记录
-                PENDING_VERIFICATIONS[order_id] = {
-                    "product_id": pid,
-                    "payment": "alipay",
-                    "amount": amount,
-                    "created_at": datetime.now(),
-                    "status": "pending"
-                }
+                persist_pending("alipay_f2f", "支付宝当面付")
                 return jsonify({
                     "ok": True,
                     "qr": result["qrcode"],
                     "amount": amount,
                     "order_id": order_id,
+                    "email": email,
                     "product_name": product["name"],
                     "gateway": "alipay_f2f",
                     "account": "支付宝当面付"
@@ -468,11 +609,13 @@ def get_payment_qrcode():
         if gw_config.get("gateway") == "payjs" and gw_config.get("payjs_mchid"):
             result = pg.create_native_qrcode(amount, order_id, attach=pid)
             if result.get("ok"):
+                persist_pending("payjs", "PayJS支付")
                 return jsonify({
                     "ok": True,
                     "qr": result["qrcode_url"],
                     "amount": amount,
                     "order_id": order_id,
+                    "email": email,
                     "payjs_order_id": result["payjs_order_id"],
                     "product_name": product["name"],
                     "gateway": "payjs",
@@ -488,12 +631,14 @@ def get_payment_qrcode():
         
         if not qr:
             return jsonify({"ok": False, "msg": "二维码生成失败"}), 500
+        persist_pending("manual", ALIPAY_ACCOUNT if payment == "alipay" else "微信扫码")
         
         return jsonify({
             "ok": True,
             "qr": qr,
             "amount": amount,
             "order_id": order_id,
+            "email": email,
             "product_name": product["name"],
             "gateway": "manual",
             "account": ALIPAY_ACCOUNT if payment == "alipay" else "微信扫码"
@@ -665,31 +810,29 @@ def query_order(oid):
 
 @app.route("/api/alipay/notify", methods=["POST"])
 def alipay_notify():
-    """支付宝支付异步通知"""
+    """支付宝支付异步通知：验签通过后自动交付，返回 success"""
     try:
         data = request.form.to_dict()
-        print(f"  📩 支付宝通知: {json.dumps(data, ensure_ascii=False)}")
-        
-        if ap.verify_notify(data):
-            out_trade_no = data.get("out_trade_no", "")
-            trade_no = data.get("trade_no", "")
-            trade_status = data.get("trade_status", "")
-            
-            if trade_status == "TRADE_SUCCESS":
-                # 支付成功，生成校验码
-                if out_trade_no in PENDING_VERIFICATIONS:
-                    code = generate_verify_code()
-                    pid = PENDING_VERIFICATIONS[out_trade_no]["product_id"]
-                    PENDING_VERIFICATIONS[out_trade_no]["code"] = code
-                    PENDING_VERIFICATIONS[out_trade_no]["paid"] = True
-                    PENDING_VERIFICATIONS[out_trade_no]["tx_id"] = trade_no
-                    print(f"  ✅ 支付宝支付成功: {out_trade_no} 校验码={code}")
-                
-                return "success", 200
+        print(f"  📩 支付宝通知: out_trade_no={data.get('out_trade_no')} trade_status={data.get('trade_status')}")
+        if not ap.verify_notify(data):
+            print("  ⚠️ 支付宝通知验签失败")
             return "fail", 400
-        else:
-            print(f"  ⚠️ 支付宝通知验签失败")
-            return "fail", 400
+        trade_status = data.get("trade_status", "")
+        if trade_status not in ("TRADE_SUCCESS", "TRADE_FINISHED"):
+            return "success", 200
+        out_trade_no = data.get("out_trade_no", "")
+        trade_no = data.get("trade_no", "")
+        buyer_logon_id = data.get("buyer_logon_id", "")
+        order, orders_data = find_order(out_trade_no)
+        if not order:
+            print(f"  ⚠️ 未找到对应订单: {out_trade_no}，忽略")
+            return "success", 200
+        order, error = fulfill_paid_order(order, orders_data, trade_no=trade_no, buyer_logon_id=buyer_logon_id)
+        if error:
+            print(f"  ⚠️ 自动交付失败: {error}")
+            return "fail", 500
+        print(f"  ✅ 支付成功并自动交付: {out_trade_no} code={order.get('delivery_code')}")
+        return "success", 200
     except Exception as e:
         print(f"  ⚠️ 支付宝通知处理异常: {e}")
         return "fail", 400
@@ -699,31 +842,44 @@ def alipay_notify():
 def check_payment(order_id):
     """轮询查询支付状态"""
     try:
-        # 先检查是否有Alipay当面付记录
-        pend = PENDING_VERIFICATIONS.get(order_id)
-        if pend and pend.get("paid"):
-            code = pend.get("code")
+        order, orders_data = find_order(order_id)
+        if order and order.get("status") == "delivered":
             return jsonify({
                 "ok": True, "status": "paid",
-                "verify_code": code,
-                "msg": "支付成功！校验码已生成"
+                "delivery_code": order.get("delivery_code", ""),
+                "download_url": order.get("download_url", ""),
+                "product_name": order.get("product_name", ""),
+                "msg": "支付成功，已自动发货"
             })
-        
-        # 查询支付宝
-        result = ap.query_payment(order_id)
-        if result.get("ok") and result.get("paid"):
-            if pend:
-                code = generate_verify_code()
-                pend["code"] = code
-                pend["paid"] = True
-                pend["tx_id"] = result.get("trade_no", "")
+        # 支付宝当面付：主动查询（防回调丢失）
+        if order and order.get("gateway") == "alipay_f2f":
+            result = ap.query_payment(order_id)
+            if result.get("ok") and result.get("paid"):
+                order, err = fulfill_paid_order(
+                    order, orders_data,
+                    trade_no=result.get("trade_no", ""),
+                    buyer_logon_id=result.get("buyer_logon_id", ""))
+                if err:
+                    return jsonify({"ok": False, "status": "error", "msg": f"交付失败: {err}"}), 500
                 return jsonify({
                     "ok": True, "status": "paid",
-                    "verify_code": code,
-                    "msg": "支付成功！校验码已生成"
+                    "delivery_code": order.get("delivery_code", ""),
+                    "download_url": order.get("download_url", ""),
+                    "product_name": order.get("product_name", ""),
+                    "msg": "支付成功，已自动发货"
                 })
-            return jsonify({"ok": True, "status": "paid", "msg": "已支付"})
-        
+            if result.get("ok"):
+                return jsonify({"ok": True, "status": "unpaid", "msg": "等待支付"})
+        # PayJS 兼容
+        config = pg.load_config()
+        if config.get("gateway") == "payjs":
+            pend = PENDING_VERIFICATIONS.get(order_id)
+            if pend and pend.get("payjs_order_id"):
+                result = pg.check_payment(pend["payjs_order_id"])
+                if result.get("ok") and result.get("paid"):
+                    return jsonify({"ok": True, "status": "paid"})
+                elif result.get("ok"):
+                    return jsonify({"ok": True, "status": "unpaid"})
         return jsonify({"ok": True, "status": "unpaid", "msg": "等待支付"})
     except Exception as e:
         return jsonify({"ok": False, "status": "error", "msg": str(e)}), 500
@@ -999,24 +1155,42 @@ def track_conversion():
         return jsonify({"ok": False})
 
 
+@app.route("/api/subscribe", methods=["POST"])
+def subscribe_email():
+    """私域订阅：免费资料/工具领取，存名单并发送欢迎邮件"""
+    try:
+        req = request.get_json()
+        email = (req.get("email") or "").strip().lower()
+        source = (req.get("source") or "website").strip()[:40]
+        if "@" not in email or "." not in email.split("@")[-1]:
+            return jsonify({"ok": False, "msg": "请输入正确的邮箱地址"}), 400
+        subs = []
+        if SUBSCRIBERS_FILE.exists():
+            with open(SUBSCRIBERS_FILE, encoding="utf-8") as f:
+                subs = json.load(f)
+        if any(s.get("email") == email for s in subs):
+            return jsonify({"ok": True, "msg": "已在私域名单中，欢迎邮件稍后送达", "already": True})
+        subs.append({
+            "email": email,
+            "source": source,
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+        with open(SUBSCRIBERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(subs, f, ensure_ascii=False, indent=2)
+        try:
+            send_welcome_email(email)
+        except Exception as e:
+            print(f"  ⚠️ 欢迎邮件发送失败: {e}")
+        print(f"  📧 新订阅: {email} (来源: {source}) 当前名单 {len(subs)} 人")
+        return jsonify({"ok": True, "msg": "订阅成功！免费资料已发送到你的邮箱", "count": len(subs)})
+    except Exception as e:
+        return jsonify({"ok": False, "msg": f"系统错误: {str(e)}"}), 500
+
+
 @app.route("/api/payment/check/<order_id>")
 def check_payment_status(order_id):
-    """查询支付状态（前端轮询用）"""
-    try:
-        config = pg.load_config()
-        if config.get("gateway") == "payjs":
-            # 从PENDING_VERIFICATIONS获取payjs_order_id
-            from app import PENDING_VERIFICATIONS
-            pend = PENDING_VERIFICATIONS.get(order_id)
-            if pend and pend.get("payjs_order_id"):
-                result = pg.check_payment(pend["payjs_order_id"])
-                if result.get("ok") and result.get("paid"):
-                    return jsonify({"ok": True, "status": "paid"})
-                elif result.get("ok"):
-                    return jsonify({"ok": True, "status": "unpaid"})
-        return jsonify({"ok": True, "status": "unknown"})
-    except Exception as e:
-        return jsonify({"ok": False, "msg": str(e)})
+    """旧路由兼容：转发到统一支付状态查询"""
+    return check_payment(order_id)
 
 @app.route("/api/payment/notify", methods=["POST"])
 def payment_notify():
@@ -1071,14 +1245,12 @@ def reload_products():
 def download_product(token):
     """产品下载页面"""
     try:
-        from delivery.auto_delivery import validate_token, record_download, PRODUCTS_STORAGE
-        info, error = validate_token(token)
+        from delivery.auto_delivery import record_download
+        info, product_dir, error = resolve_delivery(token)
         if not info:
             return f"<h2>❌ {error}</h2><p>请联系商家获取新链接: 35538112@qq.com</p>", 404
-        
+
         product_id = info["product_id"]
-        product_dir = PRODUCTS_STORAGE / product_id
-        
         # 获取该产品的README
         readme_content = ""
         readme_file = product_dir / "README.md"
@@ -1093,7 +1265,10 @@ def download_product(token):
                 product_info = json.load(f)
         
         # 记录下载
-        record_download(token)
+        try:
+            record_download(token)
+        except Exception:
+            pass
         
         return render_template("download.html",
                              info=info,
@@ -1108,16 +1283,17 @@ def download_product(token):
 def download_file(token):
     """实际文件下载"""
     try:
-        from delivery.auto_delivery import validate_token, record_download, PRODUCTS_STORAGE
-        info, error = validate_token(token)
+        from delivery.auto_delivery import record_download
+        info, product_dir, error = resolve_delivery(token)
         if not info:
             return jsonify({"ok": False, "msg": error}), 404
-        
+
         product_id = info["product_id"]
-        product_dir = PRODUCTS_STORAGE / product_id
-        
         # 返回产品的README作为下载文件（实际中这里返回真实文件）
-        record_download(token)
+        try:
+            record_download(token)
+        except Exception:
+            pass
         
         readme_file = product_dir / "README.md"
         if readme_file.exists():
@@ -1370,7 +1546,5 @@ if __name__ == "__main__":
     print(f"\n  🛠️ AutoTools 副业系统")
     print(f"  🌐 网站: http://localhost:{port}")
     print(f"  📋 后台: http://localhost:{port}/admin")
-    print(f"  密码: {ADMIN_PASSWORD}")
     print(f"  产品数: {len(PRODUCTS)}")
     app.run(host="0.0.0.0", port=port, debug=False)
-

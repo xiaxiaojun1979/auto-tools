@@ -1,6 +1,0 @@
-{
-  "gateway": "none",
-  "payjs_mchid": "",
-  "payjs_key": "",
-  "notify_url": "http://118.31.4.27/api/payment/notify"
-}

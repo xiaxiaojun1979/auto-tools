@@ -1,6 +1,0 @@
-{
-  "gateway": "xunhupay",
-  "appid": "YOUR_APPID",
-  "appsecret": "YOUR_APPSECRET",
-  "notify_url": "http://118.31.4.27/api/xunhupay/notify"
-}

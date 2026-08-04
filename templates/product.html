@@ -95,6 +95,25 @@
         .delivery-result { display: none; margin-top: 16px; padding: 20px; background: #f6ffed;
                            border: 1px solid #b7eb8f; border-radius: 16px; text-align: center; }
         .delivery-result.show { display: block; }
+        .positioning { background: #f0f5ff; border: 1px solid #adc6ff; border-radius: 12px;
+                       padding: 14px 16px; color: #1d39c4; font-size: 1.02em; line-height: 1.7;
+                       margin-bottom: 22px; }
+        .trust-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+        .trust-item { flex: 1; min-width: 110px; background: #f9fafb; border: 1px solid #eceef0;
+                      border-radius: 10px; padding: 10px; text-align: center; font-size: 0.85em; color: #555; }
+        .trust-item .t-icon { font-size: 1.4em; display: block; margin-bottom: 4px; }
+        .sub-card { margin-top: 18px; background: linear-gradient(135deg,#f8faff,#eef2ff);
+                    border: 1px dashed #adc6ff; border-radius: 16px; padding: 22px; text-align: center; }
+        .sub-card h3 { color: #1d39c4; margin-bottom: 6px; }
+        .sub-card p { color: #666; font-size: 0.9em; margin-bottom: 12px; line-height: 1.6; }
+        .sub-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
+        .sub-form input { flex: 1; padding: 12px 14px; border: 2px solid #d6e4ff; border-radius: 10px;
+                          font-size: 0.95em; outline: none; }
+        .sub-form input:focus { border-color: #1677ff; }
+        .sub-form button { padding: 12px 20px; border: none; border-radius: 10px; cursor: pointer;
+                           background: linear-gradient(135deg,#1677ff,#0958d9); color: white;
+                           font-size: 0.95em; font-weight: 600; }
+        .sub-msg { font-size: 0.85em; color: #52c41a; margin-top: 8px; display: none; }
         @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.03); } }
     </style>
@@ -108,6 +127,9 @@
     <div class="container">
         <div class="card">
             <h2>{{ product.name }}</h2>
+            {% if product.positioning %}
+            <div class="positioning">🎯 {{ product.positioning }}</div>
+            {% endif %}
             {% if product.long_desc %}
             <div class="desc">{{ product.long_desc | safe }}</div>
             {% endif %}
@@ -125,11 +147,27 @@
                 <span class="price">¥{{ product.price }}</span>
             </div>
             <button class="btn-buy" id="buyBtn" onclick="openBuy()">立即购买</button>
+            <div class="trust-row">
+                <div class="trust-item"><span class="t-icon">🛡️</span>7 天退款保证</div>
+                <div class="trust-item"><span class="t-icon">⚡</span>付款后自动发货</div>
+                <div class="trust-item"><span class="t-icon">💬</span>专属客服支持</div>
+            </div>
             {% if product.has_free %}
             <div style="margin-top:12px;text-align:center;">
                 <a href="/free/{{ product.id }}" style="color:#667eea;font-size:0.9em;">免费试用体验版 →</a>
             </div>
             {% endif %}
+        </div>
+
+        <!-- 私域订阅：免费资料 -->
+        <div class="sub-card">
+            <h3>🎁 免费领取 AI 效率工具资料包</h3>
+            <p>每周 1 封「AI 效率技巧 + 新品内测」邮件，领取即送免费在线工具清单</p>
+            <div class="sub-form">
+                <input type="email" id="subEmail" placeholder="输入邮箱，免费领取">
+                <button onclick="doSubscribe()">免费领取</button>
+            </div>
+            <div class="sub-msg" id="subMsg">✅ 订阅成功！免费资料已发送到你的邮箱</div>
         </div>
 
         <!-- 付款成功区域：初始隐藏，付款后显示 -->
@@ -327,6 +365,26 @@
         });
         document.getElementById('buyerEmail').addEventListener('keydown', function(e) {
             if (e.key === 'Enter') doDownload();
+        });
+
+        function doSubscribe() {
+            var email = document.getElementById('subEmail').value.trim();
+            if (!email || email.indexOf('@') === -1) { alert('请输入正确的邮箱'); return; }
+            fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email: email, source: 'product_page'})
+            }).then(r => r.json()).then(d => {
+                if (d.ok) {
+                    document.getElementById('subMsg').style.display = 'block';
+                    document.getElementById('subEmail').value = '';
+                } else {
+                    alert('❌ ' + (d.msg || '订阅失败'));
+                }
+            }).catch(() => alert('网络错误'));
+        }
+        document.getElementById('subEmail').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doSubscribe();
         });
     </script>
 </body>

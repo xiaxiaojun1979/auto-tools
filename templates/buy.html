@@ -82,6 +82,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="pay-tab active" id="tabAlipay" onclick="selPay('alipay')">💳 支付宝</div>
         <div class="pay-tab" id="tabWechat" onclick="selPay('wechat')">💚 微信</div>
       </div>
+      <div class="input-group" style="margin-top:12px">
+        <label>📧 接收产品的邮箱</label>
+        <input type="email" id="emailStep1" placeholder="付款成功后自动发货到该邮箱" autocomplete="off">
+      </div>
+      <div class="pay-note" style="margin-top:10px">
+        <strong>⚡ 全自动发货：</strong>付款成功 → 系统自动生成激活码并发送到邮箱，全程无需人工确认
+      </div>
       <button class="btn btn-primary" id="payBtn" onclick="startPay()">💳 立即支付 ¥{{ price }}</button>
     </div>
   </div>
@@ -127,23 +134,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <!-- ===== 步骤3: 收货 ===== -->
   <div class="step-box" id="step3">
     <div class="step-title">步骤 3/3 · 验证后获取产品</div>
-    <div class="success-box">
-      <div class="big-icon">✅</div>
-      <h2>付款验证成功！</h2>
-      <div style="color:#666;font-size:0.9em;margin:4px 0 12px">请输入邮箱接收产品下载链接</div>
-      <div class="code" id="codeDisplay">****</div>
-      <div style="font-size:0.8em;color:#999;margin-top:6px">支付校验码（请勿泄露）</div>
-    </div>
-    <div class="card">
-      <div class="input-group">
-        <label>📧 接收产品的邮箱</label>
-        <input type="email" id="emailInput" placeholder="请输入您的邮箱地址" autocomplete="off">
+    <div id="autoResult" style="display:none">
+      <div class="success-box">
+        <div class="big-icon">🎉</div>
+        <h2>支付成功，产品已自动交付！</h2>
+        <div id="autoInfo" style="color:#666;font-size:0.95em;margin:8px 0"></div>
+        <div id="autoDl" style="margin-top:12px"></div>
+        <div style="font-size:0.8em;color:#999;margin-top:8px">激活码与下载链接也已发送到你的邮箱</div>
       </div>
-      <button class="btn btn-green" id="dlBtn" onclick="doDownload()">📥 获取产品下载链接</button>
     </div>
-    <div class="result-box" id="resultBox">
-      <div class="card" style="text-align:center;background:linear-gradient(135deg,#f6ffed,#d9f7be)">
-        <div id="resultContent"></div>
+    <div id="manualDeliver" style="display:none">
+      <div class="success-box">
+        <div class="big-icon">✅</div>
+        <h2>付款验证成功！</h2>
+        <div style="color:#666;font-size:0.9em;margin:4px 0 12px">请输入邮箱接收产品下载链接</div>
+        <div class="code" id="codeDisplay">****</div>
+        <div style="font-size:0.8em;color:#999;margin-top:6px">支付校验码（请勿泄露）</div>
+      </div>
+      <div class="card">
+        <div class="input-group">
+          <label>📧 接收产品的邮箱</label>
+          <input type="email" id="emailInput" placeholder="请输入您的邮箱地址" autocomplete="off">
+        </div>
+        <button class="btn btn-green" id="dlBtn" onclick="doDownload()">📥 获取产品下载链接</button>
+      </div>
+      <div class="result-box" id="resultBox">
+        <div class="card" style="text-align:center;background:linear-gradient(135deg,#f6ffed,#d9f7be)">
+          <div id="resultContent"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -156,6 +174,9 @@ var pid = '{{ pid }}';
 var payType = 'alipay';
 var verifyCode = '';
 var txId = '';
+var orderId = '';
+var autoMode = false;
+var pollTimer = null;
 
 function selPay(p) {
   payType = p;
@@ -178,25 +199,73 @@ function gotoStep(step) {
 }
 
 function startPay() {
+  var email = document.getElementById('emailStep1').value.trim();
+  if (!email || !email.includes('@')) { alert('请先填写接收产品的邮箱'); document.getElementById('emailStep1').focus(); return; }
   var btn = document.getElementById('payBtn');
   btn.disabled = true; btn.innerHTML = '<span class="loading"></span> 生成二维码...';
   
   fetch('/api/payment/qrcode', {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({product_id:pid, payment:payType})
+    body:JSON.stringify({product_id:pid, payment:payType, email:email})
   }).then(r=>r.json()).then(d => {
     if (d.ok) {
+      orderId = d.order_id;
+      autoMode = (d.gateway === 'alipay_f2f');
       document.getElementById('payTitle').textContent = payType === 'alipay' ? '💳 支付宝扫码支付' : '💚 微信扫码支付';
       document.getElementById('payAppName').textContent = payType === 'alipay' ? '支付宝' : '微信';
       document.getElementById('qrArea').innerHTML = d.qr ? `<img src="${d.qr}" alt="支付二维码">` : '<div class="qr-placeholder">二维码生成失败</div>';
       document.getElementById('accountInfo').innerHTML = `收款账号：<strong>${d.account || '15156215580'}</strong><br>金额：<strong>¥${d.amount}</strong>`;
+      if (autoMode) {
+        document.getElementById('paidBtn').style.display = 'none';
+        document.querySelector('.pay-note').innerHTML = '<strong>⚡ 全自动模式：</strong>付款成功后系统将自动检测并发货到邮箱，请保持页面打开，通常几秒内完成';
+        startPolling(orderId);
+      } else {
+        document.getElementById('paidBtn').style.display = '';
+        document.querySelector('.pay-note').innerHTML = '<strong>⚠️ 付款须知：</strong><br>1️⃣ 打开支付宝/微信扫一扫上方二维码付款<br>2️⃣ 付款后点击下方按钮，进入人工验证（自动发货暂不可用）';
+      }
       gotoStep(2);
       btn.disabled = false; btn.innerHTML = '💳 立即支付 ¥{{ price }}';
     } else { alert('❌ '+(d.msg||'失败')); btn.disabled = false; btn.innerHTML = '💳 立即支付 ¥{{ price }}'; }
   }).catch(() => { alert('网络错误'); btn.disabled = false; btn.innerHTML = '💳 立即支付 ¥{{ price }}'; });
 }
 
+function startPolling(oid) {
+  stopPolling();
+  var attempts = 0;
+  pollTimer = setInterval(function() {
+    attempts++;
+    fetch('/api/payment/check/' + oid).then(r=>r.json()).then(d => {
+      if (d.ok && d.status === 'paid') {
+        stopPolling();
+        showAutoSuccess(d);
+      } else if (attempts > 300) {
+        stopPolling();
+        document.querySelector('.pay-note').innerHTML = '⏳ 检测超时，若已付款请点击下方按钮人工验证';
+        document.getElementById('paidBtn').style.display = '';
+      }
+    }).catch(function(){});
+  }, 3000);
+}
+
+function stopPolling() {
+  if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+}
+
+function showAutoSuccess(d) {
+  gotoStep(3);
+  document.getElementById('manualDeliver').style.display = 'none';
+  document.getElementById('autoResult').style.display = '';
+  document.getElementById('autoInfo').innerHTML = `<div style="font-size:2.5em;margin-bottom:6px">🎉</div>
+    <div style="font-weight:700;font-size:1.15em;margin-bottom:8px">${d.product_name || '产品'}</div>
+    <div style="font-size:0.9em;color:#666;margin-bottom:4px">激活码：</div>
+    <div style="background:#1a1a2e;color:#ffd700;padding:12px;border-radius:8px;font-size:1.2em;font-weight:bold;font-family:monospace;margin-bottom:12px;user-select:all">${d.delivery_code || ''}</div>`;
+  var dl = d.download_url ? `<a href="${d.download_url}" target="_blank" class="dl-btn">📥 立即下载</a>` : '';
+  document.getElementById('autoDl').innerHTML = dl;
+  document.getElementById('autoResult').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
 function gotoStepTx() {
+  stopPolling();
   gotoStep(99);
   document.getElementById('stepTx').classList.add('show');
   document.getElementById('txPayName').textContent = payType === 'alipay' ? '支付宝' : '微信';
@@ -226,6 +295,8 @@ function verifyTx() {
       document.getElementById('dot3').classList.add('active');
       document.getElementById('stepTx').classList.remove('show');
       document.getElementById('step3').classList.add('show');
+      document.getElementById('manualDeliver').style.display = '';
+      document.getElementById('autoResult').style.display = 'none';
       setTimeout(() => document.getElementById('step3').scrollIntoView({behavior:'smooth',block:'center'}), 100);
       document.getElementById('emailInput').focus();
     } else {

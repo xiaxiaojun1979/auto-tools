@@ -17,3 +17,14 @@ promotion/data/article_*.txt
 promotion/xianyu_listings.json
 *.bak
 promotion/xianyu_*.json
+
+# 敏感配置与业务数据（不入库，rsync 部署不受影响）
+alipay_config.json
+app_public_key.pem
+payment_config.json
+xunhupay_config.json
+delivery/delivery_config.json
+delivery/activation_codes.json
+delivery/download_links.json
+daily_report/data/
+promotion/data/discount_codes.json
