@@ -2061,5 +2061,56 @@
     "price_old": 59,
     "category": "education",
     "created": "2026-08-03"
+  },
+  {
+    "id": "multi_account",
+    "emoji": "📱",
+    "name": "多账号管理工具",
+    "desc": "同时管理多个自媒体账号",
+    "features": [
+      "多账号管理工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 49,
+    "price_old": 83,
+    "category": "media",
+    "created": "2026-08-04"
+  },
+  {
+    "id": "study_planner",
+    "emoji": "📚",
+    "name": "学习计划工具",
+    "desc": "AI制定个性化学习计划",
+    "features": [
+      "学习计划工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 29,
+    "price_old": 49,
+    "category": "education",
+    "created": "2026-08-04"
+  },
+  {
+    "id": "coupon_finder",
+    "emoji": "🏠",
+    "name": "优惠券查找工具",
+    "desc": "自动查找商品优惠券",
+    "features": [
+      "优惠券查找工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 19,
+    "price_old": 32,
+    "category": "life",
+    "created": "2026-08-04"
   }
 ]

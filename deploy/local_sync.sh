@@ -7,21 +7,22 @@ REMOTE="root@118.31.4.27:/opt/autotools/"
 KEY="/Users/tianmengpiaoxiang/.ssh/id_rsa_aliyun"
 
 echo "🚀 同步代码到阿里云服务器..."
+echo "📦 备份服务器当前数据（防同步覆盖）..."
+ssh -i "$KEY" -o StrictHostKeyChecking=no root@118.31.4.27 "mkdir -p /root/autotools-backups && tar czf /root/autotools-backups/presync-\$(date +%Y%m%d-%H%M).tar.gz -C /opt/autotools daily_report/data delivery products payment_config.json alipay_config.json email_config.json 2>/dev/null; find /root/autotools-backups -name 'presync-*' -mtime +7 -delete" 2>&1
 rsync -avz --delete \
     -e "ssh -i $KEY -o StrictHostKeyChecking=no" \
     --exclude='.git' \
     --exclude='__pycache__' \
     --exclude='*.pyc' \
+    --exclude='*.bak' \
     --exclude='cloudflared' \
     --exclude='ngrok' \
     --exclude='.DS_Store' \
     --exclude='*.tar.gz' \
     --exclude='xianyu_products/' \
     --exclude='daily_report/reports/*.html' \
-    "$LOCAL_DIR/app.py" \
-    "$LOCAL_DIR/email_report.py" \
-    "$LOCAL_DIR/templates/" \
-    "$REMOTE" 2>&1 | tail -5
+    "$LOCAL_DIR/" \
+    "$REMOTE" 2>&1 | tail -8
 
 echo ""
 echo "🔄 重启服务..."
@@ -30,4 +31,4 @@ ssh -i "$KEY" -o StrictHostKeyChecking=no root@118.31.4.27 "systemctl restart au
 echo ""
 echo "✅ 同步完成!"
 echo "🌐 http://118.31.4.27"
-echo "📋 后台密码: xxj63858930"
+echo "🔒 后台地址: https://xiaxiaojun.com/admin"

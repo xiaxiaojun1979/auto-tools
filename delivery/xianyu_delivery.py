@@ -212,6 +212,8 @@ def monitor_and_deliver():
     
     try:
         convos = json.loads(conversations)
+        if not isinstance(convos, list):
+            convos = []
     except:
         convos = []
     

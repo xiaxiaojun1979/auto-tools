@@ -271,7 +271,7 @@ def publish_product(product, idx):
     
     return r.join(',');
 }})()
-"""
+""")
         log(f"  表单填充: {result[:200]}")
         time.sleep(2)
         
