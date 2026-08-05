@@ -1458,3 +1458,23 @@ KeyError: 'total_posts'
 KeyError: 'total_posts'
 
 [2026-08-04 20:00:26] 📧 第四步：发送邮件报告...
+📧 报告已保存到: /Users/tianmengpiaoxiang/auto_business/daily_report/reports/email_report_20260804.html
+📧 已通过mail命令发送
+❌ 邮件发送失败: Connection unexpectedly closed
+📧 报告已保存到: /Users/tianmengpiaoxiang/auto_business/daily_report/reports/email_report_20260804.html
+[2026-08-04 20:00:57]     ✅ 邮件处理完成
+[2026-08-04 20:00:57] 📤 第五步：推送到GitHub...
+[2026-08-04 20:00:57]     git add: 0
+[2026-08-04 20:00:57]     ✅ 提交成功: [main e5a6e23] auto: 每日更新 2026-08-04 - 新工具+报告+平台发布
+ 42 files changed, 4107 insertions(+), 677 deleti
+[2026-08-04 20:02:12]     git push: fatal: unable to access 'https://github.com/xiaxiaojun1979/auto-tools.git/': Failed to connect to gi
+[2026-08-04 20:02:12] 
+[2026-08-04 20:02:12] ==================================================
+[2026-08-04 20:02:12]   ✅ 晚间工作流完成
+[2026-08-04 20:02:12]   ⏱ 耗时: 132秒
+[2026-08-04 20:02:12]   ⚠️ 1 个维护问题
+[2026-08-04 20:02:12]   📰 平台发布: 今日头条 + 百家号
+[2026-08-04 20:02:12]   📦 新开发: 2 个工具
+[2026-08-04 20:02:12]   📧 邮件报告: 已保存/发送
+[2026-08-04 20:02:12] ==================================================
+[2026-08-04 20:02:12] 

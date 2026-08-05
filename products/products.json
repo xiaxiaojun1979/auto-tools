@@ -2112,5 +2112,39 @@
     "price_old": 32,
     "category": "life",
     "created": "2026-08-04"
+  },
+  {
+    "id": "gift_finder",
+    "emoji": "🏠",
+    "name": "礼物推荐工具",
+    "desc": "根据不同场景推荐礼物",
+    "features": [
+      "礼物推荐工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 19,
+    "price_old": 32,
+    "category": "life",
+    "created": "2026-08-05"
+  },
+  {
+    "id": "recipe_gen",
+    "emoji": "🏠",
+    "name": "菜谱生成器",
+    "desc": "根据食材推荐菜谱",
+    "features": [
+      "菜谱生成器核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 19,
+    "price_old": 32,
+    "category": "life",
+    "created": "2026-08-05"
   }
 ]
