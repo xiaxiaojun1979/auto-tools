@@ -2146,5 +2146,39 @@
     "price_old": 32,
     "category": "life",
     "created": "2026-08-05"
+  },
+  {
+    "id": "mood_journal",
+    "emoji": "🏠",
+    "name": "心情日记工具",
+    "desc": "记录心情变化趋势",
+    "features": [
+      "心情日记工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 15,
+    "price_old": 25,
+    "category": "life",
+    "created": "2026-08-06"
+  },
+  {
+    "id": "habit_tracker",
+    "emoji": "🏠",
+    "name": "习惯追踪工具",
+    "desc": "养成好习惯的打卡工具",
+    "features": [
+      "习惯追踪工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 19,
+    "price_old": 32,
+    "category": "life",
+    "created": "2026-08-06"
   }
 ]

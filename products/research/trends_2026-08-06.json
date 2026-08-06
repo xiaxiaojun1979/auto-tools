@@ -1,0 +1,60 @@
+{
+  "date": "2026-08-06",
+  "total_categories": 7,
+  "existing_products": 113,
+  "recommendations": [
+    {
+      "category": "生活/实用工具",
+      "trend_level": "🔥🔥🔥",
+      "tool_id": "habit_tracker",
+      "name": "习惯追踪工具",
+      "desc": "养成好习惯的打卡工具",
+      "price": 19,
+      "reason": "生活/实用工具趋势火爆(🔥🔥🔥)，习惯追踪工具市场需求大"
+    }
+  ],
+  "all_categories": {
+    "AI工具": {
+      "trend": "🔥🔥🔥🔥🔥",
+      "total_tools": 7,
+      "developed": 7,
+      "available": 0
+    },
+    "短视频/直播工具": {
+      "trend": "🔥🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "电商/购物工具": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "办公效率工具": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "自媒体/内容创作": {
+      "trend": "🔥🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 6,
+      "available": 0
+    },
+    "学习/教育工具": {
+      "trend": "🔥🔥🔥",
+      "total_tools": 5,
+      "developed": 5,
+      "available": 0
+    },
+    "生活/实用工具": {
+      "trend": "🔥🔥🔥",
+      "total_tools": 6,
+      "developed": 4,
+      "available": 2
+    }
+  }
+}
