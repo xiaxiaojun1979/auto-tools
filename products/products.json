@@ -2180,5 +2180,22 @@
     "price_old": 32,
     "category": "life",
     "created": "2026-08-06"
+  },
+  {
+    "id": "expense_tracker",
+    "emoji": "🏠",
+    "name": "记账工具",
+    "desc": "简单的收支管理工具",
+    "features": [
+      "记账工具核心功能",
+      "批量处理支持",
+      "简单易用界面",
+      "数据导出功能",
+      "持续更新维护"
+    ],
+    "price": 19,
+    "price_old": 32,
+    "category": "life",
+    "created": "2026-08-07"
   }
 ]
